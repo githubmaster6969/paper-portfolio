@@ -1,0 +1,23 @@
+name: Update portfolio data
+on:
+  schedule:
+    - cron: "35 20 * * 1-5"   # 4:35 PM EDT
+    - cron: "35 21 * * 1-5"   # 4:35 PM EST (also a harmless re-run in EDT)
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency: { group: update, cancel-in-progress: false }
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install yfinance pandas
+      - run: python scripts/update.py
+      - name: Commit if changed
+        run: |
+          git config user.name "portfolio-bot"; git config user.email "actions@users.noreply.github.com"
+          git add data/portfolio.json
+          git diff --cached --quiet || (git commit -m "Update data $(date -u +%F)" && git push)
