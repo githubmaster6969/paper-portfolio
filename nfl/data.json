@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-11T16:42:04+00:00",
+ "generated_at": "2026-10-11T16:53:01+00:00",
  "source": "/home/runner/work/paper-portfolio/paper-portfolio/nfl/data/picks_log.csv",
  "picks": [
   {
@@ -21,8 +21,8 @@
    "stake_units": 1,
    "reason": "CHI +0.166 net EPA/play vs GB -0.132; GB without Micah Parsons and 3 interior OL. Caleb Williams listed Questionable - confirm active. Model home margin -4.5.",
    "result": null,
-   "closing_odds": null,
-   "clv": null,
+   "closing_odds": -125,
+   "clv": 0,
    "profit_units": null
   },
   {
@@ -44,8 +44,8 @@
    "stake_units": 1,
    "reason": "LV net EPA +0.112 vs NE -0.043; NE missing CBs Gonzalez, Davis, Prunty, Canada. Getting +154 on the better team by EPA. Model home margin -1.6.",
    "result": null,
-   "closing_odds": null,
-   "clv": null,
+   "closing_odds": 150,
+   "clv": 0.0063,
    "profit_units": null
   },
   {
@@ -90,8 +90,8 @@
    "stake_units": 1,
    "reason": "Two 0-4 teams separated by only 0.09 net EPA; 6.5-pt market gap looks too wide. Small-stake underdog value. Model home margin -0.3.",
    "result": null,
-   "closing_odds": null,
-   "clv": null,
+   "closing_odds": 250,
+   "clv": 0.0154,
    "profit_units": null
   },
   {
@@ -113,8 +113,8 @@
    "stake_units": 1,
    "reason": "17 RZ carries / 6 goal-line carries (41% TEN RZ share); RBs Singleton and Carter both OUT = full workhorse.",
    "result": null,
-   "closing_odds": null,
-   "clv": null,
+   "closing_odds": 225,
+   "clv": 0.0136,
    "profit_units": null
   },
   {
@@ -136,8 +136,8 @@
    "stake_units": 1,
    "reason": "Juwan Johnson leads NO with 7 RZ targets (4 end-zone), 3 TDs; long price for a primary RZ target.",
    "result": null,
-   "closing_odds": null,
-   "clv": null,
+   "closing_odds": 300,
+   "clv": 0.0119,
    "profit_units": null
   },
   {
@@ -182,8 +182,8 @@
    "stake_units": 1,
    "reason": "QB with 3 RZ carries incl. 2 goal-line; +400 for a mobile QB in a 45.5 total.",
    "result": null,
-   "closing_odds": null,
-   "clv": null,
+   "closing_odds": 320,
+   "clv": 0.0381,
    "profit_units": null
   },
   {
@@ -205,8 +205,8 @@
    "stake_units": 1,
    "reason": "props_model median 3.3 vs line 1.5 (raw model p=0.819, 50% market-shrunk). Opp TEN.",
    "result": null,
-   "closing_odds": null,
-   "clv": null,
+   "closing_odds": 134,
+   "clv": 0,
    "profit_units": null
   },
   {
@@ -228,8 +228,8 @@
    "stake_units": 1,
    "reason": "props_model median 40.4 vs line 71.5 (raw model p=0.878, 50% market-shrunk). Opp CLE.",
    "result": null,
-   "closing_odds": null,
-   "clv": null,
+   "closing_odds": -111,
+   "clv": 0,
    "profit_units": null
   },
   {
@@ -251,8 +251,8 @@
    "stake_units": 1,
    "reason": "props_model median 20.9 vs line 39.5 (raw model p=0.862, 50% market-shrunk). Opp GB.",
    "result": null,
-   "closing_odds": null,
-   "clv": null,
+   "closing_odds": -109,
+   "clv": -0.009,
    "profit_units": null
   },
   {
@@ -274,8 +274,8 @@
    "stake_units": 1,
    "reason": "props_model median 15.6 vs line 26.5 (raw model p=0.813, 50% market-shrunk). Opp NYG.",
    "result": null,
-   "closing_odds": null,
-   "clv": null,
+   "closing_odds": -115,
+   "clv": 0.0088,
    "profit_units": null
   },
   {
@@ -320,8 +320,8 @@
    "stake_units": 1,
    "reason": "props_model median 26.3 vs line 43.5 (raw model p=0.799, 50% market-shrunk). Opp PIT.",
    "result": null,
-   "closing_odds": null,
-   "clv": null,
+   "closing_odds": -113,
+   "clv": 0,
    "profit_units": null
   },
   {
