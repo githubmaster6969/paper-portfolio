@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F7F5F0">
+<title>Picks — NFL paper betting tracker</title>
+<meta name="description" content="Pedro's NFL paper-betting record, units, ROI and closing line value.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="hdr">
+  <div class="hdr-in">
+    <div class="brand"><span class="dot" aria-hidden="true"></span>Picks</div>
+    <div class="hdr-meta" id="hdrMeta">Loading…</div>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section class="hero" aria-labelledby="h-units">
+    <p class="eyebrow" id="h-units">Total units</p>
+    <p class="big tnum" id="units" aria-live="polite">—</p>
+    <p class="sub" id="heroSub">—</p>
+    <ul class="chips-stat" id="statChips" aria-label="Key stats"></ul>
+  </section>
+
+  <section class="card" aria-labelledby="h-chart">
+    <div class="card-hd">
+      <h2 id="h-chart">Cumulative units</h2>
+      <span class="muted small" id="chartNote"></span>
+    </div>
+    <div id="chart" class="chart"></div>
+  </section>
+
+  <section class="card" aria-labelledby="h-break">
+    <div class="card-hd">
+      <h2 id="h-break">Breakdown</h2>
+    </div>
+    <div class="seg" role="radiogroup" aria-label="Group breakdown by" id="seg">
+      <span class="seg-thumb" aria-hidden="true"></span>
+      <button role="radio" aria-checked="true" data-k="bet_type">Bet type</button>
+      <button role="radio" aria-checked="false" data-k="model_version">Model</button>
+    </div>
+    <ul class="bk" id="breakdown"></ul>
+  </section>
+
+  <section aria-labelledby="h-picks" class="picks-sec">
+    <div class="card-hd pad-x">
+      <h2 id="h-picks">Picks</h2>
+      <span class="muted small" id="pickCount"></span>
+    </div>
+    <div class="filters" role="group" aria-label="Filter picks" id="filters"></div>
+    <div id="picks"></div>
+  </section>
+
+  <footer class="foot muted small" id="foot"></footer>
+</main>
+<script src="app.js" defer></script>
+</body>
+</html>
