@@ -1,25 +1,32 @@
 "use strict";
-const LABEL = {moneyline:"Moneyline",spread:"Spread",anytime_td:"Anytime TD",yardage:"Yardage props",receptions:"Receptions props",
-  sides_v1:"Sides v1",td_v1:"TD v1",props_v1:"Props v1",props_v2_calibrated:"Props v2 (calibrated)"};
+const LABEL = {
+  moneyline:"Moneyline",spread:"Spread",anytime_td:"Anytime TD",yardage:"Yardage",receptions:"Receptions",
+  sides_v1:"Sides Model v1",td_v1:"TD Model v1",props_v1:"Props Model v1",props_v2_calibrated:"Props Model v2 (Calibrated)",
+  prop_rush_yds:"Rush Yards",prop_rec_yds:"Rec Yards",prop_receptions:"Receptions"
+};
 const ORDER = {bet_type:["moneyline","spread","anytime_td","yardage","receptions"],
   model_version:["sides_v1","td_v1","props_v1","props_v2_calibrated"]};
 const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const lab = k => LABEL[k] || k || "Unknown";
+const lab = k => LABEL[k] || k.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase()) || "Unknown";
 const odds = o => o == null ? "—" : (o > 0 ? "+" + o : String(o));
 const sgn = (n, d = 2) => (n > 0 ? "+" : n < 0 ? "−" : "") + Math.abs(n).toFixed(d);
 const cls = n => n > 0 ? "pos" : n < 0 ? "neg" : "zero";
 const isSettled = p => ["W","L","P"].includes(p.result);
-const isGraded = p => isSettled(p) || p.result === "void";
+const isVoid = p => p.result === "void";
+const isGraded = p => isSettled(p) || isVoid(p);
 
 function stats(list){
   const s = {n:list.length,W:0,L:0,P:0,V:0,pending:0,units:0,staked:0,clvN:0,clvSum:0,clvPos:0};
   for (const p of list){
-    if (p.result === "W") s.W++; else if (p.result === "L") s.L++; else if (p.result === "P") s.P++;
-    else if (p.result === "void") s.V++; else s.pending++;
+    if (isVoid(p)) s.V++;
+    else if (p.result === "W") s.W++; 
+    else if (p.result === "L") s.L++; 
+    else if (p.result === "P") s.P++;
+    else s.pending++;
     if (isSettled(p) && p.profit_units != null){ s.units += p.profit_units; s.staked += p.stake_units || 1; }
-    if (p.clv != null){ s.clvN++; s.clvSum += p.clv; if (p.clv > 0) s.clvPos++; }
+    if (!isVoid(p) && p.clv != null){ s.clvN++; s.clvSum += p.clv; if (p.clv > 0) s.clvPos++; }
   }
   s.settled = s.W + s.L + s.P;
   s.roi = s.staked ? s.units / s.staked : null;
@@ -41,26 +48,30 @@ function renderHero(all, s){
   const u = $("#units");
   if (!s.settled){ u.textContent = "0.00u"; u.classList.add("zero"); }
   else { u.className = "big tnum " + cls(s.units); countUp(u, s.units, v => sgn(v) + "u"); }
+  const roiLabel = s.roi == null ? "Return" : (s.roi > 0 ? "Profit" : s.roi < 0 ? "Loss" : "Break even");
   $("#heroSub").innerHTML = s.settled
-    ? `Record <b class="tnum">${rec(s)}</b> · ROI <b class="tnum ${cls(s.roi)}">${sgn(s.roi*100,1)}%</b>`
-    : `No picks settled yet · <b class="tnum">${s.pending}</b> pending at flat 1u`;
+    ? `Record <b class="tnum">${rec(s)}</b> · ${roiLabel} <b class="tnum ${cls(s.roi)}">${s.roi == null ? "—" : sgn(s.roi*100,1)}%</b>`
+    : `No picks settled yet · <b class="tnum">${s.pending}</b> pending at 1 unit each`;
   const chip = (k, v, c = "") => `<li><span class="k">${k}</span><span class="v tnum ${c}">${v}</span></li>`;
+  const clvTip = s.clv == null ? "—" : (s.clv >= 0 ? "+" : "") + (s.clv*100).toFixed(1) + " pts";
   $("#statChips").innerHTML =
-    chip("Avg CLV", s.clv == null ? "—" : sgn(s.clv*100,1) + " pts", s.clv == null ? "zero" : cls(s.clv)) +
-    chip("Hit rate", s.hit == null ? "—" : (s.hit*100).toFixed(0) + "%") +
+    chip("Avg CLV", clvTip, s.clv == null ? "zero" : cls(s.clv)) +
+    chip("Win rate", s.hit == null ? "—" : (s.hit*100).toFixed(0) + "%") +
     chip("Pending", String(s.pending));
-  const weeks = [...new Set(all.map(p => p.week))].sort((a,b)=>a-b);
-  $("#hdrMeta").textContent = `Week ${weeks.join(", ")} · ${all.length} picks`;
+  const weeks = [...new Set(all.filter(p => !isVoid(p)).map(p => p.week))].sort((a,b)=>a-b);
+  const pickLabel = all.length === 1 ? "pick" : "picks";
+  const voidLabel = s.V ? ` (${s.V} void)` : "";
+  $("#hdrMeta").textContent = `Week ${weeks.join(", ")} · ${all.length} ${pickLabel}${voidLabel}`;
 }
 
 function renderChart(all){
-  const pts = all.filter(p => isSettled(p) && p.profit_units != null)
+  const pts = all.filter(p => isSettled(p) && !isVoid(p) && p.profit_units != null)
     .sort((a,b) => (a.date+(a.captured_at||"")).localeCompare(b.date+(b.captured_at||"")));
   const el = $("#chart");
   if (!pts.length){
     $("#chartNote").textContent = "";
     el.innerHTML = `<div class="empty" role="img" aria-label="Chart empty: no settled picks yet"><b>Waiting on first results</b>
-      <span>The line starts once the first pick is graded. Nothing here is projected.</span></div>`;
+      <span>The line starts once the first pick is graded. Voids and pending picks are not shown.</span></div>`;
     return;
   }
   let c = 0; const ys = [0, ...pts.map(p => (c += p.profit_units))];
@@ -68,7 +79,7 @@ function renderChart(all){
   const x = i => pad + i * (W - 2*pad) / Math.max(1, ys.length - 1), y = v => pad + (max - v) * (H - 2*pad) / rng;
   const d = ys.map((v,i) => `${i?"L":"M"}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join("");
   const last = ys[ys.length-1], col = last >= 0 ? "var(--green)" : "var(--red)";
-  $("#chartNote").textContent = `${pts.length} settled`;
+  $("#chartNote").textContent = `${pts.length} settled (voids excluded)`;
   el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Cumulative units after ${pts.length} settled picks: ${sgn(last)} units">
     <line x1="0" x2="${W}" y1="${y(0)}" y2="${y(0)}" stroke="var(--line)" stroke-dasharray="4 4"/>
     <path d="${d} L${x(ys.length-1)},${y(0)} L${x(0)},${y(0)}Z" fill="${col}" opacity=".08"/>
@@ -84,14 +95,15 @@ function renderBreakdown(all, key){
   const maxRoi = Math.max(0.01, ...rows.map(([,s]) => Math.abs(s.roi || 0)));
   $("#breakdown").innerHTML = rows.map(([k, s]) => {
     const right = s.settled ? `<span class="${cls(s.units)}">${sgn(s.units)}u</span>` : `<span class="zero">Pending</span>`;
-    const metaR = s.settled ? `ROI ${sgn(s.roi*100,1)}%` : `${s.pending} open`;
-    const clv = s.clv == null ? "CLV —" : `CLV ${sgn(s.clv*100,1)} pts`;
+    const metaR = s.settled ? `Return ${sgn(s.roi*100,1)}%` : `${s.pending} open`;
+    const clv = s.clv == null ? "CLV —" : `CLV ${(s.clv >= 0 ? "+" : "") + (s.clv*100).toFixed(1)} pts`;
+    const voidNote = s.V ? ` · ${s.V} void` : "";
     let bar;
     if (s.settled){ const w = Math.abs(s.roi)/maxRoi*50;
       bar = `<i style="left:${s.roi>=0?50:50-w}%;width:${w}%;background:${s.roi>=0?"var(--green)":"var(--red)"}"></i>`; }
     else bar = `<i style="left:0;width:100%;background:repeating-linear-gradient(90deg,#D9D5CC 0 6px,transparent 6px 10px)"></i>`;
     return `<li><span class="nm">${esc(lab(k))}</span><span class="rt tnum">${right}</span>
-      <span class="meta tnum">${s.n} picks · ${rec(s)}</span><span class="meta r tnum">${metaR} · ${clv}</span>
+      <span class="meta tnum">${s.n} picks · ${rec(s)}${voidNote}</span><span class="meta r tnum">${metaR} · ${clv}</span>
       <span class="bar" aria-hidden="true">${bar}</span></li>`;
   }).join("");
 }
@@ -123,20 +135,45 @@ function renderPicks(all){
       Object.keys(slots).sort((a,b)=>kt(a)-kt(b)).map(slot => `<p class="slot">${esc(slot)} ET</p>` + slots[slot].map(card).join("")).join("") + `</section>`;
   }).join("");
 }
+function formatPickTitle(p){
+  if (p.pick_label) return p.pick_label;
+  let title = p.pick || "";
+  title = title.replace(/\bATTD\b/gi, "Anytime TD");
+  title = title.replace(/\brush_yds?\b/gi, "Rush Yards");
+  title = title.replace(/\brec_yds?\b/gi, "Rec Yards");
+  title = title.replace(/\breceptions?\b/gi, "Receptions");
+  title = title.replace(/_/g, " ");
+  return title;
+}
+
 function card(p){
-  const st = p.result || "pending", pillTxt = {W:"Win",L:"Loss",P:"Push",void:"Void",pending:"Pending"}[st] || st;
+  const st = p.result || "pending";
+  const pillTxt = {W:"Win",L:"Loss",P:"Push",void:"Void, withdrawn",pending:"Pending"}[st] || st;
   const pu = p.profit_units == null ? "—" : `<span class="${cls(p.profit_units)}">${sgn(p.profit_units)}u</span>`;
-  const clv = p.clv == null ? "—" : `<span class="${cls(p.clv)}">${sgn(p.clv*100,1)}</span>`;
-  return `<article class="pk"><div class="pk-top"><span class="pk-pick">${esc(p.pick)}</span>
+  const clv = p.clv == null ? "—" : `<span class="${cls(p.clv)}">${(p.clv >= 0 ? "+" : "") + (p.clv*100).toFixed(1)}</span>`;
+  const voidClass = isVoid(p) ? " void" : "";
+  const pickTitle = formatPickTitle(p);
+  const reason = p.reason_plain || p.reason || "No reason provided.";
+  const hasTechnical = p.reason && p.reason_plain;
+  const detailsContent = hasTechnical 
+    ? `<p class="why">${esc(reason)}</p><details class="tech"><summary>Technical details</summary><p class="why-tech">${esc(p.reason)}</p>
+       <div class="tags tnum"><span class="tag">${esc(lab(p.model_version))}</span>
+       <span class="tag">Edge ${(p.edge||0) >= 0 ? "+" : ""}${((p.edge||0)*100).toFixed(1)} pts</span>
+       <span class="tag">Model ${((p.model_prob||0)*100).toFixed(0)}% vs ${((p.implied_prob||0)*100).toFixed(0)}% implied</span>
+       <span class="tag">Confidence ${p.confidence ?? "—"}/3</span><span class="tag">${esc(p.odds_source)}</span></div></details>`
+    : `<p class="why">${esc(reason)}</p>
+       <div class="tags tnum"><span class="tag">${esc(lab(p.model_version))}</span>
+       <span class="tag">Edge ${(p.edge||0) >= 0 ? "+" : ""}${((p.edge||0)*100).toFixed(1)} pts</span>
+       <span class="tag">Model ${((p.model_prob||0)*100).toFixed(0)}% vs ${((p.implied_prob||0)*100).toFixed(0)}% implied</span>
+       <span class="tag">Confidence ${p.confidence ?? "—"}/3</span><span class="tag">${esc(p.odds_source)}</span></div>`;
+  
+  return `<article class="pk${voidClass}"><div class="pk-top"><span class="pk-pick">${esc(pickTitle)}</span>
     <span class="pill ${esc(st)}">${pillTxt}</span><span class="pk-game">${esc(p.game)} · ${esc(lab(p.bet_type))}</span></div>
     <div class="pk-ft tnum"><div><span class="k">Taken</span><span class="v">${odds(p.odds_american)}</span></div>
     <div><span class="k">Close</span><span class="v">${odds(p.closing_odds)}</span></div>
-    <div><span class="k">CLV pts</span><span class="v">${clv}</span></div>
-    <div><span class="k">Units</span><span class="v">${pu}</span></div></div>
-    <details><summary>Why this pick</summary><p class="why">${esc(p.reason)}</p>
-    <div class="tags tnum"><span class="tag">${esc(lab(p.model_version))}</span>
-    <span class="tag">Edge ${sgn((p.edge||0)*100,1)} pts</span><span class="tag">Model ${((p.model_prob||0)*100).toFixed(0)}% vs ${((p.implied_prob||0)*100).toFixed(0)}% implied</span>
-    <span class="tag">Conf ${p.confidence ?? "—"}/3</span><span class="tag">${esc(p.odds_source)}</span></div></details></article>`;
+    <div><span class="k">CLV</span><span class="v">${clv}</span></div>
+    <div><span class="k">Result</span><span class="v">${pu}</span></div></div>
+    <details><summary>Why this pick</summary>${detailsContent}</details></article>`;
 }
 
 async function main(){
@@ -156,6 +193,6 @@ async function main(){
   $("#filters").addEventListener("click", e => { const b = e.target.closest(".chip"); if (!b) return;
     FILTER = b.dataset.f; renderFilters(all); renderPicks(all); $(`.chip[data-f="${FILTER}"]`)?.focus(); });
   const g = new Date(data.generated_at);
-  $("#foot").textContent = `Paper bets · flat 1u · CLV = implied(close) − implied(taken), in probability points · data synced ${g.toLocaleString("en-US",{month:"short",day:"numeric",hour:"numeric",minute:"2-digit"})} ET`;
+  $("#foot").textContent = `Paper bets only, 1 unit each. CLV (closing line value) shows whether we got a better price than the final market price; positive is good. Data synced ${g.toLocaleString("en-US",{month:"short",day:"numeric",hour:"numeric",minute:"2-digit"})} ET.`;
 }
 main();
