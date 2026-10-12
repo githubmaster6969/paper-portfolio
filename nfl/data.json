@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-11T20:43:48+00:00",
+ "generated_at": "2026-10-12T00:21:54+00:00",
  "source": "/home/runner/work/paper-portfolio/paper-portfolio/nfl/data/picks_log.csv",
  "picks": [
   {
@@ -72,10 +72,10 @@
    "stake_units": 1,
    "reason": "SF 4-0 with league-best offensive EPA (+0.291). Road dog price looks long; Bosa out caps confidence. Model home margin -0.9.",
    "reason_plain": "San Francisco is 4-0 and has the best offense in the league so far, while our model has Seattle only about a point better at home. Getting +140 on a team that good looks like too long a price. Main risk: SF is without Nick Bosa, which hurts their defense.",
-   "result": null,
+   "result": "W",
    "closing_odds": 140,
    "clv": 0,
-   "profit_units": null
+   "profit_units": 1.4
   },
   {
    "week": 5,
@@ -172,10 +172,10 @@
    "stake_units": 1,
    "reason": "6 RZ opps; Charbonnet OUT and Holani Q opens backfield/RZ touches.",
    "reason_plain": "AJ Barner is Seattle's tight end and a red-zone option, with 6 red-zone chances (5 targets, 2 at the goal line) and 1 touchdown in Week 2. San Francisco has been tough on tight ends, allowing zero tight end touchdowns in 4 games and about 40 yards per game to the position. The case is that Seattle's thin backfield (Charbonnet out) pushes more short-field looks his way, and +320 only needs about a 24% hit rate. It's a price bet against a difficult matchup.",
-   "result": null,
+   "result": "L",
    "closing_odds": 320,
    "clv": 0,
-   "profit_units": null
+   "profit_units": -1
   },
   {
    "week": 5,
@@ -297,10 +297,10 @@
    "stake_units": 1,
    "reason": "props_model median 15.6 vs line 26.5 (raw model p=0.813, 50% market-shrunk). Opp NYG.",
    "reason_plain": "The original props model projected Okonkwo for about 16 receiving yards against the Giants, well under the 26.5 line. Honest caveat: this came from the old model, which leaned too heavily on unders; after the fix, only Okonkwo's catches market (not this yardage bet) still showed value. We're tracking it to test the old model. Opponent New York allows about 50 receiving yards per game to tight ends, around league average.",
-   "result": null,
+   "result": "L",
    "closing_odds": -115,
    "clv": 0.0088,
-   "profit_units": null
+   "profit_units": -1
   },
   {
    "week": 5,
@@ -372,10 +372,10 @@
    "stake_units": 1,
    "reason": "bias-guarded props_model (calibrate_props.py): median 1.4 vs line 1.5, raw p=0.547, 50% market blend. Opp SF.",
    "reason_plain": "The fixed props model projects Shaheed right around 1 catch, just under the 1.5 line, and plus money (+140) on the under makes that worth a bet. Main risk: it only takes two catches to lose, so one or two extra targets flip it. Opponent San Francisco allows 10.5 catches per game to wide receivers (13th fewest), a neutral-to-tough matchup that fits the under.",
-   "result": null,
+   "result": "L",
    "closing_odds": 140,
    "clv": 0,
-   "profit_units": null
+   "profit_units": -1
   },
   {
    "week": 5,
@@ -397,10 +397,10 @@
    "stake_units": 1,
    "reason": "bias-guarded props_model (calibrate_props.py): median 9.3 vs line 8.5, raw p=0.604, 50% market blend. Opp DET.",
    "reason_plain": "The fixed props model projects McBride for about 9 catches, a bit above the 8.5 line, and the price is slightly better than even money. He's Arizona's go-to target, especially with Marvin Harrison Jr. out. Main risk: the line is high, so a game where Arizona spreads the ball around could leave him short. Opponent Detroit allows 9.2 catches and 102 yards per game to tight ends, the most in the league, which supports the over.",
-   "result": null,
+   "result": "W",
    "closing_odds": 100,
    "clv": 0.0098,
-   "profit_units": null
+   "profit_units": 1.04
   },
   {
    "week": 5,
@@ -422,10 +422,10 @@
    "stake_units": 1,
    "reason": "bias-guarded props_model (calibrate_props.py): median 4.0 vs line 4.5, raw p=0.581, 50% market blend. Opp LAC.",
    "reason_plain": "The fixed props model projects Waddle for about 4 catches, just under the 4.5 line, and the under pays slightly better than even money. Main risk: the margin is thin, so one extra catch loses it. Opponent LA Chargers allow 10.2 catches per game to wide receivers (11th fewest), which fits the under.",
-   "result": null,
+   "result": "W",
    "closing_odds": 111,
    "clv": -0.0139,
-   "profit_units": null
+   "profit_units": 1.05
   },
   {
    "week": 5,
@@ -447,10 +447,10 @@
    "stake_units": 1,
    "reason": "bias-guarded props_model (calibrate_props.py): median 13.9 vs line 12.5, raw p=0.628, 50% market blend. Opp SEA.",
    "reason_plain": "The fixed props model projects Kaelon Black for about 14 rushing yards, a bit over the low 12.5 line. Main risk: on a line this low, his role is everything; if he gets only a couple of carries he can easily fall short. Opponent Seattle allows only 76 rushing yards per game to running backs (7th fewest), the main risk to this over.",
-   "result": null,
+   "result": "W",
    "closing_odds": -113,
    "clv": 0,
-   "profit_units": null
+   "profit_units": 0.885
   },
   {
    "week": 5,
@@ -472,10 +472,10 @@
    "stake_units": 1,
    "reason": "Model has DET only ~0.4 pts better on net EPA; +5.5 is too many. ARI without Marvin Harrison Jr. (OUT) and DET without Branch/Ya-Sin caps confidence.",
    "reason_plain": "Our model has Detroit only about half a point better than Arizona, so getting 5.5 points with Arizona looks like too many. The line has also moved toward Arizona since opening despite most bets being on Detroit, a sign that sharper bettors agree. Main risk: Arizona is without Marvin Harrison Jr., and we got 5.5 after the line had already dropped from 8.5.",
-   "result": null,
+   "result": "L",
    "closing_odds": -112,
    "clv": 0,
-   "profit_units": null
+   "profit_units": -1
   },
   {
    "week": 5,
@@ -497,10 +497,10 @@
    "stake_units": 1,
    "reason": "Net EPA rates the teams even (model margin 0.0) yet LAC is a 3.5-pt home dog. LAC OL/secondary injuries (Alt, D. James, D. Jackson OUT), but DEN also lost Surtain and Moss. ML +166 showed 6.3% too; took the spread to cut variance.",
    "reason_plain": "Our model rates Denver and the Chargers as even, yet the Chargers are 3.5-point underdogs at home. Both teams are banged up: LA is missing offensive linemen and defensive backs (Alt, Derwin James, D. Jackson), while Denver lost Surtain and Moss. We took the points rather than the moneyline to lower the risk. Main risk: the line swung a lot against LA since opening, likely on injury news.",
-   "result": null,
+   "result": "L",
    "closing_odds": -110,
    "clv": 0,
-   "profit_units": null
+   "profit_units": -1
   },
   {
    "week": 5,
@@ -522,7 +522,7 @@
    "stake_units": 0,
    "reason": "SF has the best offensive EPA in the league (+0.291); model has SEA by only 0.9. Correlated with the existing SF ML pick. Bosa OUT.",
    "reason_plain": "Withdrawn before kickoff. We keep only one bet per team per game, so we kept the SF moneyline, which had the slightly higher edge (5.5% vs 5.2%) and the sharp-money lean, and dropped this spread, which had 79% of public bets on it.",
-   "result": "void",
+   "result": "W",
    "closing_odds": -110,
    "clv": 0.014,
    "profit_units": 0
@@ -547,10 +547,10 @@
    "stake_units": 1,
    "reason": "Lead back with 13 RZ opps (37% LAC RZ share). Matchup mult 0.87 (DEN tough vs RBs) and still +14.7%. Both books +195, so confirm he's active.",
    "reason_plain": "Omarion Hampton is the Chargers' lead back, with 13 red-zone carries (37% of the team's red-zone chances) and 3 touchdowns in 4 games (Weeks 1, 2 and 4). Denver isn't an easy matchup: it has allowed 4 running back touchdowns (1 per game, 8th most) but holds backs to about 4 yards a carry on the ground, and our model already cut his chance for that. Even after that cut, +195 looks short of his real chance. Confirm he's active before kickoff, because an edge this big can mean the market knows something.",
-   "result": null,
+   "result": "L",
    "closing_odds": 195,
    "clv": 0,
-   "profit_units": null
+   "profit_units": -1
   },
   {
    "week": 5,
@@ -572,10 +572,10 @@
    "stake_units": 1,
    "reason": "9 RZ opps; DET implied total 30.0 is the highest on the slate; ARI soft vs TEs/RZ (mult 1.18).",
    "reason_plain": "Sam LaPorta is Detroit's main red-zone tight end, with 9 red-zone targets (2 at the goal line) and touchdowns in Weeks 2 and 4. Arizona has been one of the worst defenses against tight ends, allowing 4 tight end touchdowns in 4 games (4th most) and 66 yards per game to the position. Detroit also has the highest expected point total on the slate at about 30. That combination makes +170 a fair-to-good price.",
-   "result": null,
+   "result": "W",
    "closing_odds": 170,
    "clv": 0,
-   "profit_units": null
+   "profit_units": 1.7
   },
   {
    "week": 5,
@@ -597,10 +597,10 @@
    "stake_units": 1,
    "reason": "ARI's main RZ back (8 RZ opps); 24.5 implied total in a 54.5-total game; DET D weak vs RBs/RZ (mult 1.08).",
    "reason_plain": "Tyler Allgeier is Arizona's main short-yardage back, with 8 red-zone chances, 2 goal-line carries, and a touchdown in Week 4. Detroit has allowed 4 running back touchdowns in 4 games, 1 per game and tied for 8th most, plus 2 quarterback rushing touchdowns. In a game with a 54.5-point total, Arizona should reach the red zone several times. At +240 the price assumes about a 29% chance, which looks low for his role.",
-   "result": null,
+   "result": "L",
    "closing_odds": 240,
    "clv": 0,
-   "profit_units": null
+   "profit_units": -1
   },
   {
    "week": 5,
@@ -622,10 +622,10 @@
    "stake_units": 1,
    "reason": "3 RZ opps (5.4% share) but DET implied total 30.0 is slate-high; ARI soft vs WRs/RZ (matchup mult 1.18). Base edge +3.6%, +7.2% after matchup. ESPN status: active (checked 12:30 ET).",
    "reason_plain": "Isaac TeSlaa is a depth receiver with only 3 red-zone targets and no touchdowns yet, so this is our lowest-confidence TD pick. The case is the matchup: Arizona has allowed 8 wide receiver touchdowns in 4 games, 2 per game and the most in the league. Detroit is also expected to score about 30 points, the most on the slate. At +410 he only needs to score about 1 in 5 games, but he could easily go without a red-zone look.",
-   "result": null,
+   "result": "L",
    "closing_odds": 410,
    "clv": 0,
-   "profit_units": null
+   "profit_units": -1
   }
  ]
 }
