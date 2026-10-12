@@ -1,0 +1,5 @@
+{"asOf":"2026-10-12T13:29:04-04:00","source":"Robinhood get_option_quotes (mark_price)",
+ "marks":{"f89fab91-2c52-499f-a754-f8eed2d75496":24.70,"0c089cbd-9482-43b8-91bd-4f389adeb6a8":17.50},
+ "underlying":{"META":747.88,"AMD":590.12},
+ "levels":{"META 10/16 730C":{"stockTarget":740,"stockStop":728,"stopNote":"fail back under open ~728"},
+           "AMD 10/16 600P":{"stockTarget":590,"stockStop":605,"stopNote":"reclaim/hold above 605"}}}

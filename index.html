@@ -292,6 +292,11 @@ footer p{max-width:80ch;margin:0}
         </div>
         <div id="holdings"><div class="sk" style="height:220px"></div></div>
       </section>
+
+      <section class="card" aria-labelledby="h-opt" id="options">
+        <div class="card-h"><h2 id="h-opt">Paper options ($5k)</h2><span class="sub" id="optAsOf"></span></div>
+        <div id="optBody"><div class="sk" style="height:120px"></div></div>
+      </section>
     </div>
   </div>
 </main>
@@ -675,6 +680,33 @@ document.addEventListener('DOMContentLoaded', function () {
     $('grp-' + k).hidden = open;
   });
 
+
+  /* ---------- options ---------- */
+  function renderOptions(o) {
+    var m2 = function (v) { return v == null ? '–' : '$' + Number(v).toFixed(2); };
+    $('optAsOf').textContent = 'as of ' + new Date(o.asOf).toLocaleString([], { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+    var head = '<dl class="kv num"><div><dt>Value</dt><dd>' + money(o.equity) + '</dd></div>' +
+      '<div><dt>Total P&amp;L</dt><dd class="' + cls(o.totalPnl) + '">' + signedMoney(o.totalPnl) + ' (' + pct(o.totalPct) + ')</dd></div>' +
+      '<div><dt>Cash</dt><dd>' + money(o.cash) + '</dd></div></dl>';
+    var rows = (o.open || []).map(function (p) {
+      return '<li class="row"><span class="t">' + esc(p.contract) + '</span><span class="r num">' + money(p.value) + '</span>' +
+        '<span class="d num">' + p.qty + 'x · entry ' + m2(p.entry) + ' · mark ' + m2(p.mark) + ' · ' + esc(p.ticker) + ' ' + m2(p.underlying) + '</span>' +
+        '<span class="r2 num"><span class="' + cls(p.unrealized) + '">' + signedMoney(p.unrealized) + ' (' + pct(p.unrealizedPct) + ')</span></span>' +
+        '<span class="d num" style="grid-column:1/-1">Stop ' + m2(p.optStop) + ' or ' + esc(p.ticker) + ' ' + (p.type === 'call' ? '&lt; ' : '&gt; ') + m2(p.stockStop) +
+        ' · Target ' + m2(p.optHalf) + ' (+50%) or ' + esc(p.ticker) + ' ' + m2(p.stockTarget) + '</span></li>';
+    }).join('');
+    var cl = (o.closed || []).map(function (p) {
+      return '<li class="row"><span class="t">' + esc(p.contract) + '</span><span class="r num ' + cls(p.realized) + '">' + signedMoney(p.realized) + '</span>' +
+        '<span class="d num">' + p.qty + 'x · ' + m2(p.entry) + ' → ' + m2(p.exit) + '</span></li>';
+    }).join('');
+    $('optBody').innerHTML = head + '<div class="mv-h" style="margin-top:12px">Open</div>' + (rows ? '<ul class="rows">' + rows + '</ul>' : '<p class="note">No open positions.</p>') +
+      '<div class="mv-h" style="margin-top:12px">Closed</div>' + (cl ? '<ul class="rows">' + cl + '</ul>' : '<p class="note">No closed trades yet.</p>') +
+      '<p class="note">Paper contracts only. Marks from Robinhood.</p>';
+  }
+  fetch('data/options.json?t=' + Date.now(), { cache: 'no-store' })
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(renderOptions)
+    .catch(function () { var b = $('optBody'); if (b) b.innerHTML = '<p class="note">Options data unavailable.</p>'; });
   fetch('data/portfolio.json?t=' + Date.now(), { cache: 'no-store' })
     .then(function (r) { if (!r.ok) throw new Error('Server returned ' + r.status + ' for data/portfolio.json.'); return r.json(); })
     .then(function (d) {
