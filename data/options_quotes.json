@@ -1,13 +1,13 @@
 {
- "asOf": "2026-10-12T13:31:11-04:00",
+ "asOf": "2026-10-12T16:19:28-04:00",
  "source": "Robinhood get_option_quotes (mark_price)",
  "marks": {
   "f89fab91-2c52-499f-a754-f8eed2d75496": 25.45,
-  "0c089cbd-9482-43b8-91bd-4f389adeb6a8": 17.15
+  "0c089cbd-9482-43b8-91bd-4f389adeb6a8": 15.25
  },
  "underlying": {
   "META": 749.21,
-  "AMD": 590.84
+  "AMD": 594.24
  },
  "levels": {
   "META 10/16 730C": {

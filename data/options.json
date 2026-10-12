@@ -1,12 +1,12 @@
 {
  "budget": 5000.0,
  "cash": 4139.0,
- "openValue": 1715.0,
- "equity": 5854.0,
- "unrealized": 152.0,
+ "openValue": 1525.0,
+ "equity": 5664.0,
+ "unrealized": -38.0,
  "realized": 702.0,
- "totalPnl": 854.0,
- "totalPct": 17.08,
+ "totalPnl": 664.0,
+ "totalPct": 13.28,
  "open": [
   {
    "contract": "AMD 10/16 600P",
@@ -18,11 +18,11 @@
    "entry": 15.63,
    "entryDate": "2026-10-12",
    "entryTime": "09:30",
-   "mark": 17.15,
-   "underlying": 590.84,
-   "value": 1715.0,
-   "unrealized": 152.0,
-   "unrealizedPct": 9.72,
+   "mark": 15.25,
+   "underlying": 594.24,
+   "value": 1525.0,
+   "unrealized": -38.0,
+   "unrealizedPct": -2.43,
    "optStop": 10.16,
    "optHalf": 23.45,
    "optDouble": 31.26,
@@ -47,6 +47,6 @@
    "realized": 702.0
   }
  ],
- "asOf": "2026-10-12T13:31:11-04:00",
+ "asOf": "2026-10-12T16:19:28-04:00",
  "source": "Robinhood get_option_quotes (mark_price)"
 }
