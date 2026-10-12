@@ -1,15 +1,23 @@
 "use strict";
 const LABEL = {
-  moneyline:"Moneyline",spread:"Spread",anytime_td:"Anytime TD",yardage:"Yardage",receptions:"Receptions",
-  sides_v1:"Sides Model v1",td_v1:"TD Model v1",props_v1:"Props Model v1",props_v2_calibrated:"Props Model v2 (Calibrated)",
+  moneyline:"Moneyline",spread:"Spread",anytime_td:"Anytime TD",yardage:"Yardage",receptions:"Receptions",total:"Totals",
   prop_rush_yds:"Rush Yards",prop_rec_yds:"Rec Yards",prop_receptions:"Receptions"
 };
-const ORDER = {bet_type:["moneyline","spread","anytime_td","yardage","receptions"],
-  model_version:["sides_v1","td_v1","props_v1","props_v2_calibrated"]};
+const ORDER = {bet_type:["moneyline","spread","total","anytime_td","yardage","receptions"],
+  model_version:["sides_v1","sides_v2","td_v1","td_v2","props_v1","props_v2_calibrated","totals_v1"]};
+const modelLabel = k => {
+  if (!k) return "Unknown";
+  const parts = k.split("_");
+  if (parts.length < 2 || !parts[1].match(/^v?\d+$/)) return LABEL[k] || lab(k);
+  const base = parts[0].charAt(0).toUpperCase() + parts[0].slice(1);
+  const ver = parts[1].replace(/^v/, "");
+  const suffix = parts[2] ? ` (${parts.slice(2).join(" ").replace(/\b\w/g, c => c.toUpperCase())})` : "";
+  return `${base} Model v${ver}${suffix}`;
+};
 const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const lab = k => LABEL[k] || k.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase()) || "Unknown";
+const lab = k => LABEL[k] || (k ? k.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase()) : "Unknown");
 const odds = o => o == null ? "—" : (o > 0 ? "+" + o : String(o));
 const sgn = (n, d = 2) => (n > 0 ? "+" : n < 0 ? "−" : "") + Math.abs(n).toFixed(d);
 const cls = n => n > 0 ? "pos" : n < 0 ? "neg" : "zero";
@@ -94,6 +102,7 @@ function renderBreakdown(all, key){
   const rows = keys.map(k => [k, stats(groups[k])]);
   const maxRoi = Math.max(0.01, ...rows.map(([,s]) => Math.abs(s.roi || 0)));
   $("#breakdown").innerHTML = rows.map(([k, s]) => {
+    const displayName = key === "model_version" ? modelLabel(k) : lab(k);
     const right = s.settled ? `<span class="${cls(s.units)}">${sgn(s.units)}u</span>` : `<span class="zero">Pending</span>`;
     const metaR = s.settled ? `Return ${sgn(s.roi*100,1)}%` : `${s.pending} open`;
     const clv = s.clv == null ? "CLV —" : `CLV ${(s.clv >= 0 ? "+" : "") + (s.clv*100).toFixed(1)} pts`;
@@ -102,7 +111,7 @@ function renderBreakdown(all, key){
     if (s.settled){ const w = Math.abs(s.roi)/maxRoi*50;
       bar = `<i style="left:${s.roi>=0?50:50-w}%;width:${w}%;background:${s.roi>=0?"var(--green)":"var(--red)"}"></i>`; }
     else bar = `<i style="left:0;width:100%;background:repeating-linear-gradient(90deg,#D9D5CC 0 6px,transparent 6px 10px)"></i>`;
-    return `<li><span class="nm">${esc(lab(k))}</span><span class="rt tnum">${right}</span>
+    return `<li><span class="nm">${esc(displayName)}</span><span class="rt tnum">${right}</span>
       <span class="meta tnum">${s.n} picks · ${rec(s)}${voidNote}</span><span class="meta r tnum">${metaR} · ${clv}</span>
       <span class="bar" aria-hidden="true">${bar}</span></li>`;
   }).join("");
@@ -138,6 +147,10 @@ function renderPicks(all){
 function formatPickTitle(p){
   if (p.pick_label) return p.pick_label;
   let title = p.pick || "";
+  if (p.bet_type === "total" && p.game) {
+    const m = title.match(/(Over|Under)\s+([\d.]+)/i);
+    if (m) return `${p.game} ${m[1]} ${m[2]}`;
+  }
   title = title.replace(/\bATTD\b/gi, "Anytime TD");
   title = title.replace(/\brush_yds?\b/gi, "Rush Yards");
   title = title.replace(/\brec_yds?\b/gi, "Rec Yards");
@@ -157,12 +170,12 @@ function card(p){
   const hasTechnical = p.reason && p.reason_plain;
   const detailsContent = hasTechnical 
     ? `<p class="why">${esc(reason)}</p><details class="tech"><summary>Technical details</summary><p class="why-tech">${esc(p.reason)}</p>
-       <div class="tags tnum"><span class="tag">${esc(lab(p.model_version))}</span>
+       <div class="tags tnum"><span class="tag">${esc(modelLabel(p.model_version))}</span>
        <span class="tag">Edge ${(p.edge||0) >= 0 ? "+" : ""}${((p.edge||0)*100).toFixed(1)} pts</span>
        <span class="tag">Model ${((p.model_prob||0)*100).toFixed(0)}% vs ${((p.implied_prob||0)*100).toFixed(0)}% implied</span>
        <span class="tag">Confidence ${p.confidence ?? "—"}/3</span><span class="tag">${esc(p.odds_source)}</span></div></details>`
     : `<p class="why">${esc(reason)}</p>
-       <div class="tags tnum"><span class="tag">${esc(lab(p.model_version))}</span>
+       <div class="tags tnum"><span class="tag">${esc(modelLabel(p.model_version))}</span>
        <span class="tag">Edge ${(p.edge||0) >= 0 ? "+" : ""}${((p.edge||0)*100).toFixed(1)} pts</span>
        <span class="tag">Model ${((p.model_prob||0)*100).toFixed(0)}% vs ${((p.implied_prob||0)*100).toFixed(0)}% implied</span>
        <span class="tag">Confidence ${p.confidence ?? "—"}/3</span><span class="tag">${esc(p.odds_source)}</span></div>`;
