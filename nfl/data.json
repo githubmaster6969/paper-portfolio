@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-12T08:06:17+00:00",
+ "generated_at": "2026-10-12T21:30:41+00:00",
  "source": "/home/runner/work/paper-portfolio/paper-portfolio/nfl/data/picks_log.csv",
  "picks": [
   {
@@ -697,6 +697,31 @@
    "stake_units": 1,
    "reason": "props_v2_calibrated: cal mu 1.32 rec; LA RB rec ppr idx 0.90 (allows 4th-fewest RB TDs). Edge vs vig-free implied 0.457.",
    "reason_plain": "Cook is Buffalo's lead runner but barely used as a receiver, and the model projects about 1.3 catches. The Rams have been one of the stingiest defenses against running backs, allowing the fewest RB touchdowns and below-average RB receiving production. At plus money we only need him to finish with 0 or 1 catch. Main risk: with Josh Palmer out and DJ Moore questionable, Allen has fewer receivers, so more check-downs could go to Cook.",
+   "result": null,
+   "closing_odds": null,
+   "clv": null,
+   "profit_units": null
+  },
+  {
+   "week": 5,
+   "date": "2026-10-12",
+   "game": "BUF @ LA",
+   "kickoff_et": "8:15 PM",
+   "bet_type": "total",
+   "market": "total",
+   "pick": "Under 54.5",
+   "pick_label": "BUF @ LA Under 54.5",
+   "odds_american": -102,
+   "odds_source": "DraftKings via The Odds API",
+   "captured_at": "2026-10-12T17:45:00-04:00",
+   "implied_prob": 0.505,
+   "model_prob": 0.576,
+   "edge": 0.071,
+   "model_version": "totals_v1",
+   "confidence": 1,
+   "stake_units": 1,
+   "reason": "totals_v1 raw 49.3, 50% shrink to market 54.5 -> 51.9; p(under)=0.576 vs -102 implied 0.505 (edge 7.1%, under 8% review cap). Dome, no weather. Starters Allen/Stafford, QB adj +0.2 pts. Splits: over 69% bets/75% money; line 53.5->54.5 (1 pt adverse, under 1.5 skeptic limit). First live test; backtest out-of-sample 2026 wk1-5 was 9-15.",
+   "reason_plain": "Our new totals model expects about 49 points from these two offenses and defenses. After blending halfway with the betting line, it lands near 52, which is still below 54.5, so the under is the value side. The public is piling on the over (75% of the money), and this is the model's first live test, so it's a low-confidence paper pick.",
    "result": null,
    "closing_odds": null,
    "clv": null,
