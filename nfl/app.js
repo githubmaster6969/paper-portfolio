@@ -22,19 +22,18 @@ const odds = o => o == null ? "—" : (o > 0 ? "+" + o : String(o));
 const sgn = (n, d = 2) => (n > 0 ? "+" : n < 0 ? "−" : "") + Math.abs(n).toFixed(d);
 const cls = n => n > 0 ? "pos" : n < 0 ? "neg" : "zero";
 const isSettled = p => ["W","L","P"].includes(p.result);
-const isVoid = p => p.result === "void";
-const isGraded = p => isSettled(p) || isVoid(p);
+const isVoid = p => (p.result || "").toLowerCase() === "void";
+const isGraded = p => isSettled(p);
 
 function stats(list){
-  const s = {n:list.length,W:0,L:0,P:0,V:0,pending:0,units:0,staked:0,clvN:0,clvSum:0,clvPos:0};
+  const s = {n:list.length,W:0,L:0,P:0,pending:0,units:0,staked:0,clvN:0,clvSum:0,clvPos:0};
   for (const p of list){
-    if (isVoid(p)) s.V++;
-    else if (p.result === "W") s.W++; 
+    if (p.result === "W") s.W++; 
     else if (p.result === "L") s.L++; 
     else if (p.result === "P") s.P++;
     else s.pending++;
     if (isSettled(p) && p.profit_units != null){ s.units += p.profit_units; s.staked += p.stake_units || 1; }
-    if (!isVoid(p) && p.clv != null){ s.clvN++; s.clvSum += p.clv; if (p.clv > 0) s.clvPos++; }
+    if (p.clv != null){ s.clvN++; s.clvSum += p.clv; if (p.clv > 0) s.clvPos++; }
   }
   s.settled = s.W + s.L + s.P;
   s.roi = s.staked ? s.units / s.staked : null;
@@ -42,7 +41,7 @@ function stats(list){
   s.hit = (s.W + s.L) ? s.W / (s.W + s.L) : null;
   return s;
 }
-const rec = s => `${s.W}-${s.L}-${s.P}` + (s.V ? ` · ${s.V} void` : "");
+const rec = s => `${s.W}-${s.L}-${s.P}`;
 
 function countUp(el, to, fmt){
   if (REDUCED || to === 0){ el.textContent = fmt(to); return; }
@@ -66,20 +65,19 @@ function renderHero(all, s){
     chip("Avg CLV", clvTip, s.clv == null ? "zero" : cls(s.clv)) +
     chip("Win rate", s.hit == null ? "—" : (s.hit*100).toFixed(0) + "%") +
     chip("Pending", String(s.pending));
-  const weeks = [...new Set(all.filter(p => !isVoid(p)).map(p => p.week))].sort((a,b)=>a-b);
+  const weeks = [...new Set(all.map(p => p.week))].sort((a,b)=>a-b);
   const pickLabel = all.length === 1 ? "pick" : "picks";
-  const voidLabel = s.V ? ` (${s.V} void)` : "";
-  $("#hdrMeta").textContent = `Week ${weeks.join(", ")} · ${all.length} ${pickLabel}${voidLabel}`;
+  $("#hdrMeta").textContent = `Week ${weeks.join(", ")} · ${all.length} ${pickLabel}`;
 }
 
 function renderChart(all){
-  const pts = all.filter(p => isSettled(p) && !isVoid(p) && p.profit_units != null)
+  const pts = all.filter(p => isSettled(p) && p.profit_units != null)
     .sort((a,b) => (a.date+(a.captured_at||"")).localeCompare(b.date+(b.captured_at||"")));
   const el = $("#chart");
   if (!pts.length){
     $("#chartNote").textContent = "";
     el.innerHTML = `<div class="empty" role="img" aria-label="Chart empty: no settled picks yet"><b>Waiting on first results</b>
-      <span>The line starts once the first pick is graded. Voids and pending picks are not shown.</span></div>`;
+      <span>The line starts once the first pick is graded. Nothing here is projected.</span></div>`;
     return;
   }
   let c = 0; const ys = [0, ...pts.map(p => (c += p.profit_units))];
@@ -87,7 +85,7 @@ function renderChart(all){
   const x = i => pad + i * (W - 2*pad) / Math.max(1, ys.length - 1), y = v => pad + (max - v) * (H - 2*pad) / rng;
   const d = ys.map((v,i) => `${i?"L":"M"}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join("");
   const last = ys[ys.length-1], col = last >= 0 ? "var(--green)" : "var(--red)";
-  $("#chartNote").textContent = `${pts.length} settled (voids excluded)`;
+  $("#chartNote").textContent = `${pts.length} settled`;
   el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Cumulative units after ${pts.length} settled picks: ${sgn(last)} units">
     <line x1="0" x2="${W}" y1="${y(0)}" y2="${y(0)}" stroke="var(--line)" stroke-dasharray="4 4"/>
     <path d="${d} L${x(ys.length-1)},${y(0)} L${x(0)},${y(0)}Z" fill="${col}" opacity=".08"/>
@@ -106,13 +104,12 @@ function renderBreakdown(all, key){
     const right = s.settled ? `<span class="${cls(s.units)}">${sgn(s.units)}u</span>` : `<span class="zero">Pending</span>`;
     const metaR = s.settled ? `Return ${sgn(s.roi*100,1)}%` : `${s.pending} open`;
     const clv = s.clv == null ? "CLV —" : `CLV ${(s.clv >= 0 ? "+" : "") + (s.clv*100).toFixed(1)} pts`;
-    const voidNote = s.V ? ` · ${s.V} void` : "";
     let bar;
     if (s.settled){ const w = Math.abs(s.roi)/maxRoi*50;
       bar = `<i style="left:${s.roi>=0?50:50-w}%;width:${w}%;background:${s.roi>=0?"var(--green)":"var(--red)"}"></i>`; }
     else bar = `<i style="left:0;width:100%;background:repeating-linear-gradient(90deg,#D9D5CC 0 6px,transparent 6px 10px)"></i>`;
     return `<li><span class="nm">${esc(displayName)}</span><span class="rt tnum">${right}</span>
-      <span class="meta tnum">${s.n} picks · ${rec(s)}${voidNote}</span><span class="meta r tnum">${metaR} · ${clv}</span>
+      <span class="meta tnum">${s.n} picks · ${rec(s)}</span><span class="meta r tnum">${metaR} · ${clv}</span>
       <span class="bar" aria-hidden="true">${bar}</span></li>`;
   }).join("");
 }
@@ -161,10 +158,9 @@ function formatPickTitle(p){
 
 function card(p){
   const st = p.result || "pending";
-  const pillTxt = {W:"Win",L:"Loss",P:"Push",void:"Void, withdrawn",pending:"Pending"}[st] || st;
+  const pillTxt = {W:"Win",L:"Loss",P:"Push",pending:"Pending"}[st] || st;
   const pu = p.profit_units == null ? "—" : `<span class="${cls(p.profit_units)}">${sgn(p.profit_units)}u</span>`;
   const clv = p.clv == null ? "—" : `<span class="${cls(p.clv)}">${(p.clv >= 0 ? "+" : "") + (p.clv*100).toFixed(1)}</span>`;
-  const voidClass = isVoid(p) ? " void" : "";
   const pickTitle = formatPickTitle(p);
   const reason = p.reason_plain || p.reason || "No reason provided.";
   const hasTechnical = p.reason && p.reason_plain;
@@ -180,7 +176,7 @@ function card(p){
        <span class="tag">Model ${((p.model_prob||0)*100).toFixed(0)}% vs ${((p.implied_prob||0)*100).toFixed(0)}% implied</span>
        <span class="tag">Confidence ${p.confidence ?? "—"}/3</span><span class="tag">${esc(p.odds_source)}</span></div>`;
   
-  return `<article class="pk${voidClass}"><div class="pk-top"><span class="pk-pick">${esc(pickTitle)}</span>
+  return `<article class="pk"><div class="pk-top"><span class="pk-pick">${esc(pickTitle)}</span>
     <span class="pill ${esc(st)}">${pillTxt}</span><span class="pk-game">${esc(p.game)} · ${esc(lab(p.bet_type))}</span></div>
     <div class="pk-ft tnum"><div><span class="k">Taken</span><span class="v">${odds(p.odds_american)}</span></div>
     <div><span class="k">Close</span><span class="v">${odds(p.closing_odds)}</span></div>
@@ -193,7 +189,7 @@ async function main(){
   let data;
   try { data = await (await fetch("data.json", {cache:"no-store"})).json(); }
   catch (e){ $("#main").innerHTML = `<div class="empty"><b>Couldn't load picks</b><span>data.json is missing or invalid.</span></div>`; return; }
-  const all = data.picks || [];
+  const all = (data.picks || []).filter(p => !isVoid(p));
   const s = stats(all);
   renderHero(all, s); renderChart(all);
   let key = "bet_type"; renderBreakdown(all, key);

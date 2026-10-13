@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-10-13T00:09:48+00:00",
- "source": "/home/runner/work/paper-portfolio/paper-portfolio/nfl/data/picks_log.csv",
+ "generated_at": "2026-10-13T00:28:56+00:00",
+ "source": "/workspace/nfl/data/picks_log.csv",
  "picks": [
   {
    "week": 5,
@@ -676,31 +676,6 @@
    "closing_odds": null,
    "clv": null,
    "profit_units": null
-  },
-  {
-   "week": 5,
-   "date": "2026-10-12",
-   "game": "BUF @ LA",
-   "kickoff_et": "8:15 PM",
-   "bet_type": "receptions",
-   "market": "player_receptions",
-   "pick": "James Cook (BUF) under 1.5 catches",
-   "pick_label": "James Cook Under 1.5 Receptions",
-   "odds_american": 106,
-   "odds_source": "DraftKings via The Odds API",
-   "captured_at": "2026-10-12T04:10:00-04:00",
-   "implied_prob": 0.457,
-   "model_prob": 0.518,
-   "edge": 0.061,
-   "model_version": "props_v2_calibrated",
-   "confidence": 1,
-   "stake_units": 0,
-   "reason": "props_v2_calibrated: cal mu 1.32 rec; LA RB rec ppr idx 0.90 (allows 4th-fewest RB TDs). Edge vs vig-free implied 0.457.",
-   "reason_plain": "Dropped pre-kickoff because DJ Moore and Josh Palmer are out, so more check-downs go to Cook.",
-   "result": "void",
-   "closing_odds": null,
-   "clv": null,
-   "profit_units": 0
   },
   {
    "week": 5,
