@@ -1,24 +1,17 @@
 {
- "asOf": "2026-10-13T09:54:27-04:00",
- "source": "Robinhood get_option_quotes (mark_price), read-only; underlyings Webull snapshot 09:54 ET",
+ "asOf": "2026-10-13T11:40:42-04:00",
+ "source": "Robinhood get_option_quotes (mark_price) + get_equity_quotes, read-only",
  "marks": {
-  "0c089cbd-9482-43b8-91bd-4f389adeb6a8": 18.575,
-  "6c1f46d7-dda3-4f5a-9bb9-c8f69d3f5304": 5.975
+  "6c1f46d7-dda3-4f5a-9bb9-c8f69d3f5304": 5.525
  },
  "underlying": {
-  "AMD": 587.715,
-  "NBIS": 199.675
+  "NBIS": 201.4328
  },
  "levels": {
-  "AMD 10/16 600P": {
-   "stockTarget": 590,
-   "stockStop": 605,
-   "stopNote": "reclaim/hold above 605"
-  },
   "NBIS 10/16 200P": {
    "stockTarget": 195,
    "stockStop": 207.7,
-   "stopNote": "reclaim 207.7 (PM high)"
+   "stopNote": "reclaim 207.7 (PM high); opt -35%=3.46, +50%=8.00"
   }
  }
 }
