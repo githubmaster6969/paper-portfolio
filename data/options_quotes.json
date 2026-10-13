@@ -1,17 +1,7 @@
 {
- "asOf": "2026-10-13T12:44:44-04:00",
- "source": "Robinhood get_option_quotes (mark_price) + get_equity_quotes, read-only",
- "marks": {
-  "6c1f46d7-dda3-4f5a-9bb9-c8f69d3f5304": 3.6
- },
- "underlying": {
-  "NBIS": 206.41
- },
- "levels": {
-  "NBIS 10/16 200P": {
-   "stockTarget": 195,
-   "stockStop": 207.7,
-   "stopNote": "reclaim 207.7 (PM high); opt -35%=3.46, +50%=8.00"
-  }
- }
+ "asOf": "2026-10-13T12:47:28-04:00",
+ "source": "Robinhood get_option_quotes (mark_price) + get_equity_quotes, read-only; NBIS closed at RH 5-min 3.38 ~12:35 ET stop",
+ "marks": {},
+ "underlying": {},
+ "levels": {}
 }

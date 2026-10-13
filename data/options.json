@@ -1,36 +1,13 @@
 {
  "budget": 5000.0,
- "cash": 6386.0,
- "openValue": 360.0,
- "equity": 6746.0,
- "unrealized": -173.0,
- "realized": 1919.0,
- "totalPnl": 1746.0,
- "totalPct": 34.92,
- "open": [
-  {
-   "contract": "NBIS 10/16 200P",
-   "ticker": "NBIS",
-   "type": "put",
-   "strike": 200.0,
-   "expiry": "2026-10-16",
-   "qty": 1,
-   "entry": 5.33,
-   "entryDate": "2026-10-13",
-   "entryTime": "09:30",
-   "mark": 3.6,
-   "underlying": 206.41,
-   "value": 360.0,
-   "unrealized": -173.0,
-   "unrealizedPct": -32.46,
-   "optStop": 3.46,
-   "optHalf": 8.0,
-   "optDouble": 10.66,
-   "stockTarget": 195,
-   "stockStop": 207.7,
-   "stopNote": "reclaim 207.7 (PM high); opt -35%=3.46, +50%=8.00"
-  }
- ],
+ "cash": 6724.0,
+ "openValue": 0,
+ "equity": 6724.0,
+ "unrealized": 0,
+ "realized": 1724.0,
+ "totalPnl": 1724.0,
+ "totalPct": 34.48,
+ "open": [],
  "closed": [
   {
    "contract": "META 10/16 730C",
@@ -59,8 +36,22 @@
    "exit": 27.8,
    "status": "closed",
    "realized": 1217.0
+  },
+  {
+   "contract": "NBIS 10/16 200P",
+   "ticker": "NBIS",
+   "type": "put",
+   "strike": 200.0,
+   "expiry": "2026-10-16",
+   "qty": 1,
+   "entry": 5.33,
+   "entryDate": "2026-10-13",
+   "entryTime": "09:30",
+   "exit": 3.38,
+   "status": "closed",
+   "realized": -195.0
   }
  ],
- "asOf": "2026-10-13T12:44:44-04:00",
- "source": "Robinhood get_option_quotes (mark_price) + get_equity_quotes, read-only"
+ "asOf": "2026-10-13T12:47:28-04:00",
+ "source": "Robinhood get_option_quotes (mark_price) + get_equity_quotes, read-only; NBIS closed at RH 5-min 3.38 ~12:35 ET stop"
 }
