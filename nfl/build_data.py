@@ -14,7 +14,8 @@ with SRC.open(newline="") as fh:
     for r in csv.DictReader(fh):
         o = {k: (num(r.get(k)) if k in NUM else (r.get(k) or "").strip() or None) for k in KEEP}
         if o["stake_units"] is None: o["stake_units"] = 1
-        rows.append(o)
+        if (o.get("result") or "").strip().lower() != "void":
+            rows.append(o)
 json.dump({"generated_at": datetime.datetime.now().astimezone().isoformat(timespec="seconds"),
            "source": str(SRC.resolve()), "picks": rows}, OUT.open("w"), indent=1)
-print(f"wrote {len(rows)} picks -> {OUT}")
+print(f"wrote {len(rows)} picks (voided excluded) -> {OUT}")
