@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-13T00:51:44+00:00",
+ "generated_at": "2026-10-13T03:57:22+00:00",
  "source": "/home/runner/work/paper-portfolio/paper-portfolio/nfl/data/picks_log.csv",
  "picks": [
   {
@@ -622,10 +622,10 @@
    "stake_units": 1,
    "reason": "td_v2: LA implied 29.0, snaps L2 50%, RZ share 2.9% season / 5.3% L2, matchup x1.12 (BUF allows 1.06 WR TD/g, 11th most).",
    "reason_plain": "The Rams are expected to score about 29 points, the most on Monday's board, and Buffalo's defense has given up the 11th-most touchdowns to wide receivers. Mumpfield has been on the field for half the snaps the last two weeks and practiced fully with no injury tag. At +700 he only needs to score about 1 time in 8. Main risk: he's the No. 3 receiver behind Nacua and Adams, so his red-zone role is thin, and that's the type of TD pick that lost in Week 5.",
-   "result": null,
-   "closing_odds": null,
-   "clv": null,
-   "profit_units": null
+   "result": "L",
+   "closing_odds": 750,
+   "clv": -0.0074,
+   "profit_units": -1
   },
   {
    "week": 5,
@@ -647,10 +647,10 @@
    "stake_units": 1,
    "reason": "props_v2_calibrated: cal mu 4.94 rec; BUF WR ppr idx 1.02. Edge vs vig-free implied 0.449.",
    "reason_plain": "Adams has been the Rams' steadiest target and the model projects about 5 catches against a Buffalo defense that sits around league average against receivers, now with a rookie (Maxwell Hairston) starting at one outside corner and slot corner Dee Alford questionable. Stafford has thrown 106 passes the last two weeks, and a 54.5 total points to another high-volume night. Main risk: if the Rams lean on the run to protect Stafford, as some expect, Adams' volume drops.",
-   "result": null,
-   "closing_odds": null,
-   "clv": null,
-   "profit_units": null
+   "result": "W",
+   "closing_odds": 108,
+   "clv": 0,
+   "profit_units": 1.08
   },
   {
    "week": 5,
@@ -672,10 +672,10 @@
    "stake_units": 1,
    "reason": "totals_v1 raw 49.3, 50% shrink to market 54.5 -> 51.9; p(under)=0.576 vs -102 implied 0.505 (edge 7.1%, under 8% review cap). Dome, no weather. Starters Allen/Stafford, QB adj +0.2 pts. Splits: over 69% bets/75% money; line 53.5->54.5 (1 pt adverse, under 1.5 skeptic limit). First live test; backtest out-of-sample 2026 wk1-5 was 9-15.",
    "reason_plain": "Our new totals model expects about 49 points from these two offenses and defenses. After blending halfway with the betting line, it lands near 52, which is still below 54.5, so the under is the value side. The public is piling on the over (75% of the money), and this is the model's first live test, so it's a low-confidence paper pick.",
-   "result": null,
+   "result": "L",
    "closing_odds": null,
    "clv": null,
-   "profit_units": null
+   "profit_units": -1
   }
  ]
 }
