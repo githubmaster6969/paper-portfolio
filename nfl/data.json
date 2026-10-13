@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-10-13T00:34:20+00:00",
- "source": "/workspace/nfl/data/picks_log.csv",
+ "generated_at": "2026-10-13T00:51:44+00:00",
+ "source": "/home/runner/work/paper-portfolio/paper-portfolio/nfl/data/picks_log.csv",
  "picks": [
   {
    "week": 5,
@@ -501,31 +501,6 @@
    "closing_odds": -110,
    "clv": 0,
    "profit_units": -1
-  },
-  {
-   "week": 5,
-   "date": "2026-10-11",
-   "game": "SF @ SEA",
-   "kickoff_et": "4:25 PM",
-   "bet_type": "spread",
-   "market": "spread",
-   "pick": "SF +3",
-   "pick_label": "SF +3 Spread",
-   "odds_american": -104,
-   "odds_source": "FanDuel via The Odds API",
-   "captured_at": "2026-10-11T12:02:00-04:00",
-   "implied_prob": 0.51,
-   "model_prob": 0.561,
-   "edge": 0.052,
-   "model_version": "sides_v1",
-   "confidence": 1,
-   "stake_units": 0,
-   "reason": "SF has the best offensive EPA in the league (+0.291); model has SEA by only 0.9. Correlated with the existing SF ML pick. Bosa OUT.",
-   "reason_plain": "Withdrawn before kickoff. We keep only one bet per team per game, so we kept the SF moneyline, which had the slightly higher edge (5.5% vs 5.2%) and the sharp-money lean, and dropped this spread, which had 79% of public bets on it.",
-   "result": "W",
-   "closing_odds": -110,
-   "clv": 0.014,
-   "profit_units": 0
   },
   {
    "week": 5,
