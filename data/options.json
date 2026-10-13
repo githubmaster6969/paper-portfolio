@@ -52,6 +52,6 @@
    "realized": -195.0
   }
  ],
- "asOf": "2026-10-13T12:47:28-04:00",
- "source": "Robinhood get_option_quotes (mark_price) + get_equity_quotes, read-only; NBIS closed at RH 5-min 3.38 ~12:35 ET stop"
+ "asOf": "2026-10-13T13:25:42-04:00",
+ "source": "Robinhood get_option_quotes (read-only); no open paper contracts at midday"
 }
