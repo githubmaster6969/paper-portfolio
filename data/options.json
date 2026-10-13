@@ -52,6 +52,6 @@
    "realized": -195.0
   }
  ],
- "asOf": "2026-10-13T14:37:32-04:00",
- "source": "Robinhood get_option_quotes (read-only); no open paper contracts at 2:17-window refresh"
+ "asOf": "2026-10-13T15:36:13-04:00",
+ "source": "Robinhood get_option_quotes (read-only); no open paper contracts at 3:17-window refresh"
 }
