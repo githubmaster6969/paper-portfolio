@@ -1,6 +1,6 @@
 {
- "asOf": "2026-10-14T12:27:02-04:00",
- "source": "Robinhood get_option_quotes (read-only); hourly refresh: no open paper contracts (log/ledger show all closed; 0 picks 2026-10-14)",
+ "asOf": "2026-10-14T13:06:44-04:00",
+ "source": "Robinhood get_option_quotes (read-only); midday update: no open paper contracts (all closed; 0 picks 2026-10-14)",
  "marks": {},
  "underlying": {},
  "levels": {}
