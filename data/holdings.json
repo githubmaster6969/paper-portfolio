@@ -216,5 +216,23 @@
    "buy_price": 88.05,
    "date": "2026-10-09"
   }
- ]
+ ],
+ "cash_ledger": [
+  {
+   "date": "2026-10-14",
+   "type": "deposit",
+   "amount": 5000.0,
+   "note": "Dip-buying cash (Pedro, Oct 14)",
+   "spy_price": 769.375,
+   "spy_shares": 6.498781,
+   "spy_price_source": "Webull snapshot last trade 2026-10-14 15:36 ET"
+  }
+ ],
+ "recurring_deposit": {
+  "amount": 800.0,
+  "weekday": "Friday",
+  "first": "2026-10-16",
+  "note": "Logged by the Friday routine with a real Webull SPY price; never auto-estimated"
+ },
+ "buys": []
 }

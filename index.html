@@ -293,6 +293,11 @@ footer p{max-width:80ch;margin:0}
         <div id="holdings"><div class="sk" style="height:220px"></div></div>
       </section>
 
+      <section class="card" aria-labelledby="h-cash" id="cash">
+        <div class="card-h"><h2 id="h-cash">Cash &amp; contributions</h2><span class="sub">for buying dips</span></div>
+        <div id="cashBody"><div class="sk" style="height:120px"></div></div>
+      </section>
+
       <section class="card" aria-labelledby="h-opt" id="options">
         <div class="card-h"><h2 id="h-opt">Paper options ($5k)</h2><span class="sub" id="optAsOf"></span></div>
         <div id="optBody"><div class="sk" style="height:120px"></div></div>
@@ -414,7 +419,7 @@ document.addEventListener('DOMContentLoaded', function () {
       $('pnlSub').innerHTML = 'Today <span class="' + cls(tc) + '">' + signedMoney(tc) + '</span>';
       var body = '';
       if (n >= 2 && Array.isArray(data.series.T)) {
-        pnlLine(data.dates, data.series.T.map(function (v) { return r2(v - START_CASH); }), 'Portfolio');
+        pnlLine(data.dates, data.series.T.map(function (v, i) { return r2(v - contribAt(i)); }), 'Portfolio');
         $('pnlBody').insertAdjacentHTML('beforeend', '<h3 class="sub" style="margin:18px 0 8px">Current P&amp;L by holding</h3>' + diverging(hs));
       } else {
         $('pnlBody').innerHTML = emptyDay1('The dollar P&L line fills in after each market close. For now, here is where each holding stands.') +
@@ -478,19 +483,38 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ---------- hero ---------- */
+  function contrib() { return data.contrib || START_CASH; }
+  function contribAt(i) { var c = data.series.CONTRIB; return c && c[i] != null ? c[i] : START_CASH; }
+  function renderCash() {
+    var led = data.ledger || [], buys = data.buys || [];
+    var head = '<dl class="kv num"><div><dt>Cash</dt><dd>' + money(data.cash || 0) + '</dd></div>' +
+      '<div><dt>Net contributions</dt><dd>' + money(contrib()) + '</dd></div>' +
+      '<div><dt>Deposits</dt><dd>' + led.length + '</dd></div></dl>';
+    var dep = '<li class="row"><span class="t">Start</span><span class="r num">' + money(START_CASH) + '</span><span class="d num">' + esc(data.start) + ' · initial portfolio</span></li>' +
+      led.map(function (x) { return '<li class="row"><span class="t">Deposit</span><span class="r num up">+' + money(x.amount) + '</span><span class="d num">' + esc(x.date) + ' · ' + esc(x.note || '') + ' · SPY bench buys at $' + Number(x.spy_price).toFixed(2) + '</span></li>'; }).join('');
+    var b = buys.slice().reverse().map(function (x) { return '<li class="row"><span class="t">' + esc(x.ticker) + '</span><span class="r num">' + money(x.amount) + '</span>' +
+      '<span class="d num">' + esc(x.date) + ' ' + esc(x.time_et || '') + ' · ' + shares(x.shares) + ' sh @ $' + Number(x.price).toFixed(2) + (x.rule ? ' · ' + esc(x.rule) : '') + '</span>' +
+      '<span class="d" style="grid-column:1/-1">' + esc(x.reason || '') + '</span></li>'; }).join('');
+    $('cashBody').innerHTML = head + '<div class="mv-h" style="margin-top:12px">Contributions</div><ul class="rows">' + dep + '</ul>' +
+      '<div class="mv-h" style="margin-top:12px">Buys</div>' + (b ? '<ul class="rows">' + b + '</ul>' : '<p class="note">No dip buys yet. Cash waits for a real pullback.</p>') +
+      '<p class="note">+$800 paper cash every Friday. P&amp;L = value − contributions; SPY gets the same deposits on the same dates.</p>';
+  }
   function renderHero(hs) {
-    var total = hs.reduce(function (s, h) { return s + h.value; }, 0);
-    var prev = hs.reduce(function (s, h) { return s + h.value - h.todayChg; }, 0);
+    try { renderCash(); } catch (e) {}
+    var total = hs.reduce(function (s, h) { return s + h.value; }, 0) + (data.cash || 0);
+    var prev = total - hs.reduce(function (s, h) { return s + h.todayChg; }, 0);
     var tChg = total - prev, tPct = prev > 0 ? (total / prev - 1) * 100 : 0;
-    var sChg = total - START_CASH, sPct = (total / START_CASH - 1) * 100;
-    var spyVal = data.spy.sh * data.spy.price, spyPct = (spyVal / START_CASH - 1) * 100;
+    var C = contrib(), sChg = total - C, sPct = (total / C - 1) * 100;
+    var spyVal = data.spy.sh * data.spy.price, spyPct = (spyVal / C - 1) * 100;
     var diff = r2(sPct) - r2(spyPct);
 
     countUp($('total'), total, moneyHtml);
     $('topVal').textContent = money(total);
     $('heroRow').innerHTML =
       '<span><span class="k">Today</span><span class="num ' + cls(tChg) + '">' + signedMoney(tChg) + ' (' + pct(tPct) + ')</span></span>' +
-      '<span><span class="k">Since start</span><span class="num ' + cls(sChg) + '">' + signedMoney(sChg) + ' (' + pct(sPct) + ')</span></span>';
+      '<span><span class="k">Cash</span><span class="num">' + money(data.cash || 0) + '</span></span>' +
+      '<span><span class="k">Contributed</span><span class="num">' + money(C) + '</span></span>' +
+      '<span><span class="k">P&amp;L</span><span class="num ' + cls(sChg) + '">' + signedMoney(sChg) + ' (' + pct(sPct) + ')</span></span>';
     var vc = cls(diff), txt;
     if (vc === 'flat') txt = 'Even with SPY (you ' + pct(sPct) + ' · SPY ' + pct(spyPct) + ')';
     else txt = (vc === 'up' ? 'Ahead of' : 'Behind') + ' SPY by ' + Math.abs(r2(diff)).toFixed(2) + ' pts (you ' + pct(sPct) + ' · SPY ' + pct(spyPct) + ')';
@@ -539,7 +563,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var sets = [];
     ['SPY', 'S', 'D', 'A', 'T'].forEach(function (k) {
       if (!visible[k] || !data.series[k] || !b[k]) return;
-      var vals = data.series[k].slice(start).map(function (v) { return r2((v / b[k] - 1) * 100); });
+      var vals = data.series[k].slice(start).map(function (v, j) { var i = start + j, base = (k === 'T' || k === 'SPY') ? contribAt(i) : b[k]; return r2((v / base - 1) * 100); });
       var isT = k === 'T', isSpy = k === 'SPY';
       sets.push({ label: LINE_LABEL[k], data: vals, borderColor: COLORS[k], backgroundColor: isT ? 'rgba(31,122,77,.08)' : 'transparent',
         fill: isT ? 'origin' : false, borderWidth: isT ? 2.5 : 1.5, borderDash: isSpy ? [4, 4] : [], pointRadius: 0, pointHoverRadius: 4, tension: 0.25 });
@@ -556,7 +580,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ---------- sleeves & allocation ---------- */
   function renderSleeves(st) {
-    var spyPct = (data.spy.sh * data.spy.price / (data.spy.sh * data.spy.buy) - 1) * 100;
+    var spyPct = (data.spy.sh * data.spy.price / contrib() - 1) * 100;
     var sorted = ORDER.slice().sort(function (a, b) { return r2(st[b].ret) - r2(st[a].ret); });
     var lead = r2(st[sorted[0]].ret) !== r2(st[sorted[1]].ret) ? sorted[0] : null;
     var total = ORDER.reduce(function (s, k) { return s + st[k].value; }, 0);
