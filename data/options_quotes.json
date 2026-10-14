@@ -1,6 +1,6 @@
 {
- "asOf": "2026-10-13T16:28:19-04:00",
- "source": "Robinhood get_option_quotes (read-only); no open paper contracts at 4:17 PM hourly refresh",
+ "asOf": "2026-10-14T09:34:37-04:00",
+ "source": "Robinhood get_option_quotes (read-only); no open paper contracts at 9:31 open update (0 bell picks on CPI day)",
  "marks": {},
  "underlying": {},
  "levels": {}
