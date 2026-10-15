@@ -52,6 +52,6 @@
    "realized": -195.0
   }
  ],
- "asOf": "2026-10-15T12:25:46-04:00",
- "source": "Robinhood get_option_quotes (read-only); hourly refresh 2026-10-15 12:25 ET: no open paper contracts (all closed), nothing to quote"
+ "asOf": "2026-10-15T13:08:00-04:00",
+ "source": "Robinhood get_option_quotes (read-only); midday update 2026-10-15 13:08 ET: no open paper contracts (all closed), nothing to quote"
 }
