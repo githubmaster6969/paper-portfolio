@@ -246,6 +246,18 @@
    "rule": "R2",
    "reason": "R2 support hold + R1: VXUS traded under the pre-written 83.34 support (20-day low, written 10/14) to 82.845, then every 5-min close since ~12:15 ET held above it (13:25 bar close 83.555). R1 also met: 4.5% below 20-day closing high 87.49 (ETF threshold 3%). Drop is macro (hot CPI 10/14, hot PPI 10/15), no fund-specific news; not in first 15 min after gap-down. Safe Core first on broad selloffs. Price: Webull live snapshot 13:29 ET.",
    "source": "Webull snapshot last trade 2026-10-15 13:29 ET"
+  },
+  {
+   "date": "2026-10-15",
+   "time_et": "15:27",
+   "ticker": "SMH",
+   "portfolio": "Aggressive AI & Energy",
+   "shares": 0.893064,
+   "price": 559.87,
+   "amount": 500.0,
+   "rule": "R2",
+   "reason": "R2 support hold + R1: pre-written plan (10/14) was SMH holds 557.56 (20-day low) on a 5-min close after the TSM print. TSM beat-and-raise BMO 10/15 (sold off on macro, not fundamentals). SMH undercut to 540.59, then 5-min closes back above 557.56 from 15:10 ET (557.85, 559.38, 559.68). R1 also met: ~11.7% below 20-day closing high 633.90 (ETF threshold 3%). Drop is macro/sector-wide (hot CPI 10/14, hot PPI 6.3% 10/15, global chip selloff per Morningstar/CNBC), no fund-specific news; not in first 15 min after gap-down. NVDA skipped (5-min closes under 217.15 from 14:10-14:45 broke the 1:23 condition). Price: Webull live snapshot 15:27 ET.",
+   "source": "Webull snapshot last trade 2026-10-15 15:27 ET"
   }
  ]
 }
