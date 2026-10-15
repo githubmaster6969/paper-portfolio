@@ -1,6 +1,6 @@
 {
- "asOf": "2026-10-15T13:22:34-04:00",
- "source": "Robinhood get_option_quotes (read-only); hourly refresh 2026-10-15 13:22 ET: no open paper contracts (all closed), nothing to quote",
+ "asOf": "2026-10-15T16:02:02-04:00",
+ "source": "Robinhood get_option_quotes (read-only); close refresh 2026-10-15 16:02 ET: no open paper contracts (all closed), nothing to quote",
  "marks": {},
  "underlying": {},
  "levels": {}
