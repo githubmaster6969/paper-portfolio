@@ -234,5 +234,18 @@
   "first": "2026-10-16",
   "note": "Logged by the Friday routine with a real Webull SPY price; never auto-estimated"
  },
- "buys": []
+ "buys": [
+  {
+   "date": "2026-10-15",
+   "time_et": "13:29",
+   "ticker": "VXUS",
+   "portfolio": "Safe Core",
+   "shares": 5.984082,
+   "price": 83.555,
+   "amount": 500.0,
+   "rule": "R2",
+   "reason": "R2 support hold + R1: VXUS traded under the pre-written 83.34 support (20-day low, written 10/14) to 82.845, then every 5-min close since ~12:15 ET held above it (13:25 bar close 83.555). R1 also met: 4.5% below 20-day closing high 87.49 (ETF threshold 3%). Drop is macro (hot CPI 10/14, hot PPI 10/15), no fund-specific news; not in first 15 min after gap-down. Safe Core first on broad selloffs. Price: Webull live snapshot 13:29 ET.",
+   "source": "Webull snapshot last trade 2026-10-15 13:29 ET"
+  }
+ ]
 }
