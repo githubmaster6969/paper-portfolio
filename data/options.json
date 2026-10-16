@@ -52,6 +52,6 @@
    "realized": -195.0
   }
  ],
- "asOf": "2026-10-15T16:02:02-04:00",
- "source": "Robinhood get_option_quotes (read-only); close refresh 2026-10-15 16:02 ET: no open paper contracts (all closed), nothing to quote"
+ "asOf": "2026-10-16T09:38:37-04:00",
+ "source": "Robinhood get_option_quotes (read-only); open refresh 2026-10-16 09:38 ET: no open paper contracts. TSLA 10/19 375C is planned-bell (fill/grade by 9:46 routine); info quote mark 2.435 (bid 2.40/ask 2.47), TSLA 367.13 (Webull, open 369.04)"
 }
