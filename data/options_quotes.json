@@ -1,6 +1,6 @@
 {
- "asOf": "2026-10-16T13:08:00-04:00",
- "source": "Robinhood get_option_quotes (read-only). 1 PM midday: no open paper contracts (TSLA 10/19 375C and AMD 10/19 545P both closed this morning); no quotes needed.",
+ "asOf": "2026-10-16T16:08:00-04:00",
+ "source": "Robinhood get_option_quotes (read-only). 4 PM close: no open paper contracts (TSLA 10/19 375C and AMD 10/19 545P both closed this morning; no overnight pick logged); no quotes needed.",
  "marks": {},
  "underlying": {},
  "levels": {
