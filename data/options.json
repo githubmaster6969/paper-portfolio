@@ -1,9 +1,9 @@
 {
  "budget": 5000.0,
  "cash": 6439.0,
- "openValue": 0.0,
+ "openValue": 0,
  "equity": 6439.0,
- "unrealized": 0.0,
+ "unrealized": 0,
  "realized": 1439.0,
  "totalPnl": 1439.0,
  "totalPct": 28.78,
@@ -52,20 +52,6 @@
    "realized": -195.0
   },
   {
-   "contract": "AMD 10/19 545P",
-   "ticker": "AMD",
-   "type": "put",
-   "strike": 545.0,
-   "expiry": "2026-10-19",
-   "qty": 1,
-   "entry": 9.43,
-   "entryDate": "2026-10-16",
-   "entryTime": "09:40",
-   "exit": 7.45,
-   "status": "closed",
-   "realized": -198.0
-  },
-  {
    "contract": "TSLA 10/19 375C",
    "ticker": "TSLA",
    "type": "call",
@@ -78,8 +64,22 @@
    "exit": 1.5,
    "status": "closed",
    "realized": -87.0
+  },
+  {
+   "contract": "AMD 10/19 545P",
+   "ticker": "AMD",
+   "type": "put",
+   "strike": 545.0,
+   "expiry": "2026-10-19",
+   "qty": 1,
+   "entry": 9.43,
+   "entryDate": "2026-10-16",
+   "entryTime": "09:40",
+   "exit": 7.45,
+   "status": "closed",
+   "realized": -198.0
   }
  ],
- "asOf": "2026-10-16T10:00:00-04:00",
- "source": "Robinhood get_option_historicals (read-only); opening scanner 2026-10-16 ~09:57 ET: PAPER EXIT TSLA 10/19 375C x1 @1.50 (09:51 option -35% stop), book flat, cash $6,439. AMD 10/19 545P already closed @7.45 earlier. Slots 2/2 used."
+ "asOf": "2026-10-16T13:08:00-04:00",
+ "source": "Robinhood get_option_quotes (read-only). 1 PM midday: no open paper contracts (TSLA 10/19 375C and AMD 10/19 545P both closed this morning); no quotes needed."
 }

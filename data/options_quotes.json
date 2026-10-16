@@ -1,12 +1,8 @@
 {
- "asOf": "2026-10-16T10:00:00-04:00",
- "source": "Robinhood get_option_quotes/historicals (read-only); 9:57 scanner: TSLA 375C exit @1.50 (09:51 stop); post-exit mark ~1.98 @10:00.",
- "marks": {
-  "c802f652-7e03-4aea-ba52-b15b1024b87e": 1.5
- },
- "underlying": {
-  "TSLA": 365.87
- },
+ "asOf": "2026-10-16T13:08:00-04:00",
+ "source": "Robinhood get_option_quotes (read-only). 1 PM midday: no open paper contracts (TSLA 10/19 375C and AMD 10/19 545P both closed this morning); no quotes needed.",
+ "marks": {},
+ "underlying": {},
  "levels": {
   "TSLA_375C_exit": 1.5,
   "TSLA_375C_stop": 1.54,
