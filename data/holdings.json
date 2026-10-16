@@ -226,6 +226,15 @@
    "spy_price": 769.375,
    "spy_shares": 6.498781,
    "spy_price_source": "Webull snapshot last trade 2026-10-14 15:36 ET"
+  },
+  {
+   "date": "2026-10-16",
+   "type": "deposit",
+   "amount": 800.0,
+   "note": "Weekly Friday deposit",
+   "spy_price": 762.71,
+   "spy_shares": 1.048891,
+   "spy_price_source": "Webull snapshot last trade 2026-10-16 15:31 ET"
   }
  ],
  "recurring_deposit": {
