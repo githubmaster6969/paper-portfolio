@@ -1,11 +1,13 @@
 {
- "asOf": "2026-10-16T09:38:37-04:00",
- "source": "Robinhood get_option_quotes (read-only); open refresh 2026-10-16 09:38 ET: no open paper contracts. TSLA 10/19 375C is planned-bell (fill/grade by 9:46 routine); info quote mark 2.435 (bid 2.40/ask 2.47), TSLA 367.13 (Webull, open 369.04)",
+ "asOf": "2026-10-16T09:45:06-04:00",
+ "source": "Robinhood get_option_quotes (read-only); opening scanner 2026-10-16 ~09:45 ET: PAPER ENTRY AMD 10/19 545P x1 @9.43 (09:40 failed-retest trigger-bar close), mark 7.30 (bid 7.10/ask 7.50), AMD 544.72 (Webull). TSLA 10/19 375C planned-bell, fill/grade by 9:46 routine (RH 09:30 1-min open 2.37; 09:41 close 2.79).",
  "marks": {
-  "c802f652-7e03-4aea-ba52-b15b1024b87e": 2.435
+  "c802f652-7e03-4aea-ba52-b15b1024b87e": 2.79,
+  "c8671a1d-e89c-4370-8deb-fe778c3271c4": 7.3
  },
  "underlying": {
-  "TSLA": 367.1257
+  "TSLA": 368.795,
+  "AMD": 544.72
  },
  "levels": {}
 }
