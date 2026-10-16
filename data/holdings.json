@@ -258,6 +258,18 @@
    "rule": "R2",
    "reason": "R2 support hold + R1: pre-written plan (10/14) was SMH holds 557.56 (20-day low) on a 5-min close after the TSM print. TSM beat-and-raise BMO 10/15 (sold off on macro, not fundamentals). SMH undercut to 540.59, then 5-min closes back above 557.56 from 15:10 ET (557.85, 559.38, 559.68). R1 also met: ~11.7% below 20-day closing high 633.90 (ETF threshold 3%). Drop is macro/sector-wide (hot CPI 10/14, hot PPI 6.3% 10/15, global chip selloff per Morningstar/CNBC), no fund-specific news; not in first 15 min after gap-down. NVDA skipped (5-min closes under 217.15 from 14:10-14:45 broke the 1:23 condition). Price: Webull live snapshot 15:27 ET.",
    "source": "Webull snapshot last trade 2026-10-15 15:27 ET"
+  },
+  {
+   "date": "2026-10-16",
+   "time_et": "10:27",
+   "ticker": "GEV",
+   "portfolio": "Aggressive AI & Energy",
+   "shares": 0.535273,
+   "price": 934.103,
+   "amount": 500.0,
+   "rule": "R2",
+   "reason": "R2 support hold + R1: pre-written plan (10/15) was GEV holds 921.53 (20-day-low support) on 5-min closes Fri. GEV opened 918.00 (gap -0.9%), traded under it to 916.015, and every 5-min close since the 09:30 bar has held above (lowest 928.23 at 10:15; 10:20 close 933.92); bought after the first 15 min, not on the touch. R1 also met: ~9.2% below 20-day closing high 1029.21. Thesis check: drop since 10/9 is sector/macro (hot CPI/PPI, AI-infrastructure debt worries); only company items are analyst price-target trims with ratings kept (Susquehanna 1300->1270 Positive, JPMorgan Overweight), not a fundamental downgrade. Earnings 10/28, outside 48h. NVDA (priority) not held: all 5-min closes under 217.15 so far. Price: Webull live snapshot 10:27 ET.",
+   "source": "Webull snapshot last trade 2026-10-16 10:27 ET"
   }
  ]
 }
