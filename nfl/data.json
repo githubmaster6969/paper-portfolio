@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-15T23:41:18+00:00",
+ "generated_at": "2026-10-16T05:09:39+00:00",
  "source": "/home/runner/work/paper-portfolio/paper-portfolio/nfl/data/picks_log.csv",
  "picks": [
   {
@@ -697,10 +697,10 @@
    "stake_units": 1,
    "reason": "props_v2_calibrated: cal mu 1.35 rec, median 1.3; low target share; game total 40.5 (opened 43.5). Edge vs vig-free implied. T-35 inactives check: active.",
    "reason_plain": "Shaheed is mostly a deep threat who only gets a few looks, and in a low-scoring game (total 40.5) we expect about one catch.",
-   "result": null,
+   "result": "L",
    "closing_odds": null,
    "clv": null,
-   "profit_units": null
+   "profit_units": -1
   },
   {
    "week": 6,
@@ -722,10 +722,10 @@
    "stake_units": 1,
    "reason": "props_v2_calibrated: cal mu 2.28 rec; modest TE target share. Edge vs vig-free implied. T-35 inactives check: active.",
    "reason_plain": "Barner is a low-volume tight end, so the model projects about two catches, which is under the 2.5 line.",
-   "result": null,
+   "result": "L",
    "closing_odds": null,
    "clv": null,
-   "profit_units": null
+   "profit_units": -1
   },
   {
    "week": 6,
@@ -747,10 +747,10 @@
    "stake_units": 1,
    "reason": "props_v2_calibrated: cal mu 3.93 rec; DEN dog script, RB checkdowns vs SEA. T-35 inactives check: active.",
    "reason_plain": "Harvey is Denver's pass-catching back, and as the underdog Denver should be throwing short a lot, so about four catches is the projection.",
-   "result": null,
+   "result": "L",
    "closing_odds": null,
    "clv": null,
-   "profit_units": null
+   "profit_units": -1
   },
   {
    "week": 6,
@@ -772,10 +772,10 @@
    "stake_units": 1,
    "reason": "props_v2_calibrated: cal mu 2.21 rec; TE target share slipping. Edge vs vig-free implied. T-35 inactives check: active.",
    "reason_plain": "Engram's share of targets has been shrinking, and the model projects about two catches, under the 2.5 line.",
-   "result": null,
+   "result": "W",
    "closing_odds": null,
    "clv": null,
-   "profit_units": null
+   "profit_units": 1.14
   }
  ]
 }
