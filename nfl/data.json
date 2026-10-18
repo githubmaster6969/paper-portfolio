@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T16:34:23+00:00",
+ "generated_at": "2026-10-18T16:59:52+00:00",
  "source": "/home/runner/work/paper-portfolio/paper-portfolio/nfl/data/picks_log.csv",
  "picks": [
   {
@@ -798,8 +798,8 @@
    "reason": "props_v2_calibrated: cal mu 5.92 rec, median 5.9; CAR WR1 target share vs PHI with McKee starting for the injured Hurts (PHI likely trails less, CAR pass volume steady). Edge vs vig-free implied. T-90 availability check: active. Confirmed by Pedro 11:57 ET.",
    "reason_plain": "McMillan is Carolina's top target and should see plenty of looks against a banged-up Eagles team, and the model projects about six catches, over the 5.5 line.",
    "result": null,
-   "closing_odds": null,
-   "clv": null,
+   "closing_odds": 120,
+   "clv": 0,
    "profit_units": null
   },
   {
@@ -823,8 +823,8 @@
    "reason": "props_v2_calibrated: cal mu 3.73 rec, median 3.7; Caleb Williams confirmed active after missing 3 games, restoring WR1 volume. Edge vs vig-free implied. T-90 availability check: active. Confirmed by Pedro 11:57 ET.",
    "reason_plain": "With Caleb Williams back at quarterback, Odunze gets his No. 1 receiver role back, and the model projects about four catches, over the 3.5 line.",
    "result": null,
-   "closing_odds": null,
-   "clv": null,
+   "closing_odds": 128,
+   "clv": -0.0078,
    "profit_units": null
   },
   {
@@ -848,8 +848,8 @@
    "reason": "R12 Tier A (1u), forced (every tier logged every slate). Model 30.2% vs implied 38.4%, EV -21.3%. NO EDGE. One leg per game, no player reused across tiers. T-90 availability: all legs active. Confirmed by Pedro 12:27 ET.",
    "reason_plain": "Taylor is Indy's top red-zone back (48% of red-zone touches, 6 TDs) and Stevenson is New England's top red-zone back, so this needs both lead backs to score. NO EDGE: logged because every tier gets a parlay.",
    "result": null,
-   "closing_odds": null,
-   "clv": null,
+   "closing_odds": 164,
+   "clv": -0.0058,
    "profit_units": null
   },
   {
@@ -873,8 +873,8 @@
    "reason": "R12 Tier B (0.5u), forced (every tier logged every slate). Model 8.9% vs implied 10.8%, EV -18.0%. NO EDGE. One leg per game, no player reused across tiers. T-90 availability: all legs active. Confirmed by Pedro 12:27 ET.",
    "reason_plain": "Likely is the Giants' top red-zone target (4 TDs) and Henry is a red-zone tight end for New England, with each leg in a different game. NO EDGE: logged because every tier gets a parlay.",
    "result": null,
-   "closing_odds": null,
-   "clv": null,
+   "closing_odds": 823,
+   "clv": 0,
    "profit_units": null
   },
   {
@@ -898,8 +898,8 @@
    "reason": "R12 Tier C (0.25u), forced (every tier logged every slate). Model 5.1% vs implied 6.3%, EV -19.1%. NO EDGE. One leg per game, no player reused across tiers. T-90 availability: all legs active. Confirmed by Pedro 12:27 ET.",
    "reason_plain": "Vele (20% of New Orleans' red-zone looks lately) and Pitts are the No. 3 red-zone options on high-total offenses, which makes this the long-shot tier. NO EDGE: logged because every tier gets a parlay.",
    "result": null,
-   "closing_odds": null,
-   "clv": null,
+   "closing_odds": 1437,
+   "clv": 0.0016,
    "profit_units": null
   },
   {
@@ -923,8 +923,8 @@
    "reason": "[pedro_override] Pedro pick, below the 3% sides_v2 threshold. sides_v2 model 56.6% vs implied 53.7%, +2.9% edge. Caleb Williams active (T-90). Confirmed by Pedro 12:33 ET.",
    "reason_plain": "Pedro's pick (below our usual 3% edge bar). The model has Chicago winning 56.6% of the time vs 53.7% priced in, with Caleb Williams back at QB.",
    "result": null,
-   "closing_odds": null,
-   "clv": null,
+   "closing_odds": -118,
+   "clv": 0.0042,
    "profit_units": null
   },
   {
@@ -948,8 +948,8 @@
    "reason": "[pedro_override] Pedro pick, below the 3% sides_v2 threshold. sides_v2 model 56.5% vs implied 55.0%, +1.6% edge. Confirmed by Pedro 12:33 ET.",
    "reason_plain": "Pedro's pick (below our usual 3% edge bar). The model gives the Giants +1.5 a 56.5% cover chance vs 55.0% priced in, a thin edge.",
    "result": null,
-   "closing_odds": null,
-   "clv": null,
+   "closing_odds": -122,
+   "clv": 0,
    "profit_units": null
   }
  ]
