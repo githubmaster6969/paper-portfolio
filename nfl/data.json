@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-16T05:09:39+00:00",
+ "generated_at": "2026-10-18T15:57:53+00:00",
  "source": "/home/runner/work/paper-portfolio/paper-portfolio/nfl/data/picks_log.csv",
  "picks": [
   {
@@ -776,6 +776,56 @@
    "closing_odds": null,
    "clv": null,
    "profit_units": 1.14
+  },
+  {
+   "week": 6,
+   "date": "2026-10-18",
+   "game": "CAR @ PHI",
+   "kickoff_et": "1:00 PM",
+   "bet_type": "receptions",
+   "market": "player_receptions",
+   "pick": "Tetairoa McMillan (CAR) over 5.5 catches",
+   "pick_label": "Tetairoa McMillan Over 5.5 Receptions",
+   "odds_american": 120,
+   "odds_source": "FanDuel via The Odds API",
+   "captured_at": "2026-10-18T11:44:00-04:00",
+   "implied_prob": 0.425,
+   "model_prob": 0.496,
+   "edge": 0.071,
+   "model_version": "props_v2_calibrated",
+   "confidence": 1,
+   "stake_units": 1,
+   "reason": "props_v2_calibrated: cal mu 5.92 rec, median 5.9; CAR WR1 target share vs PHI with McKee starting for the injured Hurts (PHI likely trails less, CAR pass volume steady). Edge vs vig-free implied. T-90 availability check: active. Confirmed by Pedro 11:57 ET.",
+   "reason_plain": "McMillan is Carolina's top target and should see plenty of looks against a banged-up Eagles team, and the model projects about six catches, over the 5.5 line.",
+   "result": null,
+   "closing_odds": null,
+   "clv": null,
+   "profit_units": null
+  },
+  {
+   "week": 6,
+   "date": "2026-10-18",
+   "game": "CHI @ ATL",
+   "kickoff_et": "1:00 PM",
+   "bet_type": "receptions",
+   "market": "player_receptions",
+   "pick": "Rome Odunze (CHI) over 3.5 catches",
+   "pick_label": "Rome Odunze Over 3.5 Receptions",
+   "odds_american": 124,
+   "odds_source": "DraftKings via The Odds API",
+   "captured_at": "2026-10-18T11:44:00-04:00",
+   "implied_prob": 0.422,
+   "model_prob": 0.483,
+   "edge": 0.061,
+   "model_version": "props_v2_calibrated",
+   "confidence": 1,
+   "stake_units": 1,
+   "reason": "props_v2_calibrated: cal mu 3.73 rec, median 3.7; Caleb Williams confirmed active after missing 3 games, restoring WR1 volume. Edge vs vig-free implied. T-90 availability check: active. Confirmed by Pedro 11:57 ET.",
+   "reason_plain": "With Caleb Williams back at quarterback, Odunze gets his No. 1 receiver role back, and the model projects about four catches, over the 3.5 line.",
+   "result": null,
+   "closing_odds": null,
+   "clv": null,
+   "profit_units": null
   }
  ]
 }
