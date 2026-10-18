@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T16:59:52+00:00",
+ "generated_at": "2026-10-18T19:59:14+00:00",
  "source": "/home/runner/work/paper-portfolio/paper-portfolio/nfl/data/picks_log.csv",
  "picks": [
   {
@@ -950,6 +950,56 @@
    "result": null,
    "closing_odds": -122,
    "clv": 0,
+   "profit_units": null
+  },
+  {
+   "week": 6,
+   "date": "2026-10-18",
+   "game": "ARI @ LA; BUF @ LV",
+   "kickoff_et": "4:05 PM",
+   "bet_type": "parlay_attd",
+   "market": "anytime_td_parlay",
+   "pick": "Kyren Williams (LA) ATTD -180 | Ashton Jeanty (LV) ATTD -125",
+   "pick_label": "Kyren + Jeanty TD parlay",
+   "odds_american": 180,
+   "odds_source": "DraftKings via The Odds API",
+   "captured_at": "2026-10-18T14:48:00-04:00",
+   "implied_prob": 0.357,
+   "model_prob": 0.377,
+   "edge": 0.02,
+   "model_version": "td_parlay_v1",
+   "confidence": 1,
+   "stake_units": 1,
+   "reason": "R12 Tier A (1u), late window (4:05/4:25), forced run (every tier logged every slate). Model 37.7% vs implied 35.7%, EV +5.5%. EDGE (thin). One leg per game, no player reused across tiers. Caution: Jeanty single is REVIEW (RZ share 47% season, 21% last 2 wks). Logged automatically per Pedro standing rule (parlay tiers tracked as models) at the 2:41 final run.",
+   "reason_plain": "Kyren is the Rams' goal-line back (46% of red-zone looks the last 2 weeks) on a 32-point team total, and Jeanty is the Raiders' lead back against a Bills defense that allows the 3rd-most RB TDs. Small edge; Jeanty's red-zone role has shrunk lately.",
+   "result": null,
+   "closing_odds": 175,
+   "clv": 0.0065,
+   "profit_units": null
+  },
+  {
+   "week": 6,
+   "date": "2026-10-18",
+   "game": "LAC @ KC; BUF @ LV",
+   "kickoff_et": "4:25 PM",
+   "bet_type": "parlay_attd",
+   "market": "anytime_td_parlay",
+   "pick": "Kenneth Walker III (KC) ATTD -165 | Keon Coleman (BUF) ATTD +390",
+   "pick_label": "Walker + Coleman TD parlay",
+   "odds_american": 687,
+   "odds_source": "DraftKings via The Odds API",
+   "captured_at": "2026-10-18T14:48:00-04:00",
+   "implied_prob": 0.127,
+   "model_prob": 0.134,
+   "edge": 0.007,
+   "model_version": "td_parlay_v1",
+   "confidence": 1,
+   "stake_units": 0.5,
+   "reason": "R12 Tier B (0.5u), late window, forced run. Model 13.4% vs implied 12.7%, EV +5.1%. EDGE (thin). DK-only price (FD Coleman +250 puts it out of tier). One leg per game, no player reused across tiers. Coleman is BUF RZ No. 3; DJ Moore trending inactive (more Coleman targets). Logged automatically per Pedro standing rule at the 2:41 final run.",
+   "reason_plain": "Walker gets 62% of Kansas City's red-zone touches lately, and Coleman is Buffalo's No. 3 red-zone target with DJ Moore likely out. Small edge, and only at DraftKings' +390 on Coleman.",
+   "result": null,
+   "closing_odds": 448,
+   "clv": 0.0554,
    "profit_units": null
   }
  ]
