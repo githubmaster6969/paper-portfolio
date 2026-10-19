@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-19T00:20:57+00:00",
+ "generated_at": "2026-10-19T04:32:43+00:00",
  "source": "/home/runner/work/paper-portfolio/paper-portfolio/nfl/data/picks_log.csv",
  "picks": [
   {
@@ -1022,10 +1022,10 @@
    "stake_units": 1,
    "reason": "R12 Tier A (1u), SNF single-game slate, forced run (every tier logged). Same-game legs allowed on single-game slates (Pedro, Oct 18). Model 37.9% vs implied 44.4%, EV -14.5%. NO EDGE. No player reused across tiers. Lloyd added manually as GB RZ No. 1 (fails 55% snap gate at 50% L2 snaps).",
    "reason_plain": "Dallas's goal-line back (Javonte, 53% of red-zone touches lately) plus Green Bay's top red-zone back. No edge: the books price both about right, and the same-game price cut hurts.",
-   "result": null,
+   "result": "L",
    "closing_odds": null,
    "clv": null,
-   "profit_units": null
+   "profit_units": -1
   },
   {
    "week": 6,
@@ -1047,10 +1047,10 @@
    "stake_units": 0.5,
    "reason": "R12 Tier B (0.5u), SNF single-game slate, forced run. Same team legs (corr 0.955). Model 9.6% vs implied 12.8%, EV -24.5%. NO EDGE. Flournoy = DAL RZ No. 4 (rank-4 pool used so all 3 tiers can fill with unique players).",
    "reason_plain": "Lamb (cleared, no injury tag) plus Flournoy, Dallas's No. 4 red-zone target with a value single price. No edge as a parlay because both are Dallas players.",
-   "result": null,
+   "result": "L",
    "closing_odds": null,
    "clv": null,
-   "profit_units": null
+   "profit_units": -0.5
   },
   {
    "week": 6,
@@ -1072,10 +1072,10 @@
    "stake_units": 0.25,
    "reason": "R12 Tier C (0.25u), SNF single-game slate, forced run. 3 same-game legs (2 extra -> 0.85^2 haircut). Model 4.4% vs implied 7.5%, EV -41.3%. NO EDGE. Kraft = GB RZ No. 4 (21% L2).",
    "reason_plain": "Green Bay's top red-zone WR and TE plus Pickens. Long shot with no edge; tracked because every tier gets logged.",
-   "result": null,
+   "result": "L",
    "closing_odds": null,
    "clv": null,
-   "profit_units": null
+   "profit_units": -0.25
   },
   {
    "week": 6,
@@ -1097,10 +1097,10 @@
    "stake_units": 1,
    "reason": "props_v2_calibrated: cal median 7.8 rec vs line 6.5 (FD +106; DK -108). Model 55.9% vs no-vig implied 45.4%, edge +10.5% (>8% review passed): 39 rec in 5 games, active with no injury tag (thigh earlier in week, practiced full), GB CB St-Juste out. Risk: thigh. Confirmed by Pedro ~8:20 PM ET.",
    "reason_plain": "Lamb is averaging 7.8 catches a game, he's healthy, and Green Bay is missing cornerback Benjamin St-Juste. The model projects about 8 catches, over the 6.5 line.",
-   "result": null,
+   "result": "W",
    "closing_odds": null,
    "clv": null,
-   "profit_units": null
+   "profit_units": 1.06
   }
  ]
 }
