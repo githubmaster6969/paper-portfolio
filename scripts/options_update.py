@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Rebuild data/options.json from trading-brain CSVs + a saved quotes JSON.
 Usage: options_update.py [--brain /workspace/options-study] [--quotes data/options_quotes.json]
-Paper contracts only. Marks come from the quotes file (Robinhood); nothing is invented."""
+Paper contracts only. optStop = rules v1.3 #5 -50% option backstop (was -35% pre-2026-10-19). Marks come from the quotes file (Robinhood); nothing is invented."""
 import csv, json, argparse, os
 p = argparse.ArgumentParser()
 p.add_argument('--brain', default='/workspace/options-study')
@@ -28,7 +28,7 @@ for r in rows:
                     value=round(mark * 100 * qty, 2) if mark is not None else None,
                     unrealized=round((mark - entry) * 100 * qty, 2) if mark is not None else None,
                     unrealizedPct=round((mark / entry - 1) * 100, 2) if mark is not None else None,
-                    optStop=round(entry * 0.65, 2), optHalf=round(entry * 1.5, 2), optDouble=round(entry * 2, 2),
+                    optStop=round(entry * 0.50, 3), optHalf=round(entry * 1.5, 2), optDouble=round(entry * 2, 2),
                     stockTarget=lv.get('stockTarget'), stockStop=lv.get('stockStop'), stopNote=lv.get('stopNote'))
         opn.append(base)
     else:
