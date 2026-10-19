@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-19T00:20:27+00:00",
+ "generated_at": "2026-10-19T00:20:57+00:00",
  "source": "/home/runner/work/paper-portfolio/paper-portfolio/nfl/data/picks_log.csv",
  "picks": [
   {
@@ -1089,13 +1089,13 @@
    "odds_american": 106,
    "odds_source": "FanDuel via The Odds API",
    "captured_at": "2026-10-18T19:45:00-04:00",
-   "implied_prob": 0.485,
+   "implied_prob": 0.454,
    "model_prob": 0.559,
-   "edge": 0.074,
+   "edge": 0.105,
    "model_version": "props_v2_calibrated",
    "confidence": 1,
    "stake_units": 1,
-   "reason": "props_v2_calibrated: cal median 7.8 rec vs line 6.5 (FD +106; DK -108). No-vig implied 45.4% (+10.5%, >8% review passed): 39 rec in 5 games, active with no injury tag (thigh earlier in week, practiced full), GB CB St-Juste out. Risk: thigh. Confirmed by Pedro ~8:20 PM ET.",
+   "reason": "props_v2_calibrated: cal median 7.8 rec vs line 6.5 (FD +106; DK -108). Model 55.9% vs no-vig implied 45.4%, edge +10.5% (>8% review passed): 39 rec in 5 games, active with no injury tag (thigh earlier in week, practiced full), GB CB St-Juste out. Risk: thigh. Confirmed by Pedro ~8:20 PM ET.",
    "reason_plain": "Lamb is averaging 7.8 catches a game, he's healthy, and Green Bay is missing cornerback Benjamin St-Juste. The model projects about 8 catches, over the 6.5 line.",
    "result": null,
    "closing_odds": null,
