@@ -1,7 +1,7 @@
 {
- "asOf": "2026-10-19T09:37:33-04:00",
- "source": "Robinhood get_option_quotes (read-only). 9:30 open update: no open paper contracts in paper-options-log.csv; NVDA 10/23 217.5C is still a planned-bell row awaiting the 9:46 routine's trigger check and fill, so no quotes needed.",
- "marks": {},
- "underlying": {},
- "levels": {}
+ "asOf": "2026-10-19T13:09:07-04:00",
+ "source": "Robinhood get_option_quotes (read-only), quote updated_at 2026-10-19T17:09:07Z; mark_price 3.875 (bid 3.85 / ask 3.90). NVDA underlying from Webull live snapshot 13:09 ET.",
+ "marks": {"181a5ce8-91e9-4100-b6ee-0d621576df30": 3.875},
+ "underlying": {"NVDA": 218.04},
+ "levels": {"NVDA 10/23 217.5C": {"stockTarget": 221.30, "stockStop": 214.70, "stopNote": "v1.3: exit on a 15-min close below 214.70 or option -50% backstop 1.625; target option +50% = 4.875 or NVDA 221.30; time stop Thu 10/22 15:55 ET"}}
 }
