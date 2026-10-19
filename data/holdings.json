@@ -279,6 +279,18 @@
    "rule": "R2",
    "reason": "R2 support hold + R1: pre-written plan (10/15) was GEV holds 921.53 (20-day-low support) on 5-min closes Fri. GEV opened 918.00 (gap -0.9%), traded under it to 916.015, and every 5-min close since the 09:30 bar has held above (lowest 928.23 at 10:15; 10:20 close 933.92); bought after the first 15 min, not on the touch. R1 also met: ~9.2% below 20-day closing high 1029.21. Thesis check: drop since 10/9 is sector/macro (hot CPI/PPI, AI-infrastructure debt worries); only company items are analyst price-target trims with ratings kept (Susquehanna 1300->1270 Positive, JPMorgan Overweight), not a fundamental downgrade. Earnings 10/28, outside 48h. NVDA (priority) not held: all 5-min closes under 217.15 so far. Price: Webull live snapshot 10:27 ET.",
    "source": "Webull snapshot last trade 2026-10-16 10:27 ET"
+  },
+  {
+   "date": "2026-10-19",
+   "time_et": "10:32",
+   "ticker": "VXUS",
+   "portfolio": "Safe Core",
+   "shares": 5.985873,
+   "price": 83.53,
+   "amount": 500.0,
+   "rule": "R1",
+   "reason": "R1 (stock-buy-rules.md l.19-20): 4.53% below 20-day closing high 87.49 (9/22, Webull daily bars), ETF threshold 3%; plan row 28 (10/16) support 82.845 held, every 5-min close after 09:45 above it (lowest 83.455), never touched so not R2; no gap-down (open 83.75 vs prior close 83.43); thesis intact (l.24): broad macro/AI-financing selloff, no fund news; Safe Core first; 2nd VXUS tranche, new week; price Webull live snapshot 10:32 ET",
+   "source": "Webull snapshot last trade 2026-10-19 10:32 ET"
   }
  ]
 }

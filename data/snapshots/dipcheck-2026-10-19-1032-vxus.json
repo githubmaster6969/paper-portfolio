@@ -1,0 +1,5 @@
+<cursor_untrusted_data_1337 source="CallDynamicTool">
+
+[{"symbol":"VXUS","price":"83.5300","open":"83.7500","high":"83.8400","low":"83.4300","volume":"1368087","change":"0.100000","close":"83.5300","instrument_id":"913244515","pre_close":"83.430000","change_ratio":"0.001199","last_trade_time":1792420331549,"ask":"83.5400","ask_size":"573","bid":"83.5300","bid_size":"530","quote_time":1792420338365,"pe_ratio":"0.0000","yield":"0.023763","fifty_two_wk_high":"88.459972","fifty_two_wk_low":"70.292162","eps":"0","eps_ttm":"0.0000","lot_size":"1","bps":"0","list_status":"LISTED","trade_status":"RTH"},{"symbol":"SPY","price":"767.70","open":"767.215","high":"769.04","low":"765.824","volume":"7392030","change":"4.45","close":"767.70","instrument_id":"913243251","pre_close":"763.25","change_ratio":"0.005830","last_trade_time":1792420339436,"ask":"767.68","ask_size":"516","bid":"767.67","bid_size":"20","quote_time":1792420340089,"pe_ratio":"0.0000","yield":"0.009877","fifty_two_wk_high":"781.620000","fifty_two_wk_low":"626.10877","eps":"0","eps_ttm":"0.0000","lot_size":"1","bps":"0","list_status":"LISTED","trade_status":"RTH"}]
+
+</cursor_untrusted_data_1337>
