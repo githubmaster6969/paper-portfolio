@@ -80,6 +80,6 @@
    "realized": -198.0
   }
  ],
- "asOf": "2026-10-16T16:08:00-04:00",
- "source": "Robinhood get_option_quotes (read-only). 4 PM close: no open paper contracts (TSLA 10/19 375C and AMD 10/19 545P both closed this morning; no overnight pick logged); no quotes needed."
+ "asOf": "2026-10-19T09:37:33-04:00",
+ "source": "Robinhood get_option_quotes (read-only). 9:30 open update: no open paper contracts in paper-options-log.csv; NVDA 10/23 217.5C is still a planned-bell row awaiting the 9:46 routine's trigger check and fill, so no quotes needed."
 }
