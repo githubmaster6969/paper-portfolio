@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-19T00:18:52+00:00",
+ "generated_at": "2026-10-19T00:20:27+00:00",
  "source": "/home/runner/work/paper-portfolio/paper-portfolio/nfl/data/picks_log.csv",
  "picks": [
   {
@@ -1072,6 +1072,31 @@
    "stake_units": 0.25,
    "reason": "R12 Tier C (0.25u), SNF single-game slate, forced run. 3 same-game legs (2 extra -> 0.85^2 haircut). Model 4.4% vs implied 7.5%, EV -41.3%. NO EDGE. Kraft = GB RZ No. 4 (21% L2).",
    "reason_plain": "Green Bay's top red-zone WR and TE plus Pickens. Long shot with no edge; tracked because every tier gets logged.",
+   "result": null,
+   "closing_odds": null,
+   "clv": null,
+   "profit_units": null
+  },
+  {
+   "week": 6,
+   "date": "2026-10-18",
+   "game": "DAL @ GB",
+   "kickoff_et": "8:20 PM",
+   "bet_type": "receptions",
+   "market": "player_receptions",
+   "pick": "CeeDee Lamb (DAL) over 6.5 catches",
+   "pick_label": "CeeDee Lamb Over 6.5 Receptions",
+   "odds_american": 106,
+   "odds_source": "FanDuel via The Odds API",
+   "captured_at": "2026-10-18T19:45:00-04:00",
+   "implied_prob": 0.485,
+   "model_prob": 0.559,
+   "edge": 0.074,
+   "model_version": "props_v2_calibrated",
+   "confidence": 1,
+   "stake_units": 1,
+   "reason": "props_v2_calibrated: cal median 7.8 rec vs line 6.5 (FD +106; DK -108). No-vig implied 45.4% (+10.5%, >8% review passed): 39 rec in 5 games, active with no injury tag (thigh earlier in week, practiced full), GB CB St-Juste out. Risk: thigh. Confirmed by Pedro ~8:20 PM ET.",
+   "reason_plain": "Lamb is averaging 7.8 catches a game, he's healthy, and Green Bay is missing cornerback Benjamin St-Juste. The model projects about 8 catches, over the 6.5 line.",
    "result": null,
    "closing_odds": null,
    "clv": null,
