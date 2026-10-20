@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-20T03:39:20+00:00",
+ "generated_at": "2026-10-20T03:57:18+00:00",
  "source": "/home/runner/work/paper-portfolio/paper-portfolio/nfl/data/picks_log.csv",
  "picks": [
   {
@@ -1107,9 +1107,9 @@
    "date": "2026-10-19",
    "game": "WAS @ SF",
    "kickoff_et": "8:15 PM",
-   "bet_type": "anytime_td_parlay",
+   "bet_type": "parlay_attd",
    "market": "anytime_td_parlay",
-   "pick": "Tier A: Christian McCaffrey ATTD + Mike Evans ATTD (SGP)",
+   "pick": "Christian McCaffrey (SF) ATTD -255 | Mike Evans (SF) ATTD +100",
    "pick_label": "Tier A TD parlay: McCaffrey + Evans",
    "odds_american": 152,
    "odds_source": "EST SGP from DK/FD legs x15% haircut",
@@ -1122,19 +1122,19 @@
    "stake_units": 1,
    "reason": "R12 Tier A, MNF single-game slate (same-game legs allowed). Legs CMC -255, Evans +100. NO EDGE, logged per auto-tier rule.",
    "reason_plain": "NO EDGE. SF top two red-zone options; SF projected 29.5. Price is an estimate.",
-   "result": null,
+   "result": "L",
    "closing_odds": null,
    "clv": null,
-   "profit_units": null
+   "profit_units": -1
   },
   {
    "week": 6,
    "date": "2026-10-19",
    "game": "WAS @ SF",
    "kickoff_et": "8:15 PM",
-   "bet_type": "anytime_td_parlay",
+   "bet_type": "parlay_attd",
    "market": "anytime_td_parlay",
-   "pick": "Tier B: Terry McLaurin ATTD + Jayden Daniels ATTD (SGP)",
+   "pick": "Terry McLaurin (WAS) ATTD +230 | Jayden Daniels (WAS) ATTD +230",
    "pick_label": "Tier B TD parlay: McLaurin + Daniels",
    "odds_american": 841,
    "odds_source": "EST SGP from DK/FD legs x15% haircut",
@@ -1147,19 +1147,19 @@
    "stake_units": 0.5,
    "reason": "R12 Tier B. Legs McLaurin +230, Daniels +230 (WAS RZ No. 2 and No. 3). NO EDGE, logged per auto-tier rule.",
    "reason_plain": "NO EDGE. Washington stack; Croskey-Merritt (WAS RZ No. 1) had no ATTD price posted.",
-   "result": null,
+   "result": "L",
    "closing_odds": null,
    "clv": null,
-   "profit_units": null
+   "profit_units": -0.5
   },
   {
    "week": 6,
    "date": "2026-10-19",
    "game": "WAS @ SF",
    "kickoff_et": "8:15 PM",
-   "bet_type": "anytime_td_parlay",
+   "bet_type": "parlay_attd",
    "market": "anytime_td_parlay",
-   "pick": "Tier C: George Kittle ATTD + Rachaad White ATTD + Kaelon Black ATTD (SGP)",
+   "pick": "George Kittle (SF) ATTD +105 | Rachaad White (WAS) ATTD +115 | Kaelon Black (SF) ATTD +400",
    "pick_label": "Tier C TD parlay: Kittle + White + Black",
    "odds_american": 1520,
    "odds_source": "EST SGP from DK/FD legs x15% haircut",
@@ -1172,10 +1172,10 @@
    "stake_units": 0.25,
    "reason": "R12 Tier C. Legs Kittle +105, White +115, Black +400; all three fail a td_v2 gate (role/snap). Pool extended past RZ rank 3 to fill tier without reusing players. NO EDGE.",
    "reason_plain": "NO EDGE. Filler tier, all three legs fail a model gate.",
-   "result": null,
+   "result": "L",
    "closing_odds": null,
    "clv": null,
-   "profit_units": null
+   "profit_units": -0.25
   },
   {
    "week": 6,
@@ -1197,10 +1197,10 @@
    "stake_units": 1,
    "reason": "props_v2_calibrated: cal mu 3.91 rec vs 4.5; edge +8.1% (>8% review). [model keep call; Pedro now delegates pick decisions]",
    "reason_plain": "Model projects about 3.9 catches; +116 needs 46%. Edge is just over the review line, so low confidence.",
-   "result": null,
+   "result": "L",
    "closing_odds": null,
    "clv": null,
-   "profit_units": null
+   "profit_units": -1
   },
   {
    "week": 6,
@@ -1222,10 +1222,10 @@
    "stake_units": 1,
    "reason": "props_v2_calibrated: cal mu 5.91 rec vs 5.5; edge +7.1%. [model keep call; Pedro now delegates pick decisions]",
    "reason_plain": "Model projects about 5.9 catches and WAS is without CB Isaac Yiadom; +120 needs 45%.",
-   "result": null,
+   "result": "L",
    "closing_odds": null,
    "clv": null,
-   "profit_units": null
+   "profit_units": -1
   }
  ]
 }
