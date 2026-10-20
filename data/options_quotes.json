@@ -1,7 +1,17 @@
 {
- "asOf": "2026-10-19T16:01:08-04:00",
- "source": "Robinhood get_option_quotes (read-only), quote updated_at 2026-10-19T16:01:08-04:00; mark_price 3.225 (bid 3.20 / ask 3.25). NVDA underlying from Webull live snapshot at the 4:00 PM close (217.09).",
- "marks": {"181a5ce8-91e9-4100-b6ee-0d621576df30": 3.225},
- "underlying": {"NVDA": 217.09},
- "levels": {"NVDA 10/23 217.5C": {"stockTarget": 221.30, "stockStop": 214.70, "stopNote": "v1.3: exit on a 15-min close below 214.70 or option -50% backstop 1.625; target option +50% = 4.875 or NVDA 221.30; time stop Thu 10/22 15:55 ET"}}
+ "asOf": "2026-10-20T09:32:15-04:00",
+ "source": "Robinhood get_option_quotes (read-only), quote updated_at 2026-10-20T13:32:15Z (09:32:15 ET); mark_price 2.085 (bid 2.06 / ask 2.11); official 10/19 close 3.23. NVDA underlying from Webull live snapshot 09:31:49 ET (215.0801).",
+ "marks": {
+  "181a5ce8-91e9-4100-b6ee-0d621576df30": 2.085
+ },
+ "underlying": {
+  "NVDA": 215.0801
+ },
+ "levels": {
+  "NVDA 10/23 217.5C": {
+   "stockTarget": 221.3,
+   "stockStop": 214.7,
+   "stopNote": "v1.3: exit on a 15-min close below 214.70 or option -50% backstop 1.625; target option +50% = 4.875 or NVDA 221.30; time stop Thu 10/22 15:55 ET"
+  }
+ }
 }
