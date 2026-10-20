@@ -122,6 +122,6 @@
    "realized": -402.0
   }
  ],
- "asOf": "2026-10-20T10:15:40-04:00",
- "source": "Book flat after the 10:15 15-min close. NBIS 10/23 162.5P closed @4.05 and AMD 10/23 522.5P closed @5.83 (RH 1-min 10:14 closes; stock stops l.71: 15-min 10:00-10:14 closes NBIS 169.214 > 167.25, AMD 540.97 > 535.30). NVDA 10/23 217.5C closed 09:41 @1.56 (-50% backstop). No open contracts."
+ "asOf": "2026-10-20T13:05:02-04:00",
+ "source": "Midday 13:05 ET check: no open paper contracts (paper-options-log.csv all closed; last exits 10/20 10:14 NBIS 162.5P @4.05, AMD 522.5P @5.83). No Robinhood quotes needed."
 }
