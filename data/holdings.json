@@ -291,6 +291,30 @@
    "rule": "R1",
    "reason": "R1 (stock-buy-rules.md l.19-20): 4.53% below 20-day closing high 87.49 (9/22, Webull daily bars), ETF threshold 3%; plan row 28 (10/16) support 82.845 held, every 5-min close after 09:45 above it (lowest 83.455), never touched so not R2; no gap-down (open 83.75 vs prior close 83.43); thesis intact (l.24): broad macro/AI-financing selloff, no fund news; Safe Core first; 2nd VXUS tranche, new week; price Webull live snapshot 10:32 ET",
    "source": "Webull snapshot last trade 2026-10-19 10:32 ET"
+  },
+  {
+   "date": "2026-10-20",
+   "time_et": "10:27",
+   "ticker": "NVDA",
+   "portfolio": "Aggressive AI & Energy",
+   "shares": 2.296897,
+   "price": 217.685,
+   "amount": 500.0,
+   "rule": "R2",
+   "reason": "R2 (stock-buy-rules.md l.21-23): tagged pre-written 212.85 20-day low (10/19 plan row 40) with day low 212.77 on the 09:40 5-min bar, which closed back above at 213.07; every 5-min close since above it, and back above the 214.70 Mon low from the 10:00 bar (215.15); gap-down open 215.97 vs 217.09 prior close, so bought after the first 15 min (l.29-30); thesis intact (l.24): sector-wide chip/AI-financing selloff (Yahoo Finance, Investing.com 10/20), no NVDA company news; no earnings within 48h (l.28, Webull calendar); took NVDA over SMH (row 40 allows one; SMH already has a dip tranche, NVDA none); tranche 1 of 3, ~4.0% of total value (l.35)",
+   "source": "Webull snapshot last trade 2026-10-20 10:27 ET"
+  },
+  {
+   "date": "2026-10-20",
+   "time_et": "10:27",
+   "ticker": "GEV",
+   "portfolio": "Aggressive AI & Energy",
+   "shares": 0.547315,
+   "price": 913.55,
+   "amount": 500.0,
+   "rule": "R2",
+   "reason": "R2 (stock-buy-rules.md l.21-23): traded into pre-written 897.68 7/29 swing low (10/19 plan row 41), undercut to 877.44 on the 09:40 5-min bar; first 5-min close back above was the 10:00 bar (904.78) and every close since is above (10:20 bar 912.33); gap-down open 888.50 vs 908.44 prior close, bought well after the first 15 min (l.29-30); thesis intact (l.24): sector-wide AI-infra selloff, no GEV company news (BestStocks/Yahoo 10/20); earnings Wed 10/28 (Webull) so 48h blackout starts 10/26, not today (l.28); last GEV add 10/16, new week; tranche 2 of 3 (l.34), ~7.1% of total value (l.35)",
+   "source": "Webull snapshot last trade 2026-10-20 10:27 ET"
   }
  ]
 }
