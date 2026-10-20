@@ -25,6 +25,8 @@ const sgn = (n, d = 2) => (n > 0 ? "+" : n < 0 ? "−" : "") + Math.abs(n).toFix
 const cls = n => n > 0 ? "pos" : n < 0 ? "neg" : "zero";
 const isSettled = p => ["W","L","P"].includes(p.result);
 const isVoid = p => (p.result || "").toLowerCase() === "void";
+// R14 (Pedro 2026-10-20): unstaked shadow prop unders are hidden like voids and never count in record/units/ROI.
+const isShadow = p => /\[shadow/i.test(p.reason || "") || (p.stake_units === 0 && !isVoid(p));
 const isGraded = p => isSettled(p);
 const PEDRO_TAG = "[pedro_override]";
 const isPedro = p => (p.reason || "").trim().startsWith(PEDRO_TAG);
@@ -250,7 +252,7 @@ async function main(){
   let data;
   try { data = await (await fetch("data.json", {cache:"no-store"})).json(); }
   catch (e){ $("#main").innerHTML = `<div class="empty"><b>Couldn't load picks</b><span>data.json is missing or invalid.</span></div>`; return; }
-  const all = (data.picks || []).filter(p => !isVoid(p));
+  const all = (data.picks || []).filter(p => !isVoid(p) && !isShadow(p));
   const s = stats(all);
   renderHero(all, s); renderChart(all);
   let key = "bet_type"; renderBreakdown(all, key);
