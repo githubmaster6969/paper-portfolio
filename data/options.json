@@ -1,12 +1,12 @@
 {
  "budget": 5000.0,
- "cash": 5613.0,
+ "cash": 5633.0,
  "openValue": 0,
- "equity": 5613.0,
+ "equity": 5633.0,
  "unrealized": 0,
- "realized": 613.0,
- "totalPnl": 613.0,
- "totalPct": 12.26,
+ "realized": 633.0,
+ "totalPnl": 633.0,
+ "totalPct": 12.66,
  "open": [],
  "closed": [
   {
@@ -120,8 +120,22 @@
    "exit": 5.83,
    "status": "closed",
    "realized": -402.0
+  },
+  {
+   "contract": "SPXW 10/21 7700C",
+   "ticker": "SPX",
+   "type": "call",
+   "strike": 7700.0,
+   "expiry": "2026-10-21",
+   "qty": 1,
+   "entry": 27.9,
+   "entryDate": "2026-10-20",
+   "entryTime": "15:54",
+   "exit": 28.1,
+   "status": "closed",
+   "realized": 20.0
   }
  ],
- "asOf": "2026-10-20T13:05:02-04:00",
- "source": "Midday 13:05 ET check: no open paper contracts (paper-options-log.csv all closed; last exits 10/20 10:14 NBIS 162.5P @4.05, AMD 522.5P @5.83). No Robinhood quotes needed."
+ "asOf": "2026-10-20T16:08:14-04:00",
+ "source": "Close check 16:08 ET: no open paper contracts (paper-options-log.csv all closed; last exit 10/20 15:57 SPXW 10/21 7700C @28.10). No Robinhood quotes needed."
 }
