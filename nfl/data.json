@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-19T23:50:00+00:00",
+ "generated_at": "2026-10-20T03:39:20+00:00",
  "source": "/home/runner/work/paper-portfolio/paper-portfolio/nfl/data/picks_log.csv",
  "picks": [
   {
@@ -1195,7 +1195,7 @@
    "model_version": "props_v2_calibrated",
    "confidence": 1,
    "stake_units": 1,
-   "reason": "props_v2_calibrated: cal mu 3.91 rec vs 4.5; edge +8.1% (>8% review).",
+   "reason": "props_v2_calibrated: cal mu 3.91 rec vs 4.5; edge +8.1% (>8% review). [model keep call; Pedro now delegates pick decisions]",
    "reason_plain": "Model projects about 3.9 catches; +116 needs 46%. Edge is just over the review line, so low confidence.",
    "result": null,
    "closing_odds": null,
@@ -1220,7 +1220,7 @@
    "model_version": "props_v2_calibrated",
    "confidence": 1,
    "stake_units": 1,
-   "reason": "props_v2_calibrated: cal mu 5.91 rec vs 5.5; edge +7.1%.",
+   "reason": "props_v2_calibrated: cal mu 5.91 rec vs 5.5; edge +7.1%. [model keep call; Pedro now delegates pick decisions]",
    "reason_plain": "Model projects about 5.9 catches and WAS is without CB Isaac Yiadom; +120 needs 45%.",
    "result": null,
    "closing_odds": null,
