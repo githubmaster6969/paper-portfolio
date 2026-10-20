@@ -1,24 +1,7 @@
 {
- "asOf": "2026-10-20T10:07:00-04:00",
- "source": "Robinhood get_option_quotes (read-only), quotes updated_at 2026-10-20T14:06:59Z-14:07:00Z (10:07 ET): NBIS 10/23 162.5P mark 4.55 (bid 4.50/ask 4.60); AMD 10/23 522.5P mark 6.425 (bid 6.25/ask 6.60). Underlyings from Webull live snapshots ~10:07 ET. NVDA 10/23 217.5C closed 09:41 @1.56 (-50% backstop).",
- "marks": {
-  "dfdc112f-6ba0-41f2-a02f-b17868d19ca8": 4.55,
-  "c443ee97-01b2-427f-a27d-8e99b3c0d9e7": 6.425
- },
- "underlying": {
-  "NBIS": 167.59,
-  "AMD": 538.3
- },
- "levels": {
-  "NBIS 10/23 162.5P": {
-   "stockTarget": 159.16,
-   "stockStop": 167.25,
-   "stopNote": "v1.3 failed-retest put: exit on a 15-min close above 167.25 or option -50% backstop 3.30; target NBIS 159.16 (measured move) or option +50% = 9.90; time stop Thu 10/22 15:55 ET"
-  },
-  "AMD 10/23 522.5P": {
-   "stockTarget": 519.15,
-   "stockStop": 535.3,
-   "stopNote": "v1.3 failed-retest put: exit on a 15-min close above 535.30 or option -50% backstop 4.925; target AMD 519.15 (measured move) or option +50% = 14.78; time stop Thu 10/22 15:55 ET"
-  }
- }
+ "asOf": "2026-10-20T10:15:40-04:00",
+ "source": "Book flat after the 10:15 15-min close. NBIS 10/23 162.5P closed @4.05 and AMD 10/23 522.5P closed @5.83 (RH 1-min 10:14 closes; stock stops l.71: 15-min 10:00-10:14 closes NBIS 169.214 > 167.25, AMD 540.97 > 535.30). NVDA 10/23 217.5C closed 09:41 @1.56 (-50% backstop). No open contracts.",
+ "marks": {},
+ "underlying": {},
+ "levels": {}
 }
