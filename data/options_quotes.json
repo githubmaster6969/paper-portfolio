@@ -1,13 +1,13 @@
 {
- "asOf": "2026-10-20T09:50:46-04:00",
- "source": "Robinhood get_option_quotes (read-only), quotes updated_at 2026-10-20T13:50:46Z (09:50:46 ET): NBIS 10/23 162.5P mark 6.725 (bid 6.65/ask 6.80); AMD 10/23 522.5P mark 9.725 (bid 9.50/ask 9.95). Underlyings from Webull live snapshots ~09:50:46 ET. NVDA 10/23 217.5C closed 09:41 @1.56 (-50% backstop).",
+ "asOf": "2026-10-20T10:07:00-04:00",
+ "source": "Robinhood get_option_quotes (read-only), quotes updated_at 2026-10-20T14:06:59Z-14:07:00Z (10:07 ET): NBIS 10/23 162.5P mark 4.55 (bid 4.50/ask 4.60); AMD 10/23 522.5P mark 6.425 (bid 6.25/ask 6.60). Underlyings from Webull live snapshots ~10:07 ET. NVDA 10/23 217.5C closed 09:41 @1.56 (-50% backstop).",
  "marks": {
-  "dfdc112f-6ba0-41f2-a02f-b17868d19ca8": 6.725,
-  "c443ee97-01b2-427f-a27d-8e99b3c0d9e7": 9.725
+  "dfdc112f-6ba0-41f2-a02f-b17868d19ca8": 4.55,
+  "c443ee97-01b2-427f-a27d-8e99b3c0d9e7": 6.425
  },
  "underlying": {
-  "NBIS": 162.44,
-  "AMD": 528.43
+  "NBIS": 167.59,
+  "AMD": 538.3
  },
  "levels": {
   "NBIS 10/23 162.5P": {
