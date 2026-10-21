@@ -1,10 +1,17 @@
 {
- "asOf": "2026-10-21T09:46:28-04:00",
- "source": "9:41 opening scanner (fired 09:44:40): Robinhood get_option_quotes marks updated 13:46:06Z (09:46 ET); underlyings = Webull 1-min 09:45 bar close (in progress). Stops finalized from the completed 09:30-09:44 15-min bar.",
- "marks": {"d71fa424-05f2-4144-8080-cfc0e327725d": 3.725, "8ef8c3cd-a3e2-4177-bf86-4499b3828ead": 4.10},
- "underlying": {"NVDA": 219.91, "SPCX": 158.973},
+ "asOf": "2026-10-21T10:06:04-04:00",
+ "source": "9:57 opening scanner (fired 10:02:58): Robinhood get_option_quotes marks updated 14:06:04Z (10:06 ET); NVDA = Webull 1-min 10:05 close. SPCX 10/26 160C closed @7.75.",
+ "marks": {
+  "d71fa424-05f2-4144-8080-cfc0e327725d": 3.225
+ },
+ "underlying": {
+  "NVDA": 219.865
+ },
  "levels": {
-  "NVDA 10/26 220C": {"stockTarget": 223.06, "stockStop": 219.0, "stopNote": "15-min close below 219.00 (lower of OR15 low 219.54 / PM shelf 219.00; finalized 09:45); -50% backstop 1.95"},
-  "SPCX 10/26 160C": {"stockTarget": 163.97, "stockStop": 157.77, "stopNote": "15-min close below 157.77 (lower of OR15 low 158.20 / PM shelf 157.77; finalized 09:45); -50% backstop 2.575"}
+  "NVDA 10/26 220C": {
+   "stockTarget": 223.06,
+   "stockStop": 219.0,
+   "stopNote": "15-min close below 219.00 (lower of OR15 low 219.54 / PM shelf 219.00; finalized 09:45); -50% backstop 1.95"
+  }
  }
 }
