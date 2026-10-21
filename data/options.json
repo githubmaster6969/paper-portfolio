@@ -1,36 +1,13 @@
 {
  "budget": 5000.0,
- "cash": 5113.0,
- "openValue": 1290.0,
- "equity": 6403.0,
- "unrealized": -270.0,
- "realized": 1673.0,
- "totalPnl": 1403.0,
- "totalPct": 28.06,
- "open": [
-  {
-   "contract": "NVDA 10/26 220C",
-   "ticker": "NVDA",
-   "type": "call",
-   "strike": 220.0,
-   "expiry": "2026-10-26",
-   "qty": 4,
-   "entry": 3.9,
-   "entryDate": "2026-10-21",
-   "entryTime": "09:33",
-   "mark": 3.225,
-   "underlying": 219.865,
-   "value": 1290.0,
-   "unrealized": -270.0,
-   "unrealizedPct": -17.31,
-   "optStop": 1.95,
-   "optHalf": 5.85,
-   "optDouble": 7.8,
-   "stockTarget": 223.06,
-   "stockStop": 219.0,
-   "stopNote": "15-min close below 219.00 (lower of OR15 low 219.54 / PM shelf 219.00; finalized 09:45); -50% backstop 1.95"
-  }
- ],
+ "cash": 6393.0,
+ "openValue": 0,
+ "equity": 6393.0,
+ "unrealized": 0,
+ "realized": 1393.0,
+ "totalPnl": 1393.0,
+ "totalPct": 27.86,
+ "open": [],
  "closed": [
   {
    "contract": "META 10/16 730C",
@@ -157,6 +134,20 @@
    "exit": 28.1,
    "status": "closed",
    "realized": 20.0
+  },
+  {
+   "contract": "NVDA 10/26 220C",
+   "ticker": "NVDA",
+   "type": "call",
+   "strike": 220.0,
+   "expiry": "2026-10-26",
+   "qty": 4,
+   "entry": 3.9,
+   "entryDate": "2026-10-21",
+   "entryTime": "09:33",
+   "exit": 3.2,
+   "status": "closed",
+   "realized": -280.0
   },
   {
    "contract": "SPCX 10/26 160C",
