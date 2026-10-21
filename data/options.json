@@ -1,13 +1,58 @@
 {
  "budget": 5000.0,
- "cash": 5633.0,
- "openValue": 0,
- "equity": 5633.0,
- "unrealized": 0,
+ "cash": 2013.0,
+ "openValue": 3030.0,
+ "equity": 5043.0,
+ "unrealized": -590.0,
  "realized": 633.0,
- "totalPnl": 633.0,
- "totalPct": 12.66,
- "open": [],
+ "totalPnl": 43.0,
+ "totalPct": 0.86,
+ "open": [
+  {
+   "contract": "NVDA 10/26 220C",
+   "ticker": "NVDA",
+   "type": "call",
+   "strike": 220.0,
+   "expiry": "2026-10-26",
+   "qty": 4,
+   "entry": 3.9,
+   "entryDate": "2026-10-21",
+   "entryTime": "09:33",
+   "mark": 3.65,
+   "underlying": 220.32,
+   "value": 1460.0,
+   "unrealized": -100.0,
+   "unrealizedPct": -6.41,
+   "optStop": 1.95,
+   "optHalf": 5.85,
+   "optDouble": 7.8,
+   "stockTarget": 223.06,
+   "stockStop": 219.0,
+   "stopNote": "15-min close below lower of OR15 low / PM shelf 219.00 (finalize after 09:45); -50% backstop 1.95"
+  },
+  {
+   "contract": "SPCX 10/26 160C",
+   "ticker": "SPCX",
+   "type": "call",
+   "strike": 160.0,
+   "expiry": "2026-10-26",
+   "qty": 4,
+   "entry": 5.15,
+   "entryDate": "2026-10-21",
+   "entryTime": "09:33",
+   "mark": 3.925,
+   "underlying": 159.265,
+   "value": 1570.0,
+   "unrealized": -490.0,
+   "unrealizedPct": -23.79,
+   "optStop": 2.575,
+   "optHalf": 7.73,
+   "optDouble": 10.3,
+   "stockTarget": 163.97,
+   "stockStop": 157.77,
+   "stopNote": "15-min close below lower of OR15 low / PM shelf 157.77 (finalize after 09:45); -50% backstop 2.575"
+  }
+ ],
  "closed": [
   {
    "contract": "META 10/16 730C",
@@ -136,6 +181,6 @@
    "realized": 20.0
   }
  ],
- "asOf": "2026-10-20T16:08:14-04:00",
- "source": "Close check 16:08 ET: no open paper contracts (paper-options-log.csv all closed; last exit 10/20 15:57 SPXW 10/21 7700C @28.10). No Robinhood quotes needed."
+ "asOf": "2026-10-21T09:41:13-04:00",
+ "source": "Open check: Robinhood get_option_quotes marks updated 13:41:13Z (09:41 ET); underlyings Webull snapshot ~09:41 ET. Stops finalize after the 09:30-09:44 15-min bar (at most the PM shelf)."
 }

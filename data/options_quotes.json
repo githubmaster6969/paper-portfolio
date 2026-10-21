@@ -1,7 +1,10 @@
 {
- "asOf": "2026-10-20T16:08:14-04:00",
- "source": "Close check 16:08 ET: no open paper contracts (paper-options-log.csv all closed; last exit 10/20 15:57 SPXW 10/21 7700C @28.10). No Robinhood quotes needed.",
- "marks": {},
- "underlying": {},
- "levels": {}
+ "asOf": "2026-10-21T09:41:13-04:00",
+ "source": "Open check: Robinhood get_option_quotes marks updated 13:41:13Z (09:41 ET); underlyings Webull snapshot ~09:41 ET. Stops finalize after the 09:30-09:44 15-min bar (at most the PM shelf).",
+ "marks": {"d71fa424-05f2-4144-8080-cfc0e327725d": 3.65, "8ef8c3cd-a3e2-4177-bf86-4499b3828ead": 3.925},
+ "underlying": {"NVDA": 220.32, "SPCX": 159.265},
+ "levels": {
+  "NVDA 10/26 220C": {"stockTarget": 223.06, "stockStop": 219.0, "stopNote": "15-min close below lower of OR15 low / PM shelf 219.00 (finalize after 09:45); -50% backstop 1.95"},
+  "SPCX 10/26 160C": {"stockTarget": 163.97, "stockStop": 157.77, "stopNote": "15-min close below lower of OR15 low / PM shelf 157.77 (finalize after 09:45); -50% backstop 2.575"}
+ }
 }
