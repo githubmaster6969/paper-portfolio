@@ -339,6 +339,18 @@
    "rule": "R1",
    "reason": "R1 (stock-buy-rules.md l.19-20): 3.89% below 20-day closing high 213.92 (9/23 close, Webull daily bars; ETF threshold 3%; plan row 51 cited 214.00 from 9/22, which is 21 sessions back, corrected); 10/20 plan row 51 (priority 2); no gap-down (open 207.38 vs prior close 206.15), bought after first 15 min (l.29-30); thesis intact (l.24): sector-wide defense selloff (midterm defense-budget worries, 24/7 Wall St 10/20), no fund news; RTX print done 10/20 (beat and raise); first ITA add, tranche 1 of 3 (l.34); ~3.8% of total value (l.35)",
    "source": "Webull snapshot last trade 2026-10-21 10:33 ET"
+  },
+  {
+   "date": "2026-10-21",
+   "time_et": "13:25",
+   "ticker": "NVDA",
+   "portfolio": "Aggressive AI & Energy",
+   "shares": 2.257489,
+   "price": 221.485,
+   "amount": 500.0,
+   "rule": "R1",
+   "reason": "R1 (stock-buy-rules.md l.19-20): 7.42% below 20-day closing high 239.24 (10/06 close, Webull daily bars; stock threshold 5%); 10/20 plan row 54 held NVDA only for the weekly limit (l.34), which Pedro removed 10/21 10:36 ET; no gap-down (open 220.96 vs prior close 216.47, l.29-30); thesis intact (l.24): pullback was the sector-wide chip/AI selloff, today's NVDA news is positive (GTC Berlin DSX POD, supplier capacity deals, SpaceX GPU demand), no company-specific bad news; no earnings within 48h (Webull lists last print 8/26, none upcoming, l.28); cash 1800 -> 1300 keeps the 1000 reserve (l.36); ~7.2% of total value after the buy (l.35); NVDA chosen over a 2nd TSM tranche since TSM was already added at 10:33 today",
+   "source": "Webull snapshot last trade 2026-10-21 13:25 ET"
   }
  ]
 }
