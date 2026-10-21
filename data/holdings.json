@@ -315,6 +315,30 @@
    "rule": "R2",
    "reason": "R2 (stock-buy-rules.md l.21-23): traded into pre-written 897.68 7/29 swing low (10/19 plan row 41), undercut to 877.44 on the 09:40 5-min bar; first 5-min close back above was the 10:00 bar (904.78) and every close since is above (10:20 bar 912.33); gap-down open 888.50 vs 908.44 prior close, bought well after the first 15 min (l.29-30); thesis intact (l.24): sector-wide AI-infra selloff, no GEV company news (BestStocks/Yahoo 10/20); earnings Wed 10/28 (Webull) so 48h blackout starts 10/26, not today (l.28); last GEV add 10/16, new week; tranche 2 of 3 (l.34), ~7.1% of total value (l.35)",
    "source": "Webull snapshot last trade 2026-10-20 10:27 ET"
+  },
+  {
+   "date": "2026-10-21",
+   "time_et": "10:33",
+   "ticker": "TSM",
+   "portfolio": "Aggressive AI & Energy",
+   "shares": 1.172525,
+   "price": 426.43,
+   "amount": 500.0,
+   "rule": "R1",
+   "reason": "R1 (stock-buy-rules.md l.19-20): 12.22% below 20-day closing high 485.80 (10/05, Webull daily bars; stock threshold 5%); 10/20 plan row 50 (priority 1): every 5-min close after the first 15 min above 423.39 (lowest 425.005, 10:10 bar; day low 423.74 never traded into it, so R1 not R2); no gap-down (open 432.66 vs prior close 425.08, l.29-30); thesis intact (l.24): sector-wide chip/AI selloff, no negative TSMC news (Q3 beat 10/15, PT raises); earnings done 10/15, no blackout (l.28); first TSM add, tranche 1 of 3 (l.34); ~3.9% of total value (l.35)",
+   "source": "Webull snapshot last trade 2026-10-21 10:33 ET"
+  },
+  {
+   "date": "2026-10-21",
+   "time_et": "10:33",
+   "ticker": "ITA",
+   "portfolio": "Diversifier",
+   "shares": 2.431966,
+   "price": 205.595,
+   "amount": 500.0,
+   "rule": "R1",
+   "reason": "R1 (stock-buy-rules.md l.19-20): 3.89% below 20-day closing high 213.92 (9/23 close, Webull daily bars; ETF threshold 3%; plan row 51 cited 214.00 from 9/22, which is 21 sessions back, corrected); 10/20 plan row 51 (priority 2); no gap-down (open 207.38 vs prior close 206.15), bought after first 15 min (l.29-30); thesis intact (l.24): sector-wide defense selloff (midterm defense-budget worries, 24/7 Wall St 10/20), no fund news; RTX print done 10/20 (beat and raise); first ITA add, tranche 1 of 3 (l.34); ~3.8% of total value (l.35)",
+   "source": "Webull snapshot last trade 2026-10-21 10:33 ET"
   }
  ]
 }
