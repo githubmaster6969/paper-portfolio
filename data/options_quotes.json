@@ -1,17 +1,7 @@
 {
- "asOf": "2026-10-21T16:06:59-04:00",
- "source": "Close 4 PM routine 2026-10-21T16:06:59-04:00: no open paper contracts in paper-options-log.csv (all closed by 10:09 ET); no Robinhood quotes needed. All options cash.",
- "marks": {
-  "d71fa424-05f2-4144-8080-cfc0e327725d": 3.225
- },
- "underlying": {
-  "NVDA": 219.865
- },
- "levels": {
-  "NVDA 10/26 220C": {
-   "stockTarget": 223.06,
-   "stockStop": 219.0,
-   "stopNote": "15-min close below 219.00 (lower of OR15 low 219.54 / PM shelf 219.00; finalized 09:45); -50% backstop 1.95"
-  }
- }
+ "asOf": "2026-10-22T09:34:32-04:00",
+ "source": "Open 9:31 routine 2026-10-22T09:34:32-04:00: no open paper contracts in paper-options-log.csv (none since 10/21 10:09 ET exits); no Robinhood quotes needed. All options cash.",
+ "marks": {},
+ "underlying": {},
+ "levels": {}
 }
