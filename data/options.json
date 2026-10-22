@@ -1,12 +1,12 @@
 {
  "budget": 5000.0,
- "cash": 5265.0,
- "openValue": 1230.0,
- "equity": 6495.0,
- "unrealized": 102.0,
- "realized": 1393.0,
- "totalPnl": 1495.0,
- "totalPct": 29.9,
+ "cash": 6111.0,
+ "openValue": 900.0,
+ "equity": 7011.0,
+ "unrealized": 336.0,
+ "realized": 1675.0,
+ "totalPnl": 2011.0,
+ "totalPct": 40.22,
  "open": [
   {
    "contract": "SPCX 10/26 152.5P",
@@ -14,15 +14,15 @@
    "type": "put",
    "strike": 152.5,
    "expiry": "2026-10-26",
-   "qty": 4,
+   "qty": 2,
    "entry": 2.82,
    "entryDate": "2026-10-22",
    "entryTime": "09:36",
-   "mark": 3.075,
-   "underlying": 152.3816,
-   "value": 1230.0,
-   "unrealized": 102.0,
-   "unrealizedPct": 9.04,
+   "mark": 4.5,
+   "underlying": 150.0919,
+   "value": 900.0,
+   "unrealized": 336.0,
+   "unrealizedPct": 59.57,
    "optStop": 1.41,
    "optHalf": 4.23,
    "optDouble": 5.64,
@@ -185,8 +185,22 @@
    "exit": 7.75,
    "status": "closed",
    "realized": 1040.0
+  },
+  {
+   "contract": "SPCX 10/26 152.5P",
+   "ticker": "SPCX",
+   "type": "put",
+   "strike": 152.5,
+   "expiry": "2026-10-26",
+   "qty": 2,
+   "entry": 2.82,
+   "entryDate": "2026-10-22",
+   "entryTime": "09:36",
+   "exit": 4.23,
+   "status": "closed",
+   "realized": 282.0
   }
  ],
- "asOf": "2026-10-22T09:45:16-04:00",
- "source": "9:41 opening scanner 2026-10-22 (logged 09:46 ET): Robinhood quote 09:45:16 ET; Webull SPCX 09:45:41 ET"
+ "asOf": "2026-10-22T10:51:11-04:00",
+ "source": "10:47 intraday scanner 2026-10-22 (logged 10:52 ET): Robinhood quote 10:51:11 ET; Webull SPCX 10:50 5-min bar"
 }
