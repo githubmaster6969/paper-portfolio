@@ -1,7 +1,17 @@
 {
- "asOf": "2026-10-22T09:34:32-04:00",
- "source": "Open 9:31 routine 2026-10-22T09:34:32-04:00: no open paper contracts in paper-options-log.csv (none since 10/21 10:09 ET exits); no Robinhood quotes needed. All options cash.",
- "marks": {},
- "underlying": {},
- "levels": {}
+ "asOf": "2026-10-22T09:45:16-04:00",
+ "source": "9:41 opening scanner 2026-10-22 (logged 09:46 ET): Robinhood quote 09:45:16 ET; Webull SPCX 09:45:41 ET",
+ "marks": {
+  "90c64075-455f-4d23-8524-581c0b967e5b": 3.075
+ },
+ "underlying": {
+  "SPCX": 152.3816
+ },
+ "levels": {
+  "SPCX 10/26 152.5P": {
+   "stockTarget": 148.308,
+   "stockStop": 160.0,
+   "stopNote": "15-min close above 160.00 (farther of OR15 high 154.22 / PM high 160.00, l.72); -50% backstop 1.41 (l.74)"
+  }
+ }
 }
