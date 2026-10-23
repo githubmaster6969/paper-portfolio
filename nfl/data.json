@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-22T23:50:23+00:00",
+ "generated_at": "2026-10-23T00:09:46+00:00",
  "source": "/home/runner/work/paper-portfolio/paper-portfolio/nfl/data/picks_log.csv",
  "picks": [
   {
@@ -1248,8 +1248,8 @@
    "reason": "props_v2_calibrated: median 1.7 catches, 22% of CHI red-zone work last 2 weeks; fair 40.2% after devig.",
    "reason_plain": "Roschon Johnson has carved out a bigger role the last two weeks and the model has him at about 1.7 catches, so two catches at +132 is priced too long.",
    "result": null,
-   "closing_odds": null,
-   "clv": null,
+   "closing_odds": 132,
+   "clv": 0,
    "profit_units": null
   },
   {
@@ -1273,8 +1273,8 @@
    "reason": "props_v2_calibrated: median 15.1 yds, 28% of NE RZ touches L2.",
    "reason_plain": "Kiner has become New England's No. 2 back with more work lately, and a low 14.5 line only needs a handful of carries.",
    "result": null,
-   "closing_odds": null,
-   "clv": null,
+   "closing_odds": -108,
+   "clv": -0.0068,
    "profit_units": null
   },
   {
@@ -1298,8 +1298,8 @@
    "reason": "R12 Tier A. Both teams' RZ No. 1 backs, td_v2 p 0.498 x 0.321. NO EDGE, logged per auto-tier rule.",
    "reason_plain": "NO EDGE. Both lead backs are priced well above the model.",
    "result": null,
-   "closing_odds": null,
-   "clv": null,
+   "closing_odds": 191,
+   "clv": -0.0085,
    "profit_units": null
   },
   {
@@ -1323,8 +1323,8 @@
    "reason": "R12 Tier B. RZ No. 3 on each team, td_v2 p 0.206 x 0.334. NO EDGE.",
    "reason_plain": "NO EDGE. Filler tier from each team's No. 3 red-zone option.",
    "result": null,
-   "closing_odds": null,
-   "clv": null,
+   "closing_odds": 654,
+   "clv": 0.0022,
    "profit_units": null
   },
   {
@@ -1348,8 +1348,8 @@
    "reason": "R12 Tier C. td_v2 p 0.232 x 0.209 (independence assumed), joint 4.85% vs 4.64% implied, EV +4.6%. Thin edge; both legs passed no gate edge flags but are not RZ top 3.",
    "reason_plain": "Thin edge. Two near-fair long shots; the edge depends on the independence assumption.",
    "result": null,
-   "closing_odds": null,
-   "clv": null,
+   "closing_odds": 1870,
+   "clv": 0.0044,
    "profit_units": null
   }
  ]
