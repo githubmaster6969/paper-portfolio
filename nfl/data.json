@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-25T20:07:30+00:00",
+ "generated_at": "2026-10-25T20:46:55+00:00",
  "source": "/home/runner/work/paper-portfolio/paper-portfolio/nfl/data/picks_log.csv",
  "picks": [
   {
@@ -1372,10 +1372,10 @@
    "stake_units": 1,
    "reason": "sides_v2 QB-adjusted (Huntley for Lamar, -1.4 pts): model BAL by 2.6, 50% market blend CIN by 0.1; cover 57.2% vs 50.5% implied. AN: line opened BAL -3.5, now +3; spread money 25% vs bets 32% (mild CIN lean).",
    "reason_plain": "Even with Tyler Huntley starting for the injured Lamar Jackson, the model rates Baltimore about even with Cincinnati at home, so getting 2.5 points is worth a bit more than the price.",
-   "result": null,
+   "result": "L",
    "closing_odds": null,
    "clv": null,
-   "profit_units": null
+   "profit_units": -1
   },
   {
    "week": 7,
@@ -1397,10 +1397,10 @@
    "stake_units": 1,
    "reason": "props_v2_calibrated: median 5.9 catches; fair 39.0% after devig. Iosivas on IR, Hudson IR.",
    "reason_plain": "With Andrei Iosivas on IR, Higgins is Cincinnati's clear No. 2 target and the model has him near 6 catches, so over 5.5 at +140 is priced long.",
-   "result": null,
+   "result": "W",
    "closing_odds": 140,
    "clv": 0,
-   "profit_units": null
+   "profit_units": 1.4
   },
   {
    "week": 7,
@@ -1422,10 +1422,10 @@
    "stake_units": 1,
    "reason": "props_v2_calibrated: median 76.5 yds; fair 50.0%. Sanders (TE) out; TB without Winfield Jr.",
    "reason_plain": "McMillan is Carolina's top target, Ja'Tavion Sanders is out and Tampa is missing safety Antoine Winfield Jr., and the model has him around 76 yards.",
-   "result": null,
+   "result": "L",
    "closing_odds": -113,
    "clv": 0,
-   "profit_units": null
+   "profit_units": -1
   },
   {
    "week": 7,
@@ -1447,10 +1447,10 @@
    "stake_units": 1,
    "reason": "props_v2_calibrated: median 5.0 catches; fair 41.7%. Jalen Tolbert inactive; Achane IR.",
    "reason_plain": "With Jalen Tolbert inactive and De'Von Achane on IR, more short targets go to Washington, and the model has him at about 5 catches.",
-   "result": null,
+   "result": "L",
    "closing_odds": 124,
    "clv": 0,
-   "profit_units": null
+   "profit_units": -1
   },
   {
    "week": 7,
@@ -1472,10 +1472,10 @@
    "stake_units": 1,
    "reason": "props_v2_calibrated: median 68.4 yds; fair 50.0%. Sarratt inactive.",
    "reason_plain": "Elijah Sarratt is inactive, so Flowers carries even more of the Baltimore passing game, and the model has him near 68 yards.",
-   "result": null,
+   "result": "W",
    "closing_odds": null,
    "clv": null,
-   "profit_units": null
+   "profit_units": 0.885
   },
   {
    "week": 7,
@@ -1497,10 +1497,10 @@
    "stake_units": 1,
    "reason": "R12 Tier A (1.0u), Week 7 Sunday 1 PM slate, forced run (every tier logged). One leg per game; no player reused across tiers; R13c staked-prop players (Higgins, McMillan, Washington, Flowers) excluded; inactives excluded. Model 26.3% vs implied 35.1%, EV -25.0%. NO EDGE. Prices: DK: CMC -235, Brown +100.",
    "reason_plain": "McCaffrey is San Francisco's goal-line back and Chase Brown leads Cincinnati in red-zone work. No edge: McCaffrey's price is too short, so it's tracked only because every tier gets logged.",
-   "result": null,
+   "result": "L",
    "closing_odds": 178,
    "clv": 0.0088,
-   "profit_units": null
+   "profit_units": -1
   },
   {
    "week": 7,
@@ -1522,10 +1522,10 @@
    "stake_units": 0.5,
    "reason": "R12 Tier B (0.5u), Week 7 Sunday 1 PM slate, forced run (every tier logged). One leg per game; no player reused across tiers; R13c staked-prop players (Higgins, McMillan, Washington, Flowers) excluded; inactives excluded. Model 9.8% vs implied 9.9%, EV -1.0%. NO EDGE. Prices: DK: Jones +135, Tremble +330.",
    "reason_plain": "Aaron Jones is Minnesota's top red-zone back, and Tremble has 20% of Carolina's red-zone looks the last 2 weeks with Ja'Tavion Sanders out, on National Tight Ends Day. Close to fair, a hair under.",
-   "result": null,
+   "result": "L",
    "closing_odds": 867,
    "clv": 0.0044,
-   "profit_units": null
+   "profit_units": -0.5
   },
   {
    "week": 7,
@@ -1547,10 +1547,10 @@
    "stake_units": 0.25,
    "reason": "R12 Tier C (0.25u), Week 7 Sunday 1 PM slate, forced run (every tier logged). One leg per game; no player reused across tiers; R13c staked-prop players (Higgins, McMillan, Washington, Flowers) excluded; inactives excluded. Model 5.6% vs implied 8.3%, EV -32.3%. NO EDGE. Prices: DK/FD: Marks -120, Hubbard -120, Pitts +260 FD (+255 DK).",
    "reason_plain": "Three red-zone leaders: Marks with David Montgomery inactive, Hubbard (50% of Carolina's red-zone touches lately) and Pitts on Tight Ends Day. No edge; tracked because every tier gets logged.",
-   "result": null,
+   "result": "L",
    "closing_odds": 1048,
    "clv": 0.0045,
-   "profit_units": null
+   "profit_units": -0.25
   },
   {
    "week": 7,
