@@ -1,17 +1,17 @@
 {
- "asOf": "2026-10-26T09:57:28-04:00",
- "source": "9:57 opening scanner 2026-10-26: Robinhood get_option_quotes updated_at 13:57:28Z; NVDA underlying = Webull 1-min 09:56 close",
- "marks": {
-  "b6b06292-83eb-4206-a528-bdd93866b763": 3.7
- },
- "underlying": {
-  "NVDA": 215.1
- },
- "levels": {
-  "NVDA 10/30 215C": {
-   "stockTarget": 216.18,
-   "stockStop": 212.61,
-   "stopNote": "15-min close below 212.61 (OR15 low, l.71); -50% backstop 1.64 (l.74)"
+  "asOf": "2026-10-26T10:51:22-04:00",
+  "source": "10:47-slot intraday scanner 2026-10-26: NVDA 10/30 215C x4 closed @4.93 (RH 15s 10:49:45 close); Robinhood get_option_quotes updated_at 14:51:22Z; no open contracts",
+  "marks": {
+    "b6b06292-83eb-4206-a528-bdd93866b763": 3.7
+  },
+  "underlying": {
+    "NVDA": 215.1
+  },
+  "levels": {
+    "NVDA 10/30 215C": {
+      "stockTarget": 216.18,
+      "stockStop": 212.61,
+      "stopNote": "15-min close below 212.61 (OR15 low, l.71); -50% backstop 1.64 (l.74)"
+    }
   }
- }
 }
