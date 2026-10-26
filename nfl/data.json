@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-25T20:46:55+00:00",
+ "generated_at": "2026-10-26T00:20:34+00:00",
  "source": "/home/runner/work/paper-portfolio/paper-portfolio/nfl/data/picks_log.csv",
  "picks": [
   {
@@ -1572,10 +1572,10 @@
    "stake_units": 1,
    "reason": "sides_v2 (Brissett vs Nix): model DEN by 1.9, 50% market blend DEN by 3.2; ARI win 40.7% vs 33.9% implied. AN: ML opened ARI +295, now +192; spread opened +7.5 now +4.5, ARI spread money 44% vs bets 38% (+6). DEN CB Pat Surtain II and S Talanoa Hufanga inactive; ARI RB Jeremiyah Love out. Week 5 ARI +5.5 lost (different matchup).",
    "reason_plain": "Denver is missing its two best defensive backs, Pat Surtain and Talanoa Hufanga, and the model has this closer to a 2-point game than the 4.5 the market shows, so Arizona at +195 is priced a bit long.",
-   "result": null,
+   "result": "L",
    "closing_odds": 208,
    "clv": -0.0143,
-   "profit_units": null
+   "profit_units": -1
   },
   {
    "week": 7,
@@ -1597,10 +1597,10 @@
    "stake_units": 1,
    "reason": "sides_v2 (Love vs Goff): model DET by 1.3, blend DET by 2.4; GB win 43.0% vs 37.6% implied. AN: ML opened GB +120, now +158; DET spread money 61% vs bets 38% (+23 sharp lean to DET), GB ML money 35% vs bets 27% (+8). Josh Jacobs makes his season debut.",
    "reason_plain": "The model sees Detroit as only about a 1-point better team at home, and Green Bay gets Josh Jacobs back, so +166 is a little long. Sharp spread money leans Detroit, which is the main risk.",
-   "result": null,
+   "result": "L",
    "closing_odds": 162,
    "clv": 0.0057,
-   "profit_units": null
+   "profit_units": -1
   },
   {
    "week": 7,
@@ -1622,10 +1622,10 @@
    "stake_units": 1,
    "reason": "props_v2_calibrated: median 93 yds (cal 106); fair 50.0% after devig. Davante Adams on IR, Nacua cleared to play (calf, was questionable).",
    "reason_plain": "With Davante Adams on IR, Nacua is the Rams' whole passing game and the model has him around 93 yards, well over 83.5. Risk: he was questionable with a calf injury.",
-   "result": null,
+   "result": "L",
    "closing_odds": null,
    "clv": null,
-   "profit_units": null
+   "profit_units": -1
   },
   {
    "week": 7,
@@ -1647,10 +1647,10 @@
    "stake_units": 1,
    "reason": "props_v2_calibrated: median 83 yds (cal 95); fair 50.0% after devig. GB TE Luke Musgrave out; DET S Kerby Joseph out; game total 55.5.",
    "reason_plain": "Watson is Green Bay's deep threat in a 55.5-point shootout, Detroit is without safety Kerby Joseph, and the model has him near 83 yards.",
-   "result": null,
+   "result": "L",
    "closing_odds": -113,
    "clv": 0,
-   "profit_units": null
+   "profit_units": -1
   },
   {
    "week": 7,
@@ -1672,10 +1672,10 @@
    "stake_units": 1,
    "reason": "props_v2_calibrated: median 6.0 catches; fair 43.5% after devig. Golden leads GB in red-zone share the last 2 weeks (33%); Musgrave out.",
    "reason_plain": "Golden has been Green Bay's top target lately and the model has him at about 6 catches, so over 5.5 at +117 is priced long.",
-   "result": null,
+   "result": "W",
    "closing_odds": null,
    "clv": null,
-   "profit_units": null
+   "profit_units": 1.17
   },
   {
    "week": 7,
@@ -1697,10 +1697,10 @@
    "stake_units": 1,
    "reason": "props_v2_calibrated: median 7.9 catches; fair 41.7% after devig. DEN CB Pat Surtain II and S Talanoa Hufanga inactive; Love out (more short passing).",
    "reason_plain": "McBride is Arizona's No. 1 target, Denver is missing Surtain and Hufanga, and the model has him near 8 catches, so over 7.5 at +124 is priced long.",
-   "result": null,
+   "result": "W",
    "closing_odds": 124,
    "clv": 0,
-   "profit_units": null
+   "profit_units": 1.24
   },
   {
    "week": 7,
@@ -1722,10 +1722,10 @@
    "stake_units": 1,
    "reason": "R12 Tier A (1.0u), Week 7 Sunday late slate, forced (every tier logged). One leg per game, no player reused across tiers, R13c staked-prop players (Nacua, Watson, Golden, McBride) excluded, leg pool RZ rank <=4 (rank <=3 left Tier C empty). Model 41.3% vs implied 46.4%, EV -11.0%. NO EDGE.",
    "reason_plain": "Gibbs and Kyren Williams are the lead red-zone backs for the two highest-scoring projected late offenses. No edge: Gibbs at -390 is too short, so it's tracked only because every tier gets logged.",
-   "result": null,
+   "result": "L",
    "closing_odds": 107,
    "clv": 0.018,
-   "profit_units": null
+   "profit_units": -1
   },
   {
    "week": 7,
@@ -1747,10 +1747,10 @@
    "stake_units": 0.5,
    "reason": "R12 Tier B (0.5u), Week 7 Sunday late slate, forced (every tier logged). One leg per game, no player reused across tiers, R13c staked-prop players (Nacua, Watson, Golden, McBride) excluded, leg pool RZ rank <=4 (rank <=3 left Tier C empty). Model 10.8% vs implied 13.3%, EV -18.8%. NO EDGE.",
    "reason_plain": "St. Brown is Detroit's No. 2 red-zone option in a 55.5-total game, and Tucker has 20% of Las Vegas's red-zone looks the last 2 weeks with Thornton out. No edge, tracked because every tier gets logged.",
-   "result": null,
+   "result": "L",
    "closing_odds": 620,
    "clv": 0.0063,
-   "profit_units": null
+   "profit_units": -0.5
   },
   {
    "week": 7,
@@ -1772,10 +1772,10 @@
    "stake_units": 0.25,
    "reason": "R12 Tier C (0.25u), Week 7 Sunday late slate, forced (every tier logged). One leg per game, no player reused across tiers, R13c staked-prop players (Nacua, Watson, Golden, McBride) excluded, leg pool RZ rank <=4 (rank <=3 left Tier C empty). Model 5.6% vs implied 8.7%, EV -35.5%. NO EDGE.",
    "reason_plain": "Jeanty and Dobbins lead their teams' red-zone work, and Jameson Williams is Detroit's No. 4 red-zone option (pool extended to rank 4 so Tier C could fill without reusing players). No edge, long shot.",
-   "result": null,
+   "result": "W",
    "closing_odds": 1029,
    "clv": 0.0019,
-   "profit_units": null
+   "profit_units": 2.635
   }
  ]
 }
