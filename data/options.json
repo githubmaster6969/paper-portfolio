@@ -1,13 +1,36 @@
 {
  "budget": 5000.0,
- "cash": 7239.0,
- "openValue": 0,
- "equity": 7239.0,
- "unrealized": 0,
+ "cash": 5927.0,
+ "openValue": 1480.0,
+ "equity": 7407.0,
+ "unrealized": 168.0,
  "realized": 2239.0,
- "totalPnl": 2239.0,
- "totalPct": 44.78,
- "open": [],
+ "totalPnl": 2407.0,
+ "totalPct": 48.14,
+ "open": [
+  {
+   "contract": "NVDA 10/30 215C",
+   "ticker": "NVDA",
+   "type": "call",
+   "strike": 215.0,
+   "expiry": "2026-10-30",
+   "qty": 4,
+   "entry": 3.28,
+   "entryDate": "2026-10-26",
+   "entryTime": "08:48",
+   "mark": 3.7,
+   "underlying": 215.1,
+   "value": 1480.0,
+   "unrealized": 168.0,
+   "unrealizedPct": 12.8,
+   "optStop": 1.64,
+   "optHalf": 4.92,
+   "optDouble": 6.56,
+   "stockTarget": 216.18,
+   "stockStop": 212.61,
+   "stopNote": "15-min close below 212.61 (OR15 low, l.71); -50% backstop 1.64 (l.74)"
+  }
+ ],
  "closed": [
   {
    "contract": "META 10/16 730C",
@@ -192,6 +215,6 @@
    "realized": 282.0
   }
  ],
- "asOf": "2026-10-26T09:45:21-04:00",
- "source": "Open 9:31 routine 2026-10-26 (run 09:45 ET): no open paper contracts in paper-options-log.csv (NVDA 10/30 215C and TSLA 10/30 380C still planned-bell, not yet graded/filled by the 9:46 routine), no quotes needed"
+ "asOf": "2026-10-26T09:57:28-04:00",
+ "source": "9:57 opening scanner 2026-10-26: Robinhood get_option_quotes updated_at 13:57:28Z; NVDA underlying = Webull 1-min 09:56 close"
 }
