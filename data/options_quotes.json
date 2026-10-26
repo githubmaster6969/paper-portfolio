@@ -1,6 +1,6 @@
 {
-  "asOf": "2026-10-26T10:51:22-04:00",
-  "source": "10:47-slot intraday scanner 2026-10-26: NVDA 10/30 215C x4 closed @4.93 (RH 15s 10:49:45 close); Robinhood get_option_quotes updated_at 14:51:22Z; no open contracts",
+  "asOf": "2026-10-26T16:06:31-04:00",
+  "source": "4 PM close update 2026-10-26 (run 16:06 ET): no open paper contracts in paper-options-log.csv, so no Robinhood quotes needed; options value is cash only",
   "marks": {
     "b6b06292-83eb-4206-a528-bdd93866b763": 3.7
   },
