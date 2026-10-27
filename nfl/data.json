@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-26T23:48:38+00:00",
+ "generated_at": "2026-10-27T00:15:34+00:00",
  "source": "/home/runner/work/paper-portfolio/paper-portfolio/nfl/data/picks_log.csv",
  "picks": [
   {
@@ -1798,8 +1798,8 @@
    "reason": "props_v2_calibrated: cal mu 6.0 rec; DAL No. 2 target vs PHI secondary missing CB Jakorian Bennett (IR). PHI: Hurts out (blood clot), Tanner McKee starts; DeVonta Smith, Dontayvion Wicks, RT Lane Johnson out. DAL: Turpin, LB Winters, OT Shelton out. Skeptic KEEP (2 same-game overs = R13b cap; Pierce overs dropped). Low confidence: edge just over 3% bar.",
    "reason_plain": "Pickens projects for about six catches against an Eagles secondary without Jakorian Bennett, over the 4.5 line.",
    "result": null,
-   "closing_odds": null,
-   "clv": null,
+   "closing_odds": -138,
+   "clv": 0,
    "profit_units": null
   },
   {
@@ -1848,8 +1848,8 @@
    "reason": "R12 Tier B (0.5u), MNF single-game slate (same-game legs allowed), forced run, NO EDGE (EV -20.7%). Pool expanded to RZ rank<=9 (PHI board gutted: Hurts, Smith, Wicks out). Pickens excluded (R13c), Pierce excluded (Barkley back). Tier A empty: no combo prices +100..+200 after SGP haircut. Javonte Williams is DAL's top red-zone option (39% of RZ touches, 24% the last 2 weeks, 8 TDs), DAL is projected for 24.0 points, and PHI allows the 15th-most TDs to RBs. Ryan Flournoy is DAL's No. 3 red-zone option (11% of RZ touches, 14% the last 2 weeks, 1 TDs), DAL is projected for 24.0 points, and PHI allows the 25th-most TDs to WRs.",
    "reason_plain": "Forced tier parlay with no model edge, logged for tracking.",
    "result": null,
-   "closing_odds": null,
-   "clv": null,
+   "closing_odds": 595,
+   "clv": 0,
    "profit_units": null
   },
   {
@@ -1873,8 +1873,8 @@
    "reason": "R12 Tier C (0.25u), MNF single-game slate (same-game legs allowed), forced run, NO EDGE (EV -35.3%). Pool expanded to RZ rank<=9 (PHI board gutted: Hurts, Smith, Wicks out). Pickens excluded (R13c), Pierce excluded (Barkley back). Tier A empty: no combo prices +100..+200 after SGP haircut. Darius Cooper is PHI's No. 5 red-zone option (9% of RZ touches, 0% the last 2 weeks, 4 TDs), PHI is projected for 19.5 points, and DAL allows the 1st-most TDs to WRs. Jake Ferguson is DAL's No. 5 red-zone option (6% of RZ touches, 0% the last 2 weeks, 3 TDs), DAL is projected for 24.0 points, and PHI allows the 32nd-most TDs to TEs.",
    "reason_plain": "Forced tier parlay with no model edge, logged for tracking.",
    "result": null,
-   "closing_odds": null,
-   "clv": null,
+   "closing_odds": 1142,
+   "clv": 0.0021,
    "profit_units": null
   }
  ]
