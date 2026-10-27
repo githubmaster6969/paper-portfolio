@@ -206,6 +206,6 @@
    "realized": 660.0
   }
  ],
- "asOf": "2026-10-27T09:42:25-04:00",
- "source": "9:30 open update 2026-10-27 (run 09:42 ET): no open paper contracts in paper-options-log.csv (NVDA 10/30 220C still planned-bell, graded by the 9:46 routine), so no Robinhood quotes needed; options value is cash only"
+ "asOf": "2026-10-27T13:08:47-04:00",
+ "source": "1 PM midday update 2026-10-27 (run 13:08 ET per `date`): no open paper contracts in paper-options-log.csv (NVDA 10/30 220C bell pick cancelled 09:54), so no Robinhood quotes needed; options value is cash only"
 }
