@@ -1,6 +1,6 @@
 {
- "asOf": "2026-10-27T16:11:45-04:00",
- "source": "4 PM close update 2026-10-27 (run 16:11 ET per `date`): no open paper contracts in paper-options-log.csv (NVDA 10/30 220C bell pick cancelled 09:54), so no Robinhood quotes needed; options value is cash only",
+ "asOf": "2026-10-28T09:35:46-04:00",
+ "source": "9:31 open update 2026-10-28 (run 09:35 ET per `date`): no open paper contracts in paper-options-log.csv (AMD 11/2 570C is a planned-bell pick pending its size OK and 9:31-close trigger check, not filled), so no Robinhood quotes needed; options value is cash only",
  "marks": {},
  "underlying": {},
  "levels": {}
