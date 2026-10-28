@@ -206,6 +206,6 @@
    "realized": 660.0
   }
  ],
- "asOf": "2026-10-28T09:35:46-04:00",
- "source": "9:31 open update 2026-10-28 (run 09:35 ET per `date`): no open paper contracts in paper-options-log.csv (AMD 11/2 570C is a planned-bell pick pending its size OK and 9:31-close trigger check, not filled), so no Robinhood quotes needed; options value is cash only"
+ "asOf": "2026-10-28T13:03:16-04:00",
+ "source": "1 PM midday update 2026-10-28 (run 13:03 ET per `date`): no open paper contracts in paper-options-log.csv (AMD 11/2 570C cancelled at 9:46), so no Robinhood quotes needed; options value is cash only"
 }
