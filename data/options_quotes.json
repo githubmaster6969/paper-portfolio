@@ -1,6 +1,6 @@
 {
- "asOf": "2026-10-28T16:03:42-04:00",
- "source": "4 PM close update 2026-10-28 (run 16:03 ET per `date`): no open paper contracts in paper-options-log.csv (AMD 11/2 570C cancelled at 9:46; 3:41 routine logged no overnight picks), so no Robinhood quotes needed; options value is cash only",
+ "asOf": "2026-10-29T09:42:13-04:00",
+ "source": "9:30 open update 2026-10-29 (run 09:42 ET per `date`): no open paper contracts in paper-options-log.csv (0 open rows, last mtime 2026-10-28 09:57), so no Robinhood quotes needed; options value is cash only",
  "marks": {},
  "underlying": {},
  "levels": {}
