@@ -1,7 +1,23 @@
 {
- "asOf": "2026-10-29T13:08:37-04:00",
- "source": "1 PM midday update 2026-10-29 (run 13:08 ET per `date`): no open paper contracts in paper-options-log.csv (0 open rows), so no Robinhood quotes needed; options value is cash only",
- "marks": {},
- "underlying": {},
- "levels": {}
+ "asOf": "2026-10-29T16:04:26-04:00",
+ "source": "4 PM close update 2026-10-29 (run 16:04 ET per `date`): Robinhood get_option_quotes marks updated 19:59:59Z (15:59:59 ET) for the COIN 10/30 160 straddle x2 (overnight E1, entered 15:59); COIN = Webull last trade 160.59.",
+ "marks": {
+  "467fa9a1-f0ee-4a3c-a82f-10c970d867b8": 6.0,
+  "b3d2ac66-bca1-4df6-a61f-64260d45ac28": 5.2
+ },
+ "underlying": {
+  "COIN": 160.59
+ },
+ "levels": {
+  "COIN 10/30 160C": {
+   "stockTarget": null,
+   "stockStop": null,
+   "stopNote": "E1 earnings straddle: sell both legs at Fri 10/30 09:31 1-min close (config l.118); breakevens 148.90/171.10 at expiry"
+  },
+  "COIN 10/30 160P": {
+   "stockTarget": null,
+   "stockStop": null,
+   "stopNote": "E1 earnings straddle: sell both legs at Fri 10/30 09:31 1-min close (config l.118); breakevens 148.90/171.10 at expiry"
+  }
+ }
 }

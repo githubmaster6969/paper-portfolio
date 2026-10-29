@@ -21,7 +21,7 @@ for r in rows:
     cost = entry * 100 * qty
     base = dict(contract=r['contract'], ticker=r['ticker'], type=r['type'], strike=float(r['strike']),
                 expiry=r['expiry'], qty=qty, entry=entry, entryDate=r['date'], entryTime=r['time'])
-    if r['status'] == 'open':
+    if r['status'] in ('open', 'overnight'):  # overnight holds (e.g. 3:59 entries) are open positions
         mark = q['marks'].get(r['instrument_id'])
         lv = q.get('levels', {}).get(r['contract'], {})
         base.update(mark=mark, underlying=q.get('underlying', {}).get(r['ticker']),

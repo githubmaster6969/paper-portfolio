@@ -1,13 +1,58 @@
 {
  "budget": 5000.0,
- "cash": 7899.0,
- "openValue": 0,
- "equity": 7899.0,
- "unrealized": 0,
+ "cash": 5679.0,
+ "openValue": 2240.0,
+ "equity": 7919.0,
+ "unrealized": 20.0,
  "realized": 2899.0,
- "totalPnl": 2899.0,
- "totalPct": 57.98,
- "open": [],
+ "totalPnl": 2919.0,
+ "totalPct": 58.38,
+ "open": [
+  {
+   "contract": "COIN 10/30 160C",
+   "ticker": "COIN",
+   "type": "call",
+   "strike": 160.0,
+   "expiry": "2026-10-30",
+   "qty": 2,
+   "entry": 5.85,
+   "entryDate": "2026-10-29",
+   "entryTime": "16:00",
+   "mark": 6.0,
+   "underlying": 160.59,
+   "value": 1200.0,
+   "unrealized": 30.0,
+   "unrealizedPct": 2.56,
+   "optStop": 2.925,
+   "optHalf": 8.77,
+   "optDouble": 11.7,
+   "stockTarget": null,
+   "stockStop": null,
+   "stopNote": "E1 earnings straddle: sell both legs at Fri 10/30 09:31 1-min close (config l.118); breakevens 148.90/171.10 at expiry"
+  },
+  {
+   "contract": "COIN 10/30 160P",
+   "ticker": "COIN",
+   "type": "put",
+   "strike": 160.0,
+   "expiry": "2026-10-30",
+   "qty": 2,
+   "entry": 5.25,
+   "entryDate": "2026-10-29",
+   "entryTime": "16:00",
+   "mark": 5.2,
+   "underlying": 160.59,
+   "value": 1040.0,
+   "unrealized": -10.0,
+   "unrealizedPct": -0.95,
+   "optStop": 2.625,
+   "optHalf": 7.88,
+   "optDouble": 10.5,
+   "stockTarget": null,
+   "stockStop": null,
+   "stopNote": "E1 earnings straddle: sell both legs at Fri 10/30 09:31 1-min close (config l.118); breakevens 148.90/171.10 at expiry"
+  }
+ ],
  "closed": [
   {
    "contract": "META 10/16 730C",
@@ -206,6 +251,6 @@
    "realized": 660.0
   }
  ],
- "asOf": "2026-10-29T13:08:37-04:00",
- "source": "1 PM midday update 2026-10-29 (run 13:08 ET per `date`): no open paper contracts in paper-options-log.csv (0 open rows), so no Robinhood quotes needed; options value is cash only"
+ "asOf": "2026-10-29T16:04:26-04:00",
+ "source": "4 PM close update 2026-10-29 (run 16:04 ET per `date`): Robinhood get_option_quotes marks updated 19:59:59Z (15:59:59 ET) for the COIN 10/30 160 straddle x2 (overnight E1, entered 15:59); COIN = Webull last trade 160.59."
 }
