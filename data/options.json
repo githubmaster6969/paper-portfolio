@@ -206,6 +206,6 @@
    "realized": 660.0
   }
  ],
- "asOf": "2026-10-29T09:42:13-04:00",
- "source": "9:30 open update 2026-10-29 (run 09:42 ET per `date`): no open paper contracts in paper-options-log.csv (0 open rows, last mtime 2026-10-28 09:57), so no Robinhood quotes needed; options value is cash only"
+ "asOf": "2026-10-29T13:08:37-04:00",
+ "source": "1 PM midday update 2026-10-29 (run 13:08 ET per `date`): no open paper contracts in paper-options-log.csv (0 open rows), so no Robinhood quotes needed; options value is cash only"
 }
