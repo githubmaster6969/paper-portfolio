@@ -1,12 +1,12 @@
 {
- "asOf": "2026-10-29T16:04:26-04:00",
- "source": "4 PM close update 2026-10-29 (run 16:04 ET per `date`): Robinhood get_option_quotes marks updated 19:59:59Z (15:59:59 ET) for the COIN 10/30 160 straddle x2 (overnight E1, entered 15:59); COIN = Webull last trade 160.59.",
+ "asOf": "2026-10-30T09:38:49-04:00",
+ "source": "9:31 open update 2026-10-30 (run 09:38 ET per `date`): Robinhood get_option_quotes marks updated 13:37:48-13:37:49Z (09:37:48-09:37:49 ET) for the COIN 10/30 160 straddle x2 (call mark 0.06, put mark 19.15); COIN = Webull last trade 140.7568 (09:37:45 ET). Straddle exit per l.118 is logged by the 9:46 routine.",
  "marks": {
-  "467fa9a1-f0ee-4a3c-a82f-10c970d867b8": 6.0,
-  "b3d2ac66-bca1-4df6-a61f-64260d45ac28": 5.2
+  "467fa9a1-f0ee-4a3c-a82f-10c970d867b8": 0.06,
+  "b3d2ac66-bca1-4df6-a61f-64260d45ac28": 19.15
  },
  "underlying": {
-  "COIN": 160.59
+  "COIN": 140.7568
  },
  "levels": {
   "COIN 10/30 160C": {

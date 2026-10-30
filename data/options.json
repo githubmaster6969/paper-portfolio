@@ -1,12 +1,12 @@
 {
  "budget": 5000.0,
  "cash": 5679.0,
- "openValue": 2240.0,
- "equity": 7919.0,
- "unrealized": 20.0,
+ "openValue": 3842.0,
+ "equity": 9521.0,
+ "unrealized": 1622.0,
  "realized": 2899.0,
- "totalPnl": 2919.0,
- "totalPct": 58.38,
+ "totalPnl": 4521.0,
+ "totalPct": 90.42,
  "open": [
   {
    "contract": "COIN 10/30 160C",
@@ -18,11 +18,11 @@
    "entry": 5.85,
    "entryDate": "2026-10-29",
    "entryTime": "16:00",
-   "mark": 6.0,
-   "underlying": 160.59,
-   "value": 1200.0,
-   "unrealized": 30.0,
-   "unrealizedPct": 2.56,
+   "mark": 0.06,
+   "underlying": 140.7568,
+   "value": 12.0,
+   "unrealized": -1158.0,
+   "unrealizedPct": -98.97,
    "optStop": 2.925,
    "optHalf": 8.77,
    "optDouble": 11.7,
@@ -40,11 +40,11 @@
    "entry": 5.25,
    "entryDate": "2026-10-29",
    "entryTime": "16:00",
-   "mark": 5.2,
-   "underlying": 160.59,
-   "value": 1040.0,
-   "unrealized": -10.0,
-   "unrealizedPct": -0.95,
+   "mark": 19.15,
+   "underlying": 140.7568,
+   "value": 3830.0,
+   "unrealized": 2780.0,
+   "unrealizedPct": 264.76,
    "optStop": 2.625,
    "optHalf": 7.88,
    "optDouble": 10.5,
@@ -251,6 +251,6 @@
    "realized": 660.0
   }
  ],
- "asOf": "2026-10-29T16:04:26-04:00",
- "source": "4 PM close update 2026-10-29 (run 16:04 ET per `date`): Robinhood get_option_quotes marks updated 19:59:59Z (15:59:59 ET) for the COIN 10/30 160 straddle x2 (overnight E1, entered 15:59); COIN = Webull last trade 160.59."
+ "asOf": "2026-10-30T09:38:49-04:00",
+ "source": "9:31 open update 2026-10-30 (run 09:38 ET per `date`): Robinhood get_option_quotes marks updated 13:37:48-13:37:49Z (09:37:48-09:37:49 ET) for the COIN 10/30 160 straddle x2 (call mark 0.06, put mark 19.15); COIN = Webull last trade 140.7568 (09:37:45 ET). Straddle exit per l.118 is logged by the 9:46 routine."
 }
