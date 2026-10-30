@@ -234,6 +234,6 @@
    "realized": 2030.0
   }
  ],
- "asOf": "2026-10-30T13:11:13-04:00",
- "source": "1 PM midday update 2026-10-30 (run 13:11 ET per `date`): no open paper option contracts in paper-options-log.csv, so no Robinhood quotes pulled."
+ "asOf": "2026-10-30T16:01:54-04:00",
+ "source": "4 PM close update 2026-10-30 (run 16:01 ET per `date`): no open paper option contracts in paper-options-log.csv, so no Robinhood quotes pulled."
 }
