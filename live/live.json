@@ -1,0 +1,24 @@
+{
+  "account": "Robinhood MCP (real money)",
+  "start": 502.0,
+  "goal": 1500.0,
+  "deposits": 502.0,
+  "value": 502.0,
+  "cash": 502.0,
+  "optionsValue": 0.0,
+  "buyingPower": 502.0,
+  "pnl": 0.0,
+  "pnlPct": 0.0,
+  "progressPct": 0.0,
+  "realized": 0,
+  "open": [],
+  "trades": [],
+  "series": [
+    {
+      "t": "2026-10-30T13:31:25-04:00",
+      "value": 502.0
+    }
+  ],
+  "asOf": "2026-10-30T13:31:25-04:00",
+  "source": "Robinhood MCP read-only: get_portfolio, get_option_positions(nonzero=true), get_option_orders"
+}

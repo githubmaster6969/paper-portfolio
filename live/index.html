@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Live Account · Real money</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#FAFAF7">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2316161A'/><path d='M7 21l6-6 4 4 8-9' stroke='%23FAFAF7' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<style>
+:root{--bg:#FAFAF7;--card:#FFFFFF;--line:#E7E5E0;--line2:#F0EEE9;--ink:#16161A;--ink2:#55555C;--ink3:#6B6B72;
+--accent:#1F7A4D;--accent-soft:#E6F2EB;--loss:#C2413B;--loss-soft:#F8E7E5;--live:#B4531F;--live-soft:#FBEDE3;--r:14px;
+--sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Inter,sans-serif;
+--mono:"SF Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;letter-spacing:-.011em;background:var(--bg);color:var(--ink);font:15px/1.5 var(--sans);-webkit-font-smoothing:antialiased}
+.num{font-variant-numeric:tabular-nums}.up{color:var(--accent)}.dn{color:var(--loss)}.flat{color:var(--ink3)}
+a{color:inherit}:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+.top{position:sticky;top:0;z-index:20;background:rgba(250,250,247,.72);backdrop-filter:saturate(1.8) blur(20px);-webkit-backdrop-filter:saturate(1.8) blur(20px);border-bottom:1px solid rgba(22,22,26,.06)}
+.top-in{max-width:960px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:15px}
+.mark{width:26px;height:26px;border-radius:7px;background:var(--ink);display:grid;place-items:center}
+.tag{font-size:12px;font-weight:600;color:var(--live);border:1px solid #EBC9B3;border-radius:999px;padding:3px 10px;background:var(--live-soft)}
+.nav{font-size:13px;font-weight:500;color:var(--ink2);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;background:var(--card);min-height:36px;display:inline-flex;align-items:center}
+main{max-width:960px;margin:0 auto;padding:24px 20px 56px;display:grid;gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px}
+.card h2{font-size:17px;font-weight:600;margin:0 0 14px;letter-spacing:-.022em}
+.eyebrow{font-size:13px;color:var(--ink3);font-weight:500;margin:0 0 6px}
+.big{font-size:clamp(46px,12vw,68px);line-height:1;font-weight:600;letter-spacing:-.045em;margin:0}
+.big .cents{color:var(--ink3);font-weight:500}
+.hero-row{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:14px}.hero-row .k{color:var(--ink3);font-weight:500;margin-right:6px}
+.meta{font-size:12.5px;color:var(--ink3);margin-top:14px}
+.bar{height:12px;background:var(--line2);border-radius:999px;overflow:hidden;margin:10px 0 8px}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:999px;transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.bar-l{display:flex;justify-content:space-between;font-size:13px;color:var(--ink3)}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{text-align:left;font-weight:500;color:var(--ink3);font-size:12px;padding:6px 8px;border-bottom:1px solid var(--line)}
+td{padding:9px 8px;border-bottom:1px solid var(--line2)}td.r,th.r{text-align:right}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.empty{color:var(--ink3);font-size:14px;padding:6px 0}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cmp > div{border:1px solid var(--line2);border-radius:12px;padding:14px}
+.cmp .h{font-size:12px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.cmp .v{font-size:22px;font-weight:600;letter-spacing:-.03em}
+.cmp .s{font-size:13px;color:var(--ink2)}
+.rules{font-size:13.5px;color:var(--ink2);margin:0;padding-left:18px}
+.pill{font-size:11.5px;font-weight:600;border-radius:999px;padding:2px 8px;background:var(--line2);color:var(--ink2)}
+.pill.filled{background:var(--live-soft);color:var(--live)}.pill.closed{background:var(--accent-soft);color:var(--accent)}
+.grid2{display:grid;gap:20px}
+@media (min-width:760px){.grid2{grid-template-columns:1fr 1fr}}
+@media (max-width:479px){.tag{display:none}}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <div class="brand">
+    <span class="mark" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 32 32"><path d="M5 23l7-7 5 5 10-11" stroke="#FAFAF7" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <span>Live Account</span><span class="tag">Real money</span>
+  </div>
+  <a class="nav" href="../">Paper dashboard →</a>
+</div></header>
+<main id="main">
+  <section aria-labelledby="h-val">
+    <p class="eyebrow" id="h-val">Robinhood · real options account</p>
+    <p class="big num" id="val">—</p>
+    <div class="hero-row num">
+      <span><span class="k">Cash</span><span id="cash">—</span></span>
+      <span><span class="k">P&amp;L</span><span id="pnl">—</span></span>
+      <span><span class="k">Realized</span><span id="real">—</span></span>
+    </div>
+    <p class="meta" id="asof"></p>
+  </section>
+
+  <section class="card" aria-labelledby="h-goal">
+    <h2 id="h-goal">Goal: <span id="goal">$1,500</span></h2>
+    <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" id="pbar"><i id="pfill" style="width:0"></i></div>
+    <div class="bar-l num"><span id="pstart">$502 start</span><span id="pmid"></span><span id="pend">$1,500</span></div>
+  </section>
+
+  <div class="grid2">
+    <section class="card" aria-labelledby="h-open">
+      <h2 id="h-open">Open positions</h2>
+      <div id="open" class="scroll"></div>
+    </section>
+    <section class="card" aria-labelledby="h-cmp">
+      <h2 id="h-cmp">Live vs paper options</h2>
+      <div class="cmp num" id="cmp"></div>
+    </section>
+  </div>
+
+  <section class="card" aria-labelledby="h-hist">
+    <h2 id="h-hist">Trade history</h2>
+    <div id="hist" class="scroll"></div>
+  </section>
+
+  <section class="card" aria-labelledby="h-rules">
+    <h2 id="h-rules">How this account is run</h2>
+    <ul class="rules">
+      <li>Pedro approves every real trade before it is placed.</li>
+      <li>1 contract per trade, about $300 max premium.</li>
+      <li>Same written rules as the paper rulebook. No written rule, no trade.</li>
+      <li>Figures come from read-only Robinhood pulls, timestamped in ET.</li>
+    </ul>
+  </section>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const usd=(n,d=2)=>n==null?'—':(n<0?'−':'')+'$'+Math.abs(n).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});
+const sgn=n=>n==null?'—':(n>0?'+':'')+usd(n);
+const cls=n=>n>0?'up':n<0?'dn':'flat';
+const fmtT=s=>{try{return new Date(s).toLocaleString('en-US',{timeZone:'America/New_York',month:'short',day:'numeric',hour:'numeric',minute:'2-digit'})+' ET'}catch(e){return s}};
+function big(n){const [d,c]=n.toFixed(2).split('.');return '$'+Number(d).toLocaleString('en-US')+'<span class="cents">.'+c+'</span>'}
+Promise.all([
+  fetch('live.json?t='+Date.now()).then(r=>r.json()),
+  fetch('../data/options.json?t='+Date.now()).then(r=>r.json()).catch(()=>null)
+]).then(([L,P])=>{
+  $('val').innerHTML=big(L.value);
+  $('cash').textContent=usd(L.cash);
+  $('pnl').innerHTML=`<span class="${cls(L.pnl)}">${sgn(L.pnl)} (${L.pnlPct>0?'+':''}${L.pnlPct}%)</span>`;
+  $('real').innerHTML=`<span class="${cls(L.realized)}">${sgn(L.realized)}</span>`;
+  $('asof').textContent='Robinhood as of '+fmtT(L.asOf);
+  $('goal').textContent=usd(L.goal,0);
+  $('pstart').textContent=usd(L.start,0)+' start';
+  $('pend').textContent=usd(L.goal,0);
+  $('pmid').textContent=L.progressPct+'% · '+usd(Math.max(0,L.goal-L.value),0)+' to go';
+  $('pbar').setAttribute('aria-valuenow',L.progressPct);
+  requestAnimationFrame(()=>$('pfill').style.width=Math.max(L.progressPct,0.5)+'%');
+  $('open').innerHTML=L.open.length?`<table><thead><tr><th>Contract</th><th class="r">Qty</th><th class="r">Cost</th><th class="r">Value</th><th class="r">P&amp;L</th></tr></thead><tbody>${
+    L.open.map(p=>`<tr><td>${p.contract}${p.expiry?' · '+p.expiry:''}</td><td class="r">${p.qty}</td><td class="r">${usd(p.avgCost*p.qty)}</td><td class="r">${usd(p.marketValue)}</td><td class="r ${cls(p.unrealized)}">${sgn(p.unrealized)}</td></tr>`).join('')}</tbody></table>`
+    :'<p class="empty">No open positions. All cash.</p>';
+  $('hist').innerHTML=L.trades.length?`<table><thead><tr><th>Date</th><th>Contract</th><th class="r">Entry</th><th class="r">Exit</th><th>Status</th><th class="r">P&amp;L</th></tr></thead><tbody>${
+    L.trades.slice().reverse().map(t=>`<tr><td>${t.date}</td><td>${t.contract}</td><td class="r">${t.entry==null?'—':t.entry.toFixed(2)}</td><td class="r">${t.exit==null?'—':t.exit.toFixed(2)}</td><td><span class="pill ${t.status}">${t.status}</span></td><td class="r ${cls(t.pnl)}">${sgn(t.pnl)}</td></tr>`).join('')}</tbody></table>`
+    :'<p class="empty">No real trades yet.</p>';
+  const live=`<div><div class="h">Live (real)</div><div class="v">${usd(L.value)}</div><div class="s">Start ${usd(L.start,0)} · <span class="${cls(L.pnl)}">${L.pnlPct>0?'+':''}${L.pnlPct}%</span></div><div class="s">Realized ${sgn(L.realized)}</div><div class="s">${L.trades.filter(t=>t.status==='closed').length} closed trades</div></div>`;
+  const paper=P?`<div><div class="h">Paper options</div><div class="v">${usd(P.equity)}</div><div class="s">Start ${usd(P.budget,0)} · <span class="${cls(P.totalPnl)}">${P.totalPct>0?'+':''}${P.totalPct}%</span></div><div class="s">Realized ${sgn(P.realized)}</div><div class="s">${(P.closed||[]).length} closed trades</div></div>`:'<div><div class="h">Paper options</div><div class="s">Unavailable</div></div>';
+  $('cmp').innerHTML=live+paper;
+}).catch(e=>{$('val').textContent='Data unavailable';console.error(e)});
+</script>
+</body>
+</html>
