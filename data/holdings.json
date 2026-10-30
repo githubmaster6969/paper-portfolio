@@ -244,6 +244,15 @@
    "spy_price": 760.67,
    "spy_shares": 1.051704,
    "spy_price_source": "Webull snapshot last trade 2026-10-23 15:25 ET"
+  },
+  {
+   "date": "2026-10-30",
+   "type": "deposit",
+   "amount": 800.0,
+   "note": "Weekly Friday deposit",
+   "spy_price": 753.3,
+   "spy_shares": 1.061994,
+   "spy_price_source": "Webull snapshot last trade 2026-10-30 15:28 ET"
   }
  ],
  "recurring_deposit": {
@@ -384,6 +393,18 @@
    "rule": "R1",
    "reason": "R1 (stock-buy-rules.md l.19-20): 22.71% below 20-day closing high 253.62 (10/05 close; window 9/25-10/22, 20 Webull daily bars by script); 10/22 plan row 70 (priority 2, last eligible day); R2 (l.21-23) also held: traded into pre-written 193.14 (day low 187.25, 09:35 5-min bar), every 5-min close above it since the 10:35 bar; gap-down open 192.25 vs 195.59 (-1.71%), bought well after the first 15 min (l.29-30); thesis intact (l.24): sector-wide AI-infra selloff, no company-specific bad news (PT trims with ratings kept); earnings Wed 10/28 (Webull calendar), l.28 48h blackout starts Mon 10/26, today eligible; cash 1600 -> 1100 keeps the 1000 reserve (l.36); ~3.74% of total value after the buy (l.35)",
    "source": "Webull snapshot last trade 2026-10-23 15:26 ET"
+  },
+  {
+   "date": "2026-10-30",
+   "time_et": "15:29",
+   "ticker": "VXUS",
+   "portfolio": "Safe Core",
+   "shares": 6.098677,
+   "price": 81.985,
+   "amount": 500.0,
+   "rule": "R1",
+   "reason": "R1 (stock-buy-rules.md l.19-20): 4.50% below 20-day closing high 85.85 (10/05 close; window 10/02-10/29, 20 Webull daily bars by script; ETF threshold 3%); 10/28 plan row 96 (VXUS priority 1 for Fri 10/30 if R1 re-met) and l.37 Safe Core first on a broad selloff: SPY -2.12% at 753.02, VOO -2.14% (Webull 15:29 ET); R2 shelf 82.07 not held (low 81.785), so R1 not R2; gap-down open 82.66 vs 83.65 (-1.18%), bought well after the first 15 min (l.29-30); thesis intact (l.24): market-wide selloff (Intel guide, AMZN miss per 10/30 pre-market notes), no fund news; ETF, no earnings (l.28); broad ETF exempt from 10% cap (l.35); funded by the 10/30 800 Friday deposit, cash 1900 -> 1400 keeps the 1000 reserve (l.36)",
+   "source": "Webull snapshot last trade 2026-10-30 15:29 ET"
   }
  ]
 }
