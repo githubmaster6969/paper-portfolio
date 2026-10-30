@@ -3,22 +3,37 @@
   "start": 502.0,
   "goal": 1500.0,
   "deposits": 502.0,
-  "value": 502.0,
-  "cash": 502.0,
+  "value": 500.91,
+  "cash": 500.91,
   "optionsValue": 0.0,
-  "buyingPower": 502.0,
-  "pnl": 0.0,
-  "pnlPct": 0.0,
+  "buyingPower": 500.91,
+  "pnl": -1.09,
+  "pnlPct": -0.22,
   "progressPct": 0.0,
-  "realized": 0,
+  "realized": -1.0,
   "open": [],
-  "trades": [],
+  "trades": [
+    {
+      "date": "2026-10-30",
+      "time": "15:46",
+      "contract": "SPY 2026-11-20 790C",
+      "qty": 1.0,
+      "entry": 0.74,
+      "exit": 0.73,
+      "status": "closed",
+      "pnl": -1.0
+    }
+  ],
   "series": [
     {
       "t": "2026-10-30T13:31:25-04:00",
       "value": 502.0
+    },
+    {
+      "t": "2026-10-30T15:50:00-04:00",
+      "value": 500.91
     }
   ],
-  "asOf": "2026-10-30T13:31:25-04:00",
+  "asOf": "2026-10-30T15:50:00-04:00",
   "source": "Robinhood MCP read-only: get_portfolio, get_option_positions(nonzero=true), get_option_orders"
 }
