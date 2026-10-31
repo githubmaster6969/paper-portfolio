@@ -193,6 +193,77 @@ footer p{max-width:80ch;margin:0}
   .sleeve:active,.mv:active,.g-btn:active,.chip:active,.seg button:active,.btn:active{transform:none}
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 }
+
+/* ===== v2 layout & type pass (2026-10-31): presentation only, data logic unchanged ===== */
+:root{--gap:16px;--pad:16px}
+.brand span:not(.mark):not(.tag){white-space:nowrap}
+main{padding:16px 14px 48px}
+.grid,.col{gap:var(--gap)}
+.card{padding:var(--pad)}
+.card h2,#h-sleeves{font-size:16px!important;font-weight:600!important;letter-spacing:-.02em}
+.card-h{margin-bottom:12px}
+/* summary card */
+.hero.summary{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px var(--pad) var(--pad);box-shadow:0 1px 2px rgba(22,22,26,.04)}
+.hero.summary .eyebrow{font-size:12.5px;text-transform:none;margin-bottom:8px}
+.hero.summary .big{font-size:clamp(40px,11vw,60px)}
+.hero.summary #verdict{margin-top:14px}
+.hero.summary .verdict{display:flex;width:100%;justify-content:center;text-align:center;border-radius:12px;padding:10px 12px;font-size:14px;font-weight:600}
+.hero-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+.hero-row>span{display:flex;flex-direction:column;gap:2px;background:var(--bg);border:1px solid var(--line2);border-radius:10px;padding:10px 12px;min-width:0}
+.hero-row .k{margin:0;font-size:12px;letter-spacing:0}
+.hero-row .num{font-size:15px;font-weight:600;line-height:1.3;overflow-wrap:anywhere}
+.hero.summary .meta{margin-top:12px;font-size:12px}
+/* charts */
+.chart-box{height:240px}
+.chart-ctrl{flex-direction:column;flex-wrap:nowrap;align-items:stretch;gap:10px}
+#ranges{display:flex;width:100%}
+#ranges button{flex:1}
+#lines{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:2px;mask-image:linear-gradient(90deg,#000 88%,transparent)}
+#lines::-webkit-scrollbar{display:none}
+#lines .chip{flex:none}
+.pnl-v{font-size:28px}
+.div-chart{max-height:384px;overflow-y:auto;padding-right:4px}
+/* readable lists */
+.row{padding:11px 2px;gap:3px 12px}
+.row .t{font-size:14.5px}
+.row .d{font-size:12px;line-height:1.45}
+#cashBody .row .d[style]{font-family:var(--sans);font-size:12.5px;color:var(--ink2);line-height:1.5;margin-top:2px}
+#cashBody .rows:last-of-type,#optBody .rows:last-of-type{max-height:460px;overflow-y:auto;padding-right:6px;border-bottom:1px solid var(--line2)}
+.rows .row:nth-child(even){background:linear-gradient(90deg,transparent,rgba(240,238,233,.45),transparent)}
+.kv{gap:10px}
+.kv>div{background:var(--bg);border:1px solid var(--line2);border-radius:10px;padding:8px 10px;min-width:0}
+.kv dd{font-weight:600;font-size:14px;line-height:1.3;overflow-wrap:anywhere}
+.mv-h{font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+/* mobile order: summary, chart, options, P&L, movers, sleeves, holdings, cash */
+@media (max-width:1023px){
+  .col{display:contents}
+  #app{grid-template-columns:minmax(0,1fr)}
+  #app>.col>*{min-width:0}
+  .hero{order:1}
+  .card[aria-labelledby="h-perf"]{order:2}
+  #options{order:3}
+  #pnl{order:4}
+  .card[aria-labelledby="h-movers"]{order:5}
+  section[aria-labelledby="h-sleeves"]{order:6}
+  .card[aria-labelledby="h-hold"]{order:7}
+  #cash{order:8}
+}
+@media (min-width:640px){
+  main{padding:24px 20px 56px}
+  :root{--pad:20px}
+  .chart-box{height:300px}
+  .chart-ctrl{flex-direction:row;flex-wrap:wrap;align-items:center}
+  #ranges{width:auto}
+  #lines{mask-image:none;flex-wrap:wrap}
+  .hero-row{grid-template-columns:repeat(4,1fr)}
+}
+@media (min-width:1024px){
+  :root{--gap:20px;--pad:24px}
+  main{padding:32px 28px 64px}
+  .rail{position:static}
+  .chart-box{height:320px}
+  .hero.summary{padding:24px}
+}
 </style>
 </head>
 <body>
@@ -212,7 +283,7 @@ footer p{max-width:80ch;margin:0}
   <div id="alerts"></div>
   <div class="grid" id="app">
     <div class="col">
-      <section class="hero" aria-labelledby="h-total">
+      <section class="hero summary" aria-labelledby="h-total">
         <p class="eyebrow" id="h-total">Total value</p>
         <p class="big num" id="total"><span class="sk" style="display:inline-block;width:260px;height:56px"></span></p>
         <div class="hero-row" id="heroRow"></div>
@@ -255,7 +326,7 @@ footer p{max-width:80ch;margin:0}
 
       <section aria-labelledby="h-sleeves">
         <div class="card-h" style="margin:4px 2px 12px">
-          <h2 id="h-sleeves" style="font-size:15px;font-weight:600;margin:0">Sleeves</h2>
+          <h2 id="h-sleeves" style="margin:0">Sleeves</h2>
           <span class="sub" id="sleeveSub"></span>
         </div>
         <div class="sleeves" id="sleeves"></div>
