@@ -500,6 +500,17 @@ document.addEventListener('DOMContentLoaded', function () {
   U.topScroll($('total'));
 
   function opt(p) { return U.fetchJSON(p).catch(function () { return null; }); }
+  function renderMonthly(M) {
+    var el = $('monthly'), rs = (M && M.reviews) || [];
+    if (!rs.length) { el.innerHTML = '<div class="empty">No monthly review yet</div>'; return; }
+    el.innerHTML = rs.slice().reverse().map(function (r, i) {
+      var stats = (r.stats || []).map(function (x) { return '<div class="mr-stat"><div class="mr-v num">' + esc(x.value) + '</div><div class="mr-l">' + esc(x.label) + '</div></div>'; }).join('');
+      var secs = (r.sections || []).map(function (x) { return '<div class="mr-sec"><h3>' + esc(x.h) + '</h3><ul>' + (x.items || []).map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul></div>'; }).join('');
+      var body = '<p class="mr-head">' + esc(r.headline) + '</p><div class="mr-stats">' + stats + '</div>' + secs + '<p class="note">' + esc(r.period) + ' · written ' + esc(r.written) + ' · ' + esc(r.factCheck || '') + '</p>';
+      return '<section class="card mr"' + (i ? ' style="margin-top:16px"' : '') + '><details class="mr-d"' + (i ? '' : ' open') + '><summary><h2>' + esc(r.title) + '</h2><span class="tag gray">' + esc(r.month) + '</span></summary>' + body + '</details></section>';
+    }).join('');
+  }
+  opt('data/monthly_reviews.json').then(function (M) { renderMonthly(M); });
   Promise.all([U.fetchJSON('data/portfolio.json'), opt('data/holdings.json'), opt('data/options.json'), opt('data/trade_notes.json'), opt('data/about.json'), opt('data/setups.json'), opt('data/buy_notes.json')]).then(function (r) {
     D = r[0]; HJ = r[1]; OPT = r[2]; NOTES = (r[3] && r[3].trades) || {}; ABOUT = (r[4] && r[4].tickers) || {}; SETUPS = r[5] || {}; BUYN = (r[6] && r[6].buys) || {};
     var bt = (D.buys || []).map(function (b) { return b.ticker; }).filter(function (x, i, a) { return a.indexOf(x) === i; }).sort();
