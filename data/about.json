@@ -1,0 +1,344 @@
+{
+ "_about": "Company / fund facts for the holding detail modal. Only sourced facts: descriptions paraphrased from the Webull company profile (stocks) or TradingView fund data (ETFs); EPS/revenue actual vs estimate from the Webull earnings calendar (latest reported quarter); next report date from the TradingView earnings calendar (confirmed=false means the company has not confirmed it). ETFs have no earnings. Missing = omitted on the page. Refresh: re-pull with Webull get_company_profile / get_stock_earnings_calendar and TradingView mcp-tv-get-earnings-calendar after any holding reports, and set asOf.",
+ "asOf": "2026-11-01",
+ "tickers": {
+  "VOO": {
+   "kind": "etf",
+   "name": "Vanguard S&P 500 ETF",
+   "about": "A fund that tracks the S&P 500 index.",
+   "tracks": "S&P 500",
+   "expenseRatio": 0.03,
+   "source": "TradingView symbol data (2026-11-01)"
+  },
+  "VXUS": {
+   "kind": "etf",
+   "name": "Vanguard Total International Stock ETF",
+   "about": "A fund that tracks the FTSE Global All Cap ex US index.",
+   "tracks": "FTSE Global All Cap ex US",
+   "expenseRatio": 0.05,
+   "source": "TradingView symbol data (2026-11-01)"
+  },
+  "SCHD": {
+   "kind": "etf",
+   "name": "Schwab US Dividend Equity ETF",
+   "about": "A fund that tracks the Dow Jones U.S. Dividend 100 index.",
+   "tracks": "Dow Jones U.S. Dividend 100",
+   "expenseRatio": 0.06,
+   "source": "TradingView symbol data (2026-11-01)"
+  },
+  "BND": {
+   "kind": "etf",
+   "name": "Vanguard Total Bond Market ETF",
+   "about": "A fund that tracks the Bloomberg US Aggregate Float Adjusted index.",
+   "tracks": "Bloomberg US Aggregate Float Adjusted",
+   "expenseRatio": 0.03,
+   "source": "TradingView symbol data (2026-11-01)"
+  },
+  "XLV": {
+   "kind": "etf",
+   "name": "Health Care Select Sector SPDR Fund",
+   "about": "A fund that tracks the S&P Health Care Select Sector index.",
+   "tracks": "S&P Health Care Select Sector",
+   "expenseRatio": 0.08,
+   "source": "TradingView symbol data (2026-11-01)"
+  },
+  "AVUV": {
+   "kind": "etf",
+   "name": "Avantis U.S. Small Cap Value ETF",
+   "about": "An actively managed fund (it does not track an index).",
+   "tracks": null,
+   "expenseRatio": 0.25,
+   "source": "TradingView symbol data (2026-11-01)"
+  },
+  "INDA": {
+   "kind": "etf",
+   "name": "iShares MSCI India ETF",
+   "about": "A fund that tracks the MSCI India index.",
+   "tracks": "MSCI India",
+   "expenseRatio": 0.61,
+   "source": "TradingView symbol data (2026-11-01)"
+  },
+  "IAU": {
+   "kind": "etf",
+   "name": "iShares Gold Trust",
+   "about": "A fund that tracks the LBMA Gold Price PM index.",
+   "tracks": "LBMA Gold Price PM",
+   "expenseRatio": 0.25,
+   "source": "TradingView symbol data (2026-11-01)"
+  },
+  "ITA": {
+   "kind": "etf",
+   "name": "iShares U.S. Aerospace & Defense ETF",
+   "about": "A fund that tracks the Dow Jones U.S. Select Aerospace & Defense index.",
+   "tracks": "Dow Jones U.S. Select Aerospace & Defense",
+   "expenseRatio": 0.37,
+   "source": "TradingView symbol data (2026-11-01)"
+  },
+  "SMH": {
+   "kind": "etf",
+   "name": "VanEck Semiconductor ETF",
+   "about": "A fund that tracks the MVIS US Listed Semiconductor 25 index.",
+   "tracks": "MVIS US Listed Semiconductor 25",
+   "expenseRatio": 0.35,
+   "source": "TradingView symbol data (2026-11-01)"
+  },
+  "GRID": {
+   "kind": "etf",
+   "name": "First Trust Nasdaq Clean Edge Smart Grid Infrastructure Index Fund",
+   "about": "A fund that tracks the NASDAQ OMX Clean Edge Smart Grid Infrastructure index.",
+   "tracks": "NASDAQ OMX Clean Edge Smart Grid Infrastructure",
+   "expenseRatio": 0.56,
+   "source": "TradingView symbol data (2026-11-01)"
+  },
+  "NLR": {
+   "kind": "etf",
+   "name": "VanEck Uranium and Nuclear ETF",
+   "about": "A fund that tracks the MVIS Global Uranium & Nuclear Energy index.",
+   "tracks": "MVIS Global Uranium & Nuclear Energy",
+   "expenseRatio": 0.52,
+   "source": "TradingView symbol data (2026-11-01)"
+  },
+  "DTCR": {
+   "kind": "etf",
+   "name": "Global X Data Center & Digital Infrastructure ETF",
+   "about": "A fund that tracks the Solactive Data Center REITs & Digital Infrastructure index.",
+   "tracks": "Solactive Data Center REITs & Digital Infrastructure",
+   "expenseRatio": 0.5,
+   "source": "TradingView symbol data (2026-11-01)"
+  },
+  "UNH": {
+   "kind": "stock",
+   "name": "UnitedHealth Group",
+   "about": "The largest US health insurer (UnitedHealthcare), plus Optum, which runs health services, health data and pharmacy-benefit businesses.",
+   "lastEarnings": {
+    "date": "2026-10-13",
+    "eps": 4.56,
+    "epsEst": 3.82,
+    "revenue": 112690000000.0,
+    "revenueEst": 111490000000.0,
+    "currency": "USD"
+   },
+   "nextEarnings": {
+    "date": "2027-01-20",
+    "confirmed": false
+   },
+   "source": "Webull company profile + Webull earnings calendar; next date from TradingView earnings calendar (2026-11-01)"
+  },
+  "RTX": {
+   "kind": "stock",
+   "name": "RTX",
+   "about": "An aerospace and defense company: Collins Aerospace parts, Pratt & Whitney jet engines and Raytheon missiles and defense systems.",
+   "lastEarnings": {
+    "date": "2026-10-20",
+    "eps": 1.89,
+    "epsEst": 1.52,
+    "revenue": 24970000000.0,
+    "revenueEst": 24110000000.0,
+    "currency": "USD"
+   },
+   "nextEarnings": {
+    "date": "2027-01-26",
+    "confirmed": false
+   },
+   "source": "Webull company profile + Webull earnings calendar; next date from TradingView earnings calendar (2026-11-01)"
+  },
+  "LLY": {
+   "kind": "stock",
+   "name": "Eli Lilly",
+   "about": "A drugmaker whose medicines include Mounjaro and Zepbound (diabetes and weight loss), Jardiance and Verzenio.",
+   "lastEarnings": {
+    "date": "2026-10-29",
+    "eps": 7.22,
+    "epsEst": 8.01,
+    "revenue": 24400000000.0,
+    "revenueEst": 22620000000.0,
+    "currency": "USD"
+   },
+   "nextEarnings": {
+    "date": "2027-02-10",
+    "confirmed": false
+   },
+   "source": "Webull company profile + Webull earnings calendar; next date from TradingView earnings calendar (2026-11-01)"
+  },
+  "ISRG": {
+   "kind": "stock",
+   "name": "Intuitive Surgical",
+   "about": "Makes the da Vinci robotic surgery systems and the Ion system for lung biopsies.",
+   "lastEarnings": {
+    "date": "2026-10-20",
+    "eps": 1.49,
+    "epsEst": 2.37,
+    "revenue": 3050000000.0,
+    "revenueEst": 2910000000.0,
+    "currency": "USD"
+   },
+   "nextEarnings": {
+    "date": "2027-01-26",
+    "confirmed": false
+   },
+   "source": "Webull company profile + Webull earnings calendar; next date from TradingView earnings calendar (2026-11-01)"
+  },
+  "V": {
+   "kind": "stock",
+   "name": "Visa",
+   "about": "Runs a global card-payments network (VisaNet) used by about 14,500 banks and financial institutions.",
+   "lastEarnings": {
+    "date": "2026-10-27",
+    "eps": 3.19,
+    "epsEst": 3.38,
+    "revenue": 12140000000.0,
+    "revenueEst": 12090000000.0,
+    "currency": "USD"
+   },
+   "nextEarnings": {
+    "date": "2027-01-28",
+    "confirmed": false
+   },
+   "source": "Webull company profile + Webull earnings calendar; next date from TradingView earnings calendar (2026-11-01)"
+  },
+  "NVDA": {
+   "kind": "stock",
+   "name": "NVIDIA",
+   "about": "Makes the chips and networking gear that power AI data centers, plus GeForce gaming graphics cards, all tied together by its CUDA software.",
+   "lastEarnings": {
+    "date": "2026-08-26",
+    "eps": 2.46,
+    "epsEst": 2.06,
+    "revenue": 96220000000.0,
+    "revenueEst": 92160000000.0,
+    "currency": "USD"
+   },
+   "nextEarnings": {
+    "date": "2026-11-17",
+    "confirmed": true
+   },
+   "source": "Webull company profile + Webull earnings calendar; next date from TradingView earnings calendar (2026-11-01)"
+  },
+  "AVGO": {
+   "kind": "stock",
+   "name": "Broadcom",
+   "about": "Makes chips for AI data centers and networking, and sells infrastructure software.",
+   "lastEarnings": {
+    "date": "2026-09-02",
+    "eps": 2.68,
+    "epsEst": 2.56,
+    "revenue": 29590000000.0,
+    "revenueEst": 29430000000.0,
+    "currency": "USD"
+   },
+   "nextEarnings": {
+    "date": "2026-12-10",
+    "confirmed": false
+   },
+   "source": "Webull company profile + Webull earnings calendar; next date from TradingView earnings calendar (2026-11-01)"
+  },
+  "TSM": {
+   "kind": "stock",
+   "name": "Taiwan Semiconductor (TSMC)",
+   "about": "The world’s biggest contract chip maker: it manufactures chips designed by other companies for AI, phones and computers.",
+   "lastEarnings": {
+    "date": "2026-10-15",
+    "eps": 4.6,
+    "epsEst": 4.51,
+    "revenue": 46170000000.0,
+    "revenueEst": 45090000000.0,
+    "currency": "USD"
+   },
+   "nextEarnings": {
+    "date": "2027-01-21",
+    "confirmed": false
+   },
+   "source": "Webull company profile + Webull earnings calendar; next date from TradingView earnings calendar (2026-11-01)"
+  },
+  "MSFT": {
+   "kind": "stock",
+   "name": "Microsoft",
+   "about": "Sells Microsoft 365, the Azure cloud and AI services, Windows, LinkedIn and Xbox.",
+   "lastEarnings": {
+    "date": "2026-10-28",
+    "eps": 4.92,
+    "epsEst": 4.72,
+    "revenue": 92280000000.0,
+    "revenueEst": 90740000000.0,
+    "currency": "USD"
+   },
+   "nextEarnings": {
+    "date": "2027-01-26",
+    "confirmed": false
+   },
+   "source": "Webull company profile + Webull earnings calendar; next date from TradingView earnings calendar (2026-11-01)"
+  },
+  "VRT": {
+   "kind": "stock",
+   "name": "Vertiv",
+   "about": "Makes the power and cooling equipment that keeps data centers running.",
+   "lastEarnings": {
+    "date": "2026-10-28",
+    "eps": 1.95,
+    "epsEst": 1.63,
+    "revenue": 4310000000.0,
+    "revenueEst": 3760000000.0,
+    "currency": "USD"
+   },
+   "nextEarnings": {
+    "date": "2027-02-24",
+    "confirmed": false
+   },
+   "source": "Webull company profile + Webull earnings calendar; next date from TradingView earnings calendar (2026-11-01)"
+  },
+  "GEV": {
+   "kind": "stock",
+   "name": "GE Vernova",
+   "about": "Makes equipment for generating power (gas, nuclear, hydro and wind) and for the electric grid.",
+   "lastEarnings": {
+    "date": "2026-10-28",
+    "eps": 4.81,
+    "epsEst": 4.01,
+    "revenue": 12640000000.0,
+    "revenueEst": 12000000000.0,
+    "currency": "USD"
+   },
+   "nextEarnings": {
+    "date": "2027-01-27",
+    "confirmed": false
+   },
+   "source": "Webull company profile + Webull earnings calendar; next date from TradingView earnings calendar (2026-11-01)"
+  },
+  "CEG": {
+   "kind": "stock",
+   "name": "Constellation Energy",
+   "about": "The largest US producer of clean energy, mostly from nuclear plants (about 55 GW of capacity, roughly 10% of US clean power).",
+   "lastEarnings": {
+    "date": "2026-08-06",
+    "eps": 1.42,
+    "epsEst": 2.3,
+    "revenue": 7500000000.0,
+    "revenueEst": 7630000000.0,
+    "currency": "USD"
+   },
+   "nextEarnings": {
+    "date": "2026-11-09",
+    "confirmed": false
+   },
+   "source": "Webull company profile + Webull earnings calendar; next date from TradingView earnings calendar (2026-11-01)"
+  },
+  "CCJ": {
+   "kind": "stock",
+   "name": "Cameco",
+   "about": "A uranium miner and nuclear fuel supplier that also owns a stake in Westinghouse, which builds nuclear reactors.",
+   "lastEarnings": {
+    "date": "2026-10-30",
+    "eps": 0.1,
+    "epsEst": 0.3,
+    "revenue": 619000000.0,
+    "revenueEst": 754000000.0,
+    "currency": "CAD"
+   },
+   "nextEarnings": {
+    "date": "2027-02-10",
+    "confirmed": false
+   },
+   "source": "Webull company profile + Webull earnings calendar; next date from TradingView earnings calendar (2026-11-01)"
+  }
+ }
+}

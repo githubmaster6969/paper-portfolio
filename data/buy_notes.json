@@ -1,0 +1,53 @@
+{
+ "_about": "Beginner-English reasons for each dip buy in data/holdings.json buys[], keyed \"date|time_et|ticker\". what = what the price did; why_this = why this specific stock or fund (from the logged reason; \"Not logged\" if the log has no stock-specific reason). Written by the after-close agent after scripts/add_buy.py; scripts/build_trade_notes.py adds empty skeletons for new buys.",
+ "buys": {
+  "2026-10-15|13:29|VXUS": {
+   "what": "International stocks fell with the whole market after hot inflation reports (Oct 14 and 15). VXUS dipped below its $83.34 floor (its 20-day low), then held above it all afternoon. It was 4.5% below its recent high.",
+   "why_this": "It’s part of the Safe Core (broad, diversified funds), which our rules buy first in a market-wide selloff. No bad news about the fund itself."
+  },
+  "2026-10-15|15:27|SMH": {
+   "what": "Chip stocks fell worldwide on the hot inflation data. SMH dropped to $540.59, then climbed back above its $557.56 floor. It was 11.7% below its recent high.",
+   "why_this": "TSMC, a big part of SMH, had just reported strong results and raised its outlook that morning, so the drop wasn’t about the chip business. We picked SMH over NVDA because NVDA couldn’t hold its own floor that afternoon."
+  },
+  "2026-10-16|10:27|GEV": {
+   "what": "GE Vernova dipped below its $921.53 floor at the open, then held above it. It was 9.2% below its recent high.",
+   "why_this": "The drop was sector-wide (inflation and AI data-center debt worries). The only company news was analysts trimming price targets while keeping positive ratings, not a downgrade. Earnings were 12 days away."
+  },
+  "2026-10-19|10:32|VXUS": {
+   "what": "VXUS was still 4.5% below its recent high and held its $82.85 floor all morning.",
+   "why_this": "Not logged. The log only says it was a second Safe Core add during a broad selloff, with no fund news."
+  },
+  "2026-10-20|10:27|NVDA": {
+   "what": "Nvidia dipped to $212.77, just under its $212.85 floor, then bounced back above it and stayed there.",
+   "why_this": "The whole chip sector was selling off on AI financing worries; there was no bad Nvidia-specific news. We chose NVDA over SMH because SMH already had a dip buy and NVDA had none."
+  },
+  "2026-10-20|10:27|GEV": {
+   "what": "GE Vernova fell to $877.44, below its $897.68 floor (the July 29 low), then climbed back above it.",
+   "why_this": "Sector-wide AI-infrastructure selloff, no GE Vernova news. Earnings were 8 days away, outside the 2-day no-buy window."
+  },
+  "2026-10-21|10:33|TSM": {
+   "what": "TSMC was 12.2% below its recent high and held above $423.39 all morning.",
+   "why_this": "TSMC had beaten earnings on Oct 15 and analysts were raising targets; the drop came from the whole chip sector, not TSMC. It was the top pick on that day’s plan."
+  },
+  "2026-10-21|10:33|ITA": {
+   "what": "The defense fund was 3.9% below its recent high.",
+   "why_this": "Defense stocks fell on worries about the defense budget after the midterms. RTX, a big holding, had just beaten earnings and raised its forecast on Oct 20. No bad news about the fund itself."
+  },
+  "2026-10-21|13:25|NVDA": {
+   "what": "Nvidia was 7.4% below its recent high.",
+   "why_this": "That day’s Nvidia news was positive (its GTC Berlin event, supplier deals, SpaceX buying GPUs); the drop was the sector selloff. Picked over a 2nd TSMC buy because TSMC was bought that morning."
+  },
+  "2026-10-23|15:26|SMH": {
+   "what": "SMH was 16.8% below its recent high.",
+   "why_this": "Chip stocks sold off after Meta’s AI spending news raised financing worries; no bad news about the fund itself. It was the top pick on the plan, paid for with that Friday’s $800 deposit."
+  },
+  "2026-10-23|15:26|VRT": {
+   "what": "Vertiv was 22.7% below its recent high. It dropped to $187.25, below its $193.14 floor, then held above it from 10:35 AM.",
+   "why_this": "Sector-wide AI-infrastructure selloff; analysts trimmed targets but kept their ratings, so no bad company news. It was the last day to buy before the earnings no-buy window (earnings Oct 28)."
+  },
+  "2026-10-30|15:29|VXUS": {
+   "what": "International stocks were 4.5% below their recent high while the S&P 500 fell 2.1% that day.",
+   "why_this": "A market-wide selloff (Intel’s outlook, Amazon’s miss), so our rules buy Safe Core first. No bad news about the fund itself. Paid for with that Friday’s $800 deposit."
+  }
+ }
+}

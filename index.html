@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#F5F6F8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/app.css">
 <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <script defer src="assets/core.js"></script>
@@ -43,14 +43,15 @@
           <div class="eyebrow" id="h-total">Stock portfolio · total value</div>
           <div class="big num" id="total">—</div>
           <div class="delta num" id="todayLine"></div>
+          <p class="vs-line num" id="vsLine"></p>
         </div>
         <dl class="kpis num" id="kpis"></dl>
-        <div class="vs" id="vsBox"></div>
         <div>
           <div class="chart-tools">
             <div class="seg" role="group" aria-label="Chart view" id="modeSeg">
               <button type="button" data-v="pct" aria-pressed="true">% vs SPY</button>
-              <button type="button" data-v="value" aria-pressed="false">$ Value</button>
+              <button type="button" data-v="diff" aria-pressed="false">$ vs SPY</button>
+              <button type="button" data-v="value" aria-pressed="false">Total value</button>
               <button type="button" data-v="price" aria-pressed="false">Price</button>
             </div>
             <label id="priceWrap" hidden><span class="sr">Ticker</span><select class="sel" id="priceSel"></select></label>
@@ -108,7 +109,7 @@
       </section>
 
       <section class="card" aria-labelledby="h-cash" id="cash">
-        <div class="card-h"><div><h2 id="h-cash">Cash &amp; contributions</h2><div class="sub">Dry powder for buying dips</div></div></div>
+        <div class="card-h"><div><h2 id="h-cash">Cash &amp; contributions</h2><div class="sub">Cash waiting to buy dips</div></div></div>
         <div id="cashBody"></div>
       </section>
     </div>
@@ -128,30 +129,48 @@
       <div class="chart-box" id="eqBox" style="height:260px"></div>
     </section>
     <section class="card" aria-labelledby="h-setup">
-      <div class="card-h"><div><h2 id="h-setup">P&amp;L by setup</h2><div class="sub">Which playbooks are paying</div></div></div>
+      <div class="card-h"><div><h2 id="h-setup">P&amp;L by setup</h2><div class="sub">Which kinds of trades are making money</div></div></div>
       <div id="setups"></div>
     </section>
   </div>
+  <section class="card" style="margin-top:24px" aria-labelledby="h-gloss">
+    <div class="card-h"><div><h2 id="h-gloss">Setups explained</h2><div class="sub">What each kind of trade means, in plain English</div></div></div>
+    <div class="gloss" id="gloss"></div>
+    <details class="fold" id="termsFold"><summary><span>Words to know</span><span class="cnt" id="termsCnt"></span><svg class="chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><dl class="terms" id="terms"></dl></details>
+  </section>
   <section class="card" style="margin-top:20px" aria-labelledby="h-openopt">
-    <div class="card-h"><div><h2 id="h-openopt">Open positions</h2><div class="sub">Live marks, stops and targets</div></div></div>
+    <div class="card-h"><div><h2 id="h-openopt">Open positions</h2><div class="sub">Trades still running, with their current price, stop and target</div></div></div>
     <div id="optOpen"></div>
   </section>
-  <section style="margin-top:20px" aria-labelledby="h-trades">
-    <div class="card-h" style="margin:0 2px 12px">
+  <section class="card" style="margin-top:24px" aria-labelledby="h-trades">
+    <div class="card-h">
       <div><h2 id="h-trades">Trade journal</h2><div class="sub" id="tradeSub"></div></div>
-      <div class="seg" role="group" aria-label="Filter trades" id="tradeSeg">
+    </div>
+    <div class="filterbar" id="tradeFilters">
+      <div class="seg" role="group" aria-label="Filter by result" id="tradeSeg">
         <button type="button" data-v="all" aria-pressed="true">All</button>
         <button type="button" data-v="win" aria-pressed="false">Wins</button>
         <button type="button" data-v="loss" aria-pressed="false">Losses</button>
       </div>
+      <label><span class="sr">Filter by setup</span><select class="sel" id="setupSel"></select></label>
+      <label><span class="sr">Filter by ticker</span><select class="sel" id="tickSel"></select></label>
     </div>
-    <div class="trade-grid" id="trades"></div>
+    <div id="trades"></div>
+    <div class="more-row" id="tradeMore"></div>
   </section>
 
   <div class="section-title" id="buys">
-    <div><h2>Why we bought it</h2><p>Every dip buy in the stock portfolio, in plain English. The full log is behind “details”.</p></div>
+    <div><h2>Why we bought it</h2><p>Every dip buy in the stock portfolio, in plain English: what we bought and why that stock.</p></div>
   </div>
-  <section class="card"><div id="buyCards"></div></section>
+  <section class="card">
+    <div class="filterbar">
+      <label><span class="sr">Filter buys by ticker</span><select class="sel" id="buyTick"></select></label>
+      <label><span class="sr">Filter buys by group</span><select class="sel" id="buySleeve"></select></label>
+      <span class="sep"></span><span class="count" id="buyCount"></span>
+    </div>
+    <div id="buyCards"></div>
+    <div class="more-row" id="buyMore"></div>
+  </section>
 
   <footer class="foot">
     <p id="source">Hypothetical paper portfolio. Not real money and not financial advice.</p>

@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Live vs paper · real-money options</title>
+<title>Robinhood · Let’s run it up</title>
 <meta name="robots" content="noindex">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%230B0D12%22/%3E%3Cpath d=%22M7 21l6-6 4 4 8-9%22 stroke=%22%2334D399%22 stroke-width=%223%22 fill=%22none%22 stroke-linecap=%22round%22/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%2300C805%22/%3E%3Cpath d=%22M7 21l6-6 4 4 8-9%22 stroke=%22%23FFFFFF%22 stroke-width=%223%22 fill=%22none%22 stroke-linecap=%22round%22/%3E%3C/svg%3E">
 <meta name="theme-color" content="#F5F6F8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/app.css">
 <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <script defer src="../assets/core.js"></script>
@@ -19,8 +19,8 @@
 <header class="top">
   <div class="top-in">
     <a class="brand" href="./">
-      <span class="logo" aria-hidden="true" style="background:#0A9F5A">$</span>
-      <span class="btxt"><h1>Live vs paper</h1><span class="tag green">💵 Real money</span></span>
+      <span class="logo rh" aria-hidden="true" style="color:#fff"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.2c-4.9-.3-9.6 2.2-12 6.6-1.1 2-1.6 4.2-1.6 6.4l-2.7 3.9a.8.8 0 0 0 1.3.9l2.6-3.8c2.3.1 4.5-.5 6.4-1.7 3.9-2.5 6.1-7 5.9-11.6a.7.7 0 0 0-.7-.7z" fill="currentColor"/><path d="M7.6 16.4 15.8 7.6" stroke="#00C805" stroke-width="1.3" stroke-linecap="round" fill="none" opacity=".9"/></svg></span>
+      <span class="btxt"><h1>Robinhood · Let’s run it up</h1><span class="rh-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.2c-4.9-.3-9.6 2.2-12 6.6-1.1 2-1.6 4.2-1.6 6.4l-2.7 3.9a.8.8 0 0 0 1.3.9l2.6-3.8c2.3.1 4.5-.5 6.4-1.7 3.9-2.5 6.1-7 5.9-11.6a.7.7 0 0 0-.7-.7z" fill="currentColor"/><path d="M7.6 16.4 15.8 7.6" stroke="#fff" stroke-width="1.3" stroke-linecap="round" fill="none" opacity=".9"/></svg>Real money</span></span>
     </a>
     <nav class="top-nav" aria-label="Sections">
       <span class="top-val num" id="topVal" aria-hidden="true"></span>
@@ -30,13 +30,13 @@
 </header>
 
 <main class="wrap" id="main" aria-busy="true">
-  <div class="meta-line" id="metaLine"><span>Loading Robinhood snapshot…</span></div>
+  <div class="meta-line" id="metaLine"><span>Loading your account…</span></div>
 
   <div class="grid two">
     <div class="stack">
       <section class="card hero" aria-labelledby="h-val">
         <div>
-          <div class="eyebrow" id="h-val">Robinhood · real options account</div>
+          <div class="eyebrow" id="h-val">Account balance</div>
           <div class="big num" id="val">—</div>
           <div class="delta num" id="pnlLine"></div>
         </div>
@@ -48,7 +48,7 @@
       </section>
 
       <section class="card" aria-labelledby="h-hist">
-        <div class="card-h"><div><h2 id="h-hist">History</h2><div class="sub">Every real trade. Tap one for the chart and the why.</div></div></div>
+        <div class="card-h"><div><h2 id="h-hist">History</h2><div class="sub">Every real trade. Tap one for the chart and why we took it.</div></div></div>
         <div id="hist"></div>
       </section>
     </div>
@@ -60,27 +60,18 @@
       </section>
 
       <section class="card" aria-labelledby="h-cmp">
-        <div class="card-h"><div><h2 id="h-cmp">Live vs paper</h2><div class="sub">Same rulebook, different stakes</div></div></div>
-        <div id="cmp"></div>
+        <div class="card-h"><div><h2 id="h-cmp">Account tracker</h2><div class="sub" id="trackSub">Balance, gain or loss, and trades so far</div></div></div>
+        <dl class="track num" id="track"></dl>
       </section>
 
       <section class="card" aria-labelledby="h-open">
-        <div class="card-h"><div><h2 id="h-open">Open positions</h2><div class="sub">Tap for Greeks in plain English</div></div></div>
+        <div class="card-h"><div><h2 id="h-open">Open positions</h2><div class="sub">Trades still running. Tap one for its risk numbers.</div></div></div>
         <div id="open"></div>
       </section>
     </div>
   </div>
 
   <footer class="foot">
-    <details>
-      <summary style="cursor:pointer;font-weight:600">How this account is run</summary>
-      <ul style="margin:10px 0 0;padding-left:18px;line-height:1.7">
-        <li>Pedro approves every real trade before it is placed.</li>
-        <li>1 contract per trade, about $300 max premium.</li>
-        <li>Same written rules as the paper rulebook. No written rule, no trade.</li>
-        <li>Figures come from read-only Robinhood pulls, timestamped in ET.</li>
-      </ul>
-    </details>
     <p id="source"></p>
   </footer>
 </main>

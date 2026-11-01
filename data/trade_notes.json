@@ -1,5 +1,5 @@
 {
- "_about": "Curated trade journal for the dashboard. Keys: \"paper|entryDate|entryTime|ticker\" matching data/options.json closed rows (rows with the same key are one trade), or \"live|date|time|contract\" matching live/live.json trades. Every text field is copied or condensed from options-study logs (paper-options-log.csv, notion trade journal, MISTAKES.md). Empty string or missing = not logged; the page shows \"Not logged\". Never fill in a reason after the fact.",
+ "_about": "Curated trade journal for the dashboard. Keys: \"paper|entryDate|entryTime|ticker\" matching data/options.json closed rows (rows with the same key are one trade), or \"live|date|time|contract\" matching live/live.json trades. Every text field is copied or condensed from options-study logs (paper-options-log.csv, notion trade journal, MISTAKES.md). Empty string or missing = not logged; the page shows \"Not logged\". Never fill in a reason after the fact. Beginner-English fields (added 2026-11-01, written by scripts/build_trade_notes.py skeletons + the after-close agent): why_type (news|chart|earnings|override|test), plain_why, why_check {level: weak|explained, text} (only when the logged reason is thin; any link added after the trade must say so), plain_plan, plain_outcome (one line), plain_happened, plain_right[], plain_wrong[], plain_lesson, why_moved {summary, sources:[{headline|about, source, when}]} from Webull/TradingView news for the trade day (\"No clear news found\" if none), charts {before, during, after} (image paths or null). The site shows plain_* first and falls back to the raw fields.",
  "trades": {
   "paper|2026-10-12|09:30|META": {
    "title": "META 10/16 730C x1 (10/12)",
@@ -31,7 +31,46 @@
    "premium": 1808.0,
    "chart": "assets/trades/paper-2026-10-12-META-730C.png",
    "log": "Thesis: Muse AI download/analyst momentum; overnight +0.8% and premarket +1.3% to ~728 with balanced open NOII at 728.1. Trigger: gap-and-go continuation through the bell. Target idea: hold if META holds above open (~728) toward 740; stop idea: fail back under open/premarket shelf. | GRADED 2026-10-12 ~09:58 ET (manual, routine missed): entry=RH 5m bar 09:30 price 15.00; mark 09:58 20.50; unrealized +$550.00. META 1st15 O728.10 H746.60 L727.78 C745.21 -> trigger held, 740 target hit. Soft test: picks made after open. | 9:46 ROUTINE 2026-10-12 ~10:19 ET: RH minute 09:30 open=18.08 (logged entry kept 15.00 from soft-test 5m fill); mark 20.875; unrealized +587.50. | CORRECTED 10:23 ET: entry=RH 1-min 09:30 bar open 18.08 (5-min value 15.00 superseded); mark 10:23 ET 21.10; unrealized +$302.00. | PAPER EXIT 2026-10-12 13:31 ET @ RH bid 25.10 (mark 25.45, ask 25.80); META 749.21. Reason: stock target 740 hit, rule v1 (1 contract -> close at target). Realized +$702.00 (+38.8%). GRADE: A- thesis+trigger correct (gap-and-go held open 728, target hit by first 15 min); exit later than ideal since target hit ~09:40 but rules were written midday.",
-   "source": "paper-options-log.csv row(s) 1; commit 78db757"
+   "source": "paper-options-log.csv row(s) 1; commit 78db757",
+   "why_type": "news",
+   "plain_why": "News-driven. Meta's new Muse AI app was getting strong downloads and analyst praise, and the stock was already up 1.3% before the market opened (about $728). Buyers and sellers were balanced at the open, so nothing was pushing against it.",
+   "plain_plan": "Buy 1 call at the open. Stay in while META holds above its opening price (about $728) and aim for $740. Get out if it falls back below the open.",
+   "plain_outcome": "It hit the $740 target in 15 minutes, but we sold hours later.",
+   "plain_happened": "META jumped right away and reached $740 within the first 15 minutes (high $746.60). No exit rule was written yet, so we held until 1:31 PM and sold at $25.10 with META at $749.21. Profit: +$702.",
+   "plain_right": [
+    "The news-plus-early-jump idea worked: META went straight up from the open.",
+    "The $740 target was hit within 15 minutes."
+   ],
+   "plain_wrong": [
+    "We sold almost 4 hours after the target hit, because exit rules hadn't been written yet. It worked out, but that was luck, not the plan.",
+    "The pick was made after the market opened, and the entry price had to be corrected later (from a 5-minute to a 1-minute price)."
+   ],
+   "plain_lesson": "When the stock hits the target, sell. Write the exit rule before buying.",
+   "why_moved": {
+    "summary": "Meta rolled out its new \"Muse Wonder\" AI models that day, and Jim Cramer called Meta a \"monster long\" because people keep using Muse AI. Cantor Fitzgerald lowered its price target to $840.",
+    "sources": [
+     {
+      "about": "Cramer calls Meta a \"monster long\", citing Muse AI retention",
+      "source": "Benzinga via Webull",
+      "when": "Oct 12, 8:10 AM ET"
+     },
+     {
+      "about": "Meta rolls out Muse Wonder frontier models",
+      "source": "Benzinga via Webull",
+      "when": "Oct 12, 1:00 PM ET"
+     },
+     {
+      "about": "Cantor Fitzgerald lowers Meta price target to $840",
+      "source": "Benzinga via Webull",
+      "when": "Oct 12"
+     }
+    ]
+   },
+   "charts": {
+    "before": null,
+    "during": "assets/trades/paper-2026-10-12-META-730C.png",
+    "after": null
+   }
   },
   "paper|2026-10-12|09:30|AMD": {
    "title": "AMD 10/16 600P x1 (10/12)",
@@ -64,7 +103,40 @@
    "premium": 1563.0,
    "chart": "assets/trades/paper-2026-10-12-AMD-600P.png",
    "log": "Thesis: AI-chip hangover after OpenAI revenue doubts Friday plus memory-sector pressure (Micron/CXMT DRAM). Premarket already -1.4% into ~599.6; open NOII showed sell imbalance (~14k shares) near 600. Trigger: open sell imbalance + weak premarket follow-through under 600. Target idea: continuation toward 590; stop idea: reclaim/hold above 605. | GRADED 2026-10-12 ~09:58 ET (manual): entry=RH 5m bar 09:30 price 16.43; mark 09:58 13.525; unrealized -$290.50. AMD 1st15 O600.00 H601.77 L591.42 C597.84 -> fell to ~591 then bounced; briefly above 600 at 09:41; 605 stop not hit. Soft test. | 9:46 ROUTINE 2026-10-12 ~10:19 ET: RH minute 09:30 open=15.63 (logged entry kept 16.43 from soft-test 5m fill); mark 15.325; unrealized -110.50. | CORRECTED 10:23 ET: entry=RH 1-min 09:30 bar open 15.63 (5-min value 16.43 superseded); mark 10:23 ET 17.50; unrealized +$187.00. | OVERNIGHT 2026-10-12 ~15:52 ET: no new overnight picks (daily 2-new cap used; no watchlist AMC earnings; soft macro Tue). AMD decision CORRECTED to HOLD per rules v1 (status remains open) — stock under stop 605, option mark 15.20 above −35% stop 10.16 (−2.8%); time stop is 15:55 ET Thu 10/15 or flat after 2 full sessions (session 1 today). Discretionary early exits not allowed under v1. Mark 15.20 vs entry 15.63 (−$43/−2.8%); stock bounced 589–590→594 into close. | CLOSE MARK 2026-10-12 ~16:01 ET: RH mark 15.25 (bid 15.10/ask 15.40); unrealized -38.00 (-2.4%). AMD close 594.24 (under stop 605; −35% stop 10.16 not hit). HOLD. | PRE-MARKET 2026-10-13 ~08:58 ET: AMD 580.80 premarket (-2.3%, PM low 580.05) is already through the 590 stock target. Rule v1 (1 contract -> close at stock target, lesson: exit on the hit): 9:46 routine should paper-close at the 09:30 1-min bar OPEN unless AMD opens back above 590. RH stale mark 15.25 (prior close). | 9:46 ROUTINE 2026-10-13 ~10:02 ET: PAPER EXIT @ RH 09:30 1-min open 27.80 (rule v1 close-at-target). AMD opened 578.00 (Webull) already through stock target 590 (PM 580.80). Realized +$1217.00 (+77.9%). AMD 1st15 O578.00 H588.75 L570.60 C587.865; NOII sell @578. GRADE: A thesis direction correct overnight; exit timing correct per v1 (close on target hit at bell open). Note: mark later fell to ~17.70 so open-exit captured gap premium.",
-   "source": "paper-options-log.csv row(s) 2; commit 825b8e1"
+   "source": "paper-options-log.csv row(s) 2; commit 825b8e1",
+   "why_type": "news",
+   "plain_why": "A bet that AMD keeps falling. AI chip stocks were weak after doubts about OpenAI's revenue and pressure on memory-chip makers. AMD was down 1.4% before the open (about $600), and more sell orders than buy orders were lined up for the open.",
+   "why_check": {
+    "level": "weak",
+    "text": "The OpenAI-revenue reason comes from our log only. We couldn't find a headline that day tying it to AMD (AMD's own news was a product launch)."
+   },
+   "plain_plan": "Buy 1 put at the open. Aim for AMD to drop to $590. Get out if AMD climbs back above $605.",
+   "plain_outcome": "It hit the target, but only the next morning.",
+   "plain_happened": "AMD dipped to about $591 in the first few minutes, then bounced back above $600 by 9:41 AM. No exit rule was hit, so we held overnight. The next morning AMD opened at $578, below the $590 target, and we sold at $27.80. Profit: +$1,217.",
+   "plain_right": [
+    "Holding overnight followed the rules (nothing said sell), and it paid.",
+    "AMD opened the next day at $578, past the $590 target."
+   ],
+   "plain_wrong": [
+    "Buying a put right at the open was risky: AMD dropped briefly, then bounced back above $600. This 'drop, then bounce' happens a lot on mornings when a stock opens lower.",
+    "At 4 PM we almost closed it early on a hunch. That was wrong: if no rule says sell, hold."
+   ],
+   "plain_lesson": "When a stock opens lower, wait for it to bounce and fail before buying a put. This became a rule.",
+   "why_moved": {
+    "summary": "No clear news found for AMD's drop. Webull's AMD headline that morning was its own product launch (the Helion AI rack).",
+    "sources": [
+     {
+      "about": "AMD unveils Helion agentic AI rack",
+      "source": "Benzinga via Webull",
+      "when": "Oct 12, 9:00 AM ET"
+     }
+    ]
+   },
+   "charts": {
+    "before": null,
+    "during": "assets/trades/paper-2026-10-12-AMD-600P.png",
+    "after": null
+   }
   },
   "paper|2026-10-13|09:30|NBIS": {
    "title": "NBIS 10/16 200P x1 (10/13)",
@@ -96,7 +168,35 @@
    "premium": 533.0,
    "chart": "assets/trades/paper-2026-10-13-NBIS-200P.png",
    "log": "Thesis: AI/semis risk-off continuation. KOSPI -5.5% overnight (SK hynix -10%, Samsung -7.4%) on ChangXin DRAM + AI-spend jitters; NBIS closed 210.06 (-5%) after breaking support, now 201.74 premarket (-4.0%) sitting near PM low 200.77; QQQ -0.74% and AMD/NVDA/TSLA all red premarket, so index is not fighting the put. Trigger: gap-down holds under ~207 (PM high) and loses 200 in the first minutes. Target: stock 195 (technical support), then 190. Stop: stock reclaims 207.7 (PM high) or option -35%. Exit rules v1: 1 contract -> close at +50% or stock 195, whichever first; time stop 15:55 ET Thu 10/15. Risk note (H2): gap-down puts bought at the bell often flush 3-5 min then bounce; this is a deliberate second H2 sample, sized at 1 contract. Ref: RH prior close 2.54 with stock 210 (stale; expect ~$6-8 at bell). Pre-open NOII not yet published at plan time (Webull returned yesterday's). | 9:46 ROUTINE 2026-10-13 ~10:02 ET: FILLED planned-bell. Entry=RH 1-min 09:30 open 5.33; mark ~10:02 ET 6.45 (bid 6.20/ask 6.70); unrealized +$112.00 (+21.0%). NBIS 1st15 O201.00 H201.88 L198.2159 C200.65 (gap -4.31%). Triggers: gap under ~207 HELD (high 201.88); lost 200 WORKED (low 198.22 ~09:36) then H2 bounce. QQQ opened weak (-0.87% gap) so index not fighting early. NOII sell ~4.4k @201 aligned. Predicted move PARTIAL: flush happened then bounced; put still green. HOLD — stock under stop 207.7; option above -35% stop 3.46; target stock 195 not hit; +50% option=7.995 not hit. | PAPER EXIT 2026-10-13 ~12:35 ET @ RH 5-min bar price 3.38 (option stop -35% hit ~12:35 ET, rule v1). Exit priced at first traded price at/below stop 3.46 (conservative fill). Realized -$195.00 (-36.6%). GRADE: C — second sample of gap-down put at the bell flushing then bouncing (H2); strong evidence to require a failed retest of the open before buying puts on gap-downs; propose v1.1 rule.",
-   "source": "paper-options-log.csv row(s) 3; commit 566ad00"
+   "source": "paper-options-log.csv row(s) 3; commit 566ad00",
+   "why_type": "news",
+   "plain_why": "A bet on more AI-stock selling. Korean chip stocks crashed overnight (Korea's KOSPI index −5.5%, SK hynix −10%), and Nebius was down 4% before the open (about $201.74). Big tech (QQQ) and other chip names were red too.",
+   "plain_plan": "Buy 1 put at the open. Aim for Nebius at $195, then $190. Get out if it climbs back above $207.70 or the option loses 35%.",
+   "plain_outcome": "It dipped below $200, bounced and hit our stop. Right idea, too early.",
+   "plain_happened": "Nebius opened at $201, dropped to $198.22 around 9:36 AM, then bounced. The option fell 35% and we sold at $3.38 around 12:35 PM. Loss: −$195. The next day the same put was worth about $17, so the idea was right, just early.",
+   "plain_right": [
+    "The direction was right: Nebius kept falling the next day."
+   ],
+   "plain_wrong": [
+    "Same mistake as AMD the day before: we bought at the open, the stock dropped, bounced and stopped us out.",
+    "We sold for a 35% loss before the real drop came."
+   ],
+   "plain_lesson": "Don't buy puts at the open when a stock opens lower. Wait for a failed bounce. This trade made that a firm rule.",
+   "why_moved": {
+    "summary": "Nebius fell with weak tech stocks (Nasdaq −0.39%). A rival, IREN, landed an AI cloud deal with Anthropic that investors had hoped Nebius would get, and Broadcom's CEO warned that money is the biggest limit on building AI data centers. Nebius was down 4.44% at $200.73 mid-morning.",
+    "sources": [
+     {
+      "headline": "Why Is Nebius Group Stock Falling Tuesday?",
+      "source": "Benzinga via Webull",
+      "when": "Oct 13, 10:16 AM ET"
+     }
+    ]
+   },
+   "charts": {
+    "before": null,
+    "during": "assets/trades/paper-2026-10-13-NBIS-200P.png",
+    "after": null
+   }
   },
   "paper|2026-10-16|09:30|TSLA": {
    "title": "TSLA 10/19 375C x1 (10/16)",
@@ -128,7 +228,39 @@
    "premium": 237.0,
    "chart": "assets/trades/paper-2026-10-16-TSLA-375C.png",
    "log": "Thesis: Tesla unveiled next-gen Roadster Thu night at SpaceX McGregor with cold-gas thrusters / flying demo (0-60 ~0.81s, production 2028, $50k deposits open). Company-specific catalyst, not macro. Premarket ~374 (+3.2% vs prior close 362.44; PM high 382.22, low 372.55) — gap held above prior close though faded from early PM highs. SPY +0.18% / QQQ -0.16% so index not fighting hard. SPCX only +0.7% (below 1% gap bar). Trigger: H1 gap-and-go — hold above the 9:30 open / ~372.5 PM shelf and continue the Roadster gap. Target idea: stock 385 then 390; option +50%. Stop idea: fail back under open/prior close 362.4 or option -35%. Expiry 10/19 (3 DTE, Mon weekly) avoids today's monthly OPEX pin and TSLA earnings ~10/21. NOII PRE_OPEN returned stale refs (360.63) — not usable. Second slot left empty: NBIS -3.1%/AMD -1.8%/COIN -1.9% gap-downs blocked by v1.1 (no bell puts); semis still on AI/debt hangover. Cash $6,724; book flat. | 9:46 ROUTINE 2026-10-16 ~09:52 ET: FILLED planned-bell. Entry=RH 1-min 09:30 open 2.37 (bar O=H=L=C 2.37 single print). Mark ~09:50 ET 2.185 (bid 2.15/ask 2.22, adj mark 2.19); unrealized -$18.50 (−7.8%). TSLA 1st15 O369.04 H370.58 L364.15 C368.85 (gap +1.82% vs 362.44). NOII PRE_OPEN balanced @368.6. Predicted move FAILED: H1 gap-and-go did NOT hold above open (flushed to 364.15 @09:33) and never held PM shelf ~372.5 (opened under it). Still above prior close 362.44. Stops not hit: option low 1.84 @09:33 > −35% stop 1.54; stock above 362.4. Targets not hit (stock 385 / option +50%=3.555). HOLD. Note: time stop today 15:55 ET (session before Mon 10/19 expiry). | PAPER EXIT 2026-10-16 ~09:51 ET @ RH 1-min bar low 1.50 (option stop −35%=1.54 hit; first traded price at/below stop per permanent stop-exit rule; 09:51 bar O1.93 H1.93 L1.50 C1.54). Stock stop 362.44 NOT hit (day low 363.37 @09:51). Targets not hit (stock 385 / option +50%=3.555; option high 3.08 @09:40). Realized −$87.00 (−36.7%). GRADE: C — H1 gap-and-go failed (lost open 369.04 to 364.15 early; never held PM shelf ~372.5); option bleed into −35% on the 09:51 flush with stock. Mark later recovered to ~1.98 by 10:00 — stop-exit rule correctly locked the fill at first breach.",
-   "source": "paper-options-log.csv row(s) 4; commit 5855ab4"
+   "source": "paper-options-log.csv row(s) 4; commit 5855ab4",
+   "why_type": "news",
+   "plain_why": "News-driven. Tesla unveiled its new Roadster the night before, and the stock was up 3.2% before the open (about $374). The plan was to ride that momentum if it held at the open.",
+   "plain_plan": "Buy 1 call only if Tesla stays above about $372.50 at the open. Aim for $385, then $390, or +50% on the option. Get out if it falls below its opening price or $362.40, or if the option loses 35%.",
+   "plain_outcome": "The setup failed at the open, but we bought anyway. Stopped out.",
+   "plain_happened": "Tesla opened at $369.04, already below the $372.50 level we needed. Nobody re-checked, so the order went in anyway. Tesla dropped to $364.15 by 9:33 AM, and the option hit the 35% stop at 9:51 AM. Loss: −$87.",
+   "plain_right": [
+    "The stop-loss worked exactly as written, so the loss stayed small."
+   ],
+   "plain_wrong": [
+    "We didn't check the setup at the open. Tesla had already failed it, so we shouldn't have bought."
+   ],
+   "plain_lesson": "If the setup isn't there at the open, cancel the trade. This became the 'cancel at the bell' rule.",
+   "why_moved": {
+    "summary": "Tesla's Roadster reveal (built with SpaceX technology) lifted the stock before the open, and analysts were split on it. Then the market turned down: the Nasdaq 100 fell 1.3% as AI data-center stocks sank on debt worries.",
+    "sources": [
+     {
+      "about": "Tesla Roadster unveil lifts shares premarket; analysts split",
+      "source": "Benzinga via Webull",
+      "when": "Oct 16, morning"
+     },
+     {
+      "headline": "Nasdaq 100 Slides As Micron, SanDisk, CoreWeave Sink",
+      "source": "Benzinga via Webull",
+      "when": "Oct 16, 12:33 PM ET"
+     }
+    ]
+   },
+   "charts": {
+    "before": null,
+    "during": "assets/trades/paper-2026-10-16-TSLA-375C.png",
+    "after": null
+   }
   },
   "paper|2026-10-16|09:40|AMD": {
    "title": "AMD 10/19 545P x1 (10/16)",
@@ -161,7 +293,35 @@
    "premium": 943.0,
    "chart": "assets/trades/paper-2026-10-16-AMD-545P.png",
    "log": "SETUP: v1.2 failed-retest (gap-down put), logged by 9:41 opening scanner (ran ~09:45 ET). AMD prior close 562.23; 09:30 open 547.72 (gap -2.58%, semis AI/memory hangover per pre-market plan). (1) gap >=1% YES; (2) flush >=0.5% beyond open YES (low 542.57 @09:35, 540.76 @09:37); (3) bounce to within 0.2% of open YES (09:39 high 546.83 vs 546.62 threshold); (4) 09:40 1-min bar closed 543.89 below open with lower high 545.98 < 546.83 YES; (5) SPY/QQQ not against YES (QQQ -0.88% vs open, SPY -0.10%). Trigger bar 09:40 ET; entry = RH 1-min 09:40 bar close 9.43 on AMD 10/19 545P (nearest strike to 543.89; $943 within ~$1,000 cap; 10/21 545P was 13.68 = over cap). Setup still live at scan time (AMD 544.72 @09:44, under retest high 546.83 and open). Slot 2 of 2 (TSLA 10/19 375C planned-bell is slot 1). Target: stock 534 (measured move: open-to-low 6.96 below 540.76) or option +50% = 14.15 (1 contract, close whole). Stop: AMD 1-min close above the 09:30 open 547.72, or option -35% = 6.13. Time stop: 15:55 ET TODAY Fri 10/16 (last session before Mon 10/19 expiry). Risk notes: H8 (10/15 macro gap-downs reversed all day) and possible S2 reversal-call setup in AMD later; retro-priced at trigger bar close per rule; RH 09:45 mark already 7.30 (bid 7.10/ask 7.50, IV 43%) as opening premium deflated. Counterfactual same window: COIN triggered first (09:38 close 180.70 after 09:37 retest 181.00 vs open 181.11) but reclaimed the open at 09:39 (close 181.89) before the scan, so invalidated, no entry (sample: failed-retest fail). NBIS never retested (high 180.00 vs open 181.17). | 9:46 ROUTINE 2026-10-16 ~09:52 ET: PAPER EXIT @ RH 1-min 09:44 bar close 7.45 (stock stop: AMD 1-min close above 09:30 open 547.72). First stop print: 09:44 close 547.89 (then 09:45 close 548.28); option −35% stop 6.13 not hit (09:45 option low 6.63). Realized -$198.00 (−21.0%). AMD after entry: 543.89→547.89 reclaim in 4 min. GRADE: C+ — failed-retest entry valid at 09:40, but stop at a single 1-min close back above open was hit on a brief poke (stock later faded to ~543 by 09:50). Sample: v1.2 failed-retest WIN on trigger, LOSS on tight stock-stop; flag for Friday review whether stop should require 2 closes or a buffer above open.",
-   "source": "paper-options-log.csv row(s) 5; commit 5855ab4"
+   "source": "paper-options-log.csv row(s) 5; commit 5855ab4",
+   "why_type": "chart",
+   "plain_why": "Chart setup, no news: AMD opened 2.6% lower ($547.72), dropped to $540.76, bounced back near its opening price and failed there (a 'failed retest'). Big tech (QQQ) was falling too.",
+   "plain_plan": "Buy 1 put. Aim for AMD at $534 or +50% on the option ($14.15). Get out if AMD closes a 1-minute bar back above its open ($547.72) or the option loses 35%. This stop was made up on the spot, not written down beforehand.",
+   "plain_outcome": "Stopped out in 4 minutes, then AMD fell 6% without us.",
+   "plain_happened": "AMD poked back above its open to $547.89 at 9:44 AM, which triggered our stop. We sold at $7.45. Loss: −$198. Later that day AMD fell to $528.75 (−5.95%), so the direction was right.",
+   "plain_right": [
+    "The entry followed the failed-retest setup correctly.",
+    "The direction was right: AMD closed down almost 6%."
+   ],
+   "plain_wrong": [
+    "The stop wasn't written down before the trade, so we improvised a tight one and got shaken out by a small move."
+   ],
+   "plain_lesson": "No written rule, no trade. Stops now wait for a 15-minute close instead of reacting to a quick poke.",
+   "why_moved": {
+    "summary": "AI chip and data-center stocks sold off: the Nasdaq 100 fell 1.3%, with CoreWeave, IREN and Super Micro down 7–9% on AI debt worries. TSMC slipped too, despite record results.",
+    "sources": [
+     {
+      "headline": "Nasdaq 100 Slides As Micron, SanDisk, CoreWeave Sink",
+      "source": "Benzinga via Webull",
+      "when": "Oct 16, 12:33 PM ET"
+     }
+    ]
+   },
+   "charts": {
+    "before": null,
+    "during": "assets/trades/paper-2026-10-16-AMD-545P.png",
+    "after": null
+   }
   },
   "paper|2026-10-19|09:31|NVDA": {
    "title": "NVDA 10/23 217.5C x1 (10/19)",
@@ -192,7 +352,44 @@
    "premium": 325.0,
    "chart": "assets/trades/paper-2026-10-19-NVDA-217.5C.png",
    "log": "PLANNED-BELL, LOGGED 2026-10-19 08:53 ET per `date` (pre-open; M5). Thesis: H1 gap-and-go on AI/chip rebound after last week's selloff; NVDA PM 218.20 (+1.90% vs 214.13, Webull ~08:49 ET), PM trend holding near high (last hour 217.97-218.44); news: reported NVDA ask for TSMC 3nm HBM base dies + reported neocloud credit lifeline (Yahoo/Stocktwits, unconfirmed); QQQ PM +1.32% so index not fighting (config.md l.28-31). TRIGGER AT 9:30 (all required): NVDA 09:30 open >= 217.49 (PM shelf) and >= 216.27 (+1% gap); QQQ 09:30 open > 709.80; PRE_OPEN NOII not SELL (stale at plan time). If not met: no fill, flag to Pedro (M3; G1 not approved). ENTRY PRICE: RH 09:30 1-min OPEN (l.9); also record 09:31 close (G2 l.67 vs l.9 ambiguity flagged to Pedro per G0 l.65). Cap ~$1,000 (l.24): model ~3.05 (~$305). DTE 4 (l.25, l.63). M8: tradable, sellout 2026-10-23 15:30 ET. TARGET (l.38): close whole at option +50% or NVDA 221.30 (10/14 close), whichever first. STOP (v1.3 #5 l.70,73-74): 15-min close below the lower of opening 15-min range low or 217.49; -50% option backstop priced per l.14. TIME STOP (l.40): 15:55 ET Thu 10/22; flat after 2 full sessions (Tue close). PATH (model, IV 28%): Mon close ~219.6 / opt ~3.80; Tue 221.30 = T1 exit ~4.67; Wed 223.06 ~5.85 (map only); Thu 226.00 by 15:55 ~8.53 (map only). Flat decay Mon 2.96/Tue 2.61/Wed 2.20/Thu 1.67. Invalidation 15-min closes: <216.27 warning, <214.13 wrong read, <213.32/212.85 decisive. CATALYSTS: Tue pm SPCX/NFLX/ISRG, Tue am RTX; Wed pm TSLA/META/LRCX/TXN/IBM/SAP (RH verified); Thu am LMT. Full plan: setups/2026-10-19-premarket.md. Ref quote STALE Fri 15:59:59 ET: 2.83/2.91 mark 2.87. | 9:46 ROUTINE 2026-10-19 09:58 ET (from `date`): FILLED @3.70 = RH 1-min 09:30 bar OPEN (l.9; bar was a single print O=H=L=C 3.70). M8 re-checked: active/tradable, sellout 2026-10-23 15:30 ET. TRIGGER CHECK (M3): (1) NVDA 09:30 open 218.01 >= 217.49 and >= 216.27 MET; (2) QQQ 09:30 open 719.64 > 709.80 MET; (3) PRE_OPEN NOII 13,975 sh side=2 vs 963,949 paired (~1.45%), ref 217.76, near 217.84/far 217.86 above ref: side code unverified (strategy-notes l.240; side=2 read as sell by convention, near>ref implies buy lean) -> AMBIGUOUS/small, treated like missing data per plan; FLAGGED TO PEDRO (G0 l.65) whether this counts as a fail (then void as sample). G2 comparison (flagged, l.67 vs l.9): 09:31 1-min close 3.25. MARK 09:58 ET RH 2.645 (bid 2.63/ask 2.66); unrealized -105.50 (-28.5%) [alt entry 3.25 would be -60.50 / -18.6%]. NVDA 215.345 @09:58 (Webull), 1st-15 O218.01 H218.03 L214.70 (09:40) C215.51. PREDICTION vs ACTUAL: map said hold 217.5 shelf and clear 218.47/218.68; instead gap-and-fade, lost the shelf on the 09:30 bar and 216.27 (+1% warning) by 09:32; still above 214.13 wrong-read level. Trigger worked at the bell, hold signal (l.35) failed. EXIT CHECKS (M7): target +50% = 5.55 or NVDA 221.30 (l.38) not hit (opt high after 09:30 3.65); stop (v1.3 #5 l.70) level = lower of OR15 low 214.70 / 217.49 = 214.70, first 15-min close 215.51 -> not hit; -50% backstop 1.85 (l.73) not hit (opt low 2.51 @09:55); time stop Thu 10/22 15:55 (l.40). No rule hit -> HOLD. | REPRICE 2026-10-19 ~11:46 ET (Pedro): COUNT fill YES; entry repriced from 3.70 (RH 09:30 1-min open, old l.9) to **3.25** = RH 09:31 1-min CLOSE per Decision (bell) / G2. Ledger debit -325 (was -370); cash 6,114 (was 6,069). Revised levels from entry 3.25: +50% target = 4.875; -50% backstop = 1.625. Stock stop unchanged (15-min close < 214.70). Open P&L basis going forward: (mark - 3.25) * 100 * qty. Historical scanner notes that cite entry 3.70 / target 5.55 / backstop 1.85 remain as written; this note supersedes them for open-position math. | CLOSE MARK 2026-10-19 16:04 ET (from `date`; 4:01 closing study): RH mark 3.225 (bid 3.20/ask 3.25, adj mark 3.23; quote updated 16:01:08 ET), IV 37.3%, delta 0.49, theta -0.43; unrealized (3.225-3.25)x100 = -2.50 (-0.8%). NVDA close 217.09 (+1.38% vs 214.13; Webull), window 15:45-15:59 high 217.98 / low 216.89 (auction bar), sold off from 15:50. EXIT CHECKS (M7): stock stop (v1.3 #5, l.70) = 15-min close < 214.70; 15:45-15:59 15-min close 217.09 -> NOT hit. -50% backstop 1.625 (l.73) not hit. Target +50% 4.875 / NVDA 221.30 (l.38) not hit (day high 219.62 @12:12). Time stop Thu 10/22 15:55 ET (l.40); flat-after-2-full-sessions check (l.40) at Tue 10/20 close (session 1 done, -0.8%). No rule hit -> HOLD overnight. No expiries today (no open contract expires 2026-10-19). | PAPER EXIT 2026-10-20 (logged 09:51 ET per `date`; 9:41 opening scanner, fired 09:46:50): exit @1.56 = RH 1-min 09:41 bar LOW (O1.71 H1.79 L1.56 C1.57), first bar trading at/below the -50% backstop 1.625 (v1.3 #5 l.73; pricing l.14 first traded price at/below, conservative fill, same method as TSLA 10/16). Prior bar 09:40 low 1.64 (not hit). Stock stop ALSO hit 3 min later: Webull 15-min 09:30-09:44 close 213.07 < 214.70 (v1.3 #5 l.70); option 09:44 1-min close 1.54 (l.16 would price it there). NVDA opened 215.97 (gap -0.51% vs 217.09), lost Monday's OR15 low 214.70 by 09:31, low 212.77 @09:42. Realized (1.56-3.25)x100 = -169.00 (-52.0%). Targets never hit (opt high today 2.34 @09:31 vs +50% 4.875; NVDA high 216.46 vs 221.30). GRADE: C- . H1 gap-and-go from 10/19 never held 217.49 shelf; AI selloff resumed Tue (pre-market plan). Note: backstop on a quick slide fired before the 15-min stock stop; both rules agreed on exit. Live check 09:50:46 ET: mark 1.725 (bid 1.71/ask 1.74) after exit.",
-   "source": "paper-options-log.csv row(s) 6; commit bcd3c76"
+   "source": "paper-options-log.csv row(s) 6; commit bcd3c76",
+   "why_type": "news",
+   "plain_why": "Chip stocks were bouncing back after a long losing streak. NVDA was up 1.9% before the open ($218.20) and QQQ was up 1.3%. There was also a report about TSMC chip supply, but it wasn't confirmed.",
+   "why_check": {
+    "level": "weak",
+    "text": "The only Nvidia-specific reason was an unconfirmed TSMC report. The rest was a general 'chips are bouncing' mood."
+   },
+   "plain_plan": "Buy 1 call at the open. Stay in while NVDA holds above $217.49. Aim for +50% on the option or NVDA at $221.30. Get out if a 15-minute bar closes below $214.70 or the option loses half its value.",
+   "plain_outcome": "It faded right away. Both stops fired.",
+   "plain_happened": "NVDA fell below $217.49 in the very first minute and kept slipping. The next morning it opened at $215.97 and dropped to $212.77. The option had lost half its value by 9:41 AM, and we sold at $1.56. Loss: −$169.",
+   "plain_right": [
+    "Both stop-losses fired exactly as written, so we didn't hold a loser hoping it would come back."
+   ],
+   "plain_wrong": [
+    "Wrong read: NVDA looked strong before the open but faded right after it.",
+    "The Nvidia-specific reason (a TSMC report) wasn't confirmed."
+   ],
+   "plain_lesson": "A strong pre-market doesn't mean the stock will hold. We also now price entries at the 9:31 AM close, not the 9:30 open.",
+   "why_moved": {
+    "summary": "Chip stocks rebounded on Oct 19 after an 8-day losing streak (chip index +3.1%), but NVDA itself faded. The week before had been the Nasdaq's worst since June. On Oct 20 a well-known short seller warned about how much of Nvidia's money comes from a few big customers.",
+    "sources": [
+     {
+      "about": "Chip stocks rebound after 8-session losing streak",
+      "source": "Benzinga via Webull",
+      "when": "Oct 19, midday"
+     },
+     {
+      "headline": "Where is the Bottom for NVIDIA?",
+      "source": "Benzinga via Webull",
+      "when": "Oct 20"
+     }
+    ]
+   },
+   "charts": {
+    "before": null,
+    "during": "assets/trades/paper-2026-10-19-NVDA-217.5C.png",
+    "after": null
+   }
   },
   "paper|2026-10-20|09:39|NBIS": {
    "title": "NBIS 10/23 162.5P x1 (10/20)",
@@ -223,7 +420,40 @@
    "premium": 660.0,
    "chart": "assets/trades/paper-2026-10-20-NBIS-162.5P.png",
    "log": "SETUP: failed-retest gap-down PUT (v1.1 l.47; definition v1.2 l.52; entry one bar after trigger v1.3 #3 l.67). Logged 09:51 ET per `date` by the 9:41 opening scanner (fired 09:46:50, late) - retro-priced per l.67. Webull 1-min: NBIS prior close 170.24, 09:30 open 163.9575 (gap -3.69%). (1) gap>=1% YES; (2) flush>=0.5% beyond open (<=163.14) YES, low 162.21 @09:33, 161.56 @09:35; (3) bounce to within 0.2% of open (>=163.63) or tag YES, 09:36 high 164.79 (closes 09:36 164.135 / 09:37 164.125 above open); (4) 09:38 bar closed 163.005 < open with lower high 164.09 < 164.79 YES = TRIGGER 09:38; (5) QQQ not against YES (09:38 close 713.77 < its 715.22 open). Still valid at 09:39 close 162.61 (not reclaimed) -> ENTRY = RH 1-min 09:39 bar CLOSE 6.60 on NBIS 10/23 162.5P (nearest strike to trigger close 163.005) = $660 (l.24 cap ~$1,000), 3 DTE (l.25). M8: active/tradable, sellout 2026-10-23 15:30 ET. Window 9:35-10:30 OK (l.52). Slot 1 of 2 (l.23). No NBIS/AMD earnings 10/20-10/23 on RH high-cap calendar. STOP (v1.3 #5 l.71): 15-min close above the farther of OR15 high 166.80 or the pre-written PM high 167.25 (setups/2026-10-20-premarket.md table) = 167.25; -50% backstop 3.30 (l.73, priced per l.14). Interpretation flagged: PM range high used as the 'pre-written premarket level'. TARGET (l.77 G5, l.38 1 contract): measured move = open 163.9575 - flush low 161.56 = 2.3975 below 161.56 -> NBIS 159.16, or option +50% = 9.90, whichever first. TIME STOP (l.40): 15:55 ET Thu 10/22 (day before Fri expiry); flat check per l.85 lands on the same Thu 15:55. Since entry: NBIS low 160.28 @09:41 (target not hit), opt high 7.98 @09:41; 09:30-09:44 15-min close 161.72 (stop not hit). Live 09:50:46 ET: mark 6.725 (bid 6.65/ask 6.80, IV 110%, delta -0.48); NBIS 162.44. | 9:46 ROUTINE 2026-10-20 (fired 09:51:55, logged 09:55 ET per `date`): no planned-bell or overnight rows today (pre-market plan: no bell pick, l.28/l.47/l.44); entry 6.60 re-verified = RH 1-min 09:39 close. Mark 09:54:15 ET 6.05 (bid 6.00/ask 6.10, IV 110%, delta -0.45); unrealized (6.05-6.60)x100 = -55.00 (-8.3%). NBIS 163.10 @09:53 (Webull), day low 160.28 @09:41, high 166.80. EXIT CHECKS (M7): stop l.71 = 15-min close > 167.25, first 15-min close 09:30-09:44 = 161.72 -> not hit (09:45-09:59 bar still forming); backstop 3.30 (l.73) not hit (opt low since entry 6.00 @09:49); target NBIS 159.16 / opt 9.90 (l.77, l.38) not hit (opt high since entry 7.98 @09:41); time stop Thu 10/22 15:55 (l.40, l.85). No rule hit -> HOLD. | 9:57 SCANNER 2026-10-20 (fired 10:06:04, ~9 min late; logged 10:07 ET per `date`): Webull 15-min 09:45-09:59 close 165.95 < 167.25 -> stop l.71 NOT hit. In-progress 10:00-10:14 bar at 167.85 (live 167.59 @~10:07) is ABOVE 167.25 but not closed; l.71 counts only completed 15-min closes, so the 10:15 close decides (exit priced per l.16 at that bar). Backstop 3.30 (l.73) not hit (opt low since 09:50 = 4.80 @10:05). Target NBIS 159.16 / opt 9.90 (l.77, l.38) not hit (opt high since 09:50 = 6.85). RH mark 10:06:59 ET 4.55 (bid 4.50/ask 4.60, IV 111%, delta -0.36); unrealized (4.55-6.60)x100 = -205.00 (-31.1%). No rule hit -> HOLD (M7). | PAPER EXIT 2026-10-20 (intraday scanner 10:07 slot, fired 10:11:56; logged 10:16 ET per `date`) @4.05 = RH 1-min 10:14 bar CLOSE (O4.25 H4.25 L3.98 C4.05), the last minute of the breaching 15-min bar, priced per l.16 (option at the first bar where the stock stop is breached; same method as NVDA 10/20 09:44). STOCK STOP HIT (v1.3 #5 l.71): Webull completed 15-min 10:00-10:14 close 169.214 > 167.25 (farther of OR15 high 166.80 / PM high 167.25); bar H169.43 L165.30. -50% backstop 3.30 (l.73) not hit (opt low since entry 3.98 @10:14). Target NBIS 159.16 / opt 9.90 (l.77, l.38) never hit (NBIS low 160.28 @09:41; opt high since entry 7.98 @09:41). Realized (4.05-6.60)x100 = -255.00 (-38.6%). Live RH 10:15:40 ET mark 3.925 (bid 3.90/ask 3.95) after exit. GRADE: C. Failed retest triggered, flush toward target stalled at 160.28 and NBIS reversed with QQQ (710.39 low -> 719 by 10:15); full gap-fill attempt (prior close 170.24). Lesson candidate: both AI-selloff puts were one correlated bet and reversed together.",
-   "source": "paper-options-log.csv row(s) 7; commit bcd3c76"
+   "source": "paper-options-log.csv row(s) 7; commit bcd3c76",
+   "why_type": "chart",
+   "plain_why": "Chart setup: Nebius opened 3.7% lower ($163.96), dropped to $161.56, bounced to $164.79 and failed near its open. QQQ was below its open too. The news backdrop: AI cloud stocks were falling on borrowing-cost worries.",
+   "plain_plan": "Buy 1 put. Aim for Nebius at $159.16 or +50% on the option ($9.90). Get out if a 15-minute bar closes above $167.25 or the option loses half its value.",
+   "plain_outcome": "Got within about $1 of the target, then reversed with the market. Stopped out.",
+   "plain_happened": "Nebius fell to $160.28 at 9:41 AM, just short of the $159.16 target. Then big tech turned up (QQQ went from $710 to $719 by 10:15 AM) and Nebius went with it. A 15-minute bar closed at $169.21, above our stop, and we sold at $4.05. Loss: −$255.",
+   "plain_right": [
+    "The stop worked as written."
+   ],
+   "plain_wrong": [
+    "The target was missed by about $1, then the whole market bounced.",
+    "We also bought an AMD put that morning for the same reason (AI stocks falling). When the market turned, both lost together: really one bet made twice."
+   ],
+   "plain_lesson": "Don't stack two bets on the same idea. If they're tied together, they win or lose together.",
+   "why_moved": {
+    "summary": "Before the open Nebius was down about 4% as investors pulled back from AI cloud stocks on financing worries (rival CoreWeave's debt, rising borrowing costs). But the overall market rallied that morning: by midday the Nasdaq was up over 100 points and the S&P 500 +0.54%.",
+    "sources": [
+     {
+      "headline": "Nebius Group Stock Is Falling Tuesday",
+      "source": "Benzinga via Webull",
+      "when": "Oct 20, 6:53 AM ET"
+     },
+     {
+      "headline": "Nasdaq Rises Over 100 Points",
+      "source": "Benzinga via Webull",
+      "when": "Oct 20, midday"
+     }
+    ]
+   },
+   "charts": {
+    "before": null,
+    "during": "assets/trades/paper-2026-10-20-NBIS-162.5P.png",
+    "after": null
+   }
   },
   "paper|2026-10-20|09:45|AMD": {
    "title": "AMD 10/23 522.5P x1 (10/20)",
@@ -256,7 +486,36 @@
    "premium": 985.0,
    "chart": "assets/trades/paper-2026-10-20-AMD-522.5P.png",
    "log": "SETUP: failed-retest gap-down PUT (l.47, l.52, entry l.67). Logged 09:51 ET per `date` by the 9:41 opening scanner (fired 09:46:50). Webull 1-min: AMD prior close 538.05, 09:30 open 530.05 (gap -1.49%). (1) gap>=1% YES; (2) flush>=0.5% beyond open (<=527.40) YES, 09:40 low 526.01, 09:41 low 524.60; (3) bounce to within 0.2% of open (>=528.99) YES, 09:43 high 529.84; (4) 09:44 bar closed 527.40 < open with lower high 529.616 < 529.84 YES = TRIGGER 09:44; (5) QQQ not against YES (09:44 close 710.70, falling). Still valid at 09:45 close 528.18 -> ENTRY = RH 1-min 09:45 bar CLOSE. STRIKE: nearest 527.5P closed 12.15 ($1,215) and 525P 10.93 ($1,093), both over the ~$1,000 cap (l.24), so took the nearest strike within cap: 522.5P @9.85 = $985 (delta ~-0.41, ~1% OTM; near-the-money l.25, 3 DTE). Strike-under-cap choice FLAGGED to Pedro (not spelled out in config.md). M8: active/tradable, sellout 2026-10-23 15:30 ET. Slot 2 of 2 (l.23). STOP (v1.3 #5 l.71): 15-min close above the farther of OR15 high 535.30 or PM high 533.38 = 535.30; -50% backstop 4.925 (l.73). TARGET (l.77, l.38): measured move = open 530.05 - flush low 524.60 = 5.45 below 524.60 -> AMD 519.15, or option +50% = 14.78 (9.85x1.5 = 14.775), whichever first. TIME STOP (l.40): 15:55 ET Thu 10/22; flat check l.85 same time. Since entry: AMD high 530.40 @09:49 (tagged open, closed back under 529.96), low 526.57; no stop/target. Live 09:50:46 ET: mark 9.725 (bid 9.50/ask 9.95, IV 63%); AMD 528.43. | 9:46 ROUTINE 2026-10-20 (fired 09:51:55, logged 09:55 ET per `date`): entry 9.85 re-verified = RH 1-min 09:45 close. Mark 09:54:15 ET 8.75 (bid 8.50/ask 9.00, IV 63%, delta -0.38); unrealized (8.75-9.85)x100 = -110.00 (-11.2%). AMD 529.9999 @09:53 (Webull), back at the 09:30 open 530.05; day low 524.60 @09:41, high 535.30 @09:37. EXIT CHECKS (M7): stop l.71 = 15-min close > 535.30, first 15-min close 09:30-09:44 = 527.40 -> not hit (09:45-09:59 bar still forming); backstop 4.925 (l.73) not hit (opt low since entry 8.58 @09:53); target AMD 519.15 / opt 14.78 (l.77, l.38) not hit (opt high after entry bar 10.00 @09:46); time stop Thu 10/22 15:55 (l.40, l.85). No rule hit -> HOLD. Note: AMD reclaiming the open is the weak spot of this setup; the written stop is the 15-min close above 535.30, not the open. | 9:57 SCANNER 2026-10-20 (fired 10:06:04, ~9 min late; logged 10:07 ET per `date`): Webull 15-min 09:45-09:59 close 533.69 < 535.30 -> stop l.71 NOT hit. In-progress 10:00-10:14 bar at 538.365 (live 538.30 @~10:07, high 539.29) is ABOVE 535.30 but not closed; the 10:15 close decides (exit priced per l.16 at that bar). Backstop 4.925 (l.73) not hit (opt low since 09:50 = 6.68 @10:05). Target AMD 519.15 / opt 14.78 (l.77, l.38) not hit (opt high since 09:50 = 9.98). RH mark 10:07:00 ET 6.425 (bid 6.25/ask 6.60, IV 65%, delta -0.30); unrealized (6.425-9.85)x100 = -342.50 (-34.8%). No rule hit -> HOLD (M7). | PAPER EXIT 2026-10-20 (intraday scanner 10:07 slot, fired 10:11:56; logged 10:16 ET per `date`) @5.83 = RH 1-min 10:14 bar CLOSE (O6.25 H6.25 L5.80 C5.83), the last minute of the breaching 15-min bar, priced per l.16. STOCK STOP HIT (v1.3 #5 l.71): Webull completed 15-min 10:00-10:14 close 540.97 > 535.30 (OR15 high, farther than PM high 533.38); bar H540.97 L532.89. -50% backstop 4.925 (l.73) not hit (opt low since entry 5.80 @10:14). Target AMD 519.15 / opt 14.78 (l.77, l.38) never hit (AMD low after entry 526.57; opt high after entry bar 10.00 @09:46). Realized (5.83-9.85)x100 = -402.00 (-40.8%). Live RH 10:15:40 ET mark 5.525 (bid 5.45/ask 5.60) after exit. GRADE: C-. AMD reclaimed its 09:30 open 530.05 within 5 min of entry and ran through the prior close 538.05 with QQQ; failed retest did not hold. The 1%-under-open strike choice (flagged) added decay but the stock move decided it.",
-   "source": "paper-options-log.csv row(s) 8; commit bcd3c76"
+   "source": "paper-options-log.csv row(s) 8; commit bcd3c76",
+   "why_type": "chart",
+   "plain_why": "Chart setup, no news: AMD opened 1.5% lower ($530.05), dropped to $524.60, bounced near its open and failed. QQQ was falling.",
+   "plain_plan": "Buy 1 put. Aim for AMD at $519.15 or +50% on the option ($14.78). Get out if a 15-minute bar closes above $535.30 or the option loses half its value.",
+   "plain_outcome": "AMD turned around within 5 minutes. Stopped out.",
+   "plain_happened": "Within 5 minutes AMD climbed back above its open and kept going, past the prior day's close of $538.05. A 15-minute bar closed at $540.97, above our stop, and we sold at $5.83. Loss: −$402.",
+   "plain_right": [
+    "The stop worked as written."
+   ],
+   "plain_wrong": [
+    "The failed bounce didn't hold. AMD turned around quickly with the market.",
+    "The strike was about 1% away from the stock price (picked to fit the ~$1,000 budget), so the option lost value faster.",
+    "Same bet as the Nebius put that morning."
+   ],
+   "plain_lesson": "Don't stack two bets on the same idea.",
+   "why_moved": {
+    "summary": "No clear AMD news found (only minor product headlines). The whole market rallied that morning: the Nasdaq rose over 100 points and the S&P 500 was up 0.54% by midday, which lifted AMD past our stop.",
+    "sources": [
+     {
+      "headline": "Nasdaq Rises Over 100 Points",
+      "source": "Benzinga via Webull",
+      "when": "Oct 20, midday"
+     }
+    ]
+   },
+   "charts": {
+    "before": null,
+    "during": "assets/trades/paper-2026-10-20-AMD-522.5P.png",
+    "after": null
+   }
   },
   "paper|2026-10-20|15:54|SPX": {
    "title": "SPXW 10/21 7700C x1 (10/20)",
@@ -284,7 +543,32 @@
    "premium": 2790.0,
    "chart": "assets/trades/paper-2026-10-20-SPX-7700C.png",
    "log": "PEDRO OVERRIDE (3:52 PM ET 2026-10-20: 'Make more option trades, stop the limit of 2. Make a $4k trade right now and sell it before 3:59'; then switched to SPX index options before any SPY entry was booked). Not a rulebook setup: daily cap l.23 removed by Pedro; ~$4k size overrides ~$1k sizing l.24; entry after 3:30 cutoff l.51; 1 DTE (outside 3-5 DTE l.25, nearest non-same-day expiry per Pedro). Direction: call, SPY +0.26% on day (RH 768.45 vs prior close 766.48 @15:53:39 ET). Strike 7700C near-the-money (delta 0.58). Qty: 1 contract = $2,790; 2 = $5,580 > $4,000 cap, so 1 is closest without going over. ENTRY @27.90 = RH live ask 15:54:07 ET (bid 27.70 / mark 27.80, IV 13.5%). PAPER EXIT @28.10 = RH live bid 15:57:05 ET (ask 28.30 / mark 28.20, delta 0.59). Realized (28.10-27.90)x100 = +20.00 (+0.72%). GRADE: n/a (directed trade, not a setup sample).",
-   "source": "paper-options-log.csv row(s) 9; commit 9a96673"
+   "source": "paper-options-log.csv row(s) 9; commit 9a96673",
+   "why_type": "override",
+   "plain_why": "Pedro asked for it: \"Make a $4k trade right now and sell it before 3:59.\" Not a rulebook setup. We picked a call because the S&P 500 (SPY) was up 0.26% that day.",
+   "plain_plan": "Buy right away and sell before 3:59 PM.",
+   "plain_outcome": "Sold 3 minutes later for a small gain, as asked.",
+   "plain_happened": "Bought at $27.90 at 3:54 PM and sold at $28.10 at 3:57 PM. Profit: +$20.",
+   "plain_right": [
+    "Closed before 3:59 PM, as asked."
+   ],
+   "plain_wrong": [],
+   "plain_lesson": "Not a test of any setup, so it doesn't count toward judging the rules.",
+   "why_moved": {
+    "summary": "The market was up that day: the Nasdaq rose over 100 points and the S&P 500 was up 0.54% by midday.",
+    "sources": [
+     {
+      "headline": "Nasdaq Rises Over 100 Points",
+      "source": "Benzinga via Webull",
+      "when": "Oct 20, midday"
+     }
+    ]
+   },
+   "charts": {
+    "before": null,
+    "during": "assets/trades/paper-2026-10-20-SPX-7700C.png",
+    "after": null
+   }
   },
   "paper|2026-10-21|09:33|NVDA": {
    "title": "NVDA 10/26 220C x4 (10/21)",
@@ -316,7 +600,41 @@
    "premium": 1560.0,
    "chart": "assets/trades/paper-2026-10-21-NVDA-220C.png",
    "log": "PEDRO OVERRIDE 09:33 buy now (Pedro 'Buy now' ~09:33 ET, before the 9:46 routine; entry at live ask instead of 09:31 close per l.83). ENTRY x4 @3.90 = RH live ask 09:33:55 ET (bid 3.80/mark 3.85, IV 32.8%, delta 0.54) = $1,560. 09:31 1-min bar close for comparison: 4.13 (bar O4.68 H4.68 L4.13). TRIGGER MET (Webull 1-min): NVDA 09:30 open 220.96 >= 219.00 (and >= 218.63); QQQ 09:30 open 722.64 > 717.63. NOII (l.30) not checked at 09:28-09:30 (no reading). M8: state active, tradable, sellout 2026-10-26 15:30 ET. NVDA 220.445 @09:33 close. STOP (l.70-73): 15-min close below the lower of OR15 low (09:30-09:44 bar not complete; low so far 220.30) or PM shelf 219.00 -> at most 219.00, finalize after 09:45; -50% backstop 1.95. TARGET (4 contracts, config l.39): sell 2 at +50% = 5.85; trail other 2, close at +100% = 7.80 or NVDA 223.06. TIME STOP (l.40, l.85): flat check Thu 10/22 15:55 ET (+/-10% of 3.90); hard exit Fri 10/23 15:55 ET. | PEDRO OVERRIDE 09:06: 4 contracts per pick (qty 1 -> 4; triggers/stops/targets unchanged; SPCX $1,000 flag now per contract; if cash short, NVDA first then SPCX as fit). PLANNED BELL (8:43 pre-market routine, logged 08:47 ET per `date`). SETUP: gap-and-go call (l.28-31), candidate pre-written in setups/2026-10-20-eod.md. THESIS: NVDA PM 220.15 vs Tue close 216.47 (+1.70%, Webull), PM range 219.00-221.77; catalyst: Super Micro raised FQ1 revenue outlook to $18.5-19.5B from $14.5-15.5B and SpaceX Q3 revenue $14.58B (+161%) with AI >50% of sales revived the AI trade (CNBC/Yahoo/Invezz 10/21). QQQ PM 721.58 (+0.55%), NQ fut +0.4-0.5% (AP/Yahoo). No NVDA earnings before 10/26 (Webull calendar last report 2026-08-26). TRIGGER (all at 09:30): (1) NVDA 09:30 open >= 218.63 (+1.0% vs 216.47, l.28) and PM trend holding: open >= PM low 219.00 (l.29); (2) QQQ 09:30 open > 717.63 Tue close (l.31); (3) NOII not leaning sell (l.30). SIZE: 1 contract (~$366 at BS est 3.66 for a 220.15 open, IV 33.4%; stale RH quote 2.23/2.28 from 10/20) under ~$1,000 (l.24); 3 trading days to Mon 10/26 expiry (l.25); sellout 2026-10-26 15:30 ET. TARGET (l.38, 1 contract): option +50% of fill or NVDA 223.06, whichever first. STOP (v1.3 #5 l.70, l.73): 15-min close below the farther (lower) of the opening 15-min range low or PM shelf 219.00; -50% option backstop priced per l.14. Wrong read: 15-min close under 216.47 (gap filled). TIME STOP (l.40, l.85): flat check Thu 10/22 15:55 ET (+/-10% of fill); hard exit Fri 10/23 15:55 ET (day before expiry). PRICE PATH (BS est, IV 33.4%, not quotes): Wed 09:31 at 219.00/220.15/221.77 = 3.09/3.66/4.56; Wed close at 220.15/223.06 = 3.57/5.27; Thu close at 220.15/223.06 = 3.19/4.92; Fri 15:55 at 220.15/223.06/216.47 = 2.77/4.53/1.26. At a 3.66 fill, +50% = 5.49 (~NVDA 223.3 Wed). CATALYSTS before expiry: Wed 10/21 after close TSLA and META earnings (META capex read-through to NVDA, either way); Thu 10/22 LMT pre-market (from 10/19 notes, not re-verified). Webull PM snapshot quote time 08:45:32 ET. Fill = RH 1-min 09:31 bar CLOSE (Decision (bell) l.83, entry one bar after l.67), no entry price recorded pre-open. M3: 9:46 routine must log 09:30 open vs trigger; if missed, NO fill + flag to Pedro (G1 not approved). M8: active/tradable checked 08:4x ET. NOII (l.30): Webull PRE_OPEN snapshot at 08:4x returned the stale 10/20 record (imbalance 0), not today's auction; check 09:28-09:30, if leaning sell or side-code ambiguous, flag to Pedro (G0 l.65), don't guess. Correlation note: NVDA and SPCX are both AI/risk-on bets (10/20 lesson candidate: two same-theme trades stopped together) - hypothesis, not a rule. | 9:41 SCANNER 2026-10-21 (fired 09:44:40; logged 09:47 ET per `date`): STOP FINALIZED: Webull completed 15-min 09:30-09:44 bar H222.16 L219.54 C220.05 (min/max of 1-min bars); stop = 15-min close below the lower of OR15 low 219.54 / PM shelf 219.00 = 219.00 (config l.71); first 15-min close 220.05 -> not hit. -50% backstop 1.95 (l.74) not hit (opt low since entry 3.28 @09:43). Target sell 2 at 5.85 / +100% 7.80 / NVDA 223.06 (l.39) not hit (opt high since 09:33 4.18). RH mark 09:46:06 ET 3.725 (bid 3.70/ask 3.75, IV 32.8%, delta 0.53); unrealized (3.725-3.90)x400 = -70.00. NVDA 219.91 (09:45 bar). Time stop l.41 + l.86: flat check Thu 10/22 15:55, hard exit Fri 10/23 15:55. No rule hit -> HOLD (M7). LINE-NUMBER FIX (M17): config.md gained a line at 09:06 (l.25 override), so the 09:33 entry note's l.70-73 = now l.71-74, l.40 = l.41, l.83 = l.84, l.85 = l.86. | 9:46 ROUTINE 2026-10-21 (fired 09:53:46; logged 09:56 ET per `date`): ENTRY CONFIRMED x4 @3.90 (Pedro 09:33 override, live ask; ledger already debited -1560). RH 1-min 09:30 bar O/C 4.65 (single print), 09:31 bar close 4.13 (bell rule l.84 price, for comparison; override fill was 0.23 better). TRIGGER WORKED: NVDA 09:30 open 220.96 >= 219.00 and QQQ open 722.64 > 717.63. NOII PRE_OPEN final ref 220.84 near/far 221.00 (no size; side unverified). Predicted move (gap-and-go up toward 223.06) did NOT happen in the first 15: high was the 09:30 bar 222.16, faded to 219.54 @09:43, held the 219.00 shelf. RH mark 09:55:32 ET 3.425 (bid 3.40/ask 3.45, IV 32.6%, delta 0.51); unrealized (3.425-3.90)x400 = -190.00 (-12.2%). NVDA 220.24 (Webull 09:55:35). EXIT CHECKS (M7): stop l.71 15-min close < 219.00: 09:30-09:44 close 220.05 not hit, 09:45-09:59 bar forming; backstop 1.95 (l.74) not hit (opt low since entry 3.23 @09:53); target sell 2 at 5.85 / +100% 7.80 / NVDA 223.06 (l.39) not hit (opt high since entry 4.18 @09:34); time stop l.41/l.86 Thu 10/22 15:55 flat check, Fri 10/23 15:55 hard exit. No rule hit -> HOLD. | 9:57 SCANNER 2026-10-21 (fired 10:02:58; logged 10:06 ET per `date`): Webull completed 15-min 09:45-09:59 close 220.29 > 219.00 -> stop l.71 NOT hit. -50% backstop 1.95 (l.74) not hit (opt low since 09:55 3.33). Target sell 2 at 5.85 / +100% 7.80 / NVDA 223.06 (l.39) not hit (opt high since 09:55 4.03 @09:58; NVDA high 221.065 @09:58). RH mark 10:06:04 ET 3.225 (bid 3.20/ask 3.25, IV 32.6%, delta 0.49); unrealized (3.225-3.90)x400 = -270.00. NVDA 219.865 (1-min 10:05 close). Time stop l.41/l.86: flat check Thu 10/22 15:55, hard exit Fri 10/23 15:55. No rule hit -> HOLD (M7). | PEDRO OVERRIDE 10:09 sell now (Pedro 'OK sell now' ~10:09 ET; discretionary exit, no rule l.71/l.74/l.39 hit). PAPER EXIT x4 2026-10-21 10:09:30 ET per `date` @3.20 = RH live BID (get_option_quotes updated_at 14:09:30Z = 10:09:30 ET; ask 3.25, mark 3.225, IV 32.0%, delta 0.49, bid size 97). Proceeds 3.20x100x4 = $1,280. Realized (3.20-3.90)x100x4 = -280.00 (-17.9%).",
-   "source": "paper-options-log.csv row(s) 10; commit fb01564"
+   "source": "paper-options-log.csv row(s) 10; commit fb01564",
+   "why_type": "news",
+   "plain_why": "Super Micro (a server maker that uses Nvidia chips) raised its outlook, and SpaceX's strong quarter revived the AI trade. NVDA was up 1.7% before the open ($220.15). At the open it was $220.96, above our $219 trigger, and Pedro said \"Buy now\" at 9:33 AM.",
+   "plain_plan": "Buy 4 calls. Sell 2 when the option is up 50% ($5.85); sell the other 2 at +100% ($7.80) or if NVDA hits $223.06. Get out if a 15-minute bar closes below $219 or the option loses half its value.",
+   "plain_outcome": "It faded after the first minute. Pedro sold early, and the rule would have too.",
+   "plain_happened": "NVDA peaked at $222.16 in the first minute, then slipped to $219.54 by 9:43 AM. Pedro said \"OK sell now\" at 10:09 AM and we sold at $3.20. Loss: −$280. Our written stop would have triggered anyway a few minutes later (the 10:00–10:14 bar closed at $217.92).",
+   "plain_right": [
+    "Pedro's early exit matched what the rule would have done a few minutes later."
+   ],
+   "plain_wrong": [
+    "Wrong read: the early strength didn't last.",
+    "We didn't check whether buyers or sellers were lined up at the open.",
+    "NVDA and SpaceX were both 'AI is hot' bets on the same morning."
+   ],
+   "plain_lesson": "Check the opening buy/sell balance before buying, and avoid two bets on the same theme.",
+   "why_moved": {
+    "summary": "It was Nvidia's big Europe event (GTC Berlin), with a flood of partnership news (including Google). The broader market was fine: the Nasdaq closed up 1.05%, led by SpaceX. NVDA's fade wasn't market-wide.",
+    "sources": [
+     {
+      "about": "Nvidia GTC Berlin: Google Vera Rubin availability and partner announcements",
+      "source": "Benzinga via Webull",
+      "when": "Oct 21"
+     },
+     {
+      "headline": "Nasdaq Surges Over 1% As SpaceX Shares Gain",
+      "source": "Benzinga via Webull",
+      "when": "Oct 21"
+     }
+    ]
+   },
+   "charts": {
+    "before": null,
+    "during": "assets/trades/paper-2026-10-21-NVDA-220C.png",
+    "after": null
+   }
   },
   "paper|2026-10-21|09:33|SPCX": {
    "title": "SPCX 10/26 160C x4 (10/21)",
@@ -348,7 +666,46 @@
    "premium": 2060.0,
    "chart": "assets/trades/paper-2026-10-21-SPCX-160C.png",
    "log": "PEDRO OVERRIDE 09:33 buy now (Pedro 'Buy now' ~09:33 ET, before the 9:46 routine; entry at live ask instead of 09:31 close per l.83). ENTRY x4 @5.15 = RH live ask 09:33:56 ET (bid 4.90/mark 5.025, IV 55.0%, delta 0.57) = $2,060; $515/contract, under the $1,000 flag; 4 fit in cash after NVDA ($4,073 left). 09:31 1-min bar close for comparison: 5.53 (bar O4.38 H5.75 L4.28). TRIGGER MET (Webull 1-min): SPCX 09:30 open 160.56 >= 157.77; QQQ 09:30 open 722.64 > 717.63. NOII (l.30) not checked at 09:28-09:30 (no reading). M8: state active, tradable, sellout 2026-10-26 15:30 ET. SPCX 161.52 @09:33 close. STOP (l.70-73): 15-min close below the lower of OR15 low (09:30-09:44 bar not complete; low so far 158.78) or PM shelf 157.77 -> at most 157.77, finalize after 09:45; -50% backstop 2.575. TARGET (4 contracts, config l.39): sell 2 at +50% = 7.725; trail other 2, close at +100% = 10.30 or SPCX 163.97. TIME STOP (l.40, l.85): flat check Thu 10/22 15:55 ET (+/-10% of 5.15); hard exit Fri 10/23 15:55 ET. | PEDRO OVERRIDE 09:06: 4 contracts per pick (qty 1 -> 4; triggers/stops/targets unchanged; SPCX $1,000 flag now per contract; if cash short, NVDA first then SPCX as fit). PLANNED BELL (8:43 pre-market routine, logged 08:47 ET per `date`). SETUP: gap-and-go call (l.28-31). THESIS: SPCX PM 159.95 vs Tue close 147.79 (+8.23%, Webull), PM range 157.77-163.97, PM volume 6,738,511. Catalyst: Q3 revenue $14.58B (+161% y/y) vs ~$12.7B consensus, Musk said SpaceX and Tesla formed special committees to evaluate a merger; PT raises incl. JPMorgan $500, Barclays $300, Wells $274 (CNBC 10/21). Earnings already out (Webull calendar 2026-10-20), so no earnings inside the hold. TRIGGER (all at 09:30): (1) SPCX 09:30 open >= PM low 157.77 (gap holding, l.28-29; also >= +1% level 149.27); (2) QQQ 09:30 open > 717.63 (l.31); (3) NOII not leaning sell (l.30). SIZE: 1 contract (~$540 at BS est 5.39 for a 159.95 open with post-earnings IV assumed 70%; IV unknown until the open; stale RH 10/20 quote 2.18/2.23 at IV 88% is pre-earnings) under ~$1,000 (l.24); if the 09:31 close is above 10.00 ($1,000), flag to Pedro instead of filling. 3 trading days to Mon 10/26 (l.25); sellout 2026-10-26 15:30 ET. TARGET (l.38, 1 contract): option +50% of fill or SPCX 163.97 (PM high retest), whichever first. STOP (v1.3 #5 l.70, l.73): 15-min close below the farther (lower) of the opening 15-min range low or PM shelf 157.77; -50% option backstop per l.14. Wrong read: 15-min close under 153.87 (half the gap filled: midpoint of 147.79 and 159.95). TIME STOP (l.40, l.85): flat check Thu 10/22 15:55 ET (+/-10% of fill); hard exit Fri 10/23 15:55 ET. PRICE PATH (BS est, IV 70%, not quotes; IV crush risk): Wed 09:31 at 157.77/159.95/163.97 = 4.33/5.39/7.70; Wed close at 159.95/163.97/167 = 5.24/7.57/9.62; Thu close at 159.95/163.97 = 4.68/7.03; Fri 15:55 at 159.95/163.97/155 = 4.05/6.42/1.99. At a 5.39 fill, +50% = 8.09 (~SPCX 164.3). CATALYSTS before expiry: TSLA earnings Wed after close (merger talk links the two; TSLA move can spill into SPCX); META Wed after close (AI tape). Gap-ups faded in 5 of 6 names on 10/19 (H9, n=1 day). Webull PM snapshot quote time 08:45:32 ET. Fill = RH 1-min 09:31 bar CLOSE (Decision (bell) l.83, entry one bar after l.67), no entry price recorded pre-open. M3: 9:46 routine must log 09:30 open vs trigger; if missed, NO fill + flag to Pedro (G1 not approved). M8: active/tradable checked 08:4x ET. NOII (l.30): Webull PRE_OPEN snapshot at 08:4x returned the stale 10/20 record (imbalance 0), not today's auction; check 09:28-09:30, if leaning sell or side-code ambiguous, flag to Pedro (G0 l.65), don't guess. Correlation note: NVDA and SPCX are both AI/risk-on bets (10/20 lesson candidate: two same-theme trades stopped together) - hypothesis, not a rule. | 9:41 SCANNER 2026-10-21 (fired 09:44:40; logged 09:47 ET per `date`): STOP FINALIZED: Webull completed 15-min 09:30-09:44 bar H162.77 L158.20 C159.335 (min/max of 1-min bars); stop = 15-min close below the lower of OR15 low 158.20 / PM shelf 157.77 = 157.77 (config l.71); first 15-min close 159.335 -> not hit. -50% backstop 2.575 (l.74) not hit (opt low since entry 3.40 @09:43). Target sell 2 at 7.725 / +100% 10.30 / SPCX 163.97 (l.39) not hit (opt high since 09:33 5.55 @09:34). RH mark 09:46:06 ET 4.10 (bid 4.00/ask 4.20, IV 55.3%, delta 0.50); unrealized (4.10-5.15)x400 = -420.00. SPCX 158.973 (09:45 bar). Time stop l.41 + l.86: flat check Thu 10/22 15:55, hard exit Fri 10/23 15:55. No rule hit -> HOLD (M7). LINE-NUMBER FIX (M17): 09:33 entry note's l.70-73 = now l.71-74, l.40 = l.41, l.83 = l.84, l.85 = l.86. | 9:46 ROUTINE 2026-10-21 (fired 09:53:46; logged 09:56 ET per `date`): ENTRY CONFIRMED x4 @5.15 (Pedro 09:33 override, live ask; ledger already debited -2060). RH 1-min 09:30 bar O/C 4.08 (single print), 09:31 bar close 5.53 (bell rule l.84 price, for comparison; override fill was 0.38 better). TRIGGER WORKED: SPCX 09:30 open 160.56 >= 157.77 and QQQ open 722.64 > 717.63. NOII PRE_OPEN final ref 160.54 near 160.59 far 160.65 (no size; side unverified). Predicted move: first 15 faded (162.77 @09:31 to 158.20 @09:43, held 157.77 shelf), then pushed after 09:45 to day high 163.68 (Webull), just under the 163.97 target. RH mark 09:55:33 ET 5.875 (bid 5.75/ask 6.00, IV 56.9%, delta 0.61); unrealized (5.875-5.15)x400 = +290.00 (+14.1%). SPCX 163.015 (Webull 09:55:35). EXIT CHECKS (M7): stop l.71 15-min close < 157.77: 09:30-09:44 close 159.335 not hit; backstop 2.575 (l.74) not hit (opt low since entry 3.40 @09:43); target sell 2 at 7.725 / +100% 10.30 / SPCX 163.97 (l.39) not hit (opt high since entry 6.60 @09:52-09:53; SPCX high 163.68); time stop l.41/l.86 Thu 10/22 15:55 flat check, Fri 10/23 15:55 hard exit. No rule hit -> HOLD. | PAPER EXIT x4 2026-10-21 (9:57 opening scanner, fired 10:02:58; logged 10:06 ET per `date`) @7.75 = RH 15-second 10:02:15 bar CLOSE (O7.48 H7.80 L7.40 C7.75), the first bar trading beyond 7.725, priced per config l.55 (first traded price beyond the level). RULE (config l.39, 4 contracts): (a) take half off at +50% = 7.725: first RH trade >= 7.725 in the 10:02:15 15s bar (1-min 10:02 H7.85) -> SELL 2 @7.75. (b) 'trail the rest and close at +100% or when the stock hits its target level': SPCX target 163.97 (entry note) already hit (Webull 1-min 09:56 high 163.97; SPCX 1-min 10:02 bar L164.73 H165.49, above 163.97 the whole bar) -> CLOSE the other 2 at the same point @7.75. Stops not hit: 15-min 09:45-09:59 close 164.64 > 157.77 (l.71); -50% backstop 2.575 (l.74) not hit. Realized (7.75-5.15)x100x4 = +1040.00 (+50.5%). FLAGGED TO PEDRO (G0 l.66, not covered): the stock target 163.97 was first touched at 09:56 (option 6.25-6.73 in that minute) BEFORE the option +50%; l.39 doesn't say whether a stock-target hit before the half-off closes all 4. Took the reading that the stock target closes only 'the rest' after the half-off, so all 4 went at 7.75. Counterfactual: a 09:56 full exit at the 1-min close 6.73 = +632.00. After exit: RH mark 10:06:04 ET 7.85 (bid 7.70/ask 8.00); SPCX day high 166.18 @10:03. GRADE: A-. Gap-and-go worked after a first-15 fade that held the 157.77 shelf.",
-   "source": "paper-options-log.csv row(s) 11; commit fe6ddaf"
+   "source": "paper-options-log.csv row(s) 11; commit fe6ddaf",
+   "why_type": "news",
+   "plain_why": "SpaceX reported Q3 revenue of $14.58B (+161% from a year ago), well above the ~$12.7B expected, and analysts raised price targets. The stock was up 8.2% before the open ($159.95). At the open it was $160.56, above our $157.77 trigger, and Pedro said \"Buy now\" at 9:33 AM.",
+   "plain_plan": "Buy 4 calls. Sell 2 when the option is up 50% ($7.73); sell the other 2 at +100% ($10.30) or if SPCX hits $163.97. Get out if a 15-minute bar closes below $157.77.",
+   "plain_outcome": "It hit the +50% target. Sold all 4.",
+   "plain_happened": "SPCX dipped to $158.20 in the first 15 minutes but stayed above $157.77, then climbed to $163.97 by 9:56 AM. At 10:02 AM the option crossed +50% and we sold all 4 at $7.75. Profit: +$1,040. SPCX later hit $166.18 but closed the day at $159.31.",
+   "plain_right": [
+    "The early dip held above our line, then the stock pushed higher, as planned.",
+    "We took the +50% profit, and the stock gave most of its gains back by the close."
+   ],
+   "plain_wrong": [
+    "The stock hit $163.97 before the option hit +50%, and the rules didn't say what to do. Pedro decided: with 2+ contracts, wait for the +50% half-sale first.",
+    "We didn't check whether buyers or sellers were lined up at the open."
+   ],
+   "plain_lesson": "Strong earnings plus a dip that holds your line is a good buy. Write down what to do when two exit rules disagree.",
+   "why_moved": {
+    "summary": "SpaceX's Q3 results beat estimates and UBS raised its price target to $230, though some coverage questioned Elon Musk's long-term forecast. The Nasdaq rose 1.05% that day, led by SpaceX.",
+    "sources": [
+     {
+      "headline": "Elon Musk Sees $1 Trillion for SpaceX. His CFO's Forecast Crashes the Party",
+      "source": "Benzinga via Webull",
+      "when": "Oct 21"
+     },
+     {
+      "about": "UBS raises SpaceX price target to $230",
+      "source": "Benzinga via Webull",
+      "when": "Oct 21"
+     },
+     {
+      "headline": "Nasdaq Surges Over 1% As SpaceX Shares Gain",
+      "source": "Benzinga via Webull",
+      "when": "Oct 21"
+     }
+    ]
+   },
+   "charts": {
+    "before": null,
+    "during": "assets/trades/paper-2026-10-21-SPCX-160C.png",
+    "after": null
+   }
   },
   "paper|2026-10-22|09:36|SPCX": {
    "title": "SPCX 10/26 152.5P x4 (10/22)",
@@ -380,7 +737,39 @@
    "premium": 1128.0,
    "chart": "assets/trades/paper-2026-10-22-SPCX-152.5P.png",
    "log": "SETUP: failed-retest gap-down PUT (v1.1 l.48; definition v1.2 l.53; entry one bar after trigger v1.3 #3 l.68). Logged 09:46 ET per `date` by the 9:41 opening scanner (fired 09:42:05) - retro-priced per l.68 (same method as NBIS 10/20). Webull 1-min: SPCX prior close 159.31, 09:30 open 154.192 (gap -3.21%, script). (1) gap>=1% YES; (2) flush>=0.5% beyond open (<=153.421) YES, 09:30 low 151.25 (-1.91%); (3) bounce to within 0.2% of open (>=153.884) YES, 09:34 high 154.00; (4) 09:35 bar closed 152.99 < open with lower high 153.485 < 154.00 YES = TRIGGER 09:35 (window 9:35-10:30, l.53); (5) SPY/QQQ not against YES: QQQ 09:35 close 713.64 (= its open, down from 714.177 at 09:34), SPY 09:35 close 767.09 (down from 767.26). Still valid at 09:36 close 153.5996 < open (not reclaimed) -> ENTRY x4 = RH 1-min 09:36 bar CLOSE 2.82 (O3.13 H3.33 L2.81 C2.82) on SPCX 10/26 152.5P (nearest strike to trigger close 152.99) = $1,128 (4 contracts per l.25; $282/contract, under the $1,000 per-contract flag). 4 DTE Mon 10/26 (l.26). M8: active/tradable, sellout 2026-10-26 15:30 ET. Daily cap removed (l.23). STOP (v1.3 #5 l.72): 15-min close above the farther of OR15 high 154.22 or the pre-written PM high 160.00 (setups/2026-10-22-premarket.md table) = 160.00; -50% backstop 1.41 (l.74, priced per l.14). TARGET (l.78 G5 + l.39, 4 contracts): measured move = open 154.192 - flush low 151.25 = 2.942 below 151.25 -> SPCX 148.308; option +50% = 4.23 sells 2, rest at +100% 5.64 or SPCX 148.308 after the half-off (Pedro 10/21 l.39 reading). TIME STOP (l.41): 15:55 ET Fri 10/23 (day before Mon expiry); flat check l.86 lands the same Fri 15:55. Since entry: opt high 3.10 (09:38/09:44), low 2.76 @09:37; SPCX low since entry 152.485 @09:36. Live RH 09:45:16 ET mark 3.075 (bid 3.05/ask 3.10, IV 50.8%, delta -0.46); unrealized (3.075-2.82)x400 = +102.00 (+9.04%). SPCX 152.38 (Webull 09:45:41). Caution (not a rule): the 4 earlier put rows mentioning failed retest (NBIS 10/13, AMD 10/16, NBIS 10/20, AMD 10/20) all lost, -1,050.00 total (script recount this run). | 9:46 ROUTINE 2026-10-22 (fired 09:50:48; logged 09:52 ET per `date`): no planned-bell or overnight rows to grade (pre-market plan: no bell picks; META 10/26 725C trigger NOT met at the bell: META 09:30 open 679.15 < 704.50 and QQQ open 713.64 < 725.20 -> no fill, M3 logged). SPCX put check: RH mark 3.30 (bid 3.25/ask 3.35, IV 49.8%, delta -0.49; quote 09:51:45 ET); unrealized (3.30-2.82)x400 = +192.00 (+17.0%). Opt high since entry 3.55 @09:46, low 2.76 @09:37 (RH 1-min). EXIT CHECKS (M7): stop l.72 15-min close > 160.00: 09:30-09:44 close 153.22 not hit; -50% backstop 1.41 (l.74) not hit; target +50% 4.23 sells 2 (l.39) not hit; SPCX 148.308 measured move (l.78) not hit (window low 151.25 was pre-entry); time stop l.41/l.86 Fri 10/23 15:55. No rule hit -> HOLD. | 9:57 SCANNER 2026-10-22 (fired 10:02:53; logged 10:04 ET per `date`): Webull completed 15-min 09:45-09:59 close 152.75 < 160.00 -> stop l.72 NOT hit (10:00-10:14 bar forming at 152.48). -50% backstop 1.41 (l.74) not hit (RH 1-min opt low since 09:46 = 2.88 @10:00). Target +50% 4.23 sells 2 (l.39) not hit (opt high since 09:46 = 3.63 @09:53-09:54); SPCX 148.308 measured move (l.78) not hit (SPCX low since entry 151.75 @09:54). RH mark 3.15 (bid 3.10/ask 3.20, IV 48.5%, delta -0.49; quote 10:04:21 ET); unrealized (3.15-2.82)x400 = +132.00 (+11.7%). Time stop l.41/l.86 Fri 10/23 15:55. No rule hit -> HOLD (M7). | 10:07 SCANNER 2026-10-22 (fired 10:09:15; logged 10:11 ET per `date`): Webull 15-min 10:00-10:14 bar still forming (high so far 153.04, last 151.62 @10:10) vs stop l.72 15-min close > 160.00 -> not hit. -50% backstop 1.41 (l.74) not hit (RH 1-min opt low since 10:04 = 3.13 @10:04). Target +50% 4.23 sells 2 (l.39) not hit (opt high since 10:04 = 3.63 @10:07-10:08); SPCX 148.308 measured move (l.78) not hit (SPCX low since 10:04 = 151.57 @10:08). RH mark 3.625 (bid 3.60/ask 3.65, IV 48.9%, delta -0.53; quote 10:10:22 ET); unrealized (3.625-2.82)x400 = +322.00 (+28.5%). Time stop l.41/l.86 Fri 10/23 15:55. No rule hit -> HOLD (M7). | 10:27 SCANNER 2026-10-22 (fired 10:29:07; logged 10:30 ET per `date`): Webull completed 15-min 10:00-10:14 close 151.36 < 160.00 -> stop l.72 NOT hit (10:15-10:29 bar forming at 151.17, high 151.77). -50% backstop 1.41 (l.74) not hit (RH 1-min opt low since 10:08 = 3.40 @10:12). Target +50% 4.23 sells 2 (l.39) not hit (opt high since 10:08 = 4.18 @10:22); SPCX 148.308 measured move (l.78) not hit (SPCX low since 10:10 = 150.56 @10:22). RH mark 3.90 (bid 3.85/ask 3.95, IV 48.9%, delta -0.56; quote 10:29:55 ET); unrealized (3.90-2.82)x400 = +432.00 (+38.3%). Time stop l.41/l.86 Fri 10/23 15:55. No rule hit -> HOLD (M7). | 10:47 SCANNER 2026-10-22 (fired 10:49:45; logged 10:52 ET per `date`): HALF-OFF at +50% (l.39): 2 of the original 4 sold @4.23 (RH 15s 10:38:00 close), logged as the next row; qty on this row now 2 (opened x4 @2.82, ledger debited -1128 for 4). Remaining 2: target +100% 5.64 or SPCX 148.308 (l.39, l.78); stop 15-min close > 160.00 (l.72), backstop 1.41 (l.74); time stop Fri 10/23 15:55 (l.41, l.86). RH mark 4.50 (bid 4.45/ask 4.55, IV 49.4%, delta -0.60; quote 10:51:11 ET); unrealized on remaining 2 (4.50-2.82)x200 = +336.00. SPCX 150.09 (Webull 10:50 5-min bar, forming). HOLD remaining 2 (M7). | 11:07 SCANNER 2026-10-22 (fired 11:18:09; logged 11:20 ET per `date`): PAPER EXIT remaining x2 @5.64 = the +100% level (2.82x2), first reached in the RH 15-second 11:10:45 bar (O5.63 H5.65 L5.60 C5.63), priced per config l.55 (first traded price at/beyond the level; the bar closed back at 5.63, so the fill is the level, same method as the 4.23 half-off). RULE (config l.39): rest closes at +100% or the stock target, whichever first. +100% hit at 11:10:45; SPCX measured-move target 148.308 (l.78) came later (Webull 1-min 11:14 low 148.28; 11:10-11:13 lows 148.41/148.4511/148.37/148.40). Stops not hit: Webull 15-min closes 10:45-10:59 149.81 and 11:00-11:14 148.35 < 160.00 (l.72); -50% backstop 1.41 (l.74) never hit. Realized on these 2 (5.64-2.82)x100x2 = +564.00; whole trade +282.00 + 564.00 = +846.00 on $1,128 (script). After exit: RH mark 4.675 (bid 4.65/ask 4.70) quote 11:19:34 ET; SPCX 149.69 (Webull 11:15 5-min, forming). GRADE: A. Failed-retest put held under the open, half off at +50%, rest at +100% before a bounce. | PAPER EXIT x2 of 4 (half-off) 2026-10-22 (10:47 intraday scanner, fired 10:49:45; logged 10:52 ET per `date`) @4.23 = RH 15-second 10:38:00 bar CLOSE (O4.15 H4.23 L4.13 C4.23), the first bar trading at the +50% level 4.23 (2.82x1.5), priced per config l.55 (first traded price at/beyond the level). Retro-priced: the 10:27 scan logged at 10:30 and the cross came at 10:38 (RH 1-min 10:38 O4.15 H4.28 L4.13 C4.25). RULE (config l.39, 4 contracts): take half off at +50% -> SELL 2 @4.23. Remaining 2 stay open (row above): close at +100% 5.64 or SPCX measured-move target 148.308 (l.78; l.39 Pedro 10/21: the stock target closes the rest after the half-off). Stops not hit: Webull 15-min closes 10:15-10:29 151.155 and 10:30-10:44 150.725 < 160.00 (l.72); -50% backstop 1.41 (l.74) not hit. SPCX not at 148.308 (low 150.04 in the 10:50 5-min bar). Realized (4.23-2.82)x100x2 = +282.00. GRADE (partial): A-. Failed-retest put held under the open; tape kept bleeding with QQQ.",
-   "source": "paper-options-log.csv row(s) 12,13; commit 48d3433"
+   "source": "paper-options-log.csv row(s) 12,13; commit 48d3433",
+   "why_type": "chart",
+   "plain_why": "Chart setup, no news: SPCX opened 3.2% lower ($154.19), dropped to $151.25, bounced to $154.00 and failed just under its open. QQQ and SPY were down too.",
+   "plain_plan": "Buy 4 puts. Sell 2 when the option is up 50% ($4.23); sell the other 2 at +100% ($5.64) or if SPCX drops to $148.31. Get out if a 15-minute bar closes above $160 or the option loses half its value.",
+   "plain_outcome": "It hit both targets.",
+   "plain_happened": "SPCX stayed below its open and kept sliding with the market. We sold 2 at $4.23 (10:38 AM) and 2 at $5.64 (11:10 AM), double what we paid. Profit: +$846. SPCX kept falling after we left, down to $143.21.",
+   "plain_right": [
+    "Right read, right exits: half at +50%, the rest at +100%."
+   ],
+   "plain_wrong": [
+    "More was available (the stock fell to $143.21), but taking profit at plan is fine."
+   ],
+   "plain_lesson": "Keep doing it: half at +50%, the rest at +100%.",
+   "why_moved": {
+    "summary": "Big tech sold off: the Nasdaq was down 400 points by mid-morning, and Tesla fell after its Q3 results. After the close, a report said SpaceX's $40B debt deal was getting pricier as AI fears spread.",
+    "sources": [
+     {
+      "headline": "Nasdaq Down 400 Points; Tesla Shares Fall After Q3 Results",
+      "source": "Benzinga via Webull",
+      "when": "Oct 22, 10:11 AM ET"
+     },
+     {
+      "about": "SpaceX $40B debt deal gets pricey as AI fears spread",
+      "source": "Benzinga via Webull",
+      "when": "Oct 22, after the close"
+     }
+    ]
+   },
+   "charts": {
+    "before": null,
+    "during": "assets/trades/paper-2026-10-22-SPCX-152.5P.png",
+    "after": null
+   }
   },
   "paper|2026-10-26|08:48|NVDA": {
    "title": "NVDA 10/30 215C x4 (10/26)",
@@ -408,7 +797,42 @@
    "premium": 1312.0,
    "chart": "assets/trades/paper-2026-10-26-NVDA-215C.png",
    "log": "PAPER EXIT x4 2026-10-26 (10:47-slot intraday scanner, fired 10:50:05; logged 10:51 ET per `date`, Monday) @4.93 = RH 15-second 10:49:45 bar CLOSE (O4.88 H4.95 L4.88 C4.93), the first bar trading beyond 4.92 (prior 1-min highs since entry max 4.78 @10:48; 4.50 @09:51), priced per config l.55. RULE (config l.39 + Pedro 2026-10-21 decision, 4 contracts): (a) half off at +50% = 4.92 -> SELL 2 @4.93. (b) after the half-off the stock target closes the rest: NVDA target 216.18 (entry note) was already exceeded at that point (Webull 1-min 10:49 bar L216.61 H216.96 C216.87, above 216.18 the whole bar) -> CLOSE the other 2 at the same point @4.93 (same reading as SPCX 10/21 row). Stops not hit: 15-min closes 10:30-10:44 215.84 and 10:45 bar forming 216.755, all above 212.61 (l.71); -50% backstop 1.64 (l.74) not hit. Realized (4.93-3.28)x100x4 = +660.00 (+50.3%). Fact-check: RH quote 10:51:22 ET bid 4.90/ask 4.95 mark 4.925 (IV 41.3%, delta 0.59); NVDA 10:50 close 216.84; QQQ 712.86 above 704.40. | 9:46 ROUTINE 2026-10-26 (fired 09:57:05, late; logged 10:00 ET per `date`): FILL CONFIRMED x4 @3.28 = RH 1-min 09:31 close (l.84), already logged and debited -1312 by the 9:57 scanner (no second debit). 09:30 bar O/C 3.30 (single print). TRIGGER WORKED (l.91, M3): NVDA open 213.12 >= 213.07, QQQ open 706.98 > 704.40, valid at 09:31 close 213.46. NOII (l.31): Webull PRE_OPEN bars did return today: final 09:30:00 ref/near/far 213.19, ref rising from 213.03 at 09:25; no size/side field, so not leaning sell on what is visible (side unverified). Predicted move HAPPENED: gap-and-go, low on the 09:30 bar 212.61, drive to 215.73 @09:39, day high 215.98 @09:51; plan stock target 216.18 not reached. RH mark 09:58:31 ET 3.725 (bid 3.70/ask 3.75, IV 42.3%, delta 0.49); unrealized (3.725-3.28)x400 = +178.00 (+13.6%). EXIT CHECKS (M7): stop l.71 15-min close < 212.61: 09:30-09:44 close 214.865 not hit, 09:45-09:59 bar forming ~214.5; backstop 1.64 (l.74) not hit (opt low since entry 3.15); +50% 4.92 (l.39) not hit (opt high 4.50 @09:51); time stop l.41/l.86 flat check Tue 10/27 15:55, hard exit Thu 10/29 15:55. No rule hit -> HOLD. | 9:57 OPENING SCANNER 2026-10-26 (fired 09:55; logged 09:58 ET per `date`): BELL FILL x4 @3.28 = RH 1-min 09:31 bar CLOSE (O3.25 H3.50 L3.15 C3.28; l.84, l.68). 9:46 routine had not yet run, so fill logged here. TRIGGER MET (M3, l.91): NVDA 09:30 open 213.12 >= 213.07; QQQ 09:30 open 706.98 > 704.40; still valid at 09:31 close (NVDA 213.46, QQQ 706.22, Webull 1-min). NOII (l.31): no reading (Webull get_stock_noii_bars returned a parameter error), noted, not leaning sell on record. SIZE (l.95): 4x3.28x100 = $1,312 <= $1,809.75; per-contract $328 under $1,000 (l.25). M8: active/tradable, sellout 2026-10-30 15:30 ET. STOP FINALIZED (l.71, l.74): OR15 09:30-09:44 Webull H215.73 L212.61 C214.865 (min/max of 1-min bars); stop = 15-min close below lower of 212.61 / PM shelf 212.81 = 212.61; first 15-min close 214.865 not hit. -50% backstop 1.64 not hit (opt low since entry 3.15 @09:31-09:32). TARGET (l.39): sell 2 at +50% = 4.92, rest +100% 6.56 or NVDA 216.18 after the half-off; opt high since entry 4.50 @09:51, NVDA high 215.98 -> not hit. RH mark 09:57:28 ET 3.70 (bid 3.65/ask 3.75, IV 42.5%, delta 0.49); unrealized (3.70-3.28)x400 = +168.00. TIME STOP (l.41, l.86): flat check Tue 10/27 15:55 ET (+/-10% of 3.28 = 2.952-3.608); hard exit Thu 10/29 15:55 ET. No exit rule hit -> HOLD (M7). | PLANNED BELL (8:43 pre-market routine, fired 08:44; logged 08:48 ET per `date`). SETUP: gap-and-go call (l.22, l.29-32). THESIS: NVDA PM 213.24 vs Fri close 210.96 (+1.08%, Webull 08:48:04 ET), PM range 210.34-213.90, PM volume 1,021,509. Catalyst: Meta said NVDA, AMD and AVGO each indicated a non-binding interest in buying up to $5B of Meta common stock (Benzinga via Webull, 07:17 ET); AMD +1.12% on the same news. QQQ PM +0.58%, SPY +0.28% not fighting (l.32). Move came after ~07:15 (07:00-08:45 low 210.93, 08:00-08:45 low 212.81 from Webull 5-min bars). TRIGGER (all at 09:30): (1) NVDA 09:30 open >= 213.07 (+1% gap level, l.29; above the 212.81 PM shelf); (2) QQQ 09:30 open > 704.40 (Fri close, l.32); (3) NOII not leaning sell (l.31); still valid at the 09:31 close (l.91). SIZE: 4 contracts (l.25). BS value at Fri close 210.96 = 2.72; BS est at the open {NVDA 213.10: 3.59, 215: 4.50} (IV 48% from RH 212.5C). SIZE CHECK (l.95): 25% of $7,239.00 cash = $1,809.75 -> per-contract limit 4.52. If the 09:31 close is above 4.52, FLAG to Pedro and do NOT fill without his OK. Chose the 215 strike (0.8% OTM, near the money l.26) so 4 contracts fit under that line; the 212.5C (Fri mark 3.775, BS ~4.76 at the open) would breach it. 4 trading days to Fri 10/30 (l.26). TARGET (l.39, 4 contracts): sell 2 at option +50% of fill; rest at +100% or NVDA 216.18 (PM high 213.90 + gap size 2.28, script), the stock target closing the rest only after the half-off (Pedro 10/21, l.39). STOP (l.71, l.74): 15-min close below the farther (lower) of the opening 15-min range low or the PM shelf 212.81; -50% option backstop (priced l.14). Wrong read: 15-min close under 212.1 (half the gap: midpoint of 210.96 and 213.24, script). TIME STOP (l.41, l.86): flat check Tue 10/27 15:55 ET (+/-10% of fill, same 2-session count as SPCX 10/21); hard exit Thu 10/29 15:55 ET (day before expiry). PRICE PATH (BS est, IV 48%): Mon 09:31 at 212.81/213.10/215/217 = 3.46/3.59/4.50/5.60; Mon close at 213.10/215/217 = 3.45/4.36/5.46; Tue close 2.87/3.77/4.87; Wed close (post-FOMC) 2.20/3.07/4.19; Thu 15:55 1.34/2.17/3.33. At a 3.59 fill, +50% = 5.39 needs NVDA ~217.0 by Mon/Tue; theta ~-0.5/day means a flat NVDA bleeds ~20%/day. Invalidation: 15-min close < 212.81/OR15 low, or < 212.1. Fill = RH 1-min 09:31 bar CLOSE (l.84, entry one bar after l.68); no entry price recorded pre-open. BELL-CANCEL (l.91): if the trigger is not met at the 09:30 open and still valid at the 09:31 close, CANCEL, no fill; 9:46 routine logs 09:30 open vs trigger (M3). M8: active/tradable checked 08:48 ET, sellout 2026-10-30 15:30 ET. NOII (l.31): no pre-open reading at 08:48; check 09:28-09:30 if possible; if leaning sell or no reading, note it (if leaning sell, flag to Pedro per G0 l.66, don't guess). EARNINGS (l.93): none before Fri 10/30 expiry for this stock (Webull calendar). CATALYSTS before expiry (setups/2026-10-23-eod.md): Tue 10/27 durable goods 8:30 + confidence 10:00, FOMC starts; Wed 10/28 FOMC decision 2:00 PM + MSFT earnings after close (AI tape); Thu 10/29 GDP + PCE 8:30. Price path is a Black-Scholes estimate (r 4%), not quotes.",
-   "source": "paper-options-log.csv row(s) 14; commit 834b24b"
+   "source": "paper-options-log.csv row(s) 14; commit 834b24b",
+   "why_type": "news",
+   "plain_why": "Meta said Nvidia, AMD and Broadcom each showed interest in buying up to $5B of Meta stock. NVDA was up 1.1% before the open ($213.24), and QQQ and SPY were up too. At the open NVDA was $213.12, just above our $213.07 trigger.",
+   "why_check": {
+    "level": "explained",
+    "text": "Why would Meta news help Nvidia? Our log didn't say. A news story that morning fills the gap: Meta is one of Nvidia's biggest customers (it agreed to buy millions of Nvidia AI chips) and is raising about $95B for AI, with $135–145B of spending planned this year. More AI money at Meta means more chip orders for Nvidia. This link was added from the news afterward; it wasn't written down when we bought."
+   },
+   "plain_plan": "Buy 4 calls. Sell 2 when the option is up 50% ($4.92); sell the other 2 at +100% ($6.56) or if NVDA reaches $216.18. Get out if a 15-minute bar closes below $212.61 or the option loses half its value.",
+   "plain_outcome": "It hit the +50% target with NVDA already past its goal. Sold all 4.",
+   "plain_happened": "NVDA dipped to $212.61 in the first minute, then climbed to $215.73 by 9:39 AM. At 10:49 AM the option crossed +50%, and NVDA was already above $216.18, so both rules said sell. We sold all 4 at $4.93. Profit: +$660.",
+   "plain_right": [
+    "The setup was confirmed at the open before buying.",
+    "Both exit rules lined up and we followed them."
+   ],
+   "plain_wrong": [],
+   "plain_lesson": "",
+   "why_moved": {
+    "summary": "Meta is raising about $95B for its AI buildout, and the chipmakers it buys from (Nvidia, AMD, Broadcom) said they may invest up to $5B. Another story that day noted Nvidia was now cheaper than the average S&P 500 stock (by price vs earnings).",
+    "sources": [
+     {
+      "headline": "Meta Seeks About $95 Billion for AI Buildout",
+      "source": "Benzinga via Webull",
+      "when": "Oct 26, 11:41 AM ET"
+     },
+     {
+      "headline": "Nvidia Is Now Cheaper Than the Average S&P 500 Stock",
+      "source": "Benzinga via Webull",
+      "when": "Oct 26"
+     }
+    ]
+   },
+   "charts": {
+    "before": null,
+    "during": "assets/trades/paper-2026-10-26-NVDA-215C.png",
+    "after": null
+   }
   },
   "paper|2026-10-29|16:00|COIN": {
    "title": "COIN 10/30 160 straddle x2 (10/29)",
@@ -437,7 +861,41 @@
    "premium": 2220.0,
    "chart": "assets/trades/paper-2026-10-29-COIN-160-straddle.png",
    "log": "Call leg. OVERNIGHT E1 earnings straddle (config l.118, v1.6 l.114; earnings hold v1.5 #2 l.108; size v1.5 #3b l.112). Decision logged 15:57:10 ET (setups/2026-10-29-overnight.md) before 15:59. COIN reports after close tonight. History research/coin-earnings-moves.md: median |next-day move| 9.29%, 0.8x line 7.43%. Implied at fill: (call 5.85 + put 5.25) / COIN 160.78 = 6.90% < 7.43% (15:56 marks gave 7.07%). FILL = RH 1-min 15:59 bar close (l.84 style). SIZE: 2 straddles, moderate-low confidence (thin margin, first live E1, exit is 09:31 while COIN's median gap is only 3.68%); 2x11.10x100 = $2,220 = 28.1% of $7,899 cash. EXIT: both legs at Fri 10/30 09:31 1-min close, no hold past 10:00 (l.118). Price path: straddle at exit ~intrinsic after IV crush; breakeven needs COIN 148.90/171.10 at expiry, by script (+/-6.9%). Flat open -> lose most of $2,220. M8: active/tradable, sellout 2026-10-30 15:30 ET. Paper only. | E1 EXIT x2 2026-10-30 (9:46 routine, logged 09:51 ET per `date`, Friday) @0.21 = RH 1-min 09:31 bar CLOSE (O0.13 H0.23 L0.08 C0.21), per config l.118 (exit both legs at the next day's 09:31 1-min close). Leg P&L (0.21-5.85)x2x100 = -1128.00. Straddle 15.61 vs 11.10 paid: COIN open 148.23 vs 160.59 prior close (-7.70%), a move bigger than the 6.90% implied at entry. | Put leg. OVERNIGHT E1 earnings straddle (config l.118, v1.6 l.114; earnings hold v1.5 #2 l.108; size v1.5 #3b l.112). Decision logged 15:57:10 ET (setups/2026-10-29-overnight.md) before 15:59. COIN reports after close tonight. History research/coin-earnings-moves.md: median |next-day move| 9.29%, 0.8x line 7.43%. Implied at fill: (call 5.85 + put 5.25) / COIN 160.78 = 6.90% < 7.43% (15:56 marks gave 7.07%). FILL = RH 1-min 15:59 bar close (l.84 style). SIZE: 2 straddles, moderate-low confidence (thin margin, first live E1, exit is 09:31 while COIN's median gap is only 3.68%); 2x11.10x100 = $2,220 = 28.1% of $7,899 cash. EXIT: both legs at Fri 10/30 09:31 1-min close, no hold past 10:00 (l.118). Price path: straddle at exit ~intrinsic after IV crush; breakeven needs COIN 148.90/171.10 at expiry, by script (+/-6.9%). Flat open -> lose most of $2,220. M8: active/tradable, sellout 2026-10-30 15:30 ET. Paper only. | E1 EXIT x2 2026-10-30 (9:46 routine, logged 09:51 ET per `date`, Friday) @15.40 = RH 1-min 09:31 bar CLOSE (O13.53 H15.40 L12.45 C15.40), per config l.118 (exit both legs at the next day's 09:31 1-min close). Leg P&L (15.40-5.25)x2x100 = +2030.00. Straddle 15.61 vs 11.10 paid: COIN open 148.23 vs 160.59 prior close (-7.70%), a move bigger than the 6.90% implied at entry.",
-   "source": "paper-options-log.csv row(s) 18,19; commit 2a0a8db"
+   "source": "paper-options-log.csv row(s) 18,19; commit 2a0a8db",
+   "why_type": "earnings",
+   "plain_why": "An earnings bet on a big move in either direction. Coinbase reported after the close. Over its last 8 reports, COIN moved a median 9.29% the next day, but options were only pricing a 6.90% move, which looked cheap. So we bought both a call and a put at the same price (a 'straddle').",
+   "plain_plan": "Buy 2 straddles (a $160 call plus a $160 put) at 3:59 PM. Sell both the next morning at 9:31 AM, no matter what. We profit if COIN moves more than about 6.9% either way; a flat open would lose most of the $2,220.",
+   "plain_outcome": "COIN dropped 7.7%, more than the options priced in. Profit.",
+   "plain_happened": "COIN opened at $148.23, down 7.70% from $160.59. The put jumped (+$2,030) and the call nearly went to zero (−$1,128). Together they were worth $15.61 vs the $11.10 we paid. Profit: +$902.",
+   "plain_right": [
+    "The move (7.7%) beat what the options were pricing (6.9%).",
+    "The put's gain more than covered the call's loss."
+   ],
+   "plain_wrong": [
+    "Our 'cheap' check used full-day moves, but we sell at 9:31 AM. COIN's typical move by 9:31 AM is only 3.68%, so the edge was thinner than it looked (from the Oct 30 rule review).",
+    "The put was worth $16.46 at the close vs the $15.40 we got at 9:31 AM."
+   ],
+   "plain_lesson": "Log the 9:31 AM move for every earnings check, and review the rule with Pedro after 5 samples (now a rule).",
+   "why_moved": {
+    "summary": "Coinbase's Q3 revenue was $1.216B, down 35% from a year ago and just below the $1.230B expected; trading revenue fell 44%. Profit beat (27¢ a share vs an expected loss). The next morning several banks cut their price targets (JPMorgan to $187, Goldman to $210, Mizuho to $145).",
+    "sources": [
+     {
+      "headline": "Coinbase Q3 Highlights",
+      "source": "Benzinga via Webull",
+      "when": "Oct 29, 4:44 PM ET"
+     },
+     {
+      "about": "Analysts lower Coinbase price targets",
+      "source": "Benzinga via Webull",
+      "when": "Oct 30"
+     }
+    ]
+   },
+   "charts": {
+    "before": null,
+    "during": "assets/trades/paper-2026-10-29-COIN-160-straddle.png",
+    "after": null
+   }
   },
   "live|2026-10-30|15:46|SPY 2026-11-20 790C": {
    "title": "SPY 11/20 790C x1 (10/30)",
@@ -463,7 +921,26 @@
    "exitPrice": 0.73,
    "chart": "assets/trades/real-2026-10-30-SPY-790C.png",
    "log": "TEST trade approved by Pedro (t122u) to verify order placement both ways; not a rulebook trade. Buy filled 15:46:30 ET, sell filled 15:46:42 ET. Fees excluded (buy fee 0.04 per review). Used 1 day trade.",
-   "source": "live-account/log.csv"
+   "source": "live-account/log.csv",
+   "why_type": "test",
+   "plain_why": "Not a market bet. A test Pedro approved to make sure buy and sell orders go through on the real Robinhood account.",
+   "plain_plan": "Buy 1 call and sell it right away.",
+   "plain_outcome": "Both orders worked. Cost: $1.",
+   "plain_happened": "Bought at $0.74 at 3:46 PM and sold at $0.73 twelve seconds later. Loss: −$1.00 (fees not included). It used 1 day trade.",
+   "plain_right": [
+    "Buy and sell orders both went through on Robinhood."
+   ],
+   "plain_wrong": [],
+   "plain_lesson": "",
+   "why_moved": {
+    "summary": "Not applicable: this was an order test, not a bet on SPY.",
+    "sources": []
+   },
+   "charts": {
+    "before": null,
+    "during": "assets/trades/real-2026-10-30-SPY-790C.png",
+    "after": null
+   }
   }
  }
 }

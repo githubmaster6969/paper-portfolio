@@ -1,0 +1,59 @@
+{
+ "_about": "Plain-English explainers for the setup names used in data/trade_notes.json (field \"setup\") and the options rulebook. Condensed from options-study/config.md (rulebook v1.8) and options-study/setups/bms.md. Add a row here when a new setup name appears.",
+ "setups": {
+  "Gap-and-go call": {
+   "short": "Ride a stock that opens higher on real news.",
+   "text": "Before the market opens, a stock is up 1% or more because of real news (earnings, a product, a big deal). If it is still holding that gain right after the 9:30 AM open, we buy a call, betting it keeps rising. We get out if it falls back below a level we wrote down before the open.",
+   "status": "Active",
+   "source": "config.md buy signals, l.29-32; bell-cancel rule l.91"
+  },
+  "Gap-down put at the bell": {
+   "short": "Retired. Bought a put right at the open on a stock that opened lower.",
+   "text": "The stock opened 1% or more lower and we bought a put right at 9:30 AM, betting it would keep falling. Two trades in a row dropped, bounced and stopped us out, so this was retired on Oct 16 and replaced by the failed-retest put.",
+   "status": "Retired",
+   "source": "config.md l.33, l.48"
+  },
+  "Failed-retest put": {
+   "short": "Wait for a stock that opened lower to bounce and fail, then bet it falls.",
+   "text": "A stock opens 1% or more lower, drops a bit more, then bounces back up to its opening price and fails there (it can’t get back above). We buy a put on that failure, betting the drop continues. Only between 9:35 and 10:30 AM, and only if the overall market isn’t rising. The mirror version for calls: a stock opens higher, pulls back to its open, and holds.",
+   "status": "Active",
+   "source": "config.md l.48, l.53, v1.7 #3"
+  },
+  "Earnings straddle": {
+   "short": "Bet on a big move either way after an earnings report.",
+   "text": "Right before a company reports earnings (3:59 PM), we buy a call and a put at the same price. We profit if the stock moves a lot in either direction. Only when options are pricing a smaller move than the stock usually makes after earnings (less than 0.8× its typical move over the last 8 reports). Both are sold at 9:31 AM the next morning.",
+   "status": "Active",
+   "source": "config.md E1, l.118; v1.7 #4"
+  },
+  "BMS (liquidity sweep reversal)": {
+   "short": "Paper-only test. Bet on a snap-back after a stock pokes past an obvious high or low.",
+   "text": "Lots of traders put stop orders just past yesterday’s or last week’s high or low. Sometimes price pokes just past that level, triggers those orders, fails to hold, and snaps back. We bet on the snap-back, with a stop just past the poke and a target at the opposite level. Paper trades only, after 10 AM, closed the same day; reviewed with Pedro after 20 trades.",
+   "status": "Testing on paper",
+   "source": "config.md v1.8 #1; setups/bms.md"
+  },
+  "Pedro override": {
+   "short": "A trade Pedro asked for directly.",
+   "text": "Pedro asked for this trade directly, outside the rules. It doesn’t count when we judge whether the setups work.",
+   "status": "n/a",
+   "source": "config.md l.23 note"
+  },
+  "Test trade": {
+   "short": "An order test, not a bet.",
+   "text": "A tiny trade to check that buy and sell orders go through. Not a market view.",
+   "status": "n/a",
+   "source": "live-account log"
+  }
+ },
+ "terms": {
+  "Call": "An option that gains value when the stock goes up.",
+  "Put": "An option that gains value when the stock goes down.",
+  "Strike": "The stock price the option is tied to, like the 160 in \"SPCX 160C\".",
+  "Expiration": "The date the option stops existing. We use options 3–5 days out.",
+  "Premium": "The price of the option. One contract covers 100 shares, so a $3.28 option costs $328.",
+  "+50% / +100%": "How much the option itself is up from what we paid. +100% means it doubled.",
+  "Stop": "The point where we get out to keep a loss small, written down before buying.",
+  "15-minute close": "We wait for a full 15-minute candle to finish beyond the stop, so a quick poke doesn’t shake us out.",
+  "Gap": "When a stock opens noticeably higher or lower than where it closed the day before.",
+  "QQQ / SPY": "Funds that track big tech (Nasdaq 100) and the S&P 500. We use them to check the overall market."
+ }
+}
