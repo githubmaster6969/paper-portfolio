@@ -3,11 +3,14 @@
 Usage: python3 scripts/add_deposit.py SNAPSHOT_FILE AMOUNT [--note "Weekly $800"]   (idempotent per date+amount)"""
 import json, sys, argparse, datetime as dt, pathlib
 from zoneinfo import ZoneInfo
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent)); from stale import check as stale_check
 R = pathlib.Path(__file__).resolve().parent.parent; P = R / "data/holdings.json"
 ap = argparse.ArgumentParser(); ap.add_argument("snapshot"); ap.add_argument("amount", type=float); ap.add_argument("--note", default="Weekly Friday deposit")
 a = ap.parse_args(); t = open(a.snapshot).read()
 q = {x["symbol"]: x for x in json.loads(t[t.index("["):t.rindex("]") + 1])}
 if "SPY" not in q or not q["SPY"].get("price"): sys.exit("ABORT: no Webull SPY price")
+_f = stale_check(q, session_date=dt.datetime.now(ZoneInfo("America/New_York")).date())["SPY"]  # v2.0 B (Pedro t173u 2026-11-02)
+if not _f["ok"]: sys.exit(f"ABORT: {"SPY"} quote is STALE ({'; '.join(_f['reasons'])}); pull a fresh snapshot")
 px = float(q["SPY"]["price"]); et = dt.datetime.fromtimestamp(int(q["SPY"]["quote_time"]) / 1000, ZoneInfo("America/New_York")); day = et.strftime("%Y-%m-%d")
 cfg = json.load(open(P)); led = cfg.setdefault("cash_ledger", [])
 if any(x["date"] == day and x["amount"] == a.amount for x in led): sys.exit(f"SKIP: deposit {a.amount} already logged for {day}")

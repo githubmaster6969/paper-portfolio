@@ -5,6 +5,7 @@ Refuses if: ticker missing from snapshot, amount > cash, or buy would leave cash
 import json, sys, argparse, datetime as dt, pathlib
 from zoneinfo import ZoneInfo
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent)); from ledger import as_of
+from stale import check as stale_check
 R = pathlib.Path(__file__).resolve().parent.parent; P = R / "data/holdings.json"
 NAMES = {"S": "Safe Core", "D": "Diversifier", "A": "Aggressive AI & Energy"}
 ap = argparse.ArgumentParser(); ap.add_argument("snapshot"); ap.add_argument("ticker"); ap.add_argument("amount", type=float)
@@ -12,6 +13,8 @@ ap.add_argument("--reason", required=True); ap.add_argument("--portfolio"); ap.a
 a = ap.parse_args(); t = open(a.snapshot).read()
 q = {x["symbol"]: x for x in json.loads(t[t.index("["):t.rindex("]") + 1])}
 if a.ticker not in q or not q[a.ticker].get("price"): sys.exit(f"ABORT: no Webull price for {a.ticker}")
+_f = stale_check(q, session_date=dt.datetime.now(ZoneInfo("America/New_York")).date())[a.ticker]  # v2.0 B (Pedro t173u 2026-11-02)
+if not _f["ok"]: sys.exit(f"ABORT: {a.ticker} quote is STALE ({'; '.join(_f['reasons'])}); pull a fresh snapshot")
 price = float(q[a.ticker]["price"]); et = dt.datetime.fromtimestamp(int(q[a.ticker]["quote_time"]) / 1000, ZoneInfo("America/New_York"))
 day = et.strftime("%Y-%m-%d"); cfg = json.load(open(P)); L = as_of(cfg, day)
 if a.amount > L["cash"] - a.reserve: sys.exit(f"ABORT: cash {L['cash']} minus reserve {a.reserve} < {a.amount}")

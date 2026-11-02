@@ -11,6 +11,7 @@ import json, datetime as dt, pathlib, re, sys
 from zoneinfo import ZoneInfo
 import pandas as pd, yfinance as yf
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent)); from ledger import as_of
+from stale import check as stale_check
 R = pathlib.Path(__file__).resolve().parent.parent
 cfg = json.load(open(R/"data/holdings.json")); H = cfg["holdings"]; B = cfg["benchmark"]
 START = "2026-10-09"; code = {"Safe Core": "S", "Diversifier": "D", "Aggressive AI & Energy": "A"}
@@ -24,8 +25,16 @@ def logged_closes():
         m = re.match(r"close-(\d{4}-\d{2}-\d{2})", f.name)
         if not m: continue
         t = f.read_text(); arr = json.loads(t[t.index("["):t.rindex("]") + 1])
-        q = {x["symbol"]: float(x["price"]) for x in arr if x.get("price")}
-        qt = max(int(x["quote_time"]) for x in arr)
+        fd = dt.date.fromisoformat(m.group(1))
+        # v2.0 B (Pedro t173u 2026-11-02): per-symbol check. A symbol whose last trade is not on the file date is
+        # STALE: it is dropped from the logged close (never priced from it) and falls back to the yfinance close below.
+        fr = stale_check(arr, session_date=fd)
+        bad = sorted(s for s, v in fr.items() if not v["ok"] and any("last trade" in r or "no " in r for r in v["reasons"]))
+        if bad: print(f"::warning::{f.name}: stale symbols excluded from the logged close: {bad}")
+        q = {x["symbol"]: float(x["price"]) for x in arr if x.get("price") and x["symbol"] not in bad}
+        good = [x for x in arr if x["symbol"] not in bad and x.get("quote_time")]
+        if not good: die(f"{f.name}: every symbol is stale")
+        qt = max(int(x["quote_time"]) for x in good)
         day = dt.datetime.fromtimestamp(qt / 1000, ZoneInfo("America/New_York")).strftime("%Y-%m-%d")
         if day != m.group(1): die(f"{f.name}: quote_time date {day} != file date")
         out[day] = q
@@ -47,9 +56,13 @@ for d in dates:
     if d == START: px[d] = dict(buy); src[d] = "start"; continue
     L = as_of(cfg, d); need = [s for s in syms if s == "SPY" or L["sh"].get(s, 0) > 0]
     if d in LC:
-        miss = [s for s in need if s not in LC[d]]
-        if miss: die(f"logged close snapshot for {d} is missing {miss}")
         px[d] = {s: LC[d][s] for s in syms if s in LC[d]}; src[d] = "logged close"
+        miss = [s for s in need if s not in px[d]]
+        for s in miss:  # missing or stale in the logged close: use the yfinance daily close, never the stale quote
+            if (c := yclose(d, s)) is not None:
+                px[d][s] = c; src[d] = "logged close + yfinance for " + ",".join(miss)
+        miss = [s for s in need if s not in px[d]]
+        if miss: die(f"logged close snapshot for {d} is missing or stale for {miss} and yfinance has no close")
     else:
         px[d] = {s: c for s in syms if (c := yclose(d, s)) is not None}
         miss = [s for s in need if s not in px[d]]
