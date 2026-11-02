@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-02T01:20:56+00:00",
+ "generated_at": "2026-11-02T05:32:22+00:00",
  "source": "/home/runner/work/paper-portfolio/paper-portfolio/nfl/data/picks_log.csv",
  "picks": [
   {
@@ -2272,10 +2272,10 @@
    "stake_units": 1,
    "reason": "props_v2_calibrated: median 4.9 rec vs line 4.5; 48.8% vs 45.0% implied (+6.7% vs no-vig 42.1%). PHI CB Jonathan Jones and LB Jihaad Campbell out. DK +112.",
    "reason_plain": "Diggs is Washington's top target with Daniels and has caught 4 to 6 passes in every game he's played, Philly is missing a starting corner and linebacker, and +122 prices him under 50% to catch 5.",
-   "result": null,
+   "result": "L",
    "closing_odds": 122,
    "clv": 0,
-   "profit_units": null
+   "profit_units": -1
   },
   {
    "week": 8,
@@ -2297,10 +2297,10 @@
    "stake_units": 0.5,
    "reason": "R12 Tier B (forced, NO EDGE, EV -25.9%). SNF single-game slate, same-game legs allowed; pool relaxed to RZ rank<=4 and team-total gate relaxed for parlay legs (only 1 leg passed). Diggs excluded by R13c. Tier A impossible (shortest pair +419).",
    "reason_plain": "Tracking-only Tier B parlay; the model says the price is too short for the odds of both scoring.",
-   "result": null,
+   "result": "L",
    "closing_odds": 666,
    "clv": 0.0013,
-   "profit_units": null
+   "profit_units": -0.5
   },
   {
    "week": 8,
@@ -2322,10 +2322,10 @@
    "stake_units": 0.25,
    "reason": "R12 Tier C (forced, NO EDGE, EV -10.0%). SNF single-game slate, same-game legs allowed; pool relaxed to RZ rank<=4 and team-total gate relaxed for parlay legs (only 1 leg passed). Diggs excluded by R13c. Tier A impossible (shortest pair +419).",
    "reason_plain": "Tracking-only Tier C parlay; the model says the price is too short for the odds of both scoring.",
-   "result": null,
+   "result": "L",
    "closing_odds": 2252,
    "clv": 0.0036,
-   "profit_units": null
+   "profit_units": -0.25
   }
  ]
 }
