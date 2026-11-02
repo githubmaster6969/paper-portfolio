@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-02T01:15:13+00:00",
+ "generated_at": "2026-11-02T01:20:56+00:00",
  "source": "/home/runner/work/paper-portfolio/paper-portfolio/nfl/data/picks_log.csv",
  "picks": [
   {
@@ -2172,10 +2172,10 @@
    "stake_units": 1,
    "reason": "props_v2_calibrated: cal mean 3.85 rec (median 3.9) vs line 3.5; 47.6% vs 42.6% implied (+7.4% vs no-vig 40.2%). Targets/rec last 3 games: 7/5, 6/4, 5/5.",
    "reason_plain": "Dulcich has caught 4 or 5 passes in each of his last three games, and at +135 the book is pricing him like a 2-3 catch tight end.",
-   "result": null,
+   "result": "W",
    "closing_odds": 120,
    "clv": 0.029,
-   "profit_units": null
+   "profit_units": 1.35
   },
   {
    "week": 8,
@@ -2197,10 +2197,10 @@
    "stake_units": 1,
    "reason": "props_v2_calibrated: cal mean 2.75 rec vs line 2.5; 47.2% vs 43.5% implied (+6.2% vs no-vig 41.0%). 3 catches in each game with a target (3/3, 4/3, 6/3). Chargers WRs Wease and Thompson inactive.",
    "reason_plain": "Kolar has 3 catches every time he's been targeted, and with two Chargers receivers (Wease, Thompson) inactive there are a few more short looks to go around.",
-   "result": null,
+   "result": "L",
    "closing_odds": 126,
    "clv": 0.0077,
-   "profit_units": null
+   "profit_units": -1
   },
   {
    "week": 8,
@@ -2222,10 +2222,10 @@
    "stake_units": 0.5,
    "reason": "R12 Tier B (0.5u), Week 8 Sunday late slate, forced run (every tier logged). One leg per game; no player reused across tiers; R13c staked-prop players (Dulcich, Kolar) excluded. Model 12.0% vs implied 13.5%, EV -10.6%. NO EDGE. Prices: FD Kyren -130, DK Raridon +320.",
    "reason_plain": "Kyren Williams is the Rams' top red-zone back with LA projected for 26, and Raridon is a red-zone tight end for New England. No edge, logged because every tier gets one.",
-   "result": null,
+   "result": "L",
    "closing_odds": 666,
    "clv": -0.004,
-   "profit_units": null
+   "profit_units": -0.5
   },
   {
    "week": 8,
@@ -2247,10 +2247,10 @@
    "stake_units": 0.25,
    "reason": "R12 Tier C (0.25u), Week 8 Sunday late slate, forced run. Rank<=3 pool only had LA/NE legs (KC 21.5, DEN 20.0, LAC 19.5, MIA 17.2 implied totals fail R4 >=22), so the team-total gate was relaxed for parlay legs only, for RZ rank<=2 players passing the snap and role gates (Walker, Kelce, Gadsden). Model 9.2% vs implied 7.3%, EV +26.1%. EDGE. Prices: FD Walker -120, FD Gadsden +650. Tier A: no combination of eligible legs priced +100..+200 (shortest cross-game pairs are about +220), so Tier A left empty.",
    "reason_plain": "Walker gets 59% of Kansas City's red-zone touches (8 TDs), and Gadsden has a third of the Chargers' red-zone looks the last two games. The model shows an edge, mostly from Gadsden's long price.",
-   "result": null,
+   "result": "L",
    "closing_odds": 1119,
    "clv": 0.0093,
-   "profit_units": null
+   "profit_units": -0.25
   },
   {
    "week": 8,
