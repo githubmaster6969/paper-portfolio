@@ -812,7 +812,7 @@
     "Both exit rules lined up and we followed them."
    ],
    "plain_wrong": [],
-   "plain_lesson": "",
+   "plain_lesson": "Followed the written plan: the gap held at the open, and when the option hit +50% with NVDA already past its 216.18 target, all 4 were sold as the rules say. Lesson: let the written exit decide, not a feeling.",
    "why_moved": {
     "summary": "Meta is raising about $95B for its AI buildout, and the chipmakers it buys from (Nvidia, AMD, Broadcom) said they may invest up to $5B. Another story that day noted Nvidia was now cheaper than the average S&P 500 stock (by price vs earnings).",
     "sources": [
@@ -931,7 +931,7 @@
     "Buy and sell orders both went through on Robinhood."
    ],
    "plain_wrong": [],
-   "plain_lesson": "",
+   "plain_lesson": "Not a trading lesson. It proved real orders can be bought and sold through the Robinhood connection, and that even a round trip in seconds counts as a day trade.",
    "why_moved": {
     "summary": "Not applicable: this was an order test, not a bet on SPY.",
     "sources": []
