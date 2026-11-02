@@ -15,3 +15,31 @@ cd /workspace/paper-portfolio && python3 scripts/build_trade_notes.py && python3
 ```
 
 The first command adds skeleton notes (numbers, outcome, what happened, charts) for any new closed paper or live trade and empty entries for new dip buys; it never overwrites written text. `--check` lists the fields still empty. Fill them in plain English, then commit `data/trade_notes.json`, `data/buy_notes.json` and any new `assets/trades/*.png` by explicit path.
+
+## Round 3 notes (2026-11-02)
+
+### Real (Robinhood) trades use the same trade sheet
+Live trades on `/live/` open the same sheet as paper trades. Their notes live in `data/trade_notes.json` under the key `live|YYYY-MM-DD|HH:MM|<contract>` (date, time and contract exactly as in `live/live.json`), with the same `plain_*`, `why_type` and `charts.before/during/after` fields. `scripts/build_trade_notes.py` already creates skeletons for new closed live trades; the after-close routine fills the text. Empty = the page shows "Not logged".
+
+### Setups shown on the site
+"Setups explained" lists only setups with `status: "Active"` in `data/setups.json`. Retired, `"Testing on paper"` and `"n/a"` (Pedro override, Test trade) entries stay in the file but are hidden. "P&L by setup" leaves out `n/a` one-offs and shows them in one line underneath; those trades still appear in the journal.
+
+### Monthly review format (`data/monthly_reviews.json`)
+Written for Pedro, a beginner: plain English, short sentences, terms explained in words (e.g. "support (a price floor)"), and only numbers that come from the logs. Each review:
+
+```json
+{
+  "month": "2026-10", "title": "October 2026", "period": "...", "written": "YYYY-MM-DD", "factCheck": "...",
+  "headline": "2–3 sentences: stock value vs money put in vs SPY, options result.",
+  "stats": [{"label": "plain label", "value": "$..."}],
+  "sections": [{"h": "How the money is spread", "items": ["..."]}, {"h": "How our buys went", "items": []}, {"h": "Options (paper money)", "items": []}],
+  "needs_ok": [{"do": "a change to a rule (buy rules or options rulebook)", "why": "one line, with the number behind it"}],
+  "auto": [{"do": "something already allowed by the current rules", "why": "one line"}],
+  "strategy": "What this means for the strategy: one or two sentences."
+}
+```
+
+`needs_ok` = anything that changes a rule; nothing happens until Pedro approves. `auto` = things the bots will do anyway within the rules. The month is not shown as a chip; the title says it.
+
+### Charts on phones
+Chart values show in a readout row above each chart (no floating tooltip covering the line), with an axis caption under it. Tap or drag to read; a second tap on the same point or tapping elsewhere clears it. On the equity curve one tap on a dot opens that trade. Trade chart images open in a full-screen viewer (pinch or double-tap to zoom, swipe down or × to close). Sheets close with a swipe down.

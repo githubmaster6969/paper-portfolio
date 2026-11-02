@@ -11,10 +11,13 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   function cName(c) { var p = parseC(c); return p ? p.tk + ' $' + (+p.k).toLocaleString('en-US') + ' ' + p.type : c; }
   function cSub(c) { var p = parseC(c); return p ? 'Expires ' + U.dNum(p.exp) : ''; }
+  /* same key the after-close script (scripts/build_trade_notes.py) writes into data/trade_notes.json */
+  function noteKey(t) { return 'live|' + t.date + '|' + t.time + '|' + t.contract; }
   function tradePct(t) { return t.entry ? (t.exit - t.entry) / t.entry * 100 : null; }
 
   function render() {
-    $('metaLine').innerHTML = '<span>Updated <b>' + esc(U.stamp(L.asOf)) + '</b></span><span>Started with <b>' + money(L.start, 0) + '</b></span><span>Goal <b>' + money(L.goal, 0) + '</b></span>';
+    $('metaLine').innerHTML = '<span class="upd">Updated ' + esc(U.stampShort(L.asOf)) + '</span><span class="pair num"><span>Start <b>' + money(L.start, 0) + '</b></span><span class="arr" aria-hidden="true">→</span><span>Goal <b>' + money(L.goal, 0) + '</b></span></span>';
+    $('metaLine').classList.add('meta2');
     $('val').innerHTML = U.moneyHtml(L.value); $('topVal').textContent = money(L.value);
     $('pnlLine').innerHTML = '<span class="' + cls(L.pnl) + '">' + (L.pnl >= 0 ? '▲ ' : '▼ ') + smoney(L.pnl) + ' (' + pct(L.pnlPct) + ')</span><span class="lbl">all time</span>';
     $('kpis').innerHTML = '<div class="kpi"><dt>Cash</dt><dd>' + money(L.cash) + '</dd></div><div class="kpi"><dt>In open trades</dt><dd>' + money(L.optionsValue) + '</dd></div>' +
@@ -24,15 +27,22 @@ document.addEventListener('DOMContentLoaded', function () {
     /* value chart */
     var s = (L.series || []).slice().sort(function (a, b) { return new Date(a.t) - new Date(b.t); });
     if (s.length >= 2 && U.chartReady()) {
-      var lab = s.map(function (x) { return U.stamp(x.t).replace(/, \d{4},/, ','); }), v = s.map(function (x) { return x.value; });
-      var oneDay = lab.every(function (x) { return x.split(',')[0] === lab[0].split(',')[0]; });
+      var lab = s.map(function (x) { return x.t; }), v = s.map(function (x) { return x.value; });
       var lineCol = v[v.length - 1] >= L.deposits ? GREEN : RED;
       $('legend').innerHTML = '<span style="--c:' + lineCol + '"><i></i>Account value</span><span style="--c:#C9CDD4"><i class="dash"></i>Deposited ' + money(L.deposits, 0) + '</span>';
       $('valBox').innerHTML = '<canvas role="img" aria-label="Account value over time"></canvas>';
       chart = U.track(new Chart($('valBox').firstChild, { type: 'line', plugins: [U.crosshair],
         data: { labels: lab, datasets: [{ label: 'Value', data: v, borderColor: lineCol, borderWidth: 2.25, pointRadius: 3, pointBackgroundColor: lineCol, tension: .2 },
           { label: 'Deposited', data: v.map(function () { return L.deposits; }), borderColor: '#C9CDD4', borderDash: [4, 4], borderWidth: 1, pointRadius: 0, pointHoverRadius: 0 }] },
-        options: (function () { var spread = Math.max.apply(null, v) - Math.min.apply(null, v); var o = U.lineOpts({ yTick: spread < 20 ? function (x) { return '$' + (+x).toFixed(2); } : U.tickMoney, maxX: 4, label: function (c) { return ' ' + c.dataset.label + '  ' + money(c.raw); }, xTick: function (val) { var l = this.getLabelForValue(val); return oneDay ? l.replace(/^[A-Z][a-z]{2} \d{1,2}, /, '').replace(/ ET$/, '') : l.replace(/, \d{1,2}:\d{2} [AP]M ET$/, ''); } }); o.plugins.tooltip.filter = function (it) { return it.datasetIndex === 0; }; return o; })() }));
+        options: (function () {
+          var spread = Math.max.apply(null, v) - Math.min.apply(null, v);
+          var o = U.lineOpts({ yTick: spread < 20 ? function (x) { return '$' + (+x).toFixed(2); } : U.tickMoney, maxX: 4,
+            title: function (it) { return it[0] ? U.stampShort(lab[it[0].dataIndex]) : ''; },
+            label: function (c) { return c.datasetIndex ? null : 'Account value ' + money(c.raw); },
+            /* date only ("Oct 30"), shown once per day */
+            xTick: function (val, i) { var d = U.etDay(lab[val]); return i > 0 && val > 0 && U.etDay(lab[val - 1]) === d ? null : d; } });
+          o.scales.x.ticks.autoSkip = false;
+          o.plugins.tooltip.filter = function (it) { return it.datasetIndex === 0; }; return o; })() }), 'Right side: account value in dollars ($). Bottom: date. Dashed line: money deposited.');
     } else $('valBox').innerHTML = '<div class="empty"><strong>Chart fills in as snapshots come in</strong>It needs at least two updates.</div>';
 
     /* goal */
@@ -58,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
     $('open').innerHTML = op.length ? '<div class="list">' + op.map(function (p, i) {
       return '<button type="button" class="item" data-i="' + i + '"><span class="ava" style="--c:#6D5DF6">' + esc((parseC(p.contract) || { tk: (p.contract || '').split(' ')[0] }).tk.slice(0, 4)) + '</span><span class="main"><span class="t">' + esc(cName(p.contract)) + '</span><span class="s" style="display:block">' + esc(p.expiry ? 'Expires ' + U.dNum(p.expiry) : cSub(p.contract)) + ' · ' + p.qty + '×</span></span>' +
         '<span class="r num"><span class="a" style="display:block">' + money(p.marketValue) + '</span><span class="badge ' + cls(p.unrealized) + '">' + smoney(p.unrealized) + '</span></span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>';
-    }).join('') + '</div>' : '<div class="empty"><strong>All cash right now 🧘</strong>No open contracts. When one opens, tap it for delta, theta, gamma and vega in plain English.</div>';
+    }).join('') + '</div>' : '<div class="empty">No open positions at the moment.</div>';
 
     /* history, Robinhood style, grouped by day */
     var tr = (L.trades || []).slice().sort(function (a, b) { return (b.date + b.time) < (a.date + a.time) ? -1 : 1; });
@@ -70,10 +80,12 @@ document.addEventListener('DOMContentLoaded', function () {
       $('hist').innerHTML = order.map(function (d) {
         return '<div class="eyebrow" style="margin:10px 0 6px">' + esc(U.dLong(d)) + '</div><div class="list">' + days[d].map(function (t) {
           var pp = tradePct(t), res = t.status !== 'closed' ? 'open' : r2(t.pnl) > 0 ? 'win' : r2(t.pnl) < 0 ? 'loss' : 'flat';
-          return '<button type="button" class="item" data-h="' + t.__i + '"><span class="ava" style="--c:' + (res === 'win' ? GREEN : res === 'loss' ? RED : '#6D5DF6') + '">' + esc((parseC(t.contract) || { tk: '?' }).tk.slice(0, 4)) + '</span>' +
-            '<span class="main"><span class="t">' + esc(cName(t.contract)) + '</span><span class="s" style="display:block">' + esc(U.time12(t.time)) + ' ET · ' + t.qty + ' contract' + (t.qty > 1 ? 's' : '') + ' · bought ' + U.price(t.entry) + (t.exit != null ? ', sold ' + U.price(t.exit) : '') + '</span></span>' +
-            '<span class="r num"><span style="display:block;font-size:12px;color:var(--muted);font-weight:500;text-transform:capitalize">' + esc(t.status) + '</span>' +
-            (t.status === 'closed' ? '<span class="wl ' + res + '">' + (res === 'win' ? 'Win' : res === 'loss' ? 'Loss' : 'Flat') + ' ' + smoney(t.pnl) + (pp != null ? ' · ' + pct(pp, 1) : '') + '</span>' : '<span class="wl open">Open</span>') + '</span></button>';
+          var tk = (parseC(t.contract) || { tk: '?' }).tk, n = NOTES[noteKey(t)] || {};
+          return '<button type="button" class="item hitem" data-h="' + t.__i + '"><span class="ava" style="--c:' + (res === 'win' ? GREEN : res === 'loss' ? RED : '#6D5DF6') + '">' + esc(tk.slice(0, 4)) + '</span>' +
+            '<span class="main"><span class="t">' + esc(cName(t.contract)) + '</span><span class="s">' + (n.setup ? esc(n.setup) + ' · ' : '') + esc(U.time12(t.time)) + ' ET</span>' +
+            '<span class="s">' + U.price(t.entry) + (t.exit != null ? ' → ' + U.price(t.exit) : '') + ' per share</span></span>' +
+            '<span class="r num">' + (t.status === 'closed' ? '<span class="a ' + cls(t.pnl) + '">' + smoney(t.pnl) + '</span><span class="wl ' + res + '">' + (res === 'win' ? 'Win' : res === 'loss' ? 'Loss' : 'Flat') + (pp != null ? ' ' + pct(pp, 1) : '') + '</span>' : '<span class="wl open">Open</span>') + '</span>' +
+            '<svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>';
         }).join('') + '</div>';
       }).join('');
     }
@@ -81,10 +93,10 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function openTrade(t) {
-    var n = NOTES['live|' + t.date + '|' + t.time + '|' + t.contract] || {}, pp = tradePct(t);
+    var n = NOTES[noteKey(t)] || {}, pp = tradePct(t);
     var res = t.status !== 'closed' ? 'open' : r2(t.pnl) > 0 ? 'win' : r2(t.pnl) < 0 ? 'loss' : 'flat';
     var v = PPTrade.render({ contracts: [t.contract], qty: t.qty, res: res, realized: t.pnl, pct: pp, cost: (t.entry || 0) * 100 * t.qty, entryPx: t.entry, exitPx: t.exit,
-      entryDate: t.date, entryTime: t.time, fills: [] }, n, '../');
+      entryDate: t.date, entryTime: t.time, fills: [], real: true }, n, '../');
     U.openSheet(v.head, v.body, v.after);
   }
   function openPos(p) {

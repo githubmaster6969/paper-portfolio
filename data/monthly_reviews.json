@@ -1,69 +1,97 @@
 {
-  "note": "Monthly reviews of the paper stock portfolio and paper/real options. Research, not advice. All figures from repo data (portfolio.json 10/30 close, paper-options-log.csv, degen-log.csv, live-account/ledger.csv).",
+  "note": "Monthly reviews of the paper stock portfolio and paper/real options. Research, not advice. All figures from repo data (portfolio.json 10/30 close, paper-options-log.csv, degen-log.csv, live-account/ledger.csv). Written for Pedro: plain English, ideas split into needs_ok (rule changes he must approve) and auto (things done within the current rules), plus one 'strategy' line. Format: see README 'Monthly review format'.",
   "reviews": [
     {
       "month": "2026-10",
       "title": "October 2026",
       "period": "Oct 9 to Oct 30, 2026 (first month)",
       "written": "2026-11-01",
-      "headline": "Stocks finished $17,119.24 against $17,400 put in (-1.61%), but ahead of the same deposits in SPY ($17,009.15) by $110.09. Rulebook options made +$3,801 on paper; the one-off degen trade lost $2,968.",
+      "headline": "Stocks ended October at $17,119.24 on $17,400 put in (down 1.61%), but $110.09 ahead of putting the same deposits into SPY ($17,009.15). Paper options traded by the rules made +$3,801; the one-off same-day trade outside the rules lost $2,968.",
       "stats": [
         {
-          "label": "Stock value (10/30 close)",
+          "label": "Stock portfolio value (Oct 30 close)",
           "value": "$17,119.24"
         },
         {
-          "label": "vs same deposits in SPY",
+          "label": "Ahead of the same deposits in SPY",
           "value": "+$110.09"
         },
         {
-          "label": "Options P&L (rulebook)",
+          "label": "Paper options profit (by the rules)",
           "value": "+$3,801"
         },
         {
-          "label": "Options win rate",
-          "value": "7 of 14 trades"
+          "label": "Options trades that won",
+          "value": "7 of 14"
         }
       ],
       "sections": [
         {
-          "h": "Positioning",
+          "h": "How the money is spread",
           "items": [
-            "Plan is 60% Safe Core, 20% Diversifier, 20% Aggressive. Of the money invested at the 10/30 close it was 47.2% Safe Core, 16.7% Diversifier and 36.2% Aggressive, with $1,400 cash (8.2% of the total).",
-            "Aggressive is about 16 points overweight and Safe Core about 13 points underweight. The cause is the dip buys: 8 of 12 tranches ($4,000 of $6,000) went into Aggressive names.",
-            "Biggest single names: SMH 7.64% and NVDA 6.12% of the total, both under the 10% cap."
+            "The plan is 60% Safe Core, 20% Diversifier and 20% Aggressive. At the Oct 30 close, the money invested was 47.2% Safe Core, 16.7% Diversifier and 36.2% Aggressive. Another $1,400 (8.2% of the total) was cash.",
+            "So Aggressive is about 16 points too high and Safe Core about 13 points too low. The reason: 8 of our 12 dip buys ($4,000 of $6,000) went into Aggressive stocks.",
+            "The biggest single holdings are SMH (7.64% of the total) and NVDA (6.12%). Both are under the 10% limit per holding."
           ]
         },
         {
-          "h": "Buy timing",
+          "h": "How our buys went",
           "items": [
-            "12 dip buys of $500. At the 10/30 close they were worth $109.69 less than paid in total; 3 were up (VRT +18.63%, ITA +2.01%, VXUS on 10/30 +0.47%) and 9 were down.",
-            "Pullback buys (R1, 7 buys) were +$32.16 combined. Support-test buys (R2, 5 buys) were all down, -$141.85 combined: the support levels kept breaking after we bought.",
-            "Overbuying: GEV and NVDA each got two tranches within days (GEV 10/16 and 10/20, NVDA 10/20 and 10/21) and all four are down 6-8%.",
-            "Missed: VOO never got a dip buy, so Safe Core fell further behind. Several names met the pullback rule but waited behind higher-priority picks because cash ran out (TSM, AVGO, GEV are queued for Fri 11/6)."
+            "We made 12 dip buys of $500 each. At the Oct 30 close they were worth $109.69 less than we paid. 3 were up (VRT +18.63%, ITA +2.01%, the Oct 30 VXUS buy +0.47%) and 9 were down.",
+            "Buys after a pullback from the recent high (7 buys) were up $32.16 combined. Buys at a price floor, called support (5 buys), all lost, −$141.85 combined, because the floors kept breaking after we bought.",
+            "We bought too much of two stocks: GEV twice (Oct 16 and Oct 20) and NVDA twice (Oct 20 and Oct 21). All four of those buys are down 6–8%.",
+            "Missed: VOO never got a dip buy, so Safe Core fell further behind. Some stocks qualified but the cash ran out first; TSM, AVGO and GEV are lined up for Friday, Nov 6."
           ]
         },
         {
-          "h": "Options",
+          "h": "Options (paper money)",
           "items": [
-            "Rulebook paper trades: 14 trades, 7 winners, +$3,801 realized ($5,000 budget is now $8,801 cash). 3 more planned picks were cancelled before filling (NVDA 10/27 missed its trigger; TSLA 10/26 and AMD 10/28 were too big for the size check).",
-            "Best: planned bell trades, +$2,128 over 6 (AMD put +$1,217, META call +$702, NVDA call +$660). The COIN earnings straddle netted +$902 (one sample).",
-            "Worst: failed-retest gap-down puts, 4 trades, 1 winner (SPCX +$846), 3 losers, -$9 net.",
-            "The separate one-time degen 0DTE QQQ call (10/16) lost $2,968 and was bought after the broker's cutoff, so it wasn't a realistic fill. Real Robinhood account: one $1 test round trip plus $0.09 fees; value $500.91 on 10/30.",
-            "Recurring mistakes: early trades broke rules (an improvised stop, a bell fill without its trigger, picks made after the open, an early-close call by feel). Most later entries were record-keeping slips caught before reporting."
-          ]
-        },
-        {
-          "h": "Ideas for November (research, not guarantees)",
-          "items": [
-            "Send some Friday cash to Safe Core (VOO, BND, SCHD) even without a dip, until Aggressive drifts back toward 20%. This would change the buy rules, so it needs your OK.",
-            "Stop using support-test (R2) buys on their own; wait for the pullback rule plus a day that closes back above support.",
-            "Cap any one name at two dip tranches a month so we don't keep adding to a falling stock.",
-            "Keep trading planned bell setups, but pause failed-retest puts until a review of those 4 trades, and keep the earnings straddle small until it has more samples."
+            "14 trades by the rules, 7 winners, +$3,801. The $5,000 practice budget is now $8,801. 3 more planned trades were cancelled before buying: NVDA on Oct 27 never hit its entry signal, and TSLA on Oct 26 and AMD on Oct 28 were too big for the size check.",
+            "Worked best: trades planned ahead and bought at the open, +$2,128 across 6 (AMD put +$1,217, META call +$702, NVDA call +$660). The COIN earnings bet (a call and a put together) made +$902, but that's only one try.",
+            "Worked worst: puts bought after a stock that opened lower failed to climb back above its opening price. 4 trades, 1 winner (SPCX +$846), 3 losers, −$9 overall.",
+            "The one-time same-day QQQ call on Oct 16 (outside the rules) lost $2,968. It was bought after the broker's cutoff, so it wasn't a realistic fill. The real Robinhood account only did a $1 test buy-and-sell plus $0.09 in fees; it was worth $500.91 on Oct 30.",
+            "Mistakes that repeated: early trades broke the rules (a made-up stop, a buy at the open without its signal, picks made after the open, closing early on a feeling). Most later slips were in record-keeping and were caught before reporting."
           ]
         }
       ],
-      "factCheck": "Fact-check: 2 fixes"
+      "factCheck": "Fact-check: 2 fixes",
+      "needs_ok": [
+        {
+          "do": "Put some Friday cash into Safe Core (VOO, BND, SCHD) even without a dip, until Aggressive drifts back toward 20%.",
+          "why": "Aggressive is about 16 points over the plan. This changes the buy rules."
+        },
+        {
+          "do": "Stop making support (price-floor) buys on their own. Wait for the pullback rule plus a day that closes back above the floor.",
+          "why": "All 5 support buys lost money (−$141.85)."
+        },
+        {
+          "do": "Allow at most two dip buys per stock per month.",
+          "why": "The doubled-up GEV and NVDA buys are all down 6–8%."
+        },
+        {
+          "do": "Pause the failed-open puts until we've reviewed those 4 trades.",
+          "why": "3 of 4 lost (−$9 overall). Pausing a setup changes the options rulebook."
+        }
+      ],
+      "auto": [
+        {
+          "do": "Keep taking the planned trades at the open as they are.",
+          "why": "They were the best performer: +$2,128 across 6 trades."
+        },
+        {
+          "do": "Keep earnings bets (a call and a put together) at the low-confidence size the rules already allow.",
+          "why": "Only one try so far (COIN, +$902), so it's too early to bet bigger."
+        },
+        {
+          "do": "Write up a review of the 4 failed-open put trades for you.",
+          "why": "So you can decide on the pause above with the details in front of you."
+        },
+        {
+          "do": "Buy TSM, AVGO and GEV on Friday, Nov 6 only if they still meet the pullback rule that day.",
+          "why": "They qualified in October, but the cash ran out first."
+        }
+      ],
+      "strategy": "What this means for the strategy: the signals that held up were pullback buys and the planned trades at the open; support buys and failed-open puts were the weak signals. November tests whether tightening those two (with your OK) and steering cash back to Safe Core improves results, and next month's review will compare."
     }
   ]
 }

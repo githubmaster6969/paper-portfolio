@@ -1,11 +1,11 @@
 {
- "_about": "Company / fund facts for the holding detail modal. Only sourced facts: descriptions paraphrased from the Webull company profile (stocks) or TradingView fund data (ETFs); EPS/revenue actual vs estimate from the Webull earnings calendar (latest reported quarter); next report date from the TradingView earnings calendar (confirmed=false means the company has not confirmed it). ETFs have no earnings. Missing = omitted on the page. Refresh: re-pull with Webull get_company_profile / get_stock_earnings_calendar and TradingView mcp-tv-get-earnings-calendar after any holding reports, and set asOf.",
+ "_about": "Company / fund facts for the holding detail modal. Only sourced facts: descriptions paraphrased from the Webull company profile (stocks) or TradingView fund data (ETFs); EPS/revenue actual vs estimate from the Webull earnings calendar (latest reported quarter); next report date from the TradingView earnings calendar (confirmed=false means the company has not confirmed it). ETFs have no earnings. Missing = omitted on the page. Refresh: re-pull with Webull get_company_profile / get_stock_earnings_calendar and TradingView mcp-tv-get-earnings-calendar after any holding reports, and set asOf. 'about' rewritten 2026-11-02 in plain English: what the company does and how it makes money (well-known public facts; no figures).",
  "asOf": "2026-11-01",
  "tickers": {
   "VOO": {
    "kind": "etf",
    "name": "Vanguard S&P 500 ETF",
-   "about": "A fund that tracks the S&P 500 index.",
+   "about": "A fund that tracks the S&P 500 index, so one share owns a slice of about 500 of the biggest US companies. Vanguard runs it and charges a small yearly fee; you make money when those companies grow and pay dividends.",
    "tracks": "S&P 500",
    "expenseRatio": 0.03,
    "source": "TradingView symbol data (2026-11-01)"
@@ -13,7 +13,7 @@
   "VXUS": {
    "kind": "etf",
    "name": "Vanguard Total International Stock ETF",
-   "about": "A fund that tracks the FTSE Global All Cap ex US index.",
+   "about": "A fund that tracks the FTSE Global All Cap ex US index: thousands of companies in Europe, Asia and emerging markets, everything except the US. It spreads your money outside the US in one purchase.",
    "tracks": "FTSE Global All Cap ex US",
    "expenseRatio": 0.05,
    "source": "TradingView symbol data (2026-11-01)"
@@ -21,7 +21,7 @@
   "SCHD": {
    "kind": "etf",
    "name": "Schwab US Dividend Equity ETF",
-   "about": "A fund that tracks the Dow Jones U.S. Dividend 100 index.",
+   "about": "A fund that tracks the Dow Jones U.S. Dividend 100 index: about 100 US companies with a long record of paying and raising dividends. It pays out cash dividends every quarter.",
    "tracks": "Dow Jones U.S. Dividend 100",
    "expenseRatio": 0.06,
    "source": "TradingView symbol data (2026-11-01)"
@@ -29,7 +29,7 @@
   "BND": {
    "kind": "etf",
    "name": "Vanguard Total Bond Market ETF",
-   "about": "A fund that tracks the Bloomberg US Aggregate Float Adjusted index.",
+   "about": "A fund that tracks the Bloomberg US Aggregate Float Adjusted index: thousands of US government and company bonds. It earns money from the interest those bonds pay, and usually moves much less than stocks.",
    "tracks": "Bloomberg US Aggregate Float Adjusted",
    "expenseRatio": 0.03,
    "source": "TradingView symbol data (2026-11-01)"
@@ -37,7 +37,7 @@
   "XLV": {
    "kind": "etf",
    "name": "Health Care Select Sector SPDR Fund",
-   "about": "A fund that tracks the S&P Health Care Select Sector index.",
+   "about": "A fund that tracks the S&P Health Care Select Sector index: the health care companies in the S&P 500, such as drugmakers, insurers and medical device makers.",
    "tracks": "S&P Health Care Select Sector",
    "expenseRatio": 0.08,
    "source": "TradingView symbol data (2026-11-01)"
@@ -45,7 +45,7 @@
   "AVUV": {
    "kind": "etf",
    "name": "Avantis U.S. Small Cap Value ETF",
-   "about": "An actively managed fund (it does not track an index).",
+   "about": "An actively managed fund (it doesn’t copy an index) that buys small US companies whose shares look cheap compared with their profits and assets, a style called small-cap value.",
    "tracks": null,
    "expenseRatio": 0.25,
    "source": "TradingView symbol data (2026-11-01)"
@@ -53,7 +53,7 @@
   "INDA": {
    "kind": "etf",
    "name": "iShares MSCI India ETF",
-   "about": "A fund that tracks the MSCI India index.",
+   "about": "A fund that tracks the MSCI India index: the large and mid-size companies listed in India, such as banks, tech services firms and energy companies.",
    "tracks": "MSCI India",
    "expenseRatio": 0.61,
    "source": "TradingView symbol data (2026-11-01)"
@@ -61,7 +61,7 @@
   "IAU": {
    "kind": "etf",
    "name": "iShares Gold Trust",
-   "about": "A fund that tracks the LBMA Gold Price PM index.",
+   "about": "A fund that holds real gold bars in vaults and tracks the LBMA Gold Price PM index, so its price follows the price of gold. It pays no dividends.",
    "tracks": "LBMA Gold Price PM",
    "expenseRatio": 0.25,
    "source": "TradingView symbol data (2026-11-01)"
@@ -69,7 +69,7 @@
   "ITA": {
    "kind": "etf",
    "name": "iShares U.S. Aerospace & Defense ETF",
-   "about": "A fund that tracks the Dow Jones U.S. Select Aerospace & Defense index.",
+   "about": "A fund that tracks the Dow Jones U.S. Select Aerospace & Defense index: US companies that build military equipment, jet engines and passenger planes.",
    "tracks": "Dow Jones U.S. Select Aerospace & Defense",
    "expenseRatio": 0.37,
    "source": "TradingView symbol data (2026-11-01)"
@@ -77,7 +77,7 @@
   "SMH": {
    "kind": "etf",
    "name": "VanEck Semiconductor ETF",
-   "about": "A fund that tracks the MVIS US Listed Semiconductor 25 index.",
+   "about": "A fund that tracks the MVIS US Listed Semiconductor 25 index: 25 of the biggest computer-chip companies, such as NVIDIA, TSMC and Broadcom.",
    "tracks": "MVIS US Listed Semiconductor 25",
    "expenseRatio": 0.35,
    "source": "TradingView symbol data (2026-11-01)"
@@ -85,7 +85,7 @@
   "GRID": {
    "kind": "etf",
    "name": "First Trust Nasdaq Clean Edge Smart Grid Infrastructure Index Fund",
-   "about": "A fund that tracks the NASDAQ OMX Clean Edge Smart Grid Infrastructure index.",
+   "about": "A fund that tracks the NASDAQ OMX Clean Edge Smart Grid Infrastructure index: companies that build and upgrade the electric grid, such as power equipment, cables and meters.",
    "tracks": "NASDAQ OMX Clean Edge Smart Grid Infrastructure",
    "expenseRatio": 0.56,
    "source": "TradingView symbol data (2026-11-01)"
@@ -93,7 +93,7 @@
   "NLR": {
    "kind": "etf",
    "name": "VanEck Uranium and Nuclear ETF",
-   "about": "A fund that tracks the MVIS Global Uranium & Nuclear Energy index.",
+   "about": "A fund that tracks the MVIS Global Uranium & Nuclear Energy index: uranium miners, nuclear power plant owners and companies that build nuclear equipment.",
    "tracks": "MVIS Global Uranium & Nuclear Energy",
    "expenseRatio": 0.52,
    "source": "TradingView symbol data (2026-11-01)"
@@ -101,7 +101,7 @@
   "DTCR": {
    "kind": "etf",
    "name": "Global X Data Center & Digital Infrastructure ETF",
-   "about": "A fund that tracks the Solactive Data Center REITs & Digital Infrastructure index.",
+   "about": "A fund that tracks the Solactive Data Center REITs & Digital Infrastructure index: companies that own data centers and cell towers and rent the space to tech and phone companies.",
    "tracks": "Solactive Data Center REITs & Digital Infrastructure",
    "expenseRatio": 0.5,
    "source": "TradingView symbol data (2026-11-01)"
@@ -109,7 +109,7 @@
   "UNH": {
    "kind": "stock",
    "name": "UnitedHealth Group",
-   "about": "The largest US health insurer (UnitedHealthcare), plus Optum, which runs health services, health data and pharmacy-benefit businesses.",
+   "about": "The biggest US health insurer. It makes money from the premiums employers, people and the government pay for UnitedHealthcare plans, and from Optum, which runs clinics, health data services and a pharmacy-benefits business.",
    "lastEarnings": {
     "date": "2026-10-13",
     "eps": 4.56,
@@ -127,7 +127,7 @@
   "RTX": {
    "kind": "stock",
    "name": "RTX",
-   "about": "An aerospace and defense company: Collins Aerospace parts, Pratt & Whitney jet engines and Raytheon missiles and defense systems.",
+   "about": "An aerospace and defense company. It makes money selling jet engines (Pratt & Whitney) and airplane parts (Collins Aerospace) to airlines and plane makers, plus missiles and defense systems (Raytheon) to the US and allied governments, and it earns more servicing engines after they are sold.",
    "lastEarnings": {
     "date": "2026-10-20",
     "eps": 1.89,
@@ -145,7 +145,7 @@
   "LLY": {
    "kind": "stock",
    "name": "Eli Lilly",
-   "about": "A drugmaker whose medicines include Mounjaro and Zepbound (diabetes and weight loss), Jardiance and Verzenio.",
+   "about": "Eli Lilly is a drug company. It makes money selling prescription medicines, mainly Mounjaro and Zepbound for diabetes and weight loss, plus cancer and other drugs, to pharmacies, hospitals and insurers.",
    "lastEarnings": {
     "date": "2026-10-29",
     "eps": 7.22,
@@ -163,7 +163,7 @@
   "ISRG": {
    "kind": "stock",
    "name": "Intuitive Surgical",
-   "about": "Makes the da Vinci robotic surgery systems and the Ion system for lung biopsies.",
+   "about": "Intuitive Surgical sells da Vinci robots that help surgeons operate through small cuts. It makes most of its money after the sale: hospitals buy new instruments for every surgery and pay for service contracts.",
    "lastEarnings": {
     "date": "2026-10-20",
     "eps": 1.49,
@@ -181,7 +181,7 @@
   "V": {
    "kind": "stock",
    "name": "Visa",
-   "about": "Runs a global card-payments network (VisaNet) used by about 14,500 banks and financial institutions.",
+   "about": "Visa runs the network that moves money when you pay with a Visa card. It doesn’t lend money itself; it charges banks and merchants a small fee on each purchase that goes through its network.",
    "lastEarnings": {
     "date": "2026-10-27",
     "eps": 3.19,
@@ -199,7 +199,7 @@
   "NVDA": {
    "kind": "stock",
    "name": "NVIDIA",
-   "about": "Makes the chips and networking gear that power AI data centers, plus GeForce gaming graphics cards, all tied together by its CUDA software.",
+   "about": "NVIDIA designs the chips that train and run AI. It makes most of its money selling those chips and networking gear to cloud companies and data centers, plus GeForce graphics cards for gaming PCs.",
    "lastEarnings": {
     "date": "2026-08-26",
     "eps": 2.46,
@@ -217,7 +217,7 @@
   "AVGO": {
    "kind": "stock",
    "name": "Broadcom",
-   "about": "Makes chips for AI data centers and networking, and sells infrastructure software.",
+   "about": "Broadcom designs chips used in data centers, networks, phones and AI systems, including custom AI chips built for big tech companies. It also sells software that large businesses pay for by subscription (it owns VMware).",
    "lastEarnings": {
     "date": "2026-09-02",
     "eps": 2.68,
@@ -235,7 +235,7 @@
   "TSM": {
    "kind": "stock",
    "name": "Taiwan Semiconductor (TSMC)",
-   "about": "The world’s biggest contract chip maker: it manufactures chips designed by other companies for AI, phones and computers.",
+   "about": "TSMC is the world’s biggest contract chipmaker. Companies like Apple and NVIDIA design chips, and TSMC gets paid to manufacture them in its factories, mostly in Taiwan.",
    "lastEarnings": {
     "date": "2026-10-15",
     "eps": 4.6,
@@ -253,7 +253,7 @@
   "MSFT": {
    "kind": "stock",
    "name": "Microsoft",
-   "about": "Sells Microsoft 365, the Azure cloud and AI services, Windows, LinkedIn and Xbox.",
+   "about": "Microsoft makes money from subscriptions to Office (Microsoft 365), renting computing power and AI through its Azure cloud, Windows licenses, LinkedIn, search ads and Xbox gaming.",
    "lastEarnings": {
     "date": "2026-10-28",
     "eps": 4.92,
@@ -271,7 +271,7 @@
   "VRT": {
    "kind": "stock",
    "name": "Vertiv",
-   "about": "Makes the power and cooling equipment that keeps data centers running.",
+   "about": "Vertiv makes the power and cooling equipment data centers need to keep servers running and from overheating. It sells that gear to data center builders and cloud companies, then earns more servicing it.",
    "lastEarnings": {
     "date": "2026-10-28",
     "eps": 1.95,
@@ -289,7 +289,7 @@
   "GEV": {
    "kind": "stock",
    "name": "GE Vernova",
-   "about": "Makes equipment for generating power (gas, nuclear, hydro and wind) and for the electric grid.",
+   "about": "GE Vernova builds the machines that make electricity, such as gas turbines and wind turbines, plus equipment for the power grid. It sells them to utilities and earns steady money from long service contracts.",
    "lastEarnings": {
     "date": "2026-10-28",
     "eps": 4.81,
@@ -307,7 +307,7 @@
   "CEG": {
    "kind": "stock",
    "name": "Constellation Energy",
-   "about": "The largest US producer of clean energy, mostly from nuclear plants (about 55 GW of capacity, roughly 10% of US clean power).",
+   "about": "Constellation Energy owns the largest fleet of nuclear power plants in the US. It makes money selling the electricity they generate to utilities, businesses and data centers, often on long-term contracts.",
    "lastEarnings": {
     "date": "2026-08-06",
     "eps": 1.42,
@@ -325,7 +325,7 @@
   "CCJ": {
    "kind": "stock",
    "name": "Cameco",
-   "about": "A uranium miner and nuclear fuel supplier that also owns a stake in Westinghouse, which builds nuclear reactors.",
+   "about": "Cameco is one of the world’s biggest uranium miners. It makes money selling uranium and nuclear fuel to power plants, and it co-owns Westinghouse, which builds and services nuclear reactors.",
    "lastEarnings": {
     "date": "2026-10-30",
     "eps": 0.1,

@@ -29,11 +29,16 @@
   };
   U.usDates = function (s) { return String(s || '').replace(/\b(\d{4}-\d{2}-\d{2})\b/g, function (m) { return U.dLong(m); }); };
   U.dt = function (iso, hhmm) { var t = U.time12(hhmm); return U.dLong(iso) + (t ? ', ' + t + ' ET' : ''); };
-  /* full ISO timestamp with zone -> Eastern display */
-  U.stamp = function (iso) {
-    var d = new Date(iso); if (isNaN(d)) return String(iso || '');
-    return d.toLocaleString('en-US', { timeZone: 'America/New_York', month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' }) + ' ET';
+  /* full ISO timestamp with zone -> Eastern parts (built by hand so iOS never inserts " at ") */
+  U.et = function (iso) {
+    var d = new Date(iso); if (isNaN(d)) return null;
+    var o = {}; new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true })
+      .formatToParts(d).forEach(function (p) { o[p.type] = p.value; });
+    return { y: +o.year, m: +o.month, d: +o.day, time: o.hour + ':' + o.minute + ' ' + String(o.dayPeriod || '').toUpperCase(), day: MON[+o.month - 1] + ' ' + (+o.day) };
   };
+  U.stamp = function (iso) { var p = U.et(iso); return p ? p.day + ', ' + p.y + ', ' + p.time + ' ET' : String(iso || ''); };   // Oct 30, 2026, 3:49 PM ET
+  U.stampShort = function (iso) { var p = U.et(iso); return p ? p.day + ' · ' + p.time + ' ET' : String(iso || ''); };           // Oct 30 · 3:49 PM ET
+  U.etDay = function (iso) { var p = U.et(iso); return p ? p.day : ''; };                                                           // Oct 30
   /* "2026-10-12T09:30" (Eastern wall-clock, no zone) -> parts */
   U.wall = function (s) { var a = String(s || '').split('T'); return { d: a[0], t: (a[1] || '').slice(0, 5) }; };
 
@@ -59,6 +64,23 @@
     var a = c.tooltip && c.tooltip.getActiveElements && c.tooltip.getActiveElements();
     if (!a || !a.length) return; var x = a[0].element.x, ctx = c.ctx, y = c.chartArea;
     ctx.save(); ctx.beginPath(); ctx.moveTo(x, y.top); ctx.lineTo(x, y.bottom); ctx.lineWidth = 1; ctx.strokeStyle = 'rgba(11,13,18,.28)'; ctx.setLineDash([3, 3]); ctx.stroke(); ctx.restore(); } };
+  U.TOUCH = ('ontouchstart' in w) || (navigator.maxTouchPoints > 0);
+  /* Readout row above each chart replaces the floating tooltip: it never covers the line or the dots. */
+  function readoutEl(chart) { return chart.$readout || null; }
+  function idleText() { return U.TOUCH ? 'Tap or drag the chart for exact numbers' : 'Hover the chart for exact numbers'; }
+  U.readout = function (ctx) {
+    var chart = ctx.chart, tt = ctx.tooltip, el = readoutEl(chart); if (!el) return;
+    if (!tt || tt.opacity === 0 || !tt.dataPoints || !tt.dataPoints.length) { chart.$shownIdx = null; el.classList.remove('on'); el.innerHTML = '<span class="idle">' + idleText() + '</span>'; return; }
+    chart.$shownIdx = tt.dataPoints[0].dataIndex;
+    var title = (tt.title || []).join(' '), lines = [];
+    (tt.body || []).forEach(function (b, i) {
+      var txt = (b.lines || []).join(' ').trim(); if (!txt) return;
+      var c = tt.labelColors && tt.labelColors[i] ? tt.labelColors[i].borderColor : '#3A3F4B';
+      lines.push('<span class="ro-v"><i style="background:' + U.esc(c) + '"></i>' + U.esc(txt) + '</span>');
+    });
+    el.classList.add('on');
+    el.innerHTML = '<b class="ro-t">' + U.esc(title) + '</b>' + lines.join('');
+  };
   U.lineOpts = function (o) {
     o = o || {};
     return {
@@ -68,11 +90,8 @@
       layout: { padding: { top: 6, right: 2 } },
       plugins: {
         legend: { display: false },
-        tooltip: {
-          backgroundColor: 'rgba(11,13,18,.92)', padding: 10, cornerRadius: 10, boxWidth: 8, boxHeight: 8, boxPadding: 4, caretSize: 0, usePointStyle: true,
-          titleFont: { family: U.FONT, weight: '600', size: 12 }, bodyFont: { family: U.FONT, size: 12 },
-          callbacks: { title: o.title || function (it) { return it[0] ? it[0].label : ''; }, label: o.label }
-        }
+        tooltip: { enabled: false, external: U.readout,
+          callbacks: { title: o.title || function (it) { return it[0] ? it[0].label : ''; }, label: o.label } }
       },
       scales: {
         x: { grid: { display: false }, border: { display: false },
@@ -83,15 +102,48 @@
       }
     };
   };
-  U.track = function (chart) {
+  U.clearActive = function (chart) {
+    if (!chart || chart.$dead || !chart.canvas || !chart.canvas.isConnected) return;
+    clearTimeout(chart.$hideT);
+    if (chart.tooltip.getActiveElements().length) { chart.tooltip.setActiveElements([], { x: 0, y: 0 }); chart.setActiveElements([]); chart.update('none'); }
+    U.readout({ chart: chart, tooltip: { opacity: 0 } });
+  };
+  /* axis: one short line under the chart saying what the up/down axis measures */
+  U.setAxis = function (chart, text) { if (chart && chart.$axis) chart.$axis.textContent = text || ''; };
+  U.track = function (chart, axisText) {
     U.charts.push(chart);
-    var box = chart.canvas.parentNode;
-    if (w.ResizeObserver && box) { var ro = new ResizeObserver(function () { if (chart.canvas && chart.canvas.isConnected) chart.resize(); }); ro.observe(box); chart.$ro = ro; }
-    chart.canvas.addEventListener('mouseleave', function () { if (chart.$dead || !chart.canvas || !chart.canvas.isConnected) return; chart.tooltip.setActiveElements([], { x: 0, y: 0 }); chart.update('none'); });
+    var cv = chart.canvas, box = cv.parentNode;
+    if (box && box.parentNode) {
+      var ro = box.previousElementSibling;
+      if (!ro || !ro.classList.contains('readout')) { ro = document.createElement('div'); ro.className = 'readout num'; ro.setAttribute('aria-live', 'polite'); box.parentNode.insertBefore(ro, box); }
+      chart.$readout = ro;
+      var ax = box.nextElementSibling;
+      if (!ax || !ax.classList.contains('axis-cap')) { ax = document.createElement('div'); ax.className = 'axis-cap'; box.parentNode.insertBefore(ax, box.nextSibling); }
+      chart.$axis = ax; ax.textContent = axisText || '';
+      U.readout({ chart: chart, tooltip: { opacity: 0 } });
+    }
+    if (w.ResizeObserver && box) { var rob = new ResizeObserver(function () { if (chart.canvas && chart.canvas.isConnected) chart.resize(); }); rob.observe(box); chart.$ro = rob; }
+    cv.addEventListener('mouseleave', function () { U.clearActive(chart); });
+    /* touch: show while touching, keep the readout ~2.5s after release, a second tap on the same point hides it.
+       A quick tap also fires chart.$onTap(index) so taps never need a long-press. */
+    var t0 = 0, x0 = 0, y0 = 0, before = null;
+    cv.addEventListener('touchstart', function (e) {
+      var t = e.touches[0]; t0 = Date.now(); x0 = t.clientX; y0 = t.clientY; before = chart.$shownIdx; clearTimeout(chart.$hideT); chart.$lastTouch = t0;
+    }, { passive: true });
+    cv.addEventListener('touchend', function (e) {
+      var t = e.changedTouches[0], tap = Date.now() - t0 < 450 && Math.abs(t.clientX - x0) < 10 && Math.abs(t.clientY - y0) < 10;
+      chart.$lastTouch = Date.now();
+      var idx = chart.$shownIdx;
+      if (tap && chart.$onTap && idx != null) { if (e.cancelable) e.preventDefault(); chart.$onTap(idx); chart.$hideT = setTimeout(function () { U.clearActive(chart); }, 600); return; }
+      if (tap && before != null && before === idx) { U.clearActive(chart); return; }
+      chart.$hideT = setTimeout(function () { U.clearActive(chart); }, 2500);
+    }, { passive: false });
     return chart;
   };
+  /* tapping anywhere off a chart clears its readout */
+  document.addEventListener('touchstart', function (e) { U.charts.forEach(function (c) { if (c.canvas && !c.canvas.contains(e.target) && c.$shownIdx != null) U.clearActive(c); }); }, { passive: true });
   U.kill = function (chart) {
-    if (!chart) return null; chart.$dead = true; if (chart.$ro) chart.$ro.disconnect();
+    if (!chart) return null; chart.$dead = true; clearTimeout(chart.$hideT); if (chart.$ro) chart.$ro.disconnect();
     U.charts = U.charts.filter(function (c) { return c !== chart; }); chart.destroy(); return null;
   };
   var rt; w.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { U.charts.forEach(function (c) { if (c.canvas && c.canvas.isConnected) c.resize(); }); }, 120); });
@@ -105,13 +157,34 @@
       '<div class="sheet-bg" id="sheetBg"></div><section class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">' +
       '<div class="sheet-grab" aria-hidden="true"></div><header class="sheet-h"><div class="main" id="sheetHead"></div>' +
       '<button type="button" class="x-btn" id="sheetX" aria-label="Close">×</button></header><div class="sheet-b" id="sheetBody"></div></section>');
-    U.$('sheetBg').addEventListener('click', U.closeSheet);
+    U.$('sheetBg').addEventListener('click', function () { if (Date.now() - (U.sheetOpenedAt || 0) > 450) U.closeSheet(); });
     U.$('sheetX').addEventListener('click', U.closeSheet);
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && U.$('sheet').classList.contains('on')) U.closeSheet(); });
-    /* swipe down to close on phones */
-    var y0 = null, sh = U.$('sheet');
-    sh.addEventListener('touchstart', function (e) { var b = U.$('sheetBody'); y0 = (b.scrollTop <= 0 || !b.contains(e.target)) ? e.touches[0].clientY : null; }, { passive: true });
-    sh.addEventListener('touchend', function (e) { if (y0 != null && e.changedTouches[0].clientY - y0 > 90 && w.innerWidth < 900) U.closeSheet(); y0 = null; }, { passive: true });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && U.$('sheet').classList.contains('on') && !(U.$('lb') && U.$('lb').classList.contains('on'))) U.closeSheet(); });
+    /* swipe down to close on phones: the sheet follows the finger, then closes or springs back */
+    var sh = U.$('sheet'), sb = U.$('sheetBody'), y0 = null, dy = 0, tPrev = 0, yPrev = 0, vel = 0, dragging = false;
+    sh.addEventListener('touchstart', function (e) {
+      if (w.innerWidth >= 900 || e.touches.length > 1) { y0 = null; return; }
+      var inBody = sb.contains(e.target);
+      y0 = (!inBody || sb.scrollTop <= 0) ? e.touches[0].clientY : null; dy = 0; vel = 0; dragging = false;
+      tPrev = Date.now(); yPrev = y0;
+    }, { passive: true });
+    sh.addEventListener('touchmove', function (e) {
+      if (y0 == null) return;
+      var y = e.touches[0].clientY, d = y - y0;
+      if (!dragging) { if (d > 6 && (sb.scrollTop <= 0 || !sb.contains(e.target))) { dragging = true; sh.classList.add('drag'); } else if (d < -2) { y0 = null; return; } else return; }
+      e.preventDefault();
+      var now = Date.now(); vel = (y - yPrev) / Math.max(1, now - tPrev); tPrev = now; yPrev = y;
+      dy = Math.max(0, d); sh.style.transform = 'translateY(' + dy + 'px)';
+      U.$('sheetBg').style.opacity = String(Math.max(0.15, 1 - dy / (sh.offsetHeight || 600)));
+    }, { passive: false });
+    function endDrag() {
+      if (!dragging) { y0 = null; return; }
+      dragging = false; y0 = null; sh.classList.remove('drag'); U.$('sheetBg').style.opacity = '';
+      if (dy > Math.min(140, sh.offsetHeight * 0.22) || vel > 0.55) { sh.style.transform = ''; U.closeSheet(); }
+      else { sh.style.transform = ''; }
+    }
+    sh.addEventListener('touchend', endDrag, { passive: true });
+    sh.addEventListener('touchcancel', endDrag, { passive: true });
   }
   U.openSheet = function (headHtml, bodyHtml, after, close) {
     ensureSheet(); void U.$('sheet').offsetWidth;
@@ -119,7 +192,7 @@
     if (!U.$('sheet').classList.contains('on')) lastFocus = document.activeElement;
     onClose = close || null;
     U.$('sheetHead').innerHTML = headHtml; U.$('sheetBody').innerHTML = bodyHtml; U.$('sheetBody').scrollTop = 0;
-    U.$('sheetBg').classList.add('on'); U.$('sheet').classList.add('on'); document.body.style.overflow = 'hidden';
+    U.sheetOpenedAt = Date.now(); U.$('sheetBg').classList.add('on'); U.$('sheet').classList.add('on'); document.body.style.overflow = 'hidden';
     setTimeout(function () { U.$('sheetX').focus({ preventScroll: true }); }, 60);
     if (after) requestAnimationFrame(function () { after(U.$('sheetBody')); });
   };
@@ -128,6 +201,54 @@
     U.$('sheetBg').classList.remove('on'); U.$('sheet').classList.remove('on'); document.body.style.overflow = '';
     if (onClose) { try { onClose(); } catch (e) {} onClose = null; }
     if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+  };
+
+  /* ---- full-screen image viewer: pinch or double-tap to zoom, drag to pan, swipe down or × to close ---- */
+  U.lightbox = function (src, alt) {
+    var lb = U.$('lb');
+    if (!lb) {
+      document.body.insertAdjacentHTML('beforeend', '<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Chart image"><button type="button" class="lb-x" id="lbX" aria-label="Close">×</button><div class="lb-stage" id="lbStage"><img id="lbImg" alt=""></div><div class="lb-hint" id="lbHint"></div></div>');
+      lb = U.$('lb');
+      var img = U.$('lbImg'), stage = U.$('lbStage'), S = { s: 1, x: 0, y: 0 }, g = null, lastTap = 0;
+      var apply = function (anim) { img.style.transition = anim ? 'transform .22s ease' : 'none'; img.style.transform = 'translate(' + S.x + 'px,' + S.y + 'px) scale(' + S.s + ')'; };
+      var clampS = function () { S.s = Math.max(1, Math.min(5, S.s)); if (S.s === 1) { S.x = 0; S.y = 0; } };
+      U.lbReset = function () { S = { s: 1, x: 0, y: 0 }; apply(false); lb.style.background = ''; };
+      var close = function () { lb.classList.remove('on'); document.removeEventListener('keydown', key, true); setTimeout(U.lbReset, 220); if (!(U.$('sheet') && U.$('sheet').classList.contains('on'))) document.body.style.overflow = ''; var b = document.querySelector('.shot-btn'); if (b) b.focus({ preventScroll: true }); };
+      var key = function (e) { if (e.key === 'Escape') { e.stopPropagation(); close(); } };
+      U.lbClose = close; U.lbKey = key;
+      U.$('lbX').addEventListener('click', close);
+      stage.addEventListener('click', function (e) { if (U.TOUCH) return; if (e.target === img) { S.s = S.s > 1 ? 1 : 2.5; clampS(); apply(true); } else close(); });
+      var dist = function (t) { return Math.hypot(t[0].clientX - t[1].clientX, t[0].clientY - t[1].clientY); };
+      stage.addEventListener('touchstart', function (e) {
+        var t = e.touches;
+        if (t.length === 2) g = { pinch: true, d: dist(t), s: S.s };
+        else if (t.length === 1) {
+          var now = Date.now();
+          if (now - lastTap < 300) { S.s = S.s > 1 ? 1 : 2.5; clampS(); apply(true); lastTap = 0; g = null; return; }
+          lastTap = now; g = { pinch: false, x: t[0].clientX, y: t[0].clientY, ox: S.x, oy: S.y, t: now, dy: 0 };
+        }
+      }, { passive: true });
+      stage.addEventListener('touchmove', function (e) {
+        if (!g) return; e.preventDefault(); var t = e.touches;
+        if (g.pinch && t.length === 2) { S.s = Math.max(1, Math.min(5, g.s * dist(t) / g.d)); apply(false); return; }
+        if (!g.pinch && t.length === 1) {
+          var dx = t[0].clientX - g.x, dy = t[0].clientY - g.y;
+          if (S.s > 1) { S.x = g.ox + dx; S.y = g.oy + dy; apply(false); }
+          else { g.dy = dy; S.y = Math.max(0, dy); apply(false); lb.style.background = 'rgba(0,0,0,' + Math.max(0.35, 0.94 - Math.abs(dy) / 500) + ')'; }
+        }
+      }, { passive: false });
+      stage.addEventListener('touchend', function (e) {
+        if (!g) return;
+        if (g.pinch) { if (e.touches.length === 0) { clampS(); apply(true); g = null; } return; }
+        if (S.s === 1) { if (g.dy > 110) close(); else { S.y = 0; apply(true); lb.style.background = ''; } }
+        g = null;
+      }, { passive: true });
+    }
+    var im = U.$('lbImg'); im.src = src; im.alt = alt || '';
+    U.$('lbHint').textContent = U.TOUCH ? 'Pinch or double-tap to zoom · swipe down to close' : 'Click the image to zoom · Esc to close';
+    U.lbReset(); lb.classList.add('on'); document.body.style.overflow = 'hidden';
+    document.addEventListener('keydown', U.lbKey, true);
+    setTimeout(function () { U.$('lbX').focus({ preventScroll: true }); }, 50);
   };
 
   U.nl = function (s, fallback) { return s ? '<p>' + U.esc(s) + '</p>' : '<p class="nl">' + (fallback || 'Not logged') + '</p>'; };
@@ -196,7 +317,7 @@ window.PPTrade = (function () {
     var res = t.res, word = res === 'win' ? 'Win' : res === 'loss' ? 'Loss' : res === 'open' ? 'Open' : 'Flat';
     var nm = name(t.contracts), exp = expiry(t.contracts);
     var head = '<h3 id="sheetTitle">' + esc(nm) + (t.qty > 1 ? ' <span class="flat" style="font-weight:500">×' + t.qty + '</span>' : '') + '</h3>' +
-      '<div class="s"><span class="wl ' + res + '">' + word + '</span> · ' + esc(n.setup || 'Setup not logged') + ' · ' + esc(U.dLong(t.entryDate)) + '</div>';
+      '<div class="s"><span class="wl ' + res + '">' + word + '</span> · ' + esc(n.setup || 'Setup not logged') + ' · ' + esc(U.dLong(t.entryDate)) + (t.real ? ' · real money' : '') + '</div>';
     var en = n.entryAt || (t.entryDate + 'T' + (t.entryTime || '')), ex = n.exitAt || '';
     var hd = ex ? held(en, ex) : '';
     var body = '<div class="t-top"><div><div class="big num ' + U.cls(t.realized) + '" style="font-size:36px">' + U.smoney(t.realized) + '</div>' +
@@ -231,11 +352,12 @@ window.PPTrade = (function () {
       function show(k) {
         var src = ch[k], box = root.querySelector('#shotBox');
         var label = { before: 'before the trade', during: 'during the trade', after: 'after the trade' }[k];
-        box.innerHTML = src ? '<a href="' + esc(base + src) + '" target="_blank" rel="noopener" class="fade-swap" style="display:block"><img class="chart-img" src="' + esc(base + src) + '" alt="' + esc(nm) + ' chart ' + label + '" loading="lazy"></a>' +
+        box.innerHTML = src ? '<button type="button" class="shot-btn fade-swap" data-src="' + esc(base + src) + '" aria-label="Open the chart full screen"><img class="chart-img" src="' + esc(base + src) + '" alt="' + esc(nm) + ' chart ' + label + '" loading="lazy"><span class="zoom-tag" aria-hidden="true">Tap to zoom</span></button>' +
           (k === 'during' ? '<p class="note">5-minute candles with where we bought, sold, and the stop and target lines.</p>' : '')
           : '<div class="shot-empty fade-swap"><div><b>No chart ' + label + ' yet</b>' + (k === 'before' ? 'Future trades will save the setup chart from before we buy.' : k === 'after' ? 'Future trades will save how the stock moved after we sold.' : 'No chart saved for this trade.') + '</div></div>';
       }
       var seg = root.querySelector('#shotSeg'); show('during');
+      root.querySelector('#shotBox').addEventListener('click', function (e) { var b = e.target.closest('.shot-btn'); if (b) U.lightbox(b.dataset.src, b.querySelector('img').alt); });
       U.seg(seg, function (v) { show(v); });
     }
     return { head: head, body: body, after: after };
