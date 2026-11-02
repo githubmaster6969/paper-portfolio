@@ -1,6 +1,6 @@
 {
- "asOf": "2026-11-02T09:44:20-05:00",
- "source": "9:30 open update 2026-11-02 (run 09:44 ET per `date`): no open paper option contracts in paper-options-log.csv, so no Robinhood quotes pulled.",
+ "asOf": "2026-11-02T13:08:22-05:00",
+ "source": "1 PM midday update 2026-11-02 (run 13:08 ET per `date`): no open paper option contracts in paper-options-log.csv, so no Robinhood quotes pulled.",
  "marks": {},
  "underlying": {},
  "levels": {}
