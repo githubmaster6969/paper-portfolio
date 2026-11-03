@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-03T00:49:53+00:00",
+ "generated_at": "2026-11-03T01:15:45+00:00",
  "source": "/home/runner/work/paper-portfolio/paper-portfolio/nfl/data/picks_log.csv",
  "picks": [
   {
@@ -2348,8 +2348,8 @@
    "reason": "R12 Tier A, forced (pool empty under gates). Each team RZ No.1/No.2 shortest TD prices, td_v2 p 0.398 x 0.378. NO EDGE.",
    "reason_plain": "NO EDGE. The two shortest TD prices in the game, both priced above the model.",
    "result": null,
-   "closing_odds": null,
-   "clv": null,
+   "closing_odds": 233,
+   "clv": 0.0062,
    "profit_units": null
   },
   {
@@ -2373,8 +2373,8 @@
    "reason": "R12 Tier B, forced. Each team TE red-zone options, td_v2 p 0.226 x 0.242. NO EDGE.",
    "reason_plain": "NO EDGE. Both tight ends priced a bit above the model.",
    "result": null,
-   "closing_odds": null,
-   "clv": null,
+   "closing_odds": 850,
+   "clv": 0.0061,
    "profit_units": null
   },
   {
@@ -2398,8 +2398,8 @@
    "reason": "R12 Tier C, forced. td_v2 p 0.435 x 0.194 (independence assumed). Model edge, but Wilson gate_fail: Zach Charbonnet is priced as SEA lead back (+135) and the model data (through Wk7) has no Charbonnet usage, so Wilson p is likely overstated.",
    "reason_plain": "Model edge on paper, but Wilson likely loses work to Charbonnet, so treat as no real edge.",
    "result": null,
-   "closing_odds": null,
-   "clv": null,
+   "closing_odds": 1742,
+   "clv": 0.0002,
    "profit_units": null
   }
  ]
