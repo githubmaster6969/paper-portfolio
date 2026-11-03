@@ -1,7 +1,7 @@
 {
  "start": "2026-10-09",
- "asOf": "2026-11-02T21:00:46+00:00",
- "lastClose": "2026-10-30",
+ "asOf": "2026-11-03T02:34:50+00:00",
+ "lastClose": "2026-11-02",
  "dates": [
   "2026-10-09",
   "2026-10-12",
@@ -659,7 +659,7 @@
    "sh": 5.589637,
    "buy": 715.61,
    "price": 691.38,
-   "prev": 694.81
+   "prev": 694.73
   },
   {
    "t": "VXUS",
@@ -675,7 +675,7 @@
    "sh": 21.196064,
    "buy": 33.025,
    "price": 35.885,
-   "prev": 35.78
+   "prev": 35.79
   },
   {
    "t": "BND",
@@ -683,7 +683,7 @@
    "sh": 7.120478,
    "buy": 70.22,
    "price": 71.33,
-   "prev": 71.303
+   "prev": 71.56
   },
   {
    "t": "XLV",
@@ -691,7 +691,7 @@
    "sh": 2.341783,
    "buy": 170.81,
    "price": 184.65,
-   "prev": 184.87
+   "prev": 184.84
   },
   {
    "t": "AVUV",
@@ -715,7 +715,7 @@
    "sh": 2.535818,
    "buy": 78.87,
    "price": 74.15,
-   "prev": 72.92
+   "prev": 72.95
   },
   {
    "t": "ITA",
@@ -723,7 +723,7 @@
    "sh": 2.915876,
    "buy": 205.7701,
    "price": 214.72,
-   "prev": 209.74
+   "prev": 209.73
   },
   {
    "t": "UNH",
@@ -731,7 +731,7 @@
    "sh": 0.42183,
    "buy": 379.2997,
    "price": 400.36,
-   "prev": 406.97
+   "prev": 406.9
   },
   {
    "t": "RTX",
@@ -739,7 +739,7 @@
    "sh": 0.75281,
    "buy": 185.9699,
    "price": 202.72,
-   "prev": 199.8
+   "prev": 199.84
   },
   {
    "t": "LLY",
@@ -747,7 +747,7 @@
    "sh": 0.135677,
    "buy": 1179.2714,
    "price": 1411.53,
-   "prev": 1417.54
+   "prev": 1415.68
   },
   {
    "t": "ISRG",
@@ -763,7 +763,7 @@
    "sh": 0.518874,
    "buy": 385.45,
    "price": 425.53,
-   "prev": 413.59
+   "prev": 413.48
   },
   {
    "t": "SMH",
@@ -787,7 +787,7 @@
    "sh": 1.54694,
    "buy": 103.43,
    "price": 89.72,
-   "prev": 91.75
+   "prev": 91.83
   },
   {
    "t": "DTCR",
@@ -819,7 +819,7 @@
    "sh": 1.459327,
    "buy": 431.7058,
    "price": 398.61,
-   "prev": 406.13
+   "prev": 406.08
   },
   {
    "t": "MSFT",
@@ -835,7 +835,7 @@
    "sh": 3.08627,
    "buy": 204.1299,
    "price": 224.29,
-   "prev": 232.5
+   "prev": 232.55
   },
   {
    "t": "GEV",
@@ -843,7 +843,7 @@
    "sh": 1.212004,
    "buy": 932.3402,
    "price": 862.6,
-   "prev": 857.87
+   "prev": 857.75
   },
   {
    "t": "CEG",
@@ -859,7 +859,7 @@
    "sh": 1.476434,
    "buy": 88.05,
    "price": 73.36,
-   "prev": 76.91
+   "prev": 76.895
   }
  ],
  "cash": 1400.0,
@@ -1052,7 +1052,7 @@
   "sh": 22.50543,
   "buy": 778.57,
   "price": 752.15,
-  "prev": 755.72
+  "prev": 755.78
  },
  "failed": [],
  "priceSource": {
@@ -1071,8 +1071,8 @@
   "2026-10-27": "logged close",
   "2026-10-28": "logged close",
   "2026-10-29": "logged close",
-  "2026-10-30": "logged close"
+  "2026-10-30": "logged close",
+  "2026-11-02": "logged close"
  },
- "source": "Intraday: Webull live snapshot (last trade) for 2026-11-02; prior days: daily closes via yfinance. Start prices: Webull closes 2026-10-09.",
- "intraday": true
+ "source": "Daily closes: logged 4 PM Webull close snapshots where present, else Yahoo Finance via yfinance. Start prices: Webull closes 2026-10-09."
 }
