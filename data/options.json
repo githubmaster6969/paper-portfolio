@@ -1,13 +1,36 @@
 {
  "budget": 5000.0,
- "cash": 8801.0,
- "openValue": 0,
+ "cash": 7598.5,
+ "openValue": 1202.5,
  "equity": 8801.0,
  "unrealized": 0,
  "realized": 3801.0,
  "totalPnl": 3801.0,
  "totalPct": 76.02,
- "open": [],
+ "open": [
+  {
+   "contract": "IWM 11/9 285C",
+   "ticker": "IWM",
+   "type": "call",
+   "strike": 285.0,
+   "expiry": "2026-11-09",
+   "qty": 5,
+   "entry": 2.405,
+   "entryDate": "2026-11-04",
+   "entryTime": "09:55",
+   "mark": 2.405,
+   "underlying": 284.4701,
+   "value": 1202.5,
+   "unrealized": 0.0,
+   "unrealizedPct": 0.0,
+   "optStop": 1.202,
+   "optHalf": 3.61,
+   "optDouble": 4.81,
+   "stockTarget": null,
+   "stockStop": 284.16,
+   "stopNote": "15-min close below OR15 low 284.16 (Decision (a) l.82); target option +50% = 3.61"
+  }
+ ],
  "closed": [
   {
    "contract": "META 10/16 730C",
@@ -234,6 +257,6 @@
    "realized": 2030.0
   }
  ],
- "asOf": "2026-11-03T16:05:48-05:00",
- "source": "4 PM close update 2026-11-03 (run 16:05 ET per `date`): no open paper option contracts in paper-options-log.csv, so no Robinhood quotes pulled."
+ "asOf": "2026-11-04T09:54:12-05:00",
+ "source": "9:51 intraday scanner 2026-11-04: Robinhood get_option_quotes mark 09:54:12 ET; IWM Webull snapshot 09:54:12 ET."
 }

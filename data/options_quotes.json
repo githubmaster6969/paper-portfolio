@@ -1,7 +1,17 @@
 {
- "asOf": "2026-11-03T16:05:48-05:00",
- "source": "4 PM close update 2026-11-03 (run 16:05 ET per `date`): no open paper option contracts in paper-options-log.csv, so no Robinhood quotes pulled.",
- "marks": {},
- "underlying": {},
- "levels": {}
+ "asOf": "2026-11-04T09:54:12-05:00",
+ "source": "9:51 intraday scanner 2026-11-04: Robinhood get_option_quotes mark 09:54:12 ET; IWM Webull snapshot 09:54:12 ET.",
+ "marks": {
+  "0378688c-c3d6-4ce8-a397-29e79d6bd526": 2.405
+ },
+ "underlying": {
+  "IWM": 284.4701
+ },
+ "levels": {
+  "IWM 11/9 285C": {
+   "stockTarget": null,
+   "stockStop": 284.16,
+   "stopNote": "15-min close below OR15 low 284.16 (Decision (a) l.82); target option +50% = 3.61"
+  }
+ }
 }
