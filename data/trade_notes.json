@@ -941,6 +941,62 @@
     "during": "assets/trades/real-2026-10-30-SPY-790C.png",
     "after": null
    }
+  },
+  "paper|2026-11-04|09:55|IWM": {
+   "title": "IWM 11/9 285C x5 (11/4)",
+   "setup": "Gap-up call mirror",
+   "setupDetail": "v1.7 #3 (config.md l.129), late fill (l.148)",
+   "rules": "config.md l.129, l.53, l.68, l.82, l.148",
+   "why": "IWM gapped up 1.63%, pushed to 286.10, pulled back to 284.805, and the 9:50 bar closed back above the 284.36 open (trigger). Late fill at 9:54.",
+   "expected": "Bounce back toward the morning high. Target: option +50% (3.61). Stop: a 15-minute close below 284.16.",
+   "happened": "The 9:45 to 9:59 15-minute bar closed at 284.07, under 284.16, so the stop fired at 10:00 and the option was priced at 2.17.",
+   "playedOut": "IWM kept falling to 281.31 and the option dropped near 1.20 by 10:25.",
+   "right": [
+    "The written stop got us out before a bigger drop."
+   ],
+   "wrong": [
+    "The setup was marked low priority on a trending-down day and failed within minutes."
+   ],
+   "lesson": "Gap-up call mirrors on trending-down days look weak; keep testing whether to skip them.",
+   "grade": "Rules followed; weak setup for the day.",
+   "tags": [
+    "Paper",
+    "Stop hit",
+    "Late fill"
+   ],
+   "entryAt": "2026-11-04T09:55",
+   "exitAt": "2026-11-04T10:00",
+   "entryPrice": 2.405,
+   "exitPrice": 2.17,
+   "premium": 1202.5,
+   "chart": "assets/trades/paper-2026-11-04-IWM-285C.png",
+   "log": "9:51-slot INTRADAY SCANNER 2026-11-04 (scheduled 09:51, fired 09:51:53 ET; logged 09:55 ET per `date`, Wednesday). LATE FILL (v1.9 #1 l.148). SETUP v1.7 #3 gap-up call mirror (l.129; window 9:35-10:30 l.53; entry one bar after trigger l.68), listed in setups/2026-11-04-premarket.md (l.18, low priority in a trending-down regime). Webull M1 (script): IWM prior close 279.79, 09:30 open 284.36 (gap +1.63%); (1) gap>=1% YES; (2) push>=0.5% above open YES (09:36, OR15 high 286.10); (3) pullback within 0.2% of open (<=284.93) YES, 09:49 low 284.805; (4) 09:50 bar closed 284.79 > open = TRIGGER 09:50; (5) SPY 766.72 / QQQ 696.88 at the 09:50 close, both above their opens 763.06/688.76 and prior closes (read as not against, same as NVDA/TSLA precedent). Entry bar 09:51 close 284.86 (stock), RH 1-min 09:51 option close 2.62 = original signal price. Entry bar had passed when this run checked, so late fill: FILL = RH mark 2.405 (bid 2.38/ask 2.43) at 09:54:12 ET with IWM 284.4701 (Webull 09:54:12), 0.137% from 284.86 (max 0.15%). tools/scanner_checks.py pass=true at 09:54:22 ET (no failed checks). CONTRACT (v2.0 A3 l.167): 11/9 285C, 5 calendar DTE, delta 0.4816, spread 2.08%, OI 7133, IV 0.1901 / RV20 0.1595 = 1.192 (<=1.30); 284C/286C/287C failed OI. M8: active/tradable, sellout 2026-11-09 15:45 ET (RH 20:45Z). SIZE (v1.7 #2 l.127): low confidence, cap 15% of $8,801 = $1,320.15 -> 5 contracts = $1,202.50 at mark. EXITS: stop = 15-min close below the OR15 low 284.16 (Decision (a) l.82; OR15 09:30-09:44 L284.16 H286.10, min/max script); -50% backstop 1.2025 (l.74); target option +50% = 3.6075 (l.82); time stop l.41: flat after 2 full sessions, or by Fri 11/6 15:55 ET (day before the Mon 11/9 expiry). FLAG for Pedro: the events file treats Fri 11/6 08:30 jobs like an earnings print (no overnight index holds into it without a written rule); no written exit covers a Thu 11/5 close hold, so it needs his call if still open Thu afternoon. Paper only; real: blocked (A8). | EXIT 2026-11-04 (9:57-slot opening scanner, fired 10:08 ET late; logged 10:11 ET per `date`, Wednesday): STOCK STOP HIT (Decision (a) l.82): Webull completed 15-min 09:45-09:59 close 284.07 < OR15 low 284.16 (bar H286.17 L283.54); stop fired at the 10:00 close. Priced per l.16 at the option on the bar where the stop was breached: RH 1-min 09:59 bar close 2.17 (same convention as the 10/20 NBIS/AMD stock-stop exits and the 10/27 TSLA counterfactual). -50% backstop 1.2025 (l.74) not hit (opt low since entry 1.73 @10:02); target 3.6075 (l.82) not hit (opt high after the 09:51 entry bar 2.62 @09:52 open). Realized (2.17-2.405)x5x100 = -117.50 (-9.8%). Live RH 10:10:11 ET mark 1.72 (bid 1.70/ask 1.74), IWM 283.28 at the 10:09 close. Exit was logged ~10 min after the stop fired because no scanner run fired between 09:58 and 10:08; rule price used, not the later mark. Real: blocked (A8).",
+   "source": "data/options.json closed rows; paper-options-log.csv",
+   "why_type": "chart",
+   "plain_why": "IWM (a fund of small US companies) opened sharply higher, dipped back to its opening price, then bounced. That bounce is our signal that buyers may push it back up toward the morning high.",
+   "plain_plan": "Buy 5 call contracts at $2.40. Sell if the option gains 50% (about $3.61). Get out if a 15-minute bar closes below $284.16, the low of the first 15 minutes.",
+   "plain_outcome": "Closed for a loss: −$117.50 (−10%).",
+   "plain_happened": "Bought 5 contracts at $2.40 at 9:54 AM. Six minutes later the price closed below the stop line, so we sold at $2.17. Loss: −$117.50.",
+   "plain_right": [
+    "The stop got us out early. Without it, the option fell to about $1.20 by 10:25."
+   ],
+   "plain_wrong": [
+    "The overall market mood that morning was weak for small companies, and this setup was already marked low priority."
+   ],
+   "plain_lesson": "When the morning plan says the market is trending down, this kind of bounce trade is shaky. A small, quick loss beat waiting and hoping.",
+   "why_moved": {
+    "summary": "Small-company stocks gave back their early gap as the morning went on; IWM finished the day 0.12% below its open. The midterm-results market wrap (Benzinga, 12:31 PM ET) does not name a specific IWM reason, so no single cause is claimed.",
+    "sources": [
+     "Webull 5-min bars",
+     "Benzinga market wrap 11/4 12:31 PM ET"
+    ]
+   },
+   "charts": {
+    "before": "assets/trades/paper-2026-11-04-IWM-285C-before.png",
+    "during": "assets/trades/paper-2026-11-04-IWM-285C.png",
+    "after": "assets/trades/paper-2026-11-04-IWM-285C-after.png"
+   },
+   "needs_review": false
   }
  }
 }
