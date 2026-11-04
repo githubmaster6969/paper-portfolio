@@ -1,17 +1,7 @@
 {
-  "asOf": "2026-11-04T10:10:11-05:00",
-  "source": "9:57 opening scanner 2026-11-04 (fired 10:08): IWM 11/9 285C x5 closed on its stock stop (15-min 09:45-09:59 close 284.07 < 284.16), exit RH 1-min 09:59 close 2.17; no open contracts.",
-  "marks": {
-    "0378688c-c3d6-4ce8-a397-29e79d6bd526": 2.405
-  },
-  "underlying": {
-    "IWM": 284.4701
-  },
-  "levels": {
-    "IWM 11/9 285C": {
-      "stockTarget": null,
-      "stockStop": 284.16,
-      "stopNote": "15-min close below OR15 low 284.16 (Decision (a) l.82); target option +50% = 3.61"
-    }
-  }
+  "asOf": "2026-11-04T13:08:53-05:00",
+  "source": "1 PM midday update 2026-11-04: no open paper contracts in paper-options-log.csv, so no Robinhood quotes needed.",
+  "marks": {},
+  "underlying": {},
+  "levels": {}
 }
