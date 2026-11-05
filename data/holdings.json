@@ -406,5 +406,14 @@
    "reason": "R1 (stock-buy-rules.md l.19-20): 4.50% below 20-day closing high 85.85 (10/05 close; window 10/02-10/29, 20 Webull daily bars by script; ETF threshold 3%); 10/28 plan row 96 (VXUS priority 1 for Fri 10/30 if R1 re-met) and l.37 Safe Core first on a broad selloff: SPY -2.12% at 753.02, VOO -2.14% (Webull 15:29 ET); R2 shelf 82.07 not held (low 81.785), so R1 not R2; gap-down open 82.66 vs 83.65 (-1.18%), bought well after the first 15 min (l.29-30); thesis intact (l.24): market-wide selloff (Intel guide, AMZN miss per 10/30 pre-market notes), no fund news; ETF, no earnings (l.28); broad ETF exempt from 10% cap (l.35); funded by the 10/30 800 Friday deposit, cash 1900 -> 1400 keeps the 1000 reserve (l.36)",
    "source": "Webull snapshot last trade 2026-10-30 15:29 ET"
   }
+ ],
+ "splits": [
+  {
+   "date": "2026-11-05",
+   "ticker": "ITA",
+   "ratio": 3,
+   "note": "3-for-1 forward split, first split-adjusted session 2026-11-05 (iShares notice; OCC memo #60055). Shares x3, cost basis unchanged; lots before this date are multiplied.",
+   "source": "https://www.ishares.com/us/products/239502/ishares-us-aerospace-defense-etf"
+  }
  ]
 }
