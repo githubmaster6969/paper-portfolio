@@ -7,7 +7,7 @@ Price per date, in priority order:
 Never carries a prior close forward: if a date has no logged close and yfinance has no close for any
 held symbol or SPY, the script exits non-zero WITHOUT writing (the Action fails loudly).
 Start prices = Webull closes 2026-10-09 (holdings.json). Idempotent: rewrites data/portfolio.json."""
-import json, datetime as dt, pathlib, re, sys
+import json, datetime as dt, pathlib, re, sys, tempfile, time
 from zoneinfo import ZoneInfo
 import pandas as pd, yfinance as yf
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent)); from ledger import as_of
@@ -17,6 +17,53 @@ cfg = json.load(open(R/"data/holdings.json")); H = cfg["holdings"]; B = cfg["ben
 START = "2026-10-09"; code = {"Safe Core": "S", "Diversifier": "D", "Aggressive AI & Energy": "A"}
 syms = sorted({h["ticker"] for h in H} | {"SPY"})
 def die(msg): print(f"::error::{msg}"); sys.exit(f"ABORT (portfolio.json not written): {msg}")
+
+# Per-run yfinance cache avoids "database is locked" on the shared sqlite tz/cookie cache in CI.
+_YF_CACHE = tempfile.mkdtemp(prefix="yf-cache-")
+yf.set_tz_cache_location(_YF_CACHE)
+try:
+    from yfinance.cache import set_cache_location as _set_yf_cache
+    _set_yf_cache(_YF_CACHE)
+except Exception:
+    pass
+
+def download_closes(tickers, start, retries=3, backoff_s=1.5):
+    """Daily Close frame keyed by YYYY-MM-DD; retries tickers that fail (e.g. sqlite lock)."""
+    tickers = list(tickers)
+    frames = []
+    pending = list(tickers)
+    for attempt in range(1, retries + 1):
+        if not pending:
+            break
+        raw = yf.download(pending, start=start, interval="1d", progress=False, auto_adjust=False, threads=False)
+        if raw is None or raw.empty:
+            close = pd.DataFrame()
+        else:
+            close = raw["Close"] if "Close" in getattr(raw, "columns", []) or (
+                isinstance(raw.columns, pd.MultiIndex) and "Close" in raw.columns.get_level_values(0)
+            ) else raw
+            if isinstance(close, pd.Series):
+                # single ticker without MultiIndex
+                name = pending[0]
+                close = close.to_frame(name=name)
+            elif isinstance(close.columns, pd.MultiIndex):
+                close = close.copy(); close.columns = close.columns.get_level_values(-1)
+        got = [s for s in pending if s in close.columns and not close[s].dropna().empty]
+        if got:
+            frames.append(close[got])
+        pending = [s for s in pending if s not in got]
+        if pending:
+            print(f"::warning::yfinance attempt {attempt}/{retries} missing {pending}; retrying")
+            time.sleep(backoff_s * attempt)
+    if not frames:
+        return pd.DataFrame(), list(tickers)
+    df = pd.concat(frames, axis=1)
+    # de-dupe columns if a retry overlapped
+    df = df.loc[:, ~df.columns.duplicated()]
+    df.index = [d.strftime("%Y-%m-%d") for d in df.index]
+    df = df[df.index >= start]
+    failed = [s for s in tickers if s not in df.columns or df[s].dropna().empty]
+    return df, failed
 
 def logged_closes():
     """{date: {symbol: price}} from committed 4 PM close snapshots; latest file per date wins."""
@@ -41,10 +88,9 @@ def logged_closes():
     return out
 
 LC = {d: q for d, q in logged_closes().items() if d >= START}
-df = yf.download(syms, start=START, interval="1d", progress=False, auto_adjust=False)["Close"]
-df.index = [d.strftime("%Y-%m-%d") for d in df.index]
-df = df[df.index >= START]
-failed = [s for s in syms if s not in df or df[s].dropna().empty]
+df, failed = download_closes(syms, START)
+if failed:
+    print(f"::warning::yfinance still missing after retries: {failed}")
 
 def yclose(d, s):
     return float(df.at[d, s]) if s in df and d in df.index and pd.notna(df.at[d, s]) else None
