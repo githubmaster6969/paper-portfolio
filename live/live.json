@@ -3,26 +3,15 @@
   "start": 502.0,
   "goal": 1500.0,
   "deposits": 502.0,
-  "value": 449.79,
-  "cash": 62.79,
-  "optionsValue": 387.0,
+  "value": 431.66,
+  "cash": 431.66,
+  "optionsValue": 0.0,
   "buyingPower": 0.0,
-  "pnl": -52.21,
-  "pnlPct": -10.4,
+  "pnl": -70.34,
+  "pnlPct": -14.01,
   "progressPct": 0.0,
-  "realized": -1.0,
-  "open": [
-    {
-      "contract": "SLV 2026-11-13 47P",
-      "type": "long",
-      "expiry": "2026-11-13",
-      "qty": 3.0,
-      "avgCost": 146.0,
-      "mark": 1.29,
-      "marketValue": 387.0,
-      "unrealized": -51.0
-    }
-  ],
+  "realized": -70.0,
+  "open": [],
   "trades": [
     {
       "date": "2026-10-30",
@@ -40,9 +29,9 @@
       "contract": "SLV 2026-11-13 47P",
       "qty": 3.0,
       "entry": 1.46,
-      "exit": null,
-      "status": "filled",
-      "pnl": null
+      "exit": 1.23,
+      "status": "closed",
+      "pnl": -69.0
     }
   ],
   "series": [
@@ -65,8 +54,12 @@
     {
       "t": "2026-11-05T11:16:38.765809-05:00",
       "value": 449.79
+    },
+    {
+      "t": "2026-11-05T11:23:35.176507-05:00",
+      "value": 431.66
     }
   ],
-  "asOf": "2026-11-05T11:16:38.765809-05:00",
-  "source": "live-account-monitor 11:15 ET fact-check"
+  "asOf": "2026-11-05T11:23:35.176507-05:00",
+  "source": "post-close reconcile after Pedro sold SLV 11/13 47P at 11:18 ET"
 }
