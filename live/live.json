@@ -3,15 +3,26 @@
   "start": 502.0,
   "goal": 1500.0,
   "deposits": 502.0,
-  "value": 500.91,
-  "cash": 500.91,
-  "optionsValue": 0.0,
-  "buyingPower": 500.91,
-  "pnl": -1.09,
-  "pnlPct": -0.22,
+  "value": 449.79,
+  "cash": 62.79,
+  "optionsValue": 387.0,
+  "buyingPower": 0.0,
+  "pnl": -52.21,
+  "pnlPct": -10.4,
   "progressPct": 0.0,
   "realized": -1.0,
-  "open": [],
+  "open": [
+    {
+      "contract": "SLV 2026-11-13 47P",
+      "type": "long",
+      "expiry": "2026-11-13",
+      "qty": 3.0,
+      "avgCost": 146.0,
+      "mark": 1.29,
+      "marketValue": 387.0,
+      "unrealized": -51.0
+    }
+  ],
   "trades": [
     {
       "date": "2026-10-30",
@@ -22,6 +33,16 @@
       "exit": 0.73,
       "status": "closed",
       "pnl": -1.0
+    },
+    {
+      "date": "2026-11-05",
+      "time": "11:09",
+      "contract": "SLV 2026-11-13 47P",
+      "qty": 3.0,
+      "entry": 1.46,
+      "exit": null,
+      "status": "filled",
+      "pnl": null
     }
   ],
   "series": [
@@ -36,8 +57,16 @@
     {
       "t": "2026-10-30T15:49:00-04:00",
       "value": 500.91
+    },
+    {
+      "t": "2026-11-05T11:16:19.891416-05:00",
+      "value": 446.79
+    },
+    {
+      "t": "2026-11-05T11:16:38.765809-05:00",
+      "value": 449.79
     }
   ],
-  "asOf": "2026-10-30T15:49:00-04:00",
-  "source": "Robinhood MCP read-only: get_portfolio, get_option_positions(nonzero=true), get_option_orders"
+  "asOf": "2026-11-05T11:16:38.765809-05:00",
+  "source": "live-account-monitor 11:15 ET fact-check"
 }
