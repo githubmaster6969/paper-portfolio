@@ -997,6 +997,47 @@
     "after": "assets/trades/paper-2026-11-04-IWM-285C-after.png"
    },
    "needs_review": false
+  },
+  "live|2026-11-05|11:09|SLV 2026-11-13 47P": {
+   "title": "SLV 2026-11-13 47P x3",
+   "setup": "",
+   "setupDetail": "",
+   "rules": "",
+   "why": "",
+   "expected": "",
+   "happened": "",
+   "playedOut": "",
+   "right": [],
+   "wrong": [],
+   "lesson": "",
+   "grade": "",
+   "tags": [],
+   "entryAt": "2026-11-05T11:09",
+   "exitAt": "",
+   "entryPrice": 1.46,
+   "exitPrice": 1.23,
+   "premium": 438.0,
+   "chart": null,
+   "log": "Pedro override of G0 written-setup and A1 1-contract/$205 sizing (t206u/t207u/t208u). Limit 1.54, filled 3 @ 1.46 at 11:09:05 ET. -35% GTC stop-limit 0.95 placed 11:10 ET (order 6aecaa64), cancelled 11:17:39 ET. Pedro sold 3 @ 1.23 at 11:18:28 ET from the Robinhood app (order 6aecac54, user-placed, not agent). Premium P&L -$69 before fees. Same-day round trip (day trade 2 of 3; Oct 30 SPY was 1).",
+   "source": "live/live.json",
+   "why_type": "",
+   "plain_why": "",
+   "plain_plan": "",
+   "plain_outcome": "Closed for a loss: −$69.00 (−16%).",
+   "plain_happened": "Bought 3 contracts at $1.46 and sold at $1.23. Loss: −$69.00.",
+   "plain_right": [],
+   "plain_wrong": [],
+   "plain_lesson": "",
+   "why_moved": {
+    "summary": "",
+    "sources": []
+   },
+   "charts": {
+    "before": null,
+    "during": null,
+    "after": null
+   },
+   "needs_review": true
   }
  }
 }
