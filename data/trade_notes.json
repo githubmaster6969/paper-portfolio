@@ -1038,6 +1038,57 @@
     "after": null
    },
    "needs_review": true
+  },
+  "live|2026-11-10|15:56|SPXW 2026-11-10 7520P": {
+   "title": "SPXW 2026-11-10 7520P x3",
+   "setup": "Manual 0DTE index put (no written setup)",
+   "setupDetail": "",
+   "rules": "Outside v3.1: no DESK/RS-RW/ORB15 trigger, 0DTE vs v3.0 #6 2-10 TDTE, after the 15:30 cutoff, no -35% GTC stop.",
+   "why": "Placed by Pedro in the Robinhood app; reason not logged.",
+   "expected": "Not logged.",
+   "happened": "SPX faded from 7536 (15:52) to 7520.41 (15:58 close); the put never traded above the 0.60 entry, hit 0.13, was sold at 0.30, then spiked to 1.23 at 15:59 and expired worthless with SPX's last bar at 7522.27.",
+   "playedOut": "Loss −$90 premium plus $6.24 fees.",
+   "right": [
+    "Closed before expiry instead of riding to zero."
+   ],
+   "wrong": [
+    "No written trigger or stop",
+    "0DTE with 3 minutes left",
+    "Fees were 7% of the loss"
+   ],
+   "lesson": "No 0DTE index lottos on the live account; the account is now $35 above the $300 floor.",
+   "grade": "F",
+   "tags": [
+    "manual",
+    "0DTE",
+    "no-stop"
+   ],
+   "entryAt": "2026-11-10T15:56",
+   "exitAt": "2026-11-10T15:58",
+   "entryPrice": 0.6,
+   "exitPrice": 0.3,
+   "premium": 180.0,
+   "chart": "assets/trades/real-2026-11-10-SPXW-review.png",
+   "log": "Pedro-placed in the Robinhood app (placed_agent=user): buy 3 SPXW 11/10 7520P (0DTE) limit 0.65 filled 0.60 at 15:56:47 ET (order 6af3850f); an earlier user buy of 2 SPXW 11/10 7525P @1.75 at 15:54:38 ET was rejected (order 6af3848e). Sell-to-close 3 @0.30 limit filled 15:58:33 ET via the agent connection (placed_agent=agentic, order 6af3855e). Not a v3.1 rulebook trade: no written DESK/RS-RW/ORB15 trigger, 0DTE outside v3.0 #6 2-10 TDTE, entry after the 15:30 cutoff, $180 premium over the $177.46 A1 cap, no -35% GTC stop placed. Premium P&L (0.30-0.60)x3x100 = -90.00; fees 6.24 (get_portfolio cash 335.42 vs 431.66-180+90 = 341.66). Same-day round trip = day trade 2 of 3 (SLV 11/05 is 1).",
+   "source": "live/live.json",
+   "why_type": "manual",
+   "plain_why": "Pedro's own quick bet on a late-day SPX dip; no written reason.",
+   "plain_plan": "No written plan or stop.",
+   "plain_outcome": "Closed for a loss: −$90.00 (−50%).",
+   "plain_happened": "Bought 3 contracts at $0.60 and sold at $0.30. Loss: −$90.00.",
+   "plain_right": [],
+   "plain_wrong": [],
+   "plain_lesson": "Last-minute same-day index options swing wildly and cost about $1.04 per contract each way in fees ($6.24 on 3 contracts in and out). They aren't part of the strategy.",
+   "why_moved": {
+    "summary": "Late-day SPX fade from 7536 to about 7520, then a final-minute bounce; no news checked.",
+    "sources": []
+   },
+   "charts": {
+    "before": null,
+    "during": "assets/trades/real-2026-11-10-SPXW-review.png",
+    "after": null
+   },
+   "needs_review": false
   }
  }
 }

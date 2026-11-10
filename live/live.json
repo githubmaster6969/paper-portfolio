@@ -10,7 +10,7 @@
   "pnl": -166.58,
   "pnlPct": -33.18,
   "progressPct": 0.0,
-  "realized": -70.0,
+  "realized": -160.0,
   "open": [],
   "trades": [
     {
@@ -32,6 +32,16 @@
       "exit": 1.23,
       "status": "closed",
       "pnl": -69.0
+    },
+    {
+      "date": "2026-11-10",
+      "time": "15:56",
+      "contract": "SPXW 2026-11-10 7520P",
+      "qty": 3.0,
+      "entry": 0.6,
+      "exit": 0.3,
+      "status": "closed",
+      "pnl": -90.0
     }
   ],
   "series": [
