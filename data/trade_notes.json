@@ -1094,7 +1094,7 @@
    "title": "SPXW 2026-11-11 7620P x3",
    "setup": "Manual 0DTE index put (no written setup)",
    "setupDetail": "",
-   "rules": "Outside v3.1: no DESK/RS-RW/ORB15 trigger, 0DTE vs v3.0 #6 2-10 TDTE, after the 15:30 cutoff, $300 over the $205 A1 cap, no -35% GTC stop.",
+   "rules": "Outside v3.1: no DESK/RS-RW/ORB15 trigger, 0DTE vs v3.0 #6 2-10 TDTE, after the 15:30 cutoff, $300 over the $137.89 A1 cap at entry (V $335.42), no -35% GTC stop.",
    "why": "Placed by Pedro in the Robinhood app; reason not logged.",
    "expected": "Not logged.",
    "happened": "SPX slid from 7628.57 (15:48 high) to 7614.23 (15:55 low). The monitor sold at 1.95 at 15:53:38; the put then hit 5.20 at 15:55 and faded to 1.35-2.30 closes after 15:57 as SPX ended at 7619.38.",
