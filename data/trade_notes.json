@@ -1140,6 +1140,90 @@
     "after": null
    },
    "needs_review": false
+  },
+  "live|2026-11-12|09:30|NVDA 2026-11-13 150P": {
+   "title": "NVDA 2026-11-13 150P x1",
+   "setup": "",
+   "setupDetail": "",
+   "rules": "",
+   "why": "",
+   "expected": "",
+   "happened": "",
+   "playedOut": "",
+   "right": [],
+   "wrong": [],
+   "lesson": "No first-minute entries after a >5% gap; wait for the ORB15 break/retest.",
+   "grade": "F (no trigger)",
+   "tags": [],
+   "entryAt": "2026-11-12T09:30",
+   "exitAt": "2026-11-12T09:32",
+   "entryPrice": 5.0,
+   "exitPrice": 3.2,
+   "premium": 500.0,
+   "chart": "assets/trades/real-2026-11-12-NVDA-review.png",
+   "log": "manual (stop only): Pedro-placed in the Robinhood app (placed_agent=user): buy 1 @5.00 at 09:30:19 ET (order 6af5cd75), sold 1 @3.20 at 09:32:39 ET (order 6af5ce05), both user-placed. Closed before the monitor ran, so no stop was placed. Premium P&L -180 before fees. Same-day round trip = day trade.",
+   "source": "live/live.json",
+   "why_type": "manual",
+   "plain_why": "Pedro's own bet that NVDA would keep falling after a 13% gap down at the open (leadership-crisis headlines); no written setup.",
+   "plain_plan": "No written plan or stop. Closed by Pedro before the monitor ran.",
+   "plain_outcome": "Closed for a loss: −$180.00 (−36%).",
+   "plain_happened": "Bought 1 contract at $5.00 and sold at $3.20. Loss: −$180.00.",
+   "plain_right": [],
+   "plain_wrong": [],
+   "plain_lesson": "After a gap this big, the first minute is often the bottom. Wait for the 15-minute opening range to break and retest before trading it. Getting out fast was right: the put was worth 0.91 nine minutes later.",
+   "why_moved": {
+    "summary": "NVDA opened at 151.005, 13.08% under Wednesday's 173.73 close, made its low of 148.80 in the 09:31 bar and then rallied to close at 166.19.",
+    "sources": [
+     "setups/2026-11-12-plan.md l.8 (pre-market headlines, Dow Jones 07:59 ET, RBC 08:20 ET)"
+    ]
+   },
+   "charts": {
+    "before": null,
+    "during": "assets/trades/real-2026-11-12-NVDA-review.png",
+    "after": null
+   },
+   "needs_review": false
+  },
+  "live|2026-11-12|15:46|SPXW 2026-11-12 7580P": {
+   "title": "SPXW 2026-11-12 7580P x4",
+   "setup": "",
+   "setupDetail": "",
+   "rules": "",
+   "why": "",
+   "expected": "",
+   "happened": "",
+   "playedOut": "",
+   "right": [],
+   "wrong": [],
+   "lesson": "Size to the floor-safe cap; one contract while the account sits near $300.",
+   "grade": "D (stop worked, oversized)",
+   "tags": [],
+   "entryAt": "2026-11-12T15:46",
+   "exitAt": "2026-11-12T15:48",
+   "entryPrice": 0.85,
+   "exitPrice": 0.55,
+   "premium": 340.0,
+   "chart": "assets/trades/real-2026-11-12-SPXW-review.png",
+   "log": "manual (stop only): Pedro-placed in the Robinhood app (placed_agent=user): buy 4 @0.85 (limit 0.95) at 15:46:34 ET. Monitor placed one -35% GTC stop-limit (stop 0.55, limit 0.50, agentic) at 15:47:50 ET; it filled 4 @0.55 the same minute. Premium P&L -120 before fees. get_portfolio ••6633 value 305.23 after (about $5 above the $300 floor). Same-day round trip = day trade.",
+   "source": "live/live.json",
+   "why_type": "manual",
+   "plain_why": "Pedro's own late-day SPX put, matching the 3:40 fade idea (SPX was about 40 points above its open).",
+   "plain_plan": "No written plan. The monitor added the one allowed -35% stop (0.55 stop, 0.50 limit) at 15:47:50.",
+   "plain_outcome": "Closed for a loss: −$120.00 (−35%).",
+   "plain_happened": "Bought 4 contracts at $0.85 and sold at $0.55. Loss: −$120.00.",
+   "plain_right": [],
+   "plain_wrong": [],
+   "plain_lesson": "The stop helped: -$120 instead of -$340 at expiry. The real problem was size: 4 contracts ($340) against a floor-safe cap of about $133 (1 contract) left the account $5.23 above the $300 floor. Buying right after the 15:45 spike paid the top of that bounce.",
+   "why_moved": {
+    "summary": "SPX chopped between about 7585 and 7594 from 15:46 to the close and never reached 7580, so the put decayed to 0.01 by 15:57:45 after one spike to 1.28 at 15:50.",
+    "sources": []
+   },
+   "charts": {
+    "before": null,
+    "during": "assets/trades/real-2026-11-12-SPXW-review.png",
+    "after": null
+   },
+   "needs_review": false
   }
  }
 }
