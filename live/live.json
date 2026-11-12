@@ -3,13 +3,13 @@
   "start": 502.0,
   "goal": 1500.0,
   "deposits": 502.0,
-  "value": 613.64,
-  "cash": 613.64,
+  "value": 433.55,
+  "cash": 433.55,
   "optionsValue": 0.0,
-  "buyingPower": 613.64,
-  "pnl": 111.64,
-  "pnlPct": 22.24,
-  "progressPct": 11.19,
+  "buyingPower": 433.55,
+  "pnl": -68.45,
+  "pnlPct": -13.64,
+  "progressPct": 0.0,
   "realized": 125.0,
   "open": [],
   "trades": [
@@ -126,8 +126,12 @@
     {
       "t": "2026-11-11 16:04:02 UTC-05:00",
       "value": 613.64
+    },
+    {
+      "t": "2026-11-12 09:34:52 UTC-05:00",
+      "value": 433.55
     }
   ],
-  "asOf": "2026-11-11 16:04:02 UTC-05:00",
-  "source": "user-Robinhood get_portfolio/get_option_positions/get_option_orders/get_advanced_orders 2026-11-11 16:04:02 EST"
+  "asOf": "2026-11-12 09:34:52 UTC-05:00",
+  "source": "user-Robinhood get_portfolio/get_option_positions/get_option_orders 2026-11-12T09:34:52-05:00"
 }
