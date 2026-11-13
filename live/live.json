@@ -3,14 +3,14 @@
   "start": 502.0,
   "goal": 1500.0,
   "deposits": 502.0,
-  "value": 305.23,
-  "cash": 305.23,
+  "value": 163.99,
+  "cash": 163.99,
   "optionsValue": 0.0,
-  "buyingPower": 305.23,
-  "pnl": -196.77,
-  "pnlPct": -39.2,
+  "buyingPower": 163.99,
+  "pnl": -338.01,
+  "pnlPct": -67.33,
   "progressPct": 0.0,
-  "realized": -175.0,
+  "realized": -310.0,
   "open": [],
   "trades": [
     {
@@ -72,6 +72,16 @@
       "exit": 0.55,
       "status": "closed",
       "pnl": -120.0
+    },
+    {
+      "date": "2026-11-13",
+      "time": "15:55",
+      "contract": "SPXW 2026-11-13 7555P",
+      "qty": 3.0,
+      "entry": 0.65,
+      "exit": 0.2,
+      "status": "closed",
+      "pnl": -135.0
     }
   ],
   "series": [
@@ -166,8 +176,12 @@
     {
       "t": "2026-11-13 13:08:39 UTC-05:00",
       "value": 305.23
+    },
+    {
+      "t": "2026-11-13 16:07:18 UTC-05:00",
+      "value": 163.99
     }
   ],
-  "asOf": "2026-11-13 13:08:39 UTC-05:00",
-  "source": "user-Robinhood get_portfolio/get_option_positions/get_option_orders 2026-11-13T13:08:39-05:00"
+  "asOf": "2026-11-13 16:07:18 UTC-05:00",
+  "source": "user-Robinhood get_portfolio/get_option_positions/get_option_orders 2026-11-13T16:07:18-05:00"
 }
