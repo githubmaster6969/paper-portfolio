@@ -1224,6 +1224,50 @@
     "after": null
    },
    "needs_review": false
+  },
+  "live|2026-11-13|15:55|SPXW 2026-11-13 7555P": {
+   "title": "SPXW 2026-11-13 7555P x3",
+   "setup": "",
+   "setupDetail": "",
+   "rules": "",
+   "why": "",
+   "expected": "",
+   "happened": "",
+   "playedOut": "",
+   "right": [],
+   "wrong": [],
+   "lesson": "No late 0DTE put right after a spike; the account is now paper-only under the $300 floor.",
+   "grade": "F (no trigger)",
+   "tags": [],
+   "entryAt": "2026-11-13T15:55",
+   "exitAt": "2026-11-13T15:56",
+   "entryPrice": 0.65,
+   "exitPrice": 0.2,
+   "premium": 195.0,
+   "chart": "assets/trades/real-2026-11-13-SPXW-review.png",
+   "log": "manual (stop only): Pedro-placed in app (placed_agent=user): buy 3 @0.65 at 15:55:21 ET (order 6af77939), sold 3 @0.20 at 15:56:57 ET (order 6af77999), both user-placed. Closed before the monitor saw it, no stop placed. Account value 163.99 after (below $300 floor). Same-day round trip = day trade.",
+   "source": "live/live.json",
+   "why_type": "manual",
+   "plain_why": "Pedro's own late-day SPX put, about 7 points out of the money, after SPX had fallen 66 points from its open and then bounced.",
+   "plain_plan": "No written plan or stop. Pedro sold it himself before the monitor saw it.",
+   "plain_outcome": "Closed for a loss: −$135.00 (−69%).",
+   "plain_happened": "Bought 3 contracts at $0.65 and sold at $0.20. Loss: −$135.00.",
+   "plain_right": [],
+   "plain_wrong": [],
+   "plain_lesson": "Second day in a row that a late 0DTE put was bought right after a price spike and paid the top. Today the 3:40 fade study pointed the other way (a call), and that call went from 0.80 to 9.80. The account is now $163.99, below the $300 floor, so it is paper-only.",
+   "why_moved": {
+    "summary": "SPX bounced 18 points from 15:48 to 15:51 (7550.23 to 7568.33), then held between about 7555 and 7563 into the close (7561.67). The put spiked to 1.53 at 15:58 when SPX dipped to 7555.20, then expired worthless.",
+    "sources": [
+     "TradingView SPX 1-min bars 2026-11-13",
+     "Robinhood 15-sec option bars SPXW 11/13 7555P"
+    ]
+   },
+   "charts": {
+    "before": null,
+    "during": "assets/trades/real-2026-11-13-SPXW-review.png",
+    "after": null
+   },
+   "needs_review": false
   }
  }
 }
