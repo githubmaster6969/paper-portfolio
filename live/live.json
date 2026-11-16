@@ -180,8 +180,12 @@
     {
       "t": "2026-11-13 16:07:18 UTC-05:00",
       "value": 163.99
+    },
+    {
+      "t": "2026-11-16 09:33:03 UTC-05:00",
+      "value": 163.99
     }
   ],
-  "asOf": "2026-11-13 16:07:18 UTC-05:00",
-  "source": "user-Robinhood get_portfolio/get_option_positions/get_option_orders 2026-11-13T16:07:18-05:00"
+  "asOf": "2026-11-16 09:33:03 UTC-05:00",
+  "source": "user-Robinhood get_portfolio/get_option_positions/get_option_orders 2026-11-16T09:33:03-05:00"
 }
