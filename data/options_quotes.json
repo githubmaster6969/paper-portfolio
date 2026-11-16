@@ -1,6 +1,6 @@
 {
- "asOf": "2026-11-16T18:18:12+00:00",
- "source": "Robinhood get_option_quotes (read-only): no open paper contracts in paper-options-log.csv at the 2026-11-16 midday run; nothing to quote.",
+ "asOf": "2026-11-16T21:10:52+00:00",
+ "source": "Robinhood get_option_quotes (read-only): no open paper contracts in paper-options-log.csv at the 2026-11-16 close run; nothing to quote.",
  "marks": {},
  "underlying": {},
  "levels": {}
