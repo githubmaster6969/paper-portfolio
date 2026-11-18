@@ -1,7 +1,8 @@
 {
   "account": "Robinhood MCP (real money)",
   "start": 502.0,
-  "goal": 1500.0,
+  "goal": 1000.0,
+  "goalStart": 163.99,
   "deposits": 502.0,
   "value": 163.99,
   "cash": 163.99,

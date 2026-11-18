@@ -45,12 +45,13 @@ document.addEventListener('DOMContentLoaded', function () {
           o.plugins.tooltip.filter = function (it) { return it.datasetIndex === 0; }; return o; })() }), 'Right side: account value in dollars ($). Bottom: date. Dashed line: money deposited.');
     } else $('valBox').innerHTML = '<div class="empty"><strong>Chart fills in as snapshots come in</strong>It needs at least two updates.</div>';
 
-    /* goal */
+    /* goal — v3.2: progress from $163.99 toward $1,000 (goalStart), deposits stay in start */
+    var goalStart = (L.goalStart != null) ? L.goalStart : L.start;
     var prog = Math.max(0, Math.min(100, L.progressPct || 0)), left = Math.max(0, L.goal - L.value);
-    $('goalSub').textContent = prog >= 100 ? 'Goal smashed 🎉' : money(left, 0) + ' to go · ' + (prog < 5 ? 'warming up 🔥' : 'keep stacking');
+    $('goalSub').textContent = prog >= 100 ? 'Goal smashed 🎉' : 'From ' + money(goalStart) + ' toward ' + money(L.goal, 0) + ' · ' + money(left, 0) + ' to go';
     $('goal').innerHTML = '<div class="goal-nums num"><div class="now">Now<b>' + money(L.value) + '</b></div><div class="tgt">Goal<b>' + money(L.goal, 0) + '</b></div></div>' +
-      '<div class="goal-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + prog + '" aria-label="Progress to goal"><b style="width:' + Math.max(prog, 0.8) + '%"></b></div>' +
-      '<div class="goal-sub num"><span>Start ' + money(L.start, 0) + '</span><span><b style="color:var(--ink)">' + prog.toFixed(prog < 10 ? 1 : 0) + '%</b> of the way</span></div>';
+      '<div class="goal-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + prog + '" aria-label="Progress from ' + money(goalStart) + ' toward ' + money(L.goal, 0) + '"><b style="width:' + Math.max(prog, 0.8) + '%"></b></div>' +
+      '<div class="goal-sub num"><span>From ' + money(goalStart) + ' toward ' + money(L.goal, 0) + '</span><span><b style="color:var(--ink)">' + prog.toFixed(prog < 10 ? 1 : 0) + '%</b> of the way</span></div>';
 
     /* simple account tracker */
     var lc = (L.trades || []).filter(function (t) { return t.status === 'closed'; }), lo = (L.trades || []).filter(function (t) { return t.status !== 'closed'; });
